@@ -1,0 +1,43 @@
+---
+const steps = [
+  {
+    step: "01",
+    title: "Configurez vos critères",
+    description: "Définissez vos filtres de recherche : marques, modèles, fourchettes de prix, kilométrage max, zone géographique…",
+  },
+  {
+    step: "02",
+    title: "Auto-Prospect trouve les annonces",
+    description: "Notre moteur scrute LeBonCoin en continu et vous remonte les annonces correspondantes en temps réel.",
+  },
+  {
+    step: "03",
+    title: "Contactez et convertissez",
+    description: "Envoyez un message vocal automatique aux vendeurs et suivez vos prospects dans votre pipeline intégré.",
+  },
+];
+---
+
+<section id="how-it-works" class="py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="fade-up text-center">
+      <span class="text-sm font-semibold uppercase tracking-widest text-accent">Comment ça marche</span>
+      <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Opérationnel en 3 étapes</h2>
+    </div>
+
+    <div class="mt-14 grid gap-8 lg:grid-cols-3">
+      {steps.map((s, i) => (
+        <div class="fade-up relative rounded-2xl border border-border bg-card p-8">
+          <span class="text-5xl font-extrabold text-accent/20">{s.step}</span>
+          <h3 class="mt-4 text-xl font-semibold">{s.title}</h3>
+          <p class="mt-3 text-sm text-text-secondary leading-relaxed">{s.description}</p>
+          {i < steps.length - 1 && (
+            <div class="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-1/2 text-4xl text-border lg:block">
+              →
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

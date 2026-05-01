@@ -1,0 +1,43 @@
+---
+const pains = [
+  {
+    emoji: "⏰",
+    title: "Des heures à scroller",
+    description: "Vous passez un temps fou à parcourir les annonces manuellement, page après page.",
+  },
+  {
+    emoji: "📞",
+    title: "Contact manuel fastidieux",
+    description: "Appeler ou écrire à chaque vendeur un par un, c'est épuisant et chronophage.",
+  },
+  {
+    emoji: "💨",
+    title: "Opportunités perdues",
+    description: "Les meilleures affaires partent en quelques heures. Sans réactivité, vous les manquez.",
+  },
+  {
+    emoji: "📋",
+    title: "Aucun suivi structuré",
+    description: "Pas de CRM, pas de pipeline. Vous perdez le fil de vos prospects et relances.",
+  },
+];
+---
+
+<section class="py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="fade-up text-center">
+      <h2 class="text-3xl font-bold sm:text-4xl">Vous en avez assez de…</h2>
+      <p class="mt-4 text-text-secondary">Les revendeurs auto perdent un temps précieux chaque jour</p>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {pains.map((pain) => (
+        <div class="fade-up rounded-2xl border border-border bg-card p-6 transition-colors hover:border-accent/30">
+          <span class="text-3xl">{pain.emoji}</span>
+          <h3 class="mt-4 text-lg font-semibold">{pain.title}</h3>
+          <p class="mt-2 text-sm text-text-secondary leading-relaxed">{pain.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

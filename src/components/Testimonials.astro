@@ -1,0 +1,48 @@
+---
+const testimonials = [
+  {
+    name: "Marc D.",
+    role: "Revendeur auto, Lyon",
+    quote: "Auto-Prospect m'a fait gagner 3 heures par jour. Je repère les bonnes affaires avant tout le monde et je contacte les vendeurs en un clic.",
+  },
+  {
+    name: "Sophie L.",
+    role: "Gérante concession, Marseille",
+    quote: "Le pipeline de vente est un game-changer. Mon équipe suit chaque prospect du premier contact à la vente finale.",
+  },
+  {
+    name: "Thomas R.",
+    role: "Mandataire auto, Paris",
+    quote: "En 2 semaines d'essai, j'ai doublé mon volume de contacts qualifiés. L'outil est devenu indispensable.",
+  },
+];
+---
+
+<section class="py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="fade-up text-center">
+      <span class="text-sm font-semibold uppercase tracking-widest text-accent">Témoignages</span>
+      <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Ils utilisent Auto-Prospect au quotidien</h2>
+    </div>
+
+    <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {testimonials.map((t) => (
+        <div class="fade-up rounded-2xl border border-border bg-card p-8">
+          <div class="mb-4 flex gap-1 text-accent">
+            {[...Array(5)].map(() => <span>★</span>)}
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed italic">"{t.quote}"</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20 text-sm font-bold text-accent">
+              {t.name[0]}
+            </div>
+            <div>
+              <p class="text-sm font-semibold">{t.name}</p>
+              <p class="text-xs text-text-secondary">{t.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
