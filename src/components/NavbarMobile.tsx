@@ -39,13 +39,12 @@ export default function NavbarMobile({ links }: Props) {
                   {link.label}
                 </a>
               ))}
-              <a
-                href="#pricing"
-                onClick={() => setOpen(false)}
-                className="mt-2 rounded-lg bg-accent px-4 py-3 text-center text-sm font-semibold text-bg transition-colors hover:bg-accent-hover"
+              <button
+                onClick={() => { setOpen(false); (window as any).Calendly?.initPopupWidget({url:'https://calendly.com/autoprospect54/call-demo?hide_landing_page_details=1&hide_gdpr_banner=1'}); }}
+                className="mt-2 rounded-lg bg-accent px-4 py-3 text-center text-sm font-semibold text-bg transition-colors hover:bg-accent-hover cursor-pointer"
               >
                 Essai gratuit
-              </a>
+              </button>
             </div>
           </motion.div>
         )}

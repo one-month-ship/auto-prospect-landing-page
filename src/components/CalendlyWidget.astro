@@ -1,0 +1,22 @@
+---
+---
+
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+
+<script>
+  const script = document.createElement("script");
+  script.src = "https://assets.calendly.com/assets/external/widget.js";
+  script.async = true;
+  document.body.appendChild(script);
+
+  script.onload = () => {
+    if ((window as any).Calendly) {
+      (window as any).Calendly.initBadgeWidget({
+        url: "https://calendly.com/autoprospect54/call-demo?hide_landing_page_details=1&hide_gdpr_banner=1",
+        text: "Une Démo ?",
+        color: "#F59E0B",
+        textColor: "#0A0A0B",
+      });
+    }
+  };
+</script>
