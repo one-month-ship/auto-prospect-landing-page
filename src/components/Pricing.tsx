@@ -192,9 +192,39 @@ const FALLBACK_PLAN: TPlan = {
   sortOrder: 1,
 };
 
+const FALLBACK_VOCAL_PACKS: TPlan[] = [
+  {
+    id: 10,
+    name: "Pack 100 vocaux",
+    type: "pack",
+    channel: "voicemail",
+    stripePriceId: "price_vocal_100",
+    priceEur: 2000,
+    quotaPerMonth: 100,
+    overageUnitPrice: null,
+    description: "100 crédits messagerie vocale",
+    isActive: true,
+    sortOrder: 1,
+  },
+  {
+    id: 11,
+    name: "Pack 500 vocaux",
+    type: "pack",
+    channel: "voicemail",
+    stripePriceId: "price_vocal_500",
+    priceEur: 8000,
+    quotaPerMonth: 500,
+    overageUnitPrice: null,
+    description: "500 crédits messagerie vocale",
+    isActive: true,
+    sortOrder: 2,
+  },
+];
+
 const includes = [
-  "Recherche automatique illimitée",
+  "Recherches automatiques illimitées",
   "Détection temps réel des annonces",
+  "Analyse prix vs marché — repérez les bonnes affaires",
   "Contact vocal automatique",
   "Pipeline de vente (CRM Kanban)",
   "Templates de messages",
@@ -209,20 +239,37 @@ function formatPrice(cents: number) {
 }
 
 export default function Pricing() {
-  const [plan, setPlan] = useState<TPlan>(FALLBACK_PLAN);
+  const [monthlyPlan, setMonthlyPlan] = useState<TPlan>(FALLBACK_PLAN);
+  const [yearlyPlan, setYearlyPlan] = useState<TPlan | null>(null);
+  const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
+  const [vocalPacks, setVocalPacks] = useState<TPlan[]>(FALLBACK_VOCAL_PACKS);
   const [loading, setLoading] = useState(true);
+
+  const plan = billing === "yearly" && yearlyPlan ? yearlyPlan : monthlyPlan;
 
   useEffect(() => {
     let cancelled = false;
-    fetchJSON<{ plans: TPlan[] }>("/api/plans/main")
-      .then((data) => {
-        console.log(data)
-        if (!cancelled && data.plans?.length > 0) {
-          setPlan(data.plans[0]);
+
+    Promise.all([
+      fetchJSON<{ plans: TPlan[] }>("/api/plans/main"),
+      fetchJSON<{ plans: TPlan[] }>("/api/plans/channel").catch(() => ({ plans: [] })),
+    ])
+      .then(([mainData, channelData]) => {
+        if (cancelled) return;
+        if (mainData.plans?.length > 0) {
+          setMonthlyPlan(mainData.plans[0]);
+        }
+        if (mainData.plans?.length > 1) {
+          setYearlyPlan(mainData.plans[1]);
+        }
+        const vocal = channelData.plans?.filter((p) => p.channel === "voicemail") ?? [];
+        if (vocal.length > 0) {
+          setVocalPacks(vocal);
         }
       })
       .catch(() => {})
       .finally(() => { if (!cancelled) setLoading(false); });
+
     return () => { cancelled = true; };
   }, []);
 
@@ -239,6 +286,41 @@ export default function Pricing() {
           <p className="mt-4 text-[#9CA3AF]">
             Un seul plan, toutes les fonctionnalités. Essayez gratuitement pendant 15 jours.
           </p>
+
+          {/* Toggle mensuel / annuel */}
+          {yearlyPlan && (
+            <div className="mt-8 inline-flex items-center rounded-full border border-[#27272A] bg-[#141416] p-1">
+              <button
+                onClick={() => setBilling("monthly")}
+                className={`rounded-full px-5 py-2 text-sm font-medium transition-all cursor-pointer ${
+                  billing === "monthly"
+                    ? "bg-accent text-[#0A0A0B]"
+                    : "text-[#9CA3AF] hover:text-[#F9FAFB]"
+                }`}
+              >
+                Mensuel
+              </button>
+              <button
+                onClick={() => setBilling("yearly")}
+                className={`relative rounded-full px-5 py-2 text-sm font-medium transition-all cursor-pointer ${
+                  billing === "yearly"
+                    ? "bg-accent text-[#0A0A0B]"
+                    : "text-[#9CA3AF] hover:text-[#F9FAFB]"
+                }`}
+              >
+                Annuel
+                {monthlyPlan.priceEur > 0 && (
+                  <span className={`ml-2 rounded-full px-2 py-0.5 text-xs font-semibold ${
+                    billing === "yearly"
+                      ? "bg-[#0A0A0B]/30 text-[#0A0A0B]"
+                      : "bg-accent/20 text-accent"
+                  }`}>
+                    -{Math.round(100 - (yearlyPlan.priceEur / (monthlyPlan.priceEur * 12)) * 100)}%
+                  </span>
+                )}
+              </button>
+            </div>
+          )}
         </div>
 
         {loading ? (
@@ -263,16 +345,25 @@ export default function Pricing() {
                   15 jours gratuits
                 </span>
                 <div className="mt-6">
-                  <span className="text-5xl font-extrabold sm:text-6xl">{formatPrice(plan.priceEur)}€</span>
-                  <span className="text-lg text-[#9CA3AF]">
-                    {plan.type === "subscription" ? " /mois" : ""}
+                  <span className="text-5xl font-extrabold sm:text-6xl">
+                    {billing === "yearly"
+                      ? formatPrice(Math.round(plan.priceEur / 12))
+                      : formatPrice(plan.priceEur)}€
                   </span>
+                  <span className="text-lg text-[#9CA3AF]"> HT /mois</span>
+                  {billing === "yearly" && (
+                    <p className="mt-1 text-sm text-[#9CA3AF]">
+                      Facturé {formatPrice(plan.priceEur)}€ HT/an
+                    </p>
+                  )}
                 </div>
                 {plan.description && (
                   <p className="mt-2 text-sm text-[#9CA3AF]">{plan.description}</p>
                 )}
                 <p className="mt-1 text-sm text-[#9CA3AF]">
-                  Sans engagement · Annulable à tout moment
+                  {billing === "yearly"
+                    ? ""
+                    : "Sans engagement · Annulable à tout moment"}
                 </p>
                 <button
                   onClick={() => (window as any).Calendly?.initPopupWidget({url:'https://calendly.com/autoprospect54/call-demo?hide_landing_page_details=1&hide_gdpr_banner=1'})}
@@ -293,6 +384,43 @@ export default function Pricing() {
               </ul>
             </div>
           </motion.div>
+        )}
+
+        {/* Packs crédits vocaux */}
+        {!loading && vocalPacks.length > 0 && (
+          <div className="mt-16">
+            <h3 className="text-center text-xl font-bold">
+              Packs crédits vocaux
+            </h3>
+            <p className="mt-2 text-center text-sm text-[#9CA3AF]">
+              Décrochez plus de deals en contactant les vendeurs directement par vocal
+            </p>
+            <div className="mx-auto mt-8 grid max-w-3xl gap-4 sm:grid-cols-2">
+              {vocalPacks.map((pack) => (
+                <motion.div
+                  key={pack.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4 }}
+                  className="rounded-2xl border border-[#27272A] bg-[#141416] p-6"
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
+                        Vocal
+                      </span>
+                      <h4 className="mt-3 text-lg font-semibold">{pack.name}</h4>
+                      <p className="mt-1 text-sm text-[#9CA3AF]">{pack.description}</p>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-2xl font-bold">{formatPrice(pack.priceEur)}€</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         )}
       </div>
     </section>

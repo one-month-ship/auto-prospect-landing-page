@@ -1,31 +1,47 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 const faqs = [
   {
-    q: "Comment fonctionne l'essai gratuit de 15 jours ?",
-    a: "Inscrivez-vous et accédez à toutes les fonctionnalités pendant 15 jours, sans carte bancaire. À la fin de la période, choisissez un plan pour continuer.",
+    q: "Concrètement, Auto-Prospect c'est quoi ?",
+    a: "Auto-Prospect est un assistant de prospection automatisé. Il détecte les annonces de véhicules sur les principaux sites français et contacte les vendeurs particuliers à votre place, par message vocal ou texte personnalisé.",
   },
   {
-    q: "Est-ce que Auto-Prospect est légal ?",
-    a: "Oui. Auto-Prospect consulte les annonces publiques de LeBonCoin et contacte les vendeurs avec des messages personnalisés et respectueux. Nous respectons le RGPD.",
+    q: "Comment fonctionnent les messages envoyés aux vendeurs ?",
+    a: "Vous rédigez vos messages personnalisés qui sont envoyés automatiquement à chaque vendeur. L'objectif : les inciter à vous rappeler. Vous pouvez aussi envoyer des messages manuellement pour plus de flexibilité.",
   },
   {
-    q: "Quels canaux de contact sont disponibles ?",
-    a: "Actuellement, le contact se fait par message vocal automatique (voicemail). Les canaux SMS et WhatsApp sont en cours de développement.",
+    q: "Je peux cibler précisément les annonces qui m'intéressent ?",
+    a: "Absolument. Filtrez par marque, modèle, prix, kilométrage, département, code postal… Par exemple, ciblez uniquement les véhicules au-dessus de 30 000 € ou en dessous de 100 000 km, sur autant de zones géographiques que vous le souhaitez.",
   },
   {
-    q: "Puis-je travailler en équipe ?",
-    a: "Oui, Auto-Prospect permet de partager des hunts (recherches) et des prospects entre membres d'une même équipe.",
+    q: "Qu'est-ce que je dois faire une fois mes critères définis ?",
+    a: "Plus rien. Auto-Prospect contacte les vendeurs à votre place en continu. Vous n'avez plus qu'à répondre aux appels des particuliers intéressés.",
   },
   {
-    q: "Comment sont détectées les nouvelles annonces ?",
-    a: "Notre moteur scrute LeBonCoin en continu avec vos critères de recherche et vous alerte dès qu'une nouvelle annonce correspondante est publiée.",
+    q: "Ma zone de prospection est-elle limitée ?",
+    a: "Non, aucune limite. Prospectez sur autant de départements et de codes postaux que vous le souhaitez, partout en France.",
+  },
+  {
+    q: "Les messages sont-ils facturés à l'unité ?",
+    a: "Non. Les messages automatiques et manuels sont inclus dans votre abonnement, sans surcoût.",
+  },
+  {
+    q: "Comment fonctionne l'essai gratuit ?",
+    a: "Inscrivez-vous et accédez à toutes les fonctionnalités pendant 15 jours, sans engagement. À la fin de la période, choisissez le plan qui vous convient.",
   },
   {
     q: "Puis-je annuler mon abonnement à tout moment ?",
-    a: "Oui, vous pouvez annuler votre abonnement à tout moment depuis votre espace client. Aucun engagement, aucun frais caché.",
+    a: "Oui, si vous êtes sur l'abonnement mensuel, vous pouvez annuler à tout moment et ne serez plus prélevé. Pour l'abonnement annuel, l'engagement court jusqu'à la fin de la période souscrite.",
+  },
+  {
+    q: "Mes paiements sont-ils sécurisés ?",
+    a: "Oui, tous les paiements passent par Stripe, plateforme mondialement reconnue qui respecte les plus hauts standards de sécurité.",
+  },
+  {
+    q: "Vous proposez un support client ?",
+    a: "Bien sûr. Un chat intégré est à votre disposition pour toute question, et vous pouvez aussi nous joindre par email à tout moment.",
   },
 ];
 

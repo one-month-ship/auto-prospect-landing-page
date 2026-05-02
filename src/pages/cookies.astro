@@ -1,0 +1,45 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+---
+
+<Layout title="Politique de Cookies — Auto-Prospect">
+  <Navbar />
+  <main class="mx-auto max-w-3xl px-4 pt-32 pb-20 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold sm:text-4xl">Politique de Cookies</h1>
+
+    <div class="mt-10 space-y-8 text-sm text-text-secondary leading-relaxed">
+      <section>
+        <h2 class="text-lg font-semibold text-text">1. Que sont les cookies ?</h2>
+        <p class="mt-2">Les cookies sont de petits fichiers texte stockés sur votre appareil lorsque vous visitez un site web. Ils sont utilisés pour améliorer votre expérience utilisateur et fournir des services personnalisés.</p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-text">2. Types de cookies utilisés</h2>
+        <ul class="mt-2 list-disc pl-5 space-y-2">
+          <li><strong class="text-text">Cookies essentiels :</strong> Ces cookies sont nécessaires pour le fonctionnement de notre site web et ne peuvent pas être désactivés.</li>
+          <li><strong class="text-text">Cookies analytiques :</strong> Ils nous permettent d'analyser l'utilisation de notre site pour améliorer ses performances. Pour l'instant, nous n'utilisons pas de cookies analytiques.</li>
+          <li><strong class="text-text">Cookies publicitaires :</strong> Ces cookies sont utilisés pour vous montrer des publicités adaptées à vos centres d'intérêt. Pour l'instant, nous n'utilisons pas de cookies publicitaires.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-text">3. Gestion des cookies</h2>
+        <p class="mt-2">Vous pouvez configurer votre navigateur pour bloquer ou supprimer les cookies. Cependant, certaines fonctionnalités de notre site pourraient ne pas fonctionner correctement si vous désactivez les cookies.</p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-text">4. Durée de conservation des cookies</h2>
+        <p class="mt-2">Les cookies que nous utilisons sont conservés pendant une période limitée, conformément aux réglementations en vigueur.</p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-text">5. Mise à jour de la politique</h2>
+        <p class="mt-2">Nous pouvons mettre à jour cette politique de cookies pour refléter les changements dans nos pratiques ou pour respecter de nouvelles réglementations.</p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>

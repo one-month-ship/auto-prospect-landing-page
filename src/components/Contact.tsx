@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { AlertCircle, CheckCircle, Send } from "lucide-react";
+import { useState } from "react";
 
 type FormState = "idle" | "sending" | "success" | "error";
 
@@ -18,9 +18,7 @@ export default function Contact() {
     setState("sending");
 
     try {
-      const API_URL =
-        import.meta.env.VITE_API_URL ?? "https://api.auto-prospect.fr";
-      const res = await fetch(`${API_URL}/api/contact`, {
+      const res = await fetch(`${import.meta.env.PUBLIC_API_URL}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
