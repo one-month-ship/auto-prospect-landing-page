@@ -1,7 +1,7 @@
 ---
 const testimonials = [
   {
-    name: "Taoufiq, ClickAndBuyAuto Bordeaux",
+    name: "Taoufiq, ClickAndBuyAuto",
     role: "Revendeur auto, Bordeaux",
     quote: "Notre agence a doublé son volume de contacts qualifiés. L'outil est devenu indispensable.",
   },
@@ -27,21 +27,23 @@ const testimonials = [
 
     <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {testimonials.map((t) => (
-        <div class="fade-up rounded-2xl border border-border bg-card p-8">
-          <div class="mb-4 flex gap-1 text-accent">
-            {[...Array(5)].map(() => <span>★</span>)}
+        <figure class="fade-up rounded-2xl border border-border bg-card p-8">
+          <div class="mb-4 flex gap-1 text-accent" aria-label="5 étoiles sur 5">
+            {[...Array(5)].map(() => <span aria-hidden="true">★</span>)}
           </div>
-          <p class="text-sm text-text-secondary leading-relaxed italic">"{t.quote}"</p>
-          <div class="mt-6 flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20 text-sm font-bold text-accent">
+          <blockquote class="text-sm text-text-secondary leading-relaxed italic">
+            <p>"{t.quote}"</p>
+          </blockquote>
+          <figcaption class="mt-6 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20 text-sm font-bold text-accent" aria-hidden="true">
               {t.name[0]}
             </div>
             <div>
               <p class="text-sm font-semibold">{t.name}</p>
               <p class="text-xs text-text-secondary">{t.role}</p>
             </div>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
       ))}
     </div>
   </div>
