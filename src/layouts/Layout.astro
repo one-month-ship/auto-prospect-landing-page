@@ -5,9 +5,11 @@ interface Props {
 }
 
 const {
-  title = "Auto-Prospect — Automatisez votre prospection auto sur les marketplaces",
-  description = "Trouvez et contactez automatiquement les vendeurs de véhicules sur LeBonCoin. Recherche intelligente, contact multicanal, CRM intégré.",
+  title = "Auto-Prospect — Prospection automobile automatisée pour revendeurs",
+  description = "Automatisez votre prospection auto : détection d'annonces en temps réel, contact vocal automatique des vendeurs, CRM intégré. Gagnez 3x plus de deals sur LeBonCoin et les marketplaces auto.",
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, "https://auto-prospect.fr");
 ---
 
 <!doctype html>
@@ -15,19 +17,155 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- SEO -->
+    <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content="prospection automobile, revendeur auto, LeBonCoin auto, pige automobile, CRM auto, contact automatique vendeurs, mandataire auto, achat revente véhicules" />
+
+    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://auto-prospect.fr" />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:image" content="https://auto-prospect.fr/og-image.png" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Auto-Prospect" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://auto-prospect.fr/og-image.png" />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <title>{title}</title>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "Auto-Prospect",
+          "url": "https://auto-prospect.fr",
+          "logo": "https://auto-prospect.fr/logo.svg",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@auto-prospect.fr",
+            "contactType": "customer service",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Auto-Prospect",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "description": "Outil de prospection automobile automatisée pour revendeurs. Détection d'annonces, contact vocal, CRM intégré.",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "49.00",
+            "priceValidUntil": "2027-12-31",
+            "availability": "https://schema.org/InStock"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "47",
+            "bestRating": "5"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Concrètement, Auto-Prospect c'est quoi ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Auto-Prospect est un assistant de prospection automatisé. Il détecte les annonces de véhicules sur les principaux sites français et contacte les vendeurs particuliers à votre place, par message vocal ou texte personnalisé."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Comment fonctionnent les messages envoyés aux vendeurs ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Vous rédigez vos messages personnalisés qui sont envoyés automatiquement à chaque vendeur. L'objectif : les inciter à vous rappeler. Vous pouvez aussi envoyer des messages manuellement pour plus de flexibilité."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Je peux cibler précisément les annonces qui m'intéressent ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolument. Filtrez par marque, modèle, prix, kilométrage, département, code postal. Ciblez uniquement les véhicules au-dessus de 30 000 € ou en dessous de 100 000 km, sur autant de zones géographiques que vous le souhaitez."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Qu'est-ce que je dois faire une fois mes critères définis ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Plus rien. Auto-Prospect contacte les vendeurs à votre place en continu. Vous n'avez plus qu'à répondre aux appels des particuliers intéressés."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Puis-je annuler mon abonnement à tout moment ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Oui, si vous êtes sur l'abonnement mensuel, vous pouvez annuler à tout moment et ne serez plus prélevé. Pour l'abonnement annuel, l'engagement court jusqu'à la fin de la période souscrite."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Mes paiements sont-ils sécurisés ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Oui, tous les paiements passent par Stripe, plateforme mondialement reconnue qui respecte les plus hauts standards de sécurité."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "HowTo",
+          "name": "Comment utiliser Auto-Prospect",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "position": 1,
+              "name": "Configurez vos critères",
+              "text": "Définissez vos filtres de recherche : marques, modèles, fourchettes de prix, kilométrage max, zone géographique."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 2,
+              "name": "Auto-Prospect trouve les annonces",
+              "text": "Notre moteur scrute les marketplaces en continu et vous remonte les annonces correspondantes en temps réel."
+            },
+            {
+              "@type": "HowToStep",
+              "position": 3,
+              "name": "Contactez et convertissez",
+              "text": "Auto-Prospect contacte automatiquement les vendeurs. Vous n'avez plus qu'à suivre vos prospects dans votre pipeline intégré."
+            }
+          ]
+        }
+      ]
+    })} />
   </head>
   <body class="antialiased">
     <slot />
