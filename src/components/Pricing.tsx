@@ -386,41 +386,27 @@ export default function Pricing() {
           </motion.div>
         )}
 
-        {/* Packs crédits vocaux */}
-        {!loading && vocalPacks.length > 0 && (
-          <div className="mt-16">
-            <h3 className="text-center text-xl font-bold">
-              Packs crédits vocaux
+        {/* Crédits vocaux */}
+        {!loading && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="mx-auto mt-12 max-w-3xl rounded-2xl border border-[#27272A] bg-[#141416] p-8 text-center"
+          >
+            <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
+              Contact vocal
+            </span>
+            <h3 className="mt-4 text-xl font-bold">
+              Contactez autant de vendeurs que vous le souhaitez
             </h3>
-            <p className="mt-2 text-center text-sm text-[#9CA3AF]">
-              Décrochez plus de deals en contactant les vendeurs directement par vocal
+            <p className="mx-auto mt-3 max-w-lg text-sm text-[#9CA3AF] leading-relaxed">
+              Chaque message vocal envoyé ne coûte que{" "}
+              <span className="font-semibold text-[#F9FAFB]">0,15€ HT</span>.
+              Choisissez un volume de crédits adapté à votre capacité de traitement et scalez à mesure que votre activité grandit.
             </p>
-            <div className="mx-auto mt-8 grid max-w-3xl gap-4 sm:grid-cols-2">
-              {vocalPacks.map((pack) => (
-                <motion.div
-                  key={pack.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4 }}
-                  className="rounded-2xl border border-[#27272A] bg-[#141416] p-6"
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-                        Vocal
-                      </span>
-                      <h4 className="mt-3 text-lg font-semibold">{pack.name}</h4>
-                      <p className="mt-1 text-sm text-[#9CA3AF]">{pack.description}</p>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-2xl font-bold">{formatPrice(pack.priceEur)}€</span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </section>
