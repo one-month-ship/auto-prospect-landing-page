@@ -9,7 +9,7 @@ const {
   description = "Automatisez votre prospection auto : détection d'annonces en temps réel, contact vocal automatique des vendeurs, CRM intégré. Gagnez 3x plus de deals sur LeBonCoin et les marketplaces auto.",
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, "https://auto-prospect.fr");
+const canonicalURL = new URL(Astro.url.pathname, "https://landing-page.auto-prospect.fr");
 ---
 
 <!doctype html>
@@ -30,7 +30,7 @@ const canonicalURL = new URL(Astro.url.pathname, "https://auto-prospect.fr");
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL.href} />
-    <meta property="og:image" content="https://auto-prospect.fr/og-image.png" />
+    <meta property="og:image" content="https://landing-page.auto-prospect.fr/og-default.png" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:site_name" content="Auto-Prospect" />
 
@@ -38,7 +38,7 @@ const canonicalURL = new URL(Astro.url.pathname, "https://auto-prospect.fr");
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://auto-prospect.fr/og-image.png" />
+    <meta name="twitter:image" content="https://landing-page.auto-prospect.fr/og-default.png" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
@@ -58,8 +58,8 @@ const canonicalURL = new URL(Astro.url.pathname, "https://auto-prospect.fr");
         {
           "@type": "Organization",
           "name": "Auto-Prospect",
-          "url": "https://auto-prospect.fr",
-          "logo": "https://auto-prospect.fr/logo.svg",
+          "url": "https://landing-page.auto-prospect.fr",
+          "logo": "https://landing-page.auto-prospect.fr/logo.svg",
           "contactPoint": {
             "@type": "ContactPoint",
             "email": "contact@auto-prospect.fr",

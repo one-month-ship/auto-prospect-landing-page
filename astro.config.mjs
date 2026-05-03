@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://auto-prospect.fr",
+  site: "https://landing-page.auto-prospect.fr",
   integrations: [react(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
