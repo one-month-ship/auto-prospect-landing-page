@@ -1,0 +1,168 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import "../../styles/global.css";
+
+const title = "Recherche automatique d'annonces auto en temps réel — Auto-Prospect";
+const description =
+  "Détectez les annonces de véhicules en temps réel sur les principaux sites français. Filtres par marque, modèle, prix, kilométrage, zone géographique. Soyez le premier sur les bonnes affaires.";
+
+const filtres = [
+  { label: "Marque et modèle", detail: "Ciblez précisément les véhicules que vous savez revendre : citadines, SUV, utilitaires, premium…" },
+  { label: "Fourchette de prix", detail: "Par exemple, uniquement les véhicules entre 5 000 € et 30 000 €, selon votre trésorerie." },
+  { label: "Kilométrage maximum", detail: "Excluez d'office les véhicules trop kilométrés, par exemple au-dessus de 100 000 km." },
+  { label: "Zone géographique", detail: "Département ou code postal, sans aucune limite : prospectez sur autant de zones que vous le souhaitez, partout en France." },
+];
+
+const faq = [
+  {
+    q: "Sur quels sites Auto-Prospect détecte-t-il les annonces ?",
+    a: "Auto-Prospect scrute en continu les principaux sites d'annonces automobiles français, dont LeBonCoin, et remonte les annonces de vendeurs particuliers correspondant à vos critères.",
+  },
+  {
+    q: "En combien de temps une nouvelle annonce est-elle détectée ?",
+    a: "La détection fonctionne en temps réel : le moteur scanne les marketplaces en continu et vous remonte les nouvelles annonces dès leur publication. C'est décisif, car les meilleures affaires partent en quelques heures.",
+  },
+  {
+    q: "Puis-je créer plusieurs recherches en parallèle ?",
+    a: "Oui, les recherches automatiques sont illimitées. Vous pouvez par exemple suivre les citadines à moins de 10 000 € dans votre département et, en parallèle, les SUV premium à moins de 100 000 km sur toute la région.",
+  },
+  {
+    q: "Que se passe-t-il quand une annonce correspond à mes critères ?",
+    a: "L'annonce remonte immédiatement dans votre tableau de bord et Auto-Prospect peut contacter automatiquement le vendeur par message WhatsApp ou vocal, sans aucune action de votre part.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://landing-page.auto-prospect.fr/" },
+      { "@type": "ListItem", position: 2, name: "Fonctionnalités", item: "https://landing-page.auto-prospect.fr/#features" },
+      { "@type": "ListItem", position: 3, name: "Recherche automatique d'annonces", item: "https://landing-page.auto-prospect.fr/fonctionnalites/recherche-annonces-automatisee" },
+    ],
+  },
+  {
+    "@type": "Service",
+    name: "Recherche automatique d'annonces automobiles",
+    provider: { "@type": "Organization", name: "Auto-Prospect" },
+    description:
+      "Détection en temps réel des annonces de véhicules sur les principaux sites français, avec filtres par marque, modèle, prix, kilométrage et zone géographique.",
+    areaServed: "FR",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="pt-32">
+    <section class="pb-12">
+      <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <span class="text-sm font-semibold uppercase tracking-widest text-accent">Fonctionnalité</span>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+          Recherche automatique d'annonces <span class="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent">en temps réel</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
+          Auto-Prospect scrute en continu les principaux sites d'annonces automobiles français et vous remonte
+          instantanément chaque véhicule correspondant à vos critères. Fini les heures de scroll : vous êtes
+          alerté avant les autres, et le vendeur peut être contacté automatiquement dans la foulée.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Pourquoi la vitesse de détection change tout</h2>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Dans l'achat-revente automobile, les véhicules bien cotés et correctement décrits partent en quelques
+          heures. Un revendeur qui consulte les annonces manuellement matin et soir arrive presque toujours
+          après les professionnels équipés d'outils de pige. La détection en temps réel inverse ce rapport de
+          force : dès qu'une annonce correspondant à vos critères est publiée, elle apparaît dans votre tableau
+          de bord et le vendeur peut recevoir votre message avant même que la concurrence ait vu l'annonce.
+        </p>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Couplée à l'<a href="/fonctionnalites/analyse-prix-marche" class="text-accent hover:underline">analyse prix vs marché</a>,
+          la détection vous indique aussi immédiatement si le véhicule est sous-coté — c'est-à-dire si l'affaire
+          mérite un appel dans les minutes qui suivent.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Des filtres précis pour ne recevoir que le pertinent</h2>
+        <p class="mt-4 text-text-secondary">
+          Chaque recherche automatique se configure avec des critères métier, exactement comme vous trieriez
+          les annonces à la main :
+        </p>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2">
+          {filtres.map((f) => (
+            <div class="rounded-2xl border border-border bg-card p-6">
+              <h3 class="font-semibold">{f.label}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-text-secondary">{f.detail}</p>
+            </div>
+          ))}
+        </div>
+        <p class="mt-8 leading-relaxed text-text-secondary">
+          Les recherches sont illimitées et fonctionnent en parallèle. Un
+          <a href="/solutions/marchand-vehicules-occasion" class="text-accent hover:underline">marchand de véhicules d'occasion</a>
+          peut ainsi suivre plusieurs segments à la fois — citadines récentes, utilitaires, véhicules premium —
+          chacun avec ses propres seuils de prix et de kilométrage.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">De la détection au contact, sans intervention</h2>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          La recherche automatique n'est que la première étape. Une fois l'annonce détectée, Auto-Prospect peut
+          enchaîner avec le <a href="/fonctionnalites/contact-vocal-automatique" class="text-accent hover:underline">contact automatique du vendeur</a>
+          (message WhatsApp ou vocal personnalisé), puis le prospect entre dans votre
+          <a href="/fonctionnalites/crm-pipeline-vente" class="text-accent hover:underline">pipeline de vente</a> pour le suivi.
+          Votre seul travail : répondre aux vendeurs qui vous rappellent et négocier.
+        </p>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Autre garantie importante : l'exclusivité. Un vendeur contacté pour vous ne sera jamais démarché pour
+          un autre client d'Auto-Prospect. Pas de concurrence interne sur les mêmes annonces, et des vendeurs
+          mieux disposés car non sur-sollicités.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-2xl font-bold sm:text-3xl">Questions fréquentes</h2>
+        <div class="mt-10">
+          {faq.map((f) => (
+            <details class="group border-b border-border py-2">
+              <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium sm:text-base [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span class="text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+              </summary>
+              <p class="pb-4 text-sm leading-relaxed text-text-secondary">{f.a}</p>
+            </details>
+          ))}
+        </div>
+        <p class="mt-8 text-center text-sm text-text-secondary">
+          Inclus dans l'abonnement à 69 € HT/mois — <a href="/tarifs" class="text-accent hover:underline">voir les tarifs</a>.
+        </p>
+      </div>
+    </section>
+
+    <SubPageCTA />
+  </main>
+  <Footer />
+  <CalendlyWidget />
+</Layout>

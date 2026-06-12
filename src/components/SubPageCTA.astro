@@ -1,0 +1,27 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = "Essayez Auto-Prospect gratuitement pendant 15 jours",
+  subtitle = "Toutes les fonctionnalités, sans engagement. Réservez une démo et voyez par vous-même.",
+} = Astro.props;
+---
+
+<section class="py-20">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <div class="fade-up relative overflow-hidden rounded-3xl border border-accent/30 bg-gradient-to-b from-accent/10 to-transparent p-10 text-center sm:p-14">
+      <div class="pointer-events-none absolute -top-20 left-1/2 h-60 w-60 -translate-x-1/2 rounded-full bg-accent/15 blur-[80px]"></div>
+      <h2 class="relative text-2xl font-bold sm:text-3xl">{title}</h2>
+      <p class="relative mx-auto mt-4 max-w-xl text-text-secondary">{subtitle}</p>
+      <button
+        onclick="if(window.Calendly){window.Calendly.initPopupWidget({url:'https://calendly.com/autoprospect54/call-demo?hide_landing_page_details=1&hide_gdpr_banner=1'});return false;}"
+        class="relative mt-8 rounded-xl bg-accent px-8 py-3.5 text-base font-semibold text-bg shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover hover:shadow-accent/40 cursor-pointer"
+      >
+        Réserver une démo gratuite
+      </button>
+    </div>
+  </div>
+</section>

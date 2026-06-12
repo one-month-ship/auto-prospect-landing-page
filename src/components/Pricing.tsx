@@ -184,7 +184,7 @@ const FALLBACK_PLAN: TPlan = {
   type: "subscription",
   channel: null,
   stripePriceId: "price_pro",
-  priceEur: 4900,
+  priceEur: 6900,
   quotaPerMonth: null,
   overageUnitPrice: null,
   description: "Toutes les fonctionnalités pour prospecter efficacement",

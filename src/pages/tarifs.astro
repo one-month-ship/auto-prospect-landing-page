@@ -1,0 +1,240 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import CalendlyWidget from "../components/CalendlyWidget.astro";
+import SubPageCTA from "../components/SubPageCTA.astro";
+import TarifsPriceBox from "../components/TarifsPriceBox.tsx";
+import "../styles/global.css";
+
+const title = "Tarifs Auto-Prospect — 69 € HT/mois tout inclus, essai gratuit 15 jours";
+const description =
+  "Combien coûte Auto-Prospect ? Un seul plan à 69 € HT/mois avec toutes les fonctionnalités : détection d'annonces, CRM, contact automatique. Messages vocaux à 0,15 € HT. Essai gratuit 15 jours, sans engagement.";
+
+const included = [
+  "Recherches automatiques illimitées sur les principaux sites d'annonces français",
+  "Détection des nouvelles annonces en temps réel",
+  "Analyse prix vs marché pour repérer les véhicules sous-cotés",
+  "Contact automatique des vendeurs (WhatsApp et vocal)",
+  "Pipeline de vente — CRM Kanban intégré",
+  "Templates de messages réutilisables",
+  "Zone de prospection illimitée (toute la France)",
+  "Travail en équipe",
+  "Support prioritaire",
+];
+
+const faqTarifs = [
+  {
+    q: "Combien coûte Auto-Prospect ?",
+    a: "Auto-Prospect propose un plan unique à 69 € HT par mois, qui inclut toutes les fonctionnalités : recherche automatique d'annonces, détection en temps réel, analyse des prix, CRM intégré et contact automatique des vendeurs. Une facturation annuelle avec remise est également disponible.",
+  },
+  {
+    q: "Y a-t-il un essai gratuit ?",
+    a: "Oui. Vous accédez à toutes les fonctionnalités pendant 15 jours, gratuitement et sans engagement. À la fin de la période d'essai, vous choisissez de continuer ou non.",
+  },
+  {
+    q: "Comment sont facturés les messages vocaux ?",
+    a: "Chaque message vocal envoyé à un vendeur coûte 0,15 € HT. Vous achetez des packs de crédits adaptés à votre volume : pack de 100 vocaux à 20 € HT ou pack de 500 vocaux à 80 € HT. Les messages WhatsApp sont inclus dans l'abonnement, sans surcoût.",
+  },
+  {
+    q: "Puis-je annuler à tout moment ?",
+    a: "Oui. L'abonnement mensuel est sans engagement : vous pouvez annuler à tout moment et vous ne serez plus prélevé. Pour l'abonnement annuel, l'engagement court jusqu'à la fin de la période souscrite.",
+  },
+  {
+    q: "Le paiement est-il sécurisé ?",
+    a: "Oui, tous les paiements passent par Stripe, plateforme de paiement mondialement reconnue qui respecte les plus hauts standards de sécurité.",
+  },
+  {
+    q: "Y a-t-il des frais cachés ou des limites de zone ?",
+    a: "Non. Le plan inclut des recherches illimitées sur autant de départements et codes postaux que vous le souhaitez, partout en France. Le seul coût additionnel est l'achat optionnel de crédits vocaux.",
+  },
+  {
+    q: "Auto-Prospect est-il rentable pour un petit revendeur ?",
+    a: "À 69 € HT/mois, l'abonnement est généralement amorti dès le premier véhicule acheté sous le prix du marché. L'analyse prix vs marché et la rapidité de contact des vendeurs sont précisément conçues pour cela.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://landing-page.auto-prospect.fr/" },
+      { "@type": "ListItem", position: 2, name: "Tarifs", item: "https://landing-page.auto-prospect.fr/tarifs" },
+    ],
+  },
+  {
+    "@type": "SoftwareApplication",
+    name: "Auto-Prospect",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    description:
+      "Outil de prospection automobile automatisée pour revendeurs : détection d'annonces, contact automatique des vendeurs, CRM intégré.",
+    offers: [
+      {
+        "@type": "Offer",
+        name: "Plan Pro mensuel",
+        priceCurrency: "EUR",
+        price: "69.00",
+        priceValidUntil: "2027-12-31",
+        availability: "https://schema.org/InStock",
+        description: "Abonnement mensuel tout inclus, sans engagement, essai gratuit 15 jours.",
+      },
+      {
+        "@type": "Offer",
+        name: "Pack 100 messages vocaux",
+        priceCurrency: "EUR",
+        price: "20.00",
+        availability: "https://schema.org/InStock",
+        description: "100 crédits de messagerie vocale, soit 0,15 € HT le message envoyé.",
+      },
+      {
+        "@type": "Offer",
+        name: "Pack 500 messages vocaux",
+        priceCurrency: "EUR",
+        price: "80.00",
+        availability: "https://schema.org/InStock",
+        description: "500 crédits de messagerie vocale, soit 0,15 € HT le message envoyé.",
+      },
+    ],
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: faqTarifs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="pt-32">
+    <!-- Hero -->
+    <section class="pb-12">
+      <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <span class="text-sm font-semibold uppercase tracking-widest text-accent">Tarifs</span>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+          Un seul plan : <span class="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent">69 € HT/mois</span>, tout inclus
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
+          Auto-Prospect coûte 69 € HT par mois et inclut toutes les fonctionnalités de prospection automobile :
+          recherche automatique d'annonces, détection en temps réel, analyse des prix, contact automatique des
+          vendeurs et CRM intégré. Essai gratuit de 15 jours, sans engagement.
+        </p>
+      </div>
+    </section>
+
+    <!-- Carte tarif -->
+    <section class="py-12">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <div class="relative overflow-hidden rounded-3xl border border-accent/30 bg-gradient-to-b from-accent/5 to-transparent p-10 sm:p-12">
+          <div class="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-accent/10 blur-[80px]"></div>
+          <div class="relative flex flex-col items-center gap-10 sm:flex-row sm:items-start sm:justify-between">
+            <TarifsPriceBox client:idle />
+            <ul class="space-y-3">
+              {included.map((item) => (
+                <li class="flex items-start gap-3 text-sm">
+                  <span class="mt-0.5 text-accent">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Crédits vocaux -->
+    <section class="py-12">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-2xl font-bold sm:text-3xl">Crédits de messages vocaux</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-center text-text-secondary">
+          Le <a href="/fonctionnalites/contact-vocal-automatique" class="text-accent hover:underline">contact vocal automatique</a>
+          fonctionne avec des crédits : chaque message vocal déposé sur le répondeur d'un vendeur coûte
+          <strong class="text-text">0,15 € HT</strong>. Choisissez le pack adapté à votre volume de prospection.
+        </p>
+        <div class="mt-10 grid gap-6 sm:grid-cols-2">
+          <div class="rounded-2xl border border-border bg-card p-8 text-center">
+            <h3 class="text-lg font-semibold">Pack 100 vocaux</h3>
+            <p class="mt-4 text-4xl font-extrabold">20€ <span class="text-base font-normal text-text-secondary">HT</span></p>
+            <p class="mt-2 text-sm text-text-secondary">100 crédits de messagerie vocale</p>
+            <p class="mt-1 text-xs text-text-secondary">Soit 0,15 € HT le message</p>
+          </div>
+          <div class="rounded-2xl border border-accent/30 bg-card p-8 text-center">
+            <h3 class="text-lg font-semibold">Pack 500 vocaux</h3>
+            <p class="mt-4 text-4xl font-extrabold">80€ <span class="text-base font-normal text-text-secondary">HT</span></p>
+            <p class="mt-2 text-sm text-text-secondary">500 crédits de messagerie vocale</p>
+            <p class="mt-1 text-xs text-text-secondary">Volume adapté à une prospection intensive</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparaison coût -->
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-2xl font-bold sm:text-3xl">Que remplace l'abonnement ?</h2>
+        <div class="mt-10 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-border text-text-secondary">
+                <th class="py-4 pr-4 font-medium">Tâche</th>
+                <th class="py-4 pr-4 font-medium">Sans Auto-Prospect</th>
+                <th class="py-4 font-medium">Avec Auto-Prospect</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              <tr>
+                <td class="py-4 pr-4 font-medium">Veille des annonces</td>
+                <td class="py-4 pr-4 text-text-secondary">Plusieurs heures de scroll quotidien, site par site</td>
+                <td class="py-4">Scan automatique en continu, alertes en temps réel</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">Contact des vendeurs</td>
+                <td class="py-4 pr-4 text-text-secondary">Appels et messages manuels, un par un</td>
+                <td class="py-4">Messages WhatsApp et vocaux envoyés automatiquement</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">Estimation du prix</td>
+                <td class="py-4 pr-4 text-text-secondary">Comparaison manuelle, à l'expérience</td>
+                <td class="py-4">Analyse prix vs marché instantanée</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">Suivi des prospects</td>
+                <td class="py-4 pr-4 text-text-secondary">Notes éparpillées, relances oubliées</td>
+                <td class="py-4">CRM Kanban intégré, pipeline structuré</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-8 text-center text-text-secondary">
+          Un seul véhicule acheté sous le prix du marché suffit généralement à amortir plusieurs mois d'abonnement.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ tarifs -->
+    <section class="py-12">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-2xl font-bold sm:text-3xl">Questions fréquentes sur les tarifs</h2>
+        <div class="mt-10">
+          {faqTarifs.map((f) => (
+            <details class="group border-b border-border py-2">
+              <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium sm:text-base [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span class="text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+              </summary>
+              <p class="pb-4 text-sm leading-relaxed text-text-secondary">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SubPageCTA />
+  </main>
+  <Footer />
+  <CalendlyWidget />
+</Layout>

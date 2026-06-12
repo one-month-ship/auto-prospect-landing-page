@@ -1,0 +1,138 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import "../../styles/global.css";
+
+const title = "Outil de sourcing pour mandataire auto — Auto-Prospect";
+const description =
+  "Mandataire automobile : trouvez des véhicules pour vos clients avant la concurrence. Détection d'annonces en temps réel, contact automatique des vendeurs particuliers, CRM intégré. Dès 69 € HT/mois.";
+
+const faq = [
+  {
+    q: "En quoi Auto-Prospect aide-t-il un mandataire automobile ?",
+    a: "Quand un client vous mandate pour trouver un véhicule précis, la rapidité fait la différence. Auto-Prospect surveille les annonces correspondant exactement au cahier des charges du client (marque, modèle, budget, kilométrage, zone) et contacte les vendeurs automatiquement dès la publication de l'annonce.",
+  },
+  {
+    q: "Puis-je gérer plusieurs recherches clients en parallèle ?",
+    a: "Oui, les recherches automatiques sont illimitées. Chaque mandat client devient une recherche dédiée avec ses propres critères, et toutes tournent en même temps, 24h/24.",
+  },
+  {
+    q: "Comment suivre les véhicules trouvés pour chaque client ?",
+    a: "Le CRM Kanban intégré vous permet de suivre chaque piste de la détection au closing : vendeur contacté, rappel reçu, négociation, véhicule sécurisé pour le client.",
+  },
+  {
+    q: "Les vendeurs que je contacte sont-ils partagés avec d'autres professionnels ?",
+    a: "Non. Auto-Prospect garantit l'exclusivité : un vendeur contacté pour vous ne sera jamais démarché pour un autre client de la plateforme. Sur un marché où plusieurs mandataires cherchent souvent les mêmes véhicules, c'est un avantage décisif.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://landing-page.auto-prospect.fr/" },
+      { "@type": "ListItem", position: 2, name: "Solutions", item: "https://landing-page.auto-prospect.fr/solutions/pige-automobile" },
+      { "@type": "ListItem", position: 3, name: "Mandataire auto", item: "https://landing-page.auto-prospect.fr/solutions/mandataire-auto" },
+    ],
+  },
+  {
+    "@type": "Service",
+    name: "Sourcing de véhicules pour mandataires automobiles",
+    provider: { "@type": "Organization", name: "Auto-Prospect" },
+    description:
+      "Outil de sourcing pour mandataires auto : détection en temps réel des annonces correspondant aux mandats clients, contact automatique des vendeurs, suivi CRM.",
+    areaServed: "FR",
+    offers: { "@type": "Offer", priceCurrency: "EUR", price: "69.00", description: "Abonnement mensuel tout inclus, essai gratuit 15 jours." },
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="pt-32">
+    <section class="pb-12">
+      <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <span class="text-sm font-semibold uppercase tracking-widest text-accent">Solution</span>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+          <span class="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent">Mandataire auto</span> : trouvez le bon véhicule avant les autres
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
+          Votre client vous mandate pour un véhicule précis ; votre valeur, c'est de le trouver vite et au bon
+          prix. Auto-Prospect transforme chaque mandat en recherche automatique : les annonces correspondantes
+          remontent en temps réel et les vendeurs sont contactés à votre place.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Un mandat = une recherche automatique</h2>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Chaque cahier des charges client se traduit en filtres précis : marque, modèle, budget maximum,
+          kilométrage plafond, zone géographique. La
+          <a href="/fonctionnalites/recherche-annonces-automatisee" class="text-accent hover:underline">recherche automatique</a>
+          tourne ensuite en continu, sans limite de nombre : dix mandats actifs, ce sont dix recherches en
+          parallèle, 24h/24, sur les principaux sites d'annonces français.
+        </p>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          L'<a href="/fonctionnalites/analyse-prix-marche" class="text-accent hover:underline">analyse prix vs marché</a>
+          vous indique en plus si l'annonce est sous-cotée — de quoi sécuriser votre marge ou faire gagner de
+          l'argent à votre client, selon votre modèle.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">La vitesse de contact, votre vrai différenciateur</h2>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Sur les véhicules recherchés, plusieurs professionnels appellent le même vendeur dans la journée.
+          Avec le <a href="/fonctionnalites/contact-vocal-automatique" class="text-accent hover:underline">contact automatique</a>,
+          votre message — WhatsApp ou vocal personnalisé — part dès la détection de l'annonce, souvent avant que la
+          concurrence ne l'ait vue. Et grâce à l'exclusivité garantie, le vendeur contacté pour vous n'est
+          démarché pour aucun autre client d'Auto-Prospect.
+        </p>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Chaque rappel de vendeur entre ensuite dans le
+          <a href="/fonctionnalites/crm-pipeline-vente" class="text-accent hover:underline">pipeline CRM intégré</a>,
+          où vous suivez l'avancement mandat par mandat, seul ou en équipe.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-2xl font-bold sm:text-3xl">Questions fréquentes des mandataires</h2>
+        <div class="mt-10">
+          {faq.map((f) => (
+            <details class="group border-b border-border py-2">
+              <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium sm:text-base [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span class="text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+              </summary>
+              <p class="pb-4 text-sm leading-relaxed text-text-secondary">{f.a}</p>
+            </details>
+          ))}
+        </div>
+        <p class="mt-8 text-center text-sm text-text-secondary">
+          69 € HT/mois tout inclus, essai gratuit 15 jours — <a href="/tarifs" class="text-accent hover:underline">voir les tarifs</a>.
+        </p>
+      </div>
+    </section>
+
+    <SubPageCTA title="Livrez vos mandats plus vite" />
+  </main>
+  <Footer />
+  <CalendlyWidget />
+</Layout>
