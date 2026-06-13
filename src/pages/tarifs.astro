@@ -7,9 +7,9 @@ import SubPageCTA from "../components/SubPageCTA.astro";
 import TarifsPriceBox from "../components/TarifsPriceBox.tsx";
 import "../styles/global.css";
 
-const title = "Tarifs Auto-Prospect — 69 € HT/mois tout inclus, essai gratuit 15 jours";
+const title = "Tarifs Auto-Prospect — à partir de 69 € HT/mois, essai gratuit 15 jours";
 const description =
-  "Combien coûte Auto-Prospect ? Un seul plan à 69 € HT/mois avec toutes les fonctionnalités : détection d'annonces, CRM, contact automatique. Messages vocaux à 0,15 € HT. Essai gratuit 15 jours, sans engagement.";
+  "Combien coûte Auto-Prospect ? Un seul plan tout inclus : 69 € HT/mois en facturation annuelle, ou 89 € HT/mois sans engagement. Détection d'annonces, CRM, contact automatique. Messages vocaux à 0,15 € HT. Essai gratuit 15 jours.";
 
 const included = [
   "Recherches automatiques illimitées sur les principaux sites d'annonces français",
@@ -26,7 +26,7 @@ const included = [
 const faqTarifs = [
   {
     q: "Combien coûte Auto-Prospect ?",
-    a: "Auto-Prospect propose un plan unique à 69 € HT par mois, qui inclut toutes les fonctionnalités : recherche automatique d'annonces, détection en temps réel, analyse des prix, CRM intégré et contact automatique des vendeurs. Une facturation annuelle avec remise est également disponible.",
+    a: "Auto-Prospect propose un plan unique qui inclut toutes les fonctionnalités : 69 € HT par mois en facturation annuelle, ou 89 € HT par mois sans engagement. Dans les deux cas : recherche automatique d'annonces, détection en temps réel, analyse des prix, CRM intégré et contact automatique des vendeurs.",
   },
   {
     q: "Y a-t-il un essai gratuit ?",
@@ -50,7 +50,7 @@ const faqTarifs = [
   },
   {
     q: "Auto-Prospect est-il rentable pour un petit revendeur ?",
-    a: "À 69 € HT/mois, l'abonnement est généralement amorti dès le premier véhicule acheté sous le prix du marché. L'analyse prix vs marché et la rapidité de contact des vendeurs sont précisément conçues pour cela.",
+    a: "À partir de 69 € HT/mois, l'abonnement est généralement amorti dès le premier véhicule acheté sous le prix du marché. L'analyse prix vs marché et la rapidité de contact des vendeurs sont précisément conçues pour cela.",
   },
 ];
 
@@ -72,9 +72,18 @@ const jsonLd = [
     offers: [
       {
         "@type": "Offer",
-        name: "Plan Pro mensuel",
+        name: "Plan Pro annuel",
         priceCurrency: "EUR",
         price: "69.00",
+        priceValidUntil: "2027-12-31",
+        availability: "https://schema.org/InStock",
+        description: "69 € HT par mois en facturation annuelle, tout inclus, essai gratuit 15 jours.",
+      },
+      {
+        "@type": "Offer",
+        name: "Plan Pro mensuel",
+        priceCurrency: "EUR",
+        price: "89.00",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         description: "Abonnement mensuel tout inclus, sans engagement, essai gratuit 15 jours.",
@@ -116,12 +125,13 @@ const jsonLd = [
       <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <span class="text-sm font-semibold uppercase tracking-widest text-accent">Tarifs</span>
         <h1 class="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
-          Un seul plan : <span class="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent">69 € HT/mois</span>, tout inclus
+          Un seul plan : <span class="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent">à partir de 69 € HT/mois</span>, tout inclus
         </h1>
         <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
-          Auto-Prospect coûte 69 € HT par mois et inclut toutes les fonctionnalités de prospection automobile :
-          recherche automatique d'annonces, détection en temps réel, analyse des prix, contact automatique des
-          vendeurs et CRM intégré. Essai gratuit de 15 jours, sans engagement.
+          Auto-Prospect coûte 69 € HT par mois en facturation annuelle, ou 89 € HT par mois sans engagement.
+          Toutes les fonctionnalités de prospection automobile sont incluses : recherche automatique d'annonces,
+          détection en temps réel, analyse des prix, contact automatique des vendeurs et CRM intégré.
+          Essai gratuit de 15 jours.
         </p>
       </div>
     </section>
