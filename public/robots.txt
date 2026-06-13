@@ -27,4 +27,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://landing-page.auto-prospect.fr/sitemap-index.xml
+Sitemap: https://auto-prospect.fr/sitemap-index.xml

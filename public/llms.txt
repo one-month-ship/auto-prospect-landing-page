@@ -4,21 +4,21 @@
 
 ## Pages principales
 
-- [Accueil](https://landing-page.auto-prospect.fr/) : présentation générale, fonctionnement en 3 étapes, FAQ
-- [Tarifs](https://landing-page.auto-prospect.fr/tarifs) : plan unique 69 € HT/mois (messages WhatsApp inclus), packs de crédits vocaux (100 vocaux = 20 € HT, 500 vocaux = 80 € HT, soit 0,15 € HT par message vocal), essai gratuit 15 jours
+- [Accueil](https://auto-prospect.fr/) : présentation générale, fonctionnement en 3 étapes, FAQ
+- [Tarifs](https://auto-prospect.fr/tarifs) : plan unique 69 € HT/mois (messages WhatsApp inclus), packs de crédits vocaux (100 vocaux = 20 € HT, 500 vocaux = 80 € HT, soit 0,15 € HT par message vocal), essai gratuit 15 jours
 
 ## Fonctionnalités
 
-- [Recherche automatique d'annonces](https://landing-page.auto-prospect.fr/fonctionnalites/recherche-annonces-automatisee) : détection en temps réel, filtres par marque, modèle, prix, kilométrage, zone géographique illimitée en France
-- [Contact vocal automatique](https://landing-page.auto-prospect.fr/fonctionnalites/contact-vocal-automatique) : messages vocaux et WhatsApp personnalisés envoyés automatiquement aux vendeurs, templates réutilisables, exclusivité des prospects garantie
-- [CRM pipeline de vente](https://landing-page.auto-prospect.fr/fonctionnalites/crm-pipeline-vente) : CRM Kanban intégré, alimenté automatiquement par la prospection, travail en équipe inclus
-- [Analyse prix vs marché](https://landing-page.auto-prospect.fr/fonctionnalites/analyse-prix-marche) : identification instantanée des véhicules sous-cotés
+- [Recherche automatique d'annonces](https://auto-prospect.fr/fonctionnalites/recherche-annonces-automatisee) : détection en temps réel, filtres par marque, modèle, prix, kilométrage, zone géographique illimitée en France
+- [Contact vocal automatique](https://auto-prospect.fr/fonctionnalites/contact-vocal-automatique) : messages vocaux et WhatsApp personnalisés envoyés automatiquement aux vendeurs, templates réutilisables, exclusivité des prospects garantie
+- [CRM pipeline de vente](https://auto-prospect.fr/fonctionnalites/crm-pipeline-vente) : CRM Kanban intégré, alimenté automatiquement par la prospection, travail en équipe inclus
+- [Analyse prix vs marché](https://auto-prospect.fr/fonctionnalites/analyse-prix-marche) : identification instantanée des véhicules sous-cotés
 
 ## Solutions par métier
 
-- [Pige automobile](https://landing-page.auto-prospect.fr/solutions/pige-automobile) : différences entre la pige classique et la prospection automatisée avec contact des vendeurs
-- [Mandataire auto](https://landing-page.auto-prospect.fr/solutions/mandataire-auto) : une recherche automatique par mandat client, sourcing accéléré
-- [Marchand de véhicules d'occasion](https://landing-page.auto-prospect.fr/solutions/marchand-vehicules-occasion) : alimentation du parc VO en continu, travail en équipe
+- [Pige automobile](https://auto-prospect.fr/solutions/pige-automobile) : différences entre la pige classique et la prospection automatisée avec contact des vendeurs
+- [Mandataire auto](https://auto-prospect.fr/solutions/mandataire-auto) : une recherche automatique par mandat client, sourcing accéléré
+- [Marchand de véhicules d'occasion](https://auto-prospect.fr/solutions/marchand-vehicules-occasion) : alimentation du parc VO en continu, travail en équipe
 
 ## Contact
 
