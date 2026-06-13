@@ -1,0 +1,171 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import "../../styles/global.css";
+
+const title = "Contact vocal automatique des vendeurs auto — Auto-Prospect";
+const description =
+  "Contactez automatiquement les vendeurs de véhicules par message vocal ou WhatsApp personnalisé. WhatsApp inclus, 0,15 € HT par vocal, vendeurs exclusifs, templates réutilisables. L'outil de prise de contact des revendeurs auto.";
+
+const faq = [
+  {
+    q: "Comment fonctionne le contact vocal automatique ?",
+    a: "Dès qu'une annonce correspond à vos critères, Auto-Prospect envoie au vendeur un message vocal personnalisé que vous avez rédigé. Le vendeur l'écoute sur son répondeur et vous rappelle s'il est intéressé. Vous ne passez plus aucun appel sortant.",
+  },
+  {
+    q: "Combien coûte un message vocal ?",
+    a: "Chaque message vocal envoyé coûte 0,15 € HT. Les crédits s'achètent par packs : 100 vocaux pour 20 € HT ou 500 vocaux pour 80 € HT, en plus de l'abonnement à 69 € HT/mois.",
+  },
+  {
+    q: "Puis-je personnaliser les messages envoyés ?",
+    a: "Oui, vous rédigez entièrement vos messages et pouvez créer des templates réutilisables. L'objectif est d'inciter le vendeur à vous rappeler. Vous gardez aussi la possibilité d'envoyer des messages manuellement pour les cas particuliers.",
+  },
+  {
+    q: "Le vendeur est-il contacté par plusieurs clients d'Auto-Prospect ?",
+    a: "Non, jamais. Le moteur garantit l'exclusivité : un vendeur contacté pour vous ne sera démarché pour aucun autre client. Le vendeur n'est pas sur-sollicité, ce qui améliore nettement le taux de réponse.",
+  },
+  {
+    q: "Pourquoi un message vocal plutôt qu'un message écrit ?",
+    a: "Le vocal crée une relation plus humaine et se distingue des dizaines de messages écrits qu'un vendeur reçoit. Auto-Prospect propose les deux canaux : WhatsApp (inclus dans l'abonnement) et vocal sur répondeur (0,15 € HT par message), à utiliser selon votre stratégie.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://landing-page.auto-prospect.fr/" },
+      { "@type": "ListItem", position: 2, name: "Fonctionnalités", item: "https://landing-page.auto-prospect.fr/#features" },
+      { "@type": "ListItem", position: 3, name: "Contact vocal automatique", item: "https://landing-page.auto-prospect.fr/fonctionnalites/contact-vocal-automatique" },
+    ],
+  },
+  {
+    "@type": "Service",
+    name: "Contact vocal automatique des vendeurs",
+    provider: { "@type": "Organization", name: "Auto-Prospect" },
+    description:
+      "Envoi automatique de messages vocaux et WhatsApp personnalisés aux vendeurs particuliers de véhicules, avec garantie d'exclusivité des prospects.",
+    areaServed: "FR",
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "EUR",
+      price: "0.15",
+      description: "0,15 € HT par message vocal envoyé, via packs de crédits.",
+    },
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="pt-32">
+    <section class="pb-12">
+      <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <span class="text-sm font-semibold uppercase tracking-widest text-accent">Fonctionnalité</span>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+          Contact <span class="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent">vocal automatique</span> des vendeurs
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
+          Auto-Prospect contacte les vendeurs particuliers à votre place, par message vocal ou WhatsApp
+          personnalisé, dès qu'une annonce correspond à vos critères. Vous ne passez plus d'appels sortants :
+          ce sont les vendeurs intéressés qui vous rappellent.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Le problème du contact manuel</h2>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Appeler chaque vendeur un par un est la tâche la plus chronophage de la prospection automobile :
+          numéros à composer, répondeurs, messages à réécrire, relances à suivre. Et pendant ce temps, les
+          annonces fraîches — celles où le vendeur est le plus réceptif — vieillissent. Résultat : beaucoup
+          d'efforts pour peu de rappels.
+        </p>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Auto-Prospect inverse la logique : vous rédigez une fois vos messages, et chaque nouveau vendeur
+          détecté par la <a href="/fonctionnalites/recherche-annonces-automatisee" class="text-accent hover:underline">recherche automatique</a>
+          les reçoit immédiatement. Votre téléphone ne sert plus qu'à recevoir les rappels de vendeurs déjà
+          intéressés.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Deux canaux : WhatsApp et vocal</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2">
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <h3 class="font-semibold">💬 Message WhatsApp</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-secondary">
+              Un message WhatsApp personnalisé, envoyé automatiquement à chaque vendeur correspondant à vos
+              critères. Inclus dans l'abonnement, sans surcoût.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-accent/30 bg-card p-6">
+            <h3 class="font-semibold">🎙️ Message vocal sur répondeur</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-secondary">
+              Un message vocal déposé sur le répondeur du vendeur : plus humain, plus marquant qu'un message
+              écrit. 0,15 € HT par vocal, via des packs de crédits (100 vocaux = 20 € HT, 500 vocaux = 80 € HT).
+            </p>
+          </div>
+        </div>
+        <p class="mt-8 leading-relaxed text-text-secondary">
+          Dans les deux cas, vous créez des templates réutilisables et gardez la main : l'envoi manuel reste
+          possible pour les annonces que vous voulez traiter au cas par cas. Le détail des coûts est sur la
+          <a href="/tarifs" class="text-accent hover:underline">page tarifs</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Exclusivité garantie : vos prospects restent les vôtres</h2>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          C'est la différence majeure avec les outils de pige classiques, où tous les abonnés reçoivent les
+          mêmes annonces et se précipitent sur les mêmes vendeurs. Avec Auto-Prospect, un vendeur contacté pour
+          vous ne sera <strong class="text-text">jamais</strong> démarché pour un autre client. Le vendeur
+          reçoit un seul message au lieu de dix, il est mieux disposé, et votre taux de rappel s'en ressent
+          directement.
+        </p>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Chaque vendeur qui rappelle devient un prospect dans votre
+          <a href="/fonctionnalites/crm-pipeline-vente" class="text-accent hover:underline">pipeline de vente intégré</a>,
+          où vous suivez la négociation jusqu'à l'achat du véhicule.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-2xl font-bold sm:text-3xl">Questions fréquentes</h2>
+        <div class="mt-10">
+          {faq.map((f) => (
+            <details class="group border-b border-border py-2">
+              <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium sm:text-base [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span class="text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+              </summary>
+              <p class="pb-4 text-sm leading-relaxed text-text-secondary">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SubPageCTA />
+  </main>
+  <Footer />
+  <CalendlyWidget />
+</Layout>

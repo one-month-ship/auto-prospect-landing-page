@@ -1,0 +1,152 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import "../../styles/global.css";
+
+const title = "Sourcing VO pour marchands de véhicules d'occasion — Auto-Prospect";
+const description =
+  "Marchand VO : alimentez votre parc en véhicules achetés au bon prix. Détection d'annonces de particuliers en temps réel, analyse prix vs marché, contact automatique des vendeurs. Dès 69 € HT/mois.";
+
+const faq = [
+  {
+    q: "Comment Auto-Prospect aide-t-il un marchand VO à alimenter son parc ?",
+    a: "Le nerf de la guerre d'un marchand de véhicules d'occasion, c'est le sourcing : acheter régulièrement des véhicules au bon prix auprès de particuliers. Auto-Prospect détecte les annonces correspondant à vos segments en temps réel, signale celles qui sont sous le prix du marché et contacte les vendeurs automatiquement.",
+  },
+  {
+    q: "Puis-je suivre plusieurs segments de véhicules à la fois ?",
+    a: "Oui, les recherches sont illimitées et tournent en parallèle : citadines récentes à moins de 12 000 €, utilitaires, SUV familiaux à moins de 100 000 km… chaque segment a sa propre recherche avec ses propres seuils.",
+  },
+  {
+    q: "Mon équipe peut-elle travailler sur le même outil ?",
+    a: "Oui, le travail en équipe est inclus dans l'abonnement. Vos acheteurs partagent le même pipeline CRM et se répartissent les vendeurs qui rappellent.",
+  },
+  {
+    q: "Qu'est-ce qui distingue Auto-Prospect d'un simple système d'alertes ?",
+    a: "Les alertes (type alertes LeBonCoin) vous notifient, mais le contact reste manuel et tout le monde reçoit les mêmes alertes. Auto-Prospect contacte les vendeurs à votre place dès la détection, analyse le prix par rapport au marché et vous garantit des prospects exclusifs, jamais partagés avec d'autres clients.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://landing-page.auto-prospect.fr/" },
+      { "@type": "ListItem", position: 2, name: "Solutions", item: "https://landing-page.auto-prospect.fr/solutions/pige-automobile" },
+      { "@type": "ListItem", position: 3, name: "Marchand de véhicules d'occasion", item: "https://landing-page.auto-prospect.fr/solutions/marchand-vehicules-occasion" },
+    ],
+  },
+  {
+    "@type": "Service",
+    name: "Sourcing de véhicules d'occasion pour marchands",
+    provider: { "@type": "Organization", name: "Auto-Prospect" },
+    description:
+      "Solution de sourcing VO : détection en temps réel des annonces de particuliers, analyse prix vs marché, contact automatique des vendeurs et CRM d'achat intégré.",
+    areaServed: "FR",
+    offers: { "@type": "Offer", priceCurrency: "EUR", price: "69.00", description: "Abonnement mensuel tout inclus, essai gratuit 15 jours." },
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="pt-32">
+    <section class="pb-12">
+      <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <span class="text-sm font-semibold uppercase tracking-widest text-accent">Solution</span>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+          <span class="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent">Marchand VO</span> : alimentez votre parc au bon prix
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
+          La rentabilité d'un marchand de véhicules d'occasion se joue au sourcing : acheter régulièrement, au
+          bon prix, auprès de particuliers. Auto-Prospect automatise toute la chaîne — détection des annonces,
+          repérage des véhicules sous-cotés, contact des vendeurs — pour que votre parc ne soit jamais à sec.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Le sourcing, goulot d'étranglement du métier</h2>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Vendre un véhicule d'occasion bien acheté est rarement le problème ; le trouver, si. Entre la veille
+          des annonces, les appels aux vendeurs, les véhicules déjà partis et les prix surcotés, le sourcing
+          auprès des particuliers dévore les journées — et chaque jour sans achat est un jour de parc qui se
+          vide.
+        </p>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Auto-Prospect prend en charge la partie répétitive : la
+          <a href="/fonctionnalites/recherche-annonces-automatisee" class="text-accent hover:underline">détection en temps réel</a>
+          surveille vos segments en continu, l'<a href="/fonctionnalites/analyse-prix-marche" class="text-accent hover:underline">analyse prix vs marché</a>
+          isole les véhicules sous-cotés, et le
+          <a href="/fonctionnalites/contact-vocal-automatique" class="text-accent hover:underline">contact automatique</a>
+          envoie votre message au vendeur dès la publication de l'annonce.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Une journée type avec Auto-Prospect</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-3">
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <span class="text-3xl font-extrabold text-accent/30">Matin</span>
+            <p class="mt-3 text-sm leading-relaxed text-text-secondary">
+              Les annonces détectées pendant la nuit sont déjà dans votre tableau de bord, les vendeurs déjà
+              contactés. Vous consultez les véhicules signalés sous le prix du marché.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <span class="text-3xl font-extrabold text-accent/30">Journée</span>
+            <p class="mt-3 text-sm leading-relaxed text-text-secondary">
+              Les vendeurs intéressés vous rappellent. Vous négociez, planifiez les expertises et déplacez
+              chaque piste dans le <a href="/fonctionnalites/crm-pipeline-vente" class="text-accent hover:underline">pipeline CRM</a>.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <span class="text-3xl font-extrabold text-accent/30">Soir</span>
+            <p class="mt-3 text-sm leading-relaxed text-text-secondary">
+              La prospection continue sans vous : les recherches tournent 24h/24, sur toutes vos zones, sans
+              limite de département.
+            </p>
+          </div>
+        </div>
+        <p class="mt-8 leading-relaxed text-text-secondary">
+          Le tout en équipe si vous avez plusieurs acheteurs, pour 69 € HT/mois tout compris
+          (<a href="/tarifs" class="text-accent hover:underline">détail des tarifs</a>).
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-2xl font-bold sm:text-3xl">Questions fréquentes des marchands VO</h2>
+        <div class="mt-10">
+          {faq.map((f) => (
+            <details class="group border-b border-border py-2">
+              <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium sm:text-base [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span class="text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+              </summary>
+              <p class="pb-4 text-sm leading-relaxed text-text-secondary">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SubPageCTA title="Ne laissez plus votre parc se vider" />
+  </main>
+  <Footer />
+  <CalendlyWidget />
+</Layout>

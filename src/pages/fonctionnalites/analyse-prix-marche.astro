@@ -1,0 +1,148 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import "../../styles/global.css";
+
+const title = "Analyse prix vs marché : repérez les voitures sous-cotées — Auto-Prospect";
+const description =
+  "Identifiez instantanément les annonces de véhicules en dessous du prix du marché. Auto-Prospect compare chaque annonce détectée à sa cote réelle pour maximiser vos marges d'achat-revente.";
+
+const faq = [
+  {
+    q: "Comment Auto-Prospect détermine-t-il qu'un véhicule est sous-coté ?",
+    a: "Chaque annonce détectée est comparée aux prix du marché pour des véhicules similaires. Si le prix demandé est en dessous, l'annonce est signalée immédiatement : c'est sur ces véhicules que se font les meilleures marges.",
+  },
+  {
+    q: "Pourquoi l'analyse de prix est-elle couplée à la détection en temps réel ?",
+    a: "Parce qu'un véhicule sous-coté part en quelques heures. Savoir qu'une affaire existait hier ne sert à rien : l'analyse n'a de valeur que si elle arrive au moment où l'annonce est publiée, quand vous pouvez encore être le premier à contacter le vendeur.",
+  },
+  {
+    q: "L'analyse remplace-t-elle mon expertise de revendeur ?",
+    a: "Non, elle la complète. L'analyse vous fait gagner le tri initial : au lieu d'évaluer chaque annonce, vous concentrez votre expertise (état réel, historique, frais de remise en route) sur les véhicules déjà identifiés comme intéressants.",
+  },
+  {
+    q: "L'analyse prix vs marché est-elle incluse dans l'abonnement ?",
+    a: "Oui, elle est incluse dans le plan unique à 69 € HT/mois, comme toutes les fonctionnalités d'Auto-Prospect.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://landing-page.auto-prospect.fr/" },
+      { "@type": "ListItem", position: 2, name: "Fonctionnalités", item: "https://landing-page.auto-prospect.fr/#features" },
+      { "@type": "ListItem", position: 3, name: "Analyse prix vs marché", item: "https://landing-page.auto-prospect.fr/fonctionnalites/analyse-prix-marche" },
+    ],
+  },
+  {
+    "@type": "Service",
+    name: "Analyse prix vs marché des annonces automobiles",
+    provider: { "@type": "Organization", name: "Auto-Prospect" },
+    description:
+      "Comparaison automatique de chaque annonce détectée avec les prix du marché pour identifier instantanément les véhicules sous-cotés.",
+    areaServed: "FR",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="pt-32">
+    <section class="pb-12">
+      <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <span class="text-sm font-semibold uppercase tracking-widest text-accent">Fonctionnalité</span>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+          Repérez instantanément les véhicules <span class="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent">sous le prix du marché</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
+          La marge d'un revendeur se fait à l'achat. Auto-Prospect compare chaque annonce détectée aux prix du
+          marché et signale immédiatement les véhicules sous-cotés — ceux qu'il faut appeler dans l'heure.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">La marge se joue à l'achat, pas à la revente</h2>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Tous les professionnels de l'achat-revente le savent : on ne rattrape pas à la revente un véhicule
+          acheté trop cher. Le métier consiste à identifier, avant les autres, les annonces dont le prix demandé
+          est inférieur à la valeur réelle du véhicule — vendeur pressé, succession, cote mal estimée. Le
+          problème : évaluer manuellement chaque annonce prend du temps, et pendant ce temps les bonnes
+          affaires partent.
+        </p>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          L'analyse prix vs marché automatise ce tri. Chaque annonce remontée par la
+          <a href="/fonctionnalites/recherche-annonces-automatisee" class="text-accent hover:underline">recherche automatique</a>
+          arrive avec son positionnement par rapport au marché : vous voyez en un coup d'œil lesquelles méritent
+          un contact immédiat.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Comment l'utiliser concrètement</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-3">
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <span class="text-3xl font-extrabold text-accent/30">01</span>
+            <h3 class="mt-3 font-semibold">L'annonce est détectée</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-secondary">
+              Le moteur repère une nouvelle annonce correspondant à vos filtres (marque, modèle, prix, kilométrage, zone).
+            </p>
+          </div>
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <span class="text-3xl font-extrabold text-accent/30">02</span>
+            <h3 class="mt-3 font-semibold">Le prix est comparé au marché</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-secondary">
+              L'annonce est positionnée par rapport aux prix du marché : au-dessus, dans la moyenne, ou sous-cotée.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <span class="text-3xl font-extrabold text-accent/30">03</span>
+            <h3 class="mt-3 font-semibold">Vous agissez en priorité</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-secondary">
+              Sur les véhicules sous-cotés, le <a href="/fonctionnalites/contact-vocal-automatique" class="text-accent hover:underline">contact automatique</a> part immédiatement — avant la concurrence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-2xl font-bold sm:text-3xl">Questions fréquentes</h2>
+        <div class="mt-10">
+          {faq.map((f) => (
+            <details class="group border-b border-border py-2">
+              <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium sm:text-base [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span class="text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+              </summary>
+              <p class="pb-4 text-sm leading-relaxed text-text-secondary">{f.a}</p>
+            </details>
+          ))}
+        </div>
+        <p class="mt-8 text-center text-sm text-text-secondary">
+          Inclus dans l'abonnement à 69 € HT/mois — <a href="/tarifs" class="text-accent hover:underline">voir les tarifs</a>.
+        </p>
+      </div>
+    </section>
+
+    <SubPageCTA />
+  </main>
+  <Footer />
+  <CalendlyWidget />
+</Layout>

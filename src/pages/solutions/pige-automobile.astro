@@ -1,0 +1,172 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import "../../styles/global.css";
+
+const title = "Logiciel de pige automobile : détection + contact automatique — Auto-Prospect";
+const description =
+  "Quel outil de pige automobile choisir ? Auto-Prospect va plus loin que la pige classique : détection d'annonces en temps réel, contact automatique des vendeurs et prospects exclusifs, dès 69 € HT/mois.";
+
+const faq = [
+  {
+    q: "Qu'est-ce que la pige automobile ?",
+    a: "La pige automobile consiste à surveiller les annonces de véhicules publiées par des particuliers pour identifier des opportunités d'achat. Traditionnellement, un outil de pige remonte les annonces et le professionnel contacte ensuite chaque vendeur manuellement.",
+  },
+  {
+    q: "Quelle différence entre Auto-Prospect et un outil de pige classique ?",
+    a: "Un outil de pige classique s'arrête à la détection : il vous montre les annonces, et tous ses abonnés voient les mêmes. Auto-Prospect détecte les annonces en temps réel, mais contacte aussi les vendeurs automatiquement (message WhatsApp ou vocal) et garantit qu'un vendeur contacté pour vous ne sera démarché pour aucun autre client.",
+  },
+  {
+    q: "Pourquoi l'exclusivité des prospects est-elle si importante en pige ?",
+    a: "Avec les outils de pige classiques, des dizaines de professionnels reçoivent la même annonce et appellent le même vendeur. Le vendeur, sur-sollicité, ne répond plus. Avec des prospects exclusifs, le vendeur reçoit un seul message, il est mieux disposé et le taux de réponse est nettement supérieur.",
+  },
+  {
+    q: "Combien coûte Auto-Prospect par rapport à une pige classique ?",
+    a: "L'abonnement est de 69 € HT/mois, tout inclus : détection temps réel, analyse prix vs marché, contact automatique, CRM intégré. Les messages vocaux sont en option à 0,15 € HT l'unité.",
+  },
+  {
+    q: "La pige fonctionne-t-elle sur toute la France ?",
+    a: "Oui, sans limite de zone : vous prospectez sur autant de départements et codes postaux que vous le souhaitez, en parallèle.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://landing-page.auto-prospect.fr/" },
+      { "@type": "ListItem", position: 2, name: "Solutions", item: "https://landing-page.auto-prospect.fr/solutions/pige-automobile" },
+      { "@type": "ListItem", position: 3, name: "Pige automobile", item: "https://landing-page.auto-prospect.fr/solutions/pige-automobile" },
+    ],
+  },
+  {
+    "@type": "Service",
+    name: "Pige automobile automatisée",
+    provider: { "@type": "Organization", name: "Auto-Prospect" },
+    description:
+      "Solution de pige automobile nouvelle génération : détection d'annonces en temps réel, contact automatique des vendeurs particuliers et prospects exclusifs.",
+    areaServed: "FR",
+    offers: { "@type": "Offer", priceCurrency: "EUR", price: "69.00", description: "Abonnement mensuel tout inclus, essai gratuit 15 jours." },
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="pt-32">
+    <section class="pb-12">
+      <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <span class="text-sm font-semibold uppercase tracking-widest text-accent">Solution</span>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+          La <span class="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent">pige automobile</span>, version automatisée
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
+          Auto-Prospect est un outil de pige automobile nouvelle génération : il détecte les annonces de
+          particuliers en temps réel, mais surtout il contacte les vendeurs à votre place et vous garantit des
+          prospects exclusifs. Là où la pige classique s'arrête à la liste d'annonces, Auto-Prospect livre des
+          vendeurs qui vous rappellent.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Les limites de la pige classique</h2>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Les outils de pige traditionnels remontent les annonces de particuliers, et c'est tout. Le travail le
+          plus long reste à votre charge : appeler chaque vendeur, laisser des messages, relancer. Pire, tous
+          les abonnés de l'outil reçoivent les mêmes annonces au même moment — le vendeur d'une bonne affaire
+          reçoit dix appels de professionnels dans la journée et finit par ne plus répondre à personne.
+        </p>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Résultat : la pige classique vous fait gagner du temps de recherche, mais le goulot d'étranglement —
+          le contact — reste entier, et la concurrence entre abonnés détruit le taux de réponse.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Pige classique vs Auto-Prospect</h2>
+        <div class="mt-10 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-border text-text-secondary">
+                <th class="py-4 pr-4 font-medium">Critère</th>
+                <th class="py-4 pr-4 font-medium">Pige classique</th>
+                <th class="py-4 font-medium">Auto-Prospect</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              <tr>
+                <td class="py-4 pr-4 font-medium">Détection des annonces</td>
+                <td class="py-4 pr-4 text-text-secondary">Oui, souvent avec délai</td>
+                <td class="py-4">Oui, en temps réel</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">Contact des vendeurs</td>
+                <td class="py-4 pr-4 text-text-secondary">Manuel, à votre charge</td>
+                <td class="py-4">Automatique — message WhatsApp ou vocal personnalisé</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">Exclusivité des prospects</td>
+                <td class="py-4 pr-4 text-text-secondary">Non — tous les abonnés voient les mêmes annonces</td>
+                <td class="py-4">Oui — un vendeur contacté pour vous ne l'est pour personne d'autre</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">Analyse du prix</td>
+                <td class="py-4 pr-4 text-text-secondary">Rarement incluse</td>
+                <td class="py-4">Analyse prix vs marché sur chaque annonce</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">Suivi des prospects</td>
+                <td class="py-4 pr-4 text-text-secondary">Outil externe (tableur, CRM à part)</td>
+                <td class="py-4">CRM Kanban intégré</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-8 leading-relaxed text-text-secondary">
+          En pratique, Auto-Prospect combine en un seul abonnement la
+          <a href="/fonctionnalites/recherche-annonces-automatisee" class="text-accent hover:underline">détection temps réel</a>,
+          l'<a href="/fonctionnalites/analyse-prix-marche" class="text-accent hover:underline">analyse prix vs marché</a>,
+          le <a href="/fonctionnalites/contact-vocal-automatique" class="text-accent hover:underline">contact automatique</a>
+          et le <a href="/fonctionnalites/crm-pipeline-vente" class="text-accent hover:underline">CRM intégré</a> —
+          pour 69 € HT/mois (<a href="/tarifs" class="text-accent hover:underline">détail des tarifs</a>).
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-2xl font-bold sm:text-3xl">Questions fréquentes sur la pige automobile</h2>
+        <div class="mt-10">
+          {faq.map((f) => (
+            <details class="group border-b border-border py-2">
+              <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium sm:text-base [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span class="text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+              </summary>
+              <p class="pb-4 text-sm leading-relaxed text-text-secondary">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SubPageCTA title="Passez de la pige à la prospection automatisée" />
+  </main>
+  <Footer />
+  <CalendlyWidget />
+</Layout>

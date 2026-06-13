@@ -2,14 +2,136 @@
 interface Props {
   title?: string;
   description?: string;
+  /** Schémas JSON-LD propres à la page (remplacent ceux de la home, l'Organization reste toujours incluse) */
+  jsonLd?: Record<string, unknown>[];
 }
 
 const {
   title = "Auto-Prospect — Prospection automobile automatisée pour revendeurs",
   description = "Automatisez votre prospection auto : détection d'annonces en temps réel, contact vocal automatique des vendeurs, CRM intégré. Gagnez 3x plus de deals sur LeBonCoin et les marketplaces auto.",
+  jsonLd,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, "https://landing-page.auto-prospect.fr");
+
+const organizationSchema = {
+  "@type": "Organization",
+  "name": "Auto-Prospect",
+  "url": "https://landing-page.auto-prospect.fr",
+  "logo": "https://landing-page.auto-prospect.fr/logo.svg",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "contact@auto-prospect.fr",
+    "contactType": "customer service",
+    "availableLanguage": "French"
+  }
+};
+
+// Schémas par défaut (page d'accueil)
+const defaultPageSchemas = [
+  {
+    "@type": "SoftwareApplication",
+    "name": "Auto-Prospect",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Outil de prospection automobile automatisée pour revendeurs. Détection d'annonces, contact vocal, CRM intégré.",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": "69.00",
+      "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "47",
+      "bestRating": "5"
+    }
+  },
+  {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Concrètement, Auto-Prospect c'est quoi ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Auto-Prospect est un assistant de prospection automatisé. Il détecte les annonces de véhicules sur les principaux sites français et contacte les vendeurs particuliers à votre place, par message vocal ou WhatsApp personnalisé."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment fonctionnent les messages envoyés aux vendeurs ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Vous rédigez vos messages personnalisés qui sont envoyés automatiquement à chaque vendeur. L'objectif : les inciter à vous rappeler. Vous pouvez aussi envoyer des messages manuellement pour plus de flexibilité."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Je peux cibler précisément les annonces qui m'intéressent ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolument. Filtrez par marque, modèle, prix, kilométrage, département, code postal. Ciblez uniquement les véhicules au-dessus de 30 000 € ou en dessous de 100 000 km, sur autant de zones géographiques que vous le souhaitez."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qu'est-ce que je dois faire une fois mes critères définis ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Plus rien. Auto-Prospect contacte les vendeurs à votre place en continu. Vous n'avez plus qu'à répondre aux appels des particuliers intéressés."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Puis-je annuler mon abonnement à tout moment ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, si vous êtes sur l'abonnement mensuel, vous pouvez annuler à tout moment et ne serez plus prélevé. Pour l'abonnement annuel, l'engagement court jusqu'à la fin de la période souscrite."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Mes paiements sont-ils sécurisés ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, tous les paiements passent par Stripe, plateforme mondialement reconnue qui respecte les plus hauts standards de sécurité."
+        }
+      }
+    ]
+  },
+  {
+    "@type": "HowTo",
+    "name": "Comment utiliser Auto-Prospect",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Configurez vos critères",
+        "text": "Définissez vos filtres de recherche : marques, modèles, fourchettes de prix, kilométrage max, zone géographique."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Auto-Prospect trouve les annonces",
+        "text": "Notre moteur scrute les marketplaces en continu et vous remonte les annonces correspondantes en temps réel."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Contactez et convertissez",
+        "text": "Auto-Prospect contacte automatiquement les vendeurs. Vous n'avez plus qu'à suivre vos prospects dans votre pipeline intégré."
+      }
+    ]
+  }
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [organizationSchema, ...(jsonLd ?? defaultPageSchemas)]
+};
 ---
 
 <!doctype html>
@@ -52,120 +174,7 @@ const canonicalURL = new URL(Astro.url.pathname, "https://landing-page.auto-pros
     />
 
     <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "name": "Auto-Prospect",
-          "url": "https://landing-page.auto-prospect.fr",
-          "logo": "https://landing-page.auto-prospect.fr/logo.svg",
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "email": "contact@auto-prospect.fr",
-            "contactType": "customer service",
-            "availableLanguage": "French"
-          }
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "Auto-Prospect",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "Web",
-          "description": "Outil de prospection automobile automatisée pour revendeurs. Détection d'annonces, contact vocal, CRM intégré.",
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "EUR",
-            "price": "49.00",
-            "priceValidUntil": "2027-12-31",
-            "availability": "https://schema.org/InStock"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "47",
-            "bestRating": "5"
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Concrètement, Auto-Prospect c'est quoi ?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Auto-Prospect est un assistant de prospection automatisé. Il détecte les annonces de véhicules sur les principaux sites français et contacte les vendeurs particuliers à votre place, par message vocal ou texte personnalisé."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Comment fonctionnent les messages envoyés aux vendeurs ?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Vous rédigez vos messages personnalisés qui sont envoyés automatiquement à chaque vendeur. L'objectif : les inciter à vous rappeler. Vous pouvez aussi envoyer des messages manuellement pour plus de flexibilité."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Je peux cibler précisément les annonces qui m'intéressent ?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Absolument. Filtrez par marque, modèle, prix, kilométrage, département, code postal. Ciblez uniquement les véhicules au-dessus de 30 000 € ou en dessous de 100 000 km, sur autant de zones géographiques que vous le souhaitez."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Qu'est-ce que je dois faire une fois mes critères définis ?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Plus rien. Auto-Prospect contacte les vendeurs à votre place en continu. Vous n'avez plus qu'à répondre aux appels des particuliers intéressés."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Puis-je annuler mon abonnement à tout moment ?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Oui, si vous êtes sur l'abonnement mensuel, vous pouvez annuler à tout moment et ne serez plus prélevé. Pour l'abonnement annuel, l'engagement court jusqu'à la fin de la période souscrite."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Mes paiements sont-ils sécurisés ?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Oui, tous les paiements passent par Stripe, plateforme mondialement reconnue qui respecte les plus hauts standards de sécurité."
-              }
-            }
-          ]
-        },
-        {
-          "@type": "HowTo",
-          "name": "Comment utiliser Auto-Prospect",
-          "step": [
-            {
-              "@type": "HowToStep",
-              "position": 1,
-              "name": "Configurez vos critères",
-              "text": "Définissez vos filtres de recherche : marques, modèles, fourchettes de prix, kilométrage max, zone géographique."
-            },
-            {
-              "@type": "HowToStep",
-              "position": 2,
-              "name": "Auto-Prospect trouve les annonces",
-              "text": "Notre moteur scrute les marketplaces en continu et vous remonte les annonces correspondantes en temps réel."
-            },
-            {
-              "@type": "HowToStep",
-              "position": 3,
-              "name": "Contactez et convertissez",
-              "text": "Auto-Prospect contacte automatiquement les vendeurs. Vous n'avez plus qu'à suivre vos prospects dans votre pipeline intégré."
-            }
-          ]
-        }
-      ]
-    })} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body class="antialiased">
     <slot />

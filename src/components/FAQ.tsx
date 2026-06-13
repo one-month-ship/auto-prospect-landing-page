@@ -5,7 +5,7 @@ import { useState } from "react";
 const faqs = [
   {
     q: "Concrètement, Auto-Prospect c'est quoi ?",
-    a: "Auto-Prospect est un assistant de prospection automatisé. Il détecte les annonces de véhicules sur les principaux sites français et contacte les vendeurs particuliers à votre place, par message vocal ou texte personnalisé.",
+    a: "Auto-Prospect est un assistant de prospection automatisé. Il détecte les annonces de véhicules sur les principaux sites français et contacte les vendeurs particuliers à votre place, par message vocal ou WhatsApp personnalisé.",
   },
   {
     q: "Comment fonctionnent les messages envoyés aux vendeurs ?",
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "Les messages sont-ils facturés à l'unité ?",
-    a: "Non. Les messages automatiques et manuels sont inclus dans votre abonnement, sans surcoût.",
+    a: "Les messages WhatsApp, automatiques ou manuels, sont inclus dans votre abonnement sans surcoût. Seuls les messages vocaux déposés sur répondeur utilisent des crédits, à 0,15 € HT par vocal.",
   },
   {
     q: "Comment fonctionne l'essai gratuit ?",
