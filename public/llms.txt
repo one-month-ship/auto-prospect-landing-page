@@ -1,11 +1,11 @@
 # Auto-Prospect
 
-> Auto-Prospect est un outil SaaS français de prospection automobile automatisée pour les professionnels de l'achat-revente (revendeurs, marchands VO, mandataires auto). Il détecte les annonces de véhicules de particuliers en temps réel sur les principaux sites français (dont LeBonCoin), analyse leur prix par rapport au marché, contacte automatiquement les vendeurs par message WhatsApp (inclus) ou vocal sur répondeur (0,15 € HT par message), et intègre un CRM Kanban pour le suivi des prospects. Tarif : 69 € HT/mois, essai gratuit 15 jours, sans engagement. Particularité clé : les prospects sont exclusifs — un vendeur contacté pour un client n'est jamais démarché pour un autre.
+> Auto-Prospect est un outil SaaS français de prospection automobile automatisée pour les professionnels de l'achat-revente (revendeurs, marchands VO, mandataires auto). Il détecte les annonces de véhicules de particuliers en temps réel sur les principaux sites français (dont LeBonCoin), analyse leur prix par rapport au marché, contacte automatiquement les vendeurs par message WhatsApp (inclus) ou vocal sur répondeur (0,15 € HT par message), et intègre un CRM Kanban pour le suivi des prospects. Tarif : 69 € HT/mois en facturation annuelle, ou 89 € HT/mois sans engagement. Essai gratuit 15 jours. Particularité clé : les prospects sont exclusifs — un vendeur contacté pour un client n'est jamais démarché pour un autre.
 
 ## Pages principales
 
 - [Accueil](https://auto-prospect.fr/) : présentation générale, fonctionnement en 3 étapes, FAQ
-- [Tarifs](https://auto-prospect.fr/tarifs) : plan unique 69 € HT/mois (messages WhatsApp inclus), packs de crédits vocaux (100 vocaux = 20 € HT, 500 vocaux = 80 € HT, soit 0,15 € HT par message vocal), essai gratuit 15 jours
+- [Tarifs](https://auto-prospect.fr/tarifs) : plan unique tout inclus — 69 € HT/mois en facturation annuelle ou 89 € HT/mois sans engagement (messages WhatsApp inclus), packs de crédits vocaux (100 vocaux = 20 € HT, 500 vocaux = 80 € HT, soit 0,15 € HT par message vocal), essai gratuit 15 jours
 
 ## Fonctionnalités
 

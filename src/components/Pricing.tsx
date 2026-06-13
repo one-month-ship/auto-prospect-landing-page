@@ -184,7 +184,7 @@ const FALLBACK_PLAN: TPlan = {
   type: "subscription",
   channel: null,
   stripePriceId: "price_pro",
-  priceEur: 6900,
+  priceEur: 8900,
   quotaPerMonth: null,
   overageUnitPrice: null,
   description: "Toutes les fonctionnalités pour prospecter efficacement",
@@ -241,7 +241,8 @@ function formatPrice(cents: number) {
 export default function Pricing() {
   const [monthlyPlan, setMonthlyPlan] = useState<TPlan>(FALLBACK_PLAN);
   const [yearlyPlan, setYearlyPlan] = useState<TPlan | null>(null);
-  const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
+  // Annuel sélectionné par défaut (prix le plus avantageux), mensuel via le toggle
+  const [billing, setBilling] = useState<"monthly" | "yearly">("yearly");
   const [vocalPacks, setVocalPacks] = useState<TPlan[]>(FALLBACK_VOCAL_PACKS);
   const [loading, setLoading] = useState(true);
 
@@ -261,6 +262,9 @@ export default function Pricing() {
         }
         if (mainData.plans?.length > 1) {
           setYearlyPlan(mainData.plans[1]);
+        } else {
+          // Pas de plan annuel disponible : on bascule sur le mensuel
+          setBilling("monthly");
         }
         const vocal = channelData.plans?.filter((p) => p.channel === "voicemail") ?? [];
         if (vocal.length > 0) {
@@ -287,19 +291,9 @@ export default function Pricing() {
             Un seul plan, toutes les fonctionnalités. Essayez gratuitement pendant 15 jours.
           </p>
 
-          {/* Toggle mensuel / annuel */}
+          {/* Toggle annuel / mensuel (annuel sélectionné par défaut) */}
           {yearlyPlan && (
             <div className="mt-8 inline-flex items-center rounded-full border border-[#27272A] bg-[#141416] p-1">
-              <button
-                onClick={() => setBilling("monthly")}
-                className={`rounded-full px-5 py-2 text-sm font-medium transition-all cursor-pointer ${
-                  billing === "monthly"
-                    ? "bg-accent text-[#0A0A0B]"
-                    : "text-[#9CA3AF] hover:text-[#F9FAFB]"
-                }`}
-              >
-                Mensuel
-              </button>
               <button
                 onClick={() => setBilling("yearly")}
                 className={`relative rounded-full px-5 py-2 text-sm font-medium transition-all cursor-pointer ${
@@ -318,6 +312,16 @@ export default function Pricing() {
                     -{Math.round(100 - (yearlyPlan.priceEur / (monthlyPlan.priceEur * 12)) * 100)}%
                   </span>
                 )}
+              </button>
+              <button
+                onClick={() => setBilling("monthly")}
+                className={`rounded-full px-5 py-2 text-sm font-medium transition-all cursor-pointer ${
+                  billing === "monthly"
+                    ? "bg-accent text-[#0A0A0B]"
+                    : "text-[#9CA3AF] hover:text-[#F9FAFB]"
+                }`}
+              >
+                Mensuel
               </button>
             </div>
           )}

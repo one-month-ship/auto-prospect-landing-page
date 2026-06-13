@@ -2,21 +2,30 @@ import { useEffect, useState } from "react";
 import { fetchJSON } from "../lib/api";
 import type { TPlan } from "../types/plan";
 
-// Bloc prix de la page /tarifs : rendu statique avec le prix mensuel fallback
+// Bloc prix de la page /tarifs : rendu statique avec les prix fallback
 // (visible des crawlers qui n'exécutent pas le JS), puis hydraté avec les prix
 // réels de l'API — même logique mensuel/annuel que le composant Pricing de la home.
-const FALLBACK_PLAN: TPlan = {
+// L'annuel (69 € HT/mois) est sélectionné par défaut, le mensuel (89 € HT) via le toggle.
+const FALLBACK_MONTHLY: TPlan = {
   id: 1,
   name: "Pro",
   type: "subscription",
   channel: null,
   stripePriceId: "price_pro",
-  priceEur: 6900,
+  priceEur: 8900,
   quotaPerMonth: null,
   overageUnitPrice: null,
   description: "Toutes les fonctionnalités pour prospecter efficacement",
   isActive: true,
   sortOrder: 1,
+};
+
+const FALLBACK_YEARLY: TPlan = {
+  ...FALLBACK_MONTHLY,
+  id: 2,
+  stripePriceId: "price_pro_yearly",
+  priceEur: 82800,
+  sortOrder: 2,
 };
 
 function formatPrice(cents: number) {
@@ -26,17 +35,21 @@ function formatPrice(cents: number) {
 }
 
 export default function TarifsPriceBox() {
-  const [monthlyPlan, setMonthlyPlan] = useState<TPlan>(FALLBACK_PLAN);
-  const [yearlyPlan, setYearlyPlan] = useState<TPlan | null>(null);
-  const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
+  const [monthlyPlan, setMonthlyPlan] = useState<TPlan>(FALLBACK_MONTHLY);
+  const [yearlyPlan, setYearlyPlan] = useState<TPlan | null>(FALLBACK_YEARLY);
+  const [billing, setBilling] = useState<"monthly" | "yearly">("yearly");
 
   const plan = billing === "yearly" && yearlyPlan ? yearlyPlan : monthlyPlan;
 
   useEffect(() => {
     fetchJSON<{ plans: TPlan[] }>("/api/plans/main")
       .then((data) => {
-        if (data.plans?.length > 0) setMonthlyPlan(data.plans[0]);
-        if (data.plans?.length > 1) setYearlyPlan(data.plans[1]);
+        if (data.plans?.length > 0) {
+          setMonthlyPlan(data.plans[0]);
+          // Si l'API ne renvoie pas de plan annuel, on retire le fallback annuel
+          setYearlyPlan(data.plans.length > 1 ? data.plans[1] : null);
+          if (data.plans.length <= 1) setBilling("monthly");
+        }
       })
       .catch(() => {});
   }, []);
@@ -47,19 +60,9 @@ export default function TarifsPriceBox() {
         15 jours gratuits
       </span>
 
-      {/* Toggle mensuel / annuel (affiché quand le plan annuel est disponible) */}
+      {/* Toggle annuel / mensuel (annuel sélectionné par défaut) */}
       {yearlyPlan && (
         <div className="mt-6 inline-flex items-center rounded-full border border-[#27272A] bg-[#141416] p-1">
-          <button
-            onClick={() => setBilling("monthly")}
-            className={`rounded-full px-5 py-2 text-sm font-medium transition-all cursor-pointer ${
-              billing === "monthly"
-                ? "bg-accent text-[#0A0A0B]"
-                : "text-[#9CA3AF] hover:text-[#F9FAFB]"
-            }`}
-          >
-            Mensuel
-          </button>
           <button
             onClick={() => setBilling("yearly")}
             className={`relative rounded-full px-5 py-2 text-sm font-medium transition-all cursor-pointer ${
@@ -80,6 +83,16 @@ export default function TarifsPriceBox() {
                 -{Math.round(100 - (yearlyPlan.priceEur / (monthlyPlan.priceEur * 12)) * 100)}%
               </span>
             )}
+          </button>
+          <button
+            onClick={() => setBilling("monthly")}
+            className={`rounded-full px-5 py-2 text-sm font-medium transition-all cursor-pointer ${
+              billing === "monthly"
+                ? "bg-accent text-[#0A0A0B]"
+                : "text-[#9CA3AF] hover:text-[#F9FAFB]"
+            }`}
+          >
+            Mensuel
           </button>
         </div>
       )}
@@ -102,13 +115,10 @@ export default function TarifsPriceBox() {
         <p className="mt-2 text-sm text-[#9CA3AF]">{plan.description}</p>
       )}
       <p className="mt-1 text-sm text-[#9CA3AF]">
-        {billing === "yearly" ? "" : "Sans engagement · Annulable à tout moment"}
+        {billing === "yearly"
+          ? `Ou ${formatPrice(monthlyPlan.priceEur)}€ HT/mois sans engagement`
+          : "Sans engagement · Annulable à tout moment"}
       </p>
-      {!yearlyPlan && (
-        <p className="mt-1 text-sm text-[#9CA3AF]">
-          Facturation annuelle avec remise disponible
-        </p>
-      )}
 
       <button
         onClick={() =>
