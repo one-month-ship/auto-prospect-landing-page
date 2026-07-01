@@ -25,11 +25,11 @@ const faqs = [
   },
   {
     q: "Les messages sont-ils facturés à l'unité ?",
-    a: "Les messages WhatsApp, automatiques ou manuels, sont inclus dans votre abonnement sans surcoût. Seuls les messages vocaux déposés sur répondeur utilisent des crédits, à 0,15 € HT par vocal.",
+    a: "Les messages WhatsApp, automatiques ou manuels, sont inclus dans votre abonnement sans surcoût. Seuls les messages vocaux déposés sur répondeur utilisent des crédits, à 0,19 € HT par vocal.",
   },
   {
     q: "Comment fonctionne l'essai gratuit ?",
-    a: "Inscrivez-vous et accédez à toutes les fonctionnalités pendant 15 jours, sans engagement. À la fin de la période, choisissez le plan qui vous convient.",
+    a: "Inscrivez-vous et accédez à toutes les fonctionnalités pendant 5 jours, sans engagement. À la fin de la période, choisissez le plan qui vous convient.",
   },
   {
     q: "Puis-je annuler mon abonnement à tout moment ?",
