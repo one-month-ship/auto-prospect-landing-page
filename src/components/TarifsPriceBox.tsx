@@ -57,7 +57,7 @@ export default function TarifsPriceBox() {
   return (
     <div className="text-center sm:text-left">
       <span className="inline-block rounded-full bg-accent px-4 py-1 text-xs font-bold text-[#0A0A0B]">
-        15 jours gratuits
+        5 jours gratuits
       </span>
 
       {/* Toggle annuel / mensuel (annuel sélectionné par défaut) */}

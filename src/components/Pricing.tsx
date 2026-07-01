@@ -288,7 +288,7 @@ export default function Pricing() {
             Tout inclus. Sans surprise.
           </h2>
           <p className="mt-4 text-[#9CA3AF]">
-            Un seul plan, toutes les fonctionnalités. Essayez gratuitement pendant 15 jours.
+            Un seul plan, toutes les fonctionnalités. Essayez gratuitement pendant 5 jours.
           </p>
 
           {/* Toggle annuel / mensuel (annuel sélectionné par défaut) */}
@@ -407,7 +407,7 @@ export default function Pricing() {
             </h3>
             <p className="mx-auto mt-3 max-w-lg text-sm text-[#9CA3AF] leading-relaxed">
               Chaque message vocal envoyé ne coûte que{" "}
-              <span className="font-semibold text-[#F9FAFB]">0,15€ HT</span>.
+              <span className="font-semibold text-[#F9FAFB]">0,19€ HT</span>.
               Choisissez un volume de crédits adapté à votre capacité de traitement et scalez à mesure que votre activité grandit.
             </p>
           </motion.div>
