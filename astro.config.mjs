@@ -4,9 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import { execSync } from "node:child_process";
 
-// Domaine canonique : le site est servi sur www (l'apex fait un 307 vers www).
+// Domaine canonique : l'apex est le domaine principal côté Vercel (www redirige vers l'apex).
 // Le sitemap et les canonicals doivent pointer vers l'URL finale, jamais vers une redirection.
-const SITE = "https://www.auto-prospect.fr";
+const SITE = "https://auto-prospect.fr";
 
 // lastmod réel par page = date du dernier commit git touchant le fichier source
 function gitLastmod(pagePath) {

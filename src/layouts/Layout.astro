@@ -12,8 +12,8 @@ const {
   jsonLd,
 } = Astro.props;
 
-// Domaine canonique défini dans astro.config.mjs (www — l'apex redirige en 307)
-const siteOrigin = Astro.site?.origin ?? "https://www.auto-prospect.fr";
+// Domaine canonique défini dans astro.config.mjs (apex — www doit rediriger vers l'apex côté Vercel)
+const siteOrigin = Astro.site?.origin ?? "https://auto-prospect.fr";
 const canonicalURL = new URL(Astro.url.pathname, siteOrigin);
 
 const organizationSchema = {
