@@ -27,4 +27,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://auto-prospect.fr/sitemap-index.xml
+Sitemap: https://www.auto-prospect.fr/sitemap-index.xml
