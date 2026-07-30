@@ -12,13 +12,15 @@ const {
   jsonLd,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, "https://auto-prospect.fr");
+// Domaine canonique défini dans astro.config.mjs (apex — www doit rediriger vers l'apex côté Vercel)
+const siteOrigin = Astro.site?.origin ?? "https://auto-prospect.fr";
+const canonicalURL = new URL(Astro.url.pathname, siteOrigin);
 
 const organizationSchema = {
   "@type": "Organization",
   "name": "Auto-Prospect",
-  "url": "https://auto-prospect.fr",
-  "logo": "https://auto-prospect.fr/logo.svg",
+  "url": siteOrigin,
+  "logo": `${siteOrigin}/logo.svg`,
   "contactPoint": {
     "@type": "ContactPoint",
     "email": "contact@auto-prospect.fr",
@@ -153,7 +155,7 @@ const structuredData = {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL.href} />
-    <meta property="og:image" content="https://auto-prospect.fr/og-default.png" />
+    <meta property="og:image" content={`${siteOrigin}/og-default.png`} />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:site_name" content="Auto-Prospect" />
 
@@ -161,7 +163,7 @@ const structuredData = {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://auto-prospect.fr/og-default.png" />
+    <meta name="twitter:image" content={`${siteOrigin}/og-default.png`} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
