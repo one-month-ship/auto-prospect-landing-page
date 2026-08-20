@@ -12,3 +12,4 @@ dist/
 # Divers
 .DS_Store
 *.log
+config.bat
