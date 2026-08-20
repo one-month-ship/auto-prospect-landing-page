@@ -1,0 +1,82 @@
+---
+// Encart agence : met en avant l'offre de création de site vitrine (N.dev),
+// l'équipe qui a conçu Auto-Prospect. Utilisé sur l'accueil et sur /tarifs.
+const { compact = false } = Astro.props;
+
+const proofs = [
+  {
+    title: "Livré en 1 semaine",
+    desc: "Brief le lundi, site en ligne le lundi suivant. Un seul interlocuteur, aucun aller-retour interminable.",
+  },
+  {
+    title: "Sur-mesure, pas un template",
+    desc: "Design et code écrits pour votre activité. Ce site que vous êtes en train de lire en est l'exemple.",
+  },
+  {
+    title: "Pensé pour être trouvé",
+    desc: "SEO technique, données structurées, temps de chargement sous la seconde. Vous remontez sur Google, pas seulement en ligne.",
+  },
+  {
+    title: "Vos annonces intégrées",
+    desc: "Stock véhicules, formulaire de reprise, prise de rendez-vous : votre site travaille avec vos outils, pas à côté.",
+  },
+  {
+    title: "Prix annoncé, prix final",
+    desc: "Devis fixe avant la première ligne de code. Pas de frais surprise en fin de projet.",
+  },
+  {
+    title: "Vous restez autonome",
+    desc: "Vous modifiez vos textes et vos photos vous-même. Et on reste joignables après la livraison.",
+  },
+];
+---
+
+<section class={compact ? "py-12" : "py-20 sm:py-28"}>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="fade-up relative overflow-hidden rounded-3xl border border-border bg-card p-10 sm:p-14">
+      <div class="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-accent/10 blur-[80px]"></div>
+
+      <div class="relative">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="inline-block rounded-full bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-accent">
+            Site vitrine sur demande
+          </span>
+          <h2 class="mt-5 text-3xl font-bold sm:text-4xl">
+            Besoin d'un site vitrine ? On le construit, en une semaine.
+          </h2>
+          <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-text-secondary">
+            Auto-Prospect est développé par <span class="font-semibold text-text">N.dev</span>, notre studio de
+            développement web. La même équipe conçoit le site vitrine de votre garage, de votre concession
+            ou de votre activité de mandataire — avec le même niveau d'exigence.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {proofs.map((p) => (
+            <div class="rounded-2xl border border-border bg-bg/40 p-6">
+              <h3 class="flex items-start gap-2.5 text-base font-semibold">
+                <span class="mt-0.5 shrink-0 text-accent">✓</span>
+                {p.title}
+              </h3>
+              <p class="mt-2.5 text-sm leading-relaxed text-text-secondary">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-12 text-center">
+          <a
+            href="https://nassim-dev.netlify.app/fr"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block rounded-xl bg-accent px-8 py-3.5 text-base font-semibold text-bg shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover hover:shadow-accent/40"
+          >
+            Voir nos réalisations
+          </a>
+          <p class="mt-4 text-sm text-text-secondary">
+            Devis gratuit sous 24h — et on vous dit franchement si vous n'en avez pas besoin.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
