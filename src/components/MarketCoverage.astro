@@ -1,0 +1,51 @@
+---
+const platforms = [
+  {
+    name: "Leboncoin",
+    description: "Le plus gros volume d'annonces de particuliers en France.",
+  },
+  {
+    name: "AutoScout24",
+    description: "L'une des plus grandes marketplaces auto d'Europe.",
+  },
+  {
+    name: "La Centrale",
+    description: "La référence historique du véhicule d'occasion en France.",
+  },
+];
+---
+
+<section class="py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="fade-up relative overflow-hidden rounded-3xl border border-accent/20 bg-gradient-to-br from-accent/5 via-transparent to-transparent p-10 sm:p-14">
+      <div class="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-accent/10 blur-[80px]"></div>
+
+      <div class="relative text-center">
+        <span class="inline-block rounded-full bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-accent">
+          Couverture totale
+        </span>
+        <h2 class="mt-5 text-3xl font-bold sm:text-4xl">
+          Tout le marché français, un seul outil
+        </h2>
+        <p class="mx-auto mt-5 max-w-2xl text-base text-text-secondary leading-relaxed">
+          Auto-Prospect surveille en continu les trois plus grandes marketplaces auto de France.
+          Une annonce publiée sur un seul des trois sites ? <span class="font-semibold text-text">Vous la voyez quand même.</span>
+        </p>
+
+        <div class="mt-10 grid gap-6 sm:grid-cols-3">
+          {platforms.map((p) => (
+            <div class="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-accent/30">
+              <h3 class="text-lg font-semibold">{p.name}</h3>
+              <p class="mt-2 text-sm text-text-secondary leading-relaxed">{p.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="mx-auto mt-8 max-w-2xl text-sm text-text-secondary leading-relaxed">
+          Ceux qui ne surveillent qu'un seul site passent à côté d'une partie des affaires. Avec Auto-Prospect,
+          vous couvrez l'essentiel du marché de l'occasion entre particuliers — sans ouvrir un seul onglet.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
