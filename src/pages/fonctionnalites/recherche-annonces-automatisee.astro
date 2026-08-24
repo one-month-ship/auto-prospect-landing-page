@@ -8,7 +8,7 @@ import "../../styles/global.css";
 
 const title = "Recherche automatique d'annonces auto en temps réel — Auto-Prospect";
 const description =
-  "Détectez les annonces de véhicules en temps réel sur les principaux sites français. Filtres par marque, modèle, prix, kilométrage, zone géographique. Soyez le premier sur les bonnes affaires.";
+  "Détectez les annonces de véhicules en temps réel sur Leboncoin, AutoScout24 et La Centrale. Filtres par marque, modèle, prix, kilométrage, zone géographique. Soyez le premier sur les bonnes affaires.";
 
 const filtres = [
   { label: "Marque et modèle", detail: "Ciblez précisément les véhicules que vous savez revendre : citadines, SUV, utilitaires, premium…" },
@@ -20,7 +20,7 @@ const filtres = [
 const faq = [
   {
     q: "Sur quels sites Auto-Prospect détecte-t-il les annonces ?",
-    a: "Auto-Prospect scrute en continu les principaux sites d'annonces automobiles français, dont LeBonCoin, et remonte les annonces de vendeurs particuliers correspondant à vos critères.",
+    a: "Auto-Prospect scrute en continu Leboncoin, AutoScout24 et La Centrale — les trois plus grandes marketplaces automobiles françaises — et remonte les annonces de vendeurs particuliers correspondant à vos critères. Vous couvrez ainsi la quasi-totalité du marché de l'occasion entre particuliers, depuis un seul outil.",
   },
   {
     q: "En combien de temps une nouvelle annonce est-elle détectée ?",
@@ -50,7 +50,7 @@ const jsonLd = [
     name: "Recherche automatique d'annonces automobiles",
     provider: { "@type": "Organization", name: "Auto-Prospect" },
     description:
-      "Détection en temps réel des annonces de véhicules sur les principaux sites français, avec filtres par marque, modèle, prix, kilométrage et zone géographique.",
+      "Détection en temps réel des annonces de véhicules sur Leboncoin, AutoScout24 et La Centrale, avec filtres par marque, modèle, prix, kilométrage et zone géographique.",
     areaServed: "FR",
   },
   {
@@ -74,10 +74,16 @@ const jsonLd = [
           Recherche automatique d'annonces <span class="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent">en temps réel</span>
         </h1>
         <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
-          Auto-Prospect scrute en continu les principaux sites d'annonces automobiles français et vous remonte
-          instantanément chaque véhicule correspondant à vos critères. Fini les heures de scroll : vous êtes
-          alerté avant les autres, et le vendeur peut être contacté automatiquement dans la foulée.
+          Auto-Prospect scrute en continu Leboncoin, AutoScout24 et La Centrale — les trois plus grandes
+          marketplaces automobiles de France — et vous remonte instantanément chaque véhicule correspondant
+          à vos critères. Fini les heures de scroll : vous êtes alerté avant les autres, et le vendeur peut
+          être contacté automatiquement dans la foulée.
         </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm font-semibold">
+          <span class="rounded-full border border-border bg-card px-4 py-1.5">Leboncoin</span>
+          <span class="rounded-full border border-border bg-card px-4 py-1.5">AutoScout24</span>
+          <span class="rounded-full border border-border bg-card px-4 py-1.5">La Centrale</span>
+        </div>
       </div>
     </section>
 

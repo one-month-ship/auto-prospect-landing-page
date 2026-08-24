@@ -5,7 +5,7 @@ import { useState } from "react";
 const faqs = [
   {
     q: "Concrètement, Auto-Prospect c'est quoi ?",
-    a: "Auto-Prospect est un assistant de prospection automatisé. Il détecte les annonces de véhicules sur les principaux sites français et contacte les vendeurs particuliers à votre place, par message vocal ou WhatsApp personnalisé.",
+    a: "Auto-Prospect est un assistant de prospection automatisé. Il détecte les annonces de véhicules sur Leboncoin, AutoScout24 et La Centrale — les plus grandes marketplaces auto françaises — et contacte les vendeurs particuliers à votre place, par message vocal ou WhatsApp personnalisé.",
   },
   {
     q: "Comment fonctionnent les messages envoyés aux vendeurs ?",
