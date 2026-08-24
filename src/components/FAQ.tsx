@@ -8,10 +8,6 @@ const faqs = [
     a: "Auto-Prospect est un assistant de prospection automatisé. Il détecte les annonces de véhicules sur Leboncoin, AutoScout24 et La Centrale — les plus grandes marketplaces auto françaises — et contacte les vendeurs particuliers à votre place, par message vocal ou WhatsApp personnalisé.",
   },
   {
-    q: "Combien de professionnels utilisent Auto-Prospect ?",
-    a: "273 professionnels de l'achat-revente automobile — marchands, mandataires, agents — utilisent Auto-Prospect au quotidien pour détecter et contacter les vendeurs particuliers sur Leboncoin, AutoScout24 et La Centrale.",
-  },
-  {
     q: "Comment fonctionnent les messages envoyés aux vendeurs ?",
     a: "Vous rédigez vos messages personnalisés qui sont envoyés automatiquement à chaque vendeur. L'objectif : les inciter à vous rappeler. Vous pouvez aussi envoyer des messages manuellement pour plus de flexibilité.",
   },
