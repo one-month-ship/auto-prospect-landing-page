@@ -1,0 +1,172 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import "../../styles/global.css";
+
+const title = "Messagerie Leboncoin, WhatsApp, vocal : contact multicanal — Auto-Prospect";
+const description =
+  "Contactez automatiquement les vendeurs auto sur le canal qu'ils préfèrent : messagerie Leboncoin, WhatsApp ou message vocal sur répondeur. Le seul outil de pige à couvrir les trois canaux. Messagerie Leboncoin et WhatsApp inclus, 0,19 € HT par vocal.";
+
+const faq = [
+  {
+    q: "Quels canaux Auto-Prospect propose-t-il pour contacter les vendeurs ?",
+    a: "Trois canaux, utilisables ensemble ou séparément : la messagerie intégrée de Leboncoin, WhatsApp, et le message vocal déposé directement sur le répondeur du vendeur. À ce jour, aucun autre outil de pige ne propose ces trois canaux à la fois.",
+  },
+  {
+    q: "Comment fonctionne l'envoi sur la messagerie Leboncoin ?",
+    a: "Votre message personnalisé est envoyé directement dans la messagerie Leboncoin du vendeur, celle qu'il consulte déjà pour répondre aux acheteurs. Il est inclus dans votre abonnement, sans surcoût, en automatique comme en manuel.",
+  },
+  {
+    q: "Les messages sont-ils facturés à l'unité ?",
+    a: "Les messages WhatsApp et les messages envoyés sur la messagerie Leboncoin sont inclus dans votre abonnement sans surcoût. Seuls les messages vocaux déposés sur répondeur utilisent des crédits, à 0,19 € HT par vocal (packs de 100 vocaux pour 20 € HT ou 500 vocaux pour 80 € HT).",
+  },
+  {
+    q: "Puis-je choisir le canal utilisé pour chaque campagne ?",
+    a: "Oui. Vous choisissez le ou les canaux qui correspondent à votre façon de prospecter, et vous créez des templates réutilisables pour chacun. L'envoi manuel reste possible pour les annonces à traiter au cas par cas.",
+  },
+  {
+    q: "Le vendeur est-il contacté par plusieurs clients d'Auto-Prospect ?",
+    a: "Non, jamais. Quel que soit le canal, le moteur garantit l'exclusivité : un vendeur contacté pour vous ne sera démarché pour aucun autre client. Le vendeur n'est pas sur-sollicité, ce qui améliore nettement le taux de réponse.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://auto-prospect.fr/" },
+      { "@type": "ListItem", position: 2, name: "Fonctionnalités", item: "https://auto-prospect.fr/#features" },
+      { "@type": "ListItem", position: 3, name: "Contact multicanal", item: "https://auto-prospect.fr/fonctionnalites/contact-multicanal" },
+    ],
+  },
+  {
+    "@type": "Service",
+    name: "Contact multicanal des vendeurs de véhicules",
+    provider: { "@type": "Organization", name: "Auto-Prospect" },
+    description:
+      "Envoi automatique de messages personnalisés aux vendeurs particuliers de véhicules par messagerie Leboncoin, WhatsApp ou message vocal sur répondeur, avec garantie d'exclusivité des prospects.",
+    areaServed: "FR",
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="pt-32">
+    <section class="pb-12">
+      <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <span class="text-sm font-semibold uppercase tracking-widest text-accent">Fonctionnalité</span>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+          Trois canaux pour joindre <span class="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent">chaque vendeur</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
+          Messagerie Leboncoin, WhatsApp ou message vocal sur répondeur : Auto-Prospect contacte
+          automatiquement chaque vendeur sur le canal où il répond vraiment. À ce jour, aucun autre outil
+          de pige ne couvre les trois.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Pourquoi le multicanal change tout</h2>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Chaque vendeur a ses habitudes. Certains ne répondent que dans leur messagerie Leboncoin, là où ils
+          gèrent déjà leur annonce. D'autres lisent WhatsApp avant tout le reste. D'autres encore ne réagissent
+          qu'à une voix humaine sur leur répondeur. Un outil qui n'écrit que par un seul canal laisse donc
+          mécaniquement une partie des vendeurs sans réponse — et une partie des affaires à vos concurrents.
+        </p>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Avec Auto-Prospect, chaque annonce détectée par la
+          <a href="/fonctionnalites/recherche-annonces-automatisee" class="text-accent hover:underline">recherche automatique</a>
+          déclenche l'envoi sur le ou les canaux que vous avez choisis. Vous rédigez vos messages une fois,
+          l'outil fait le reste.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Les trois canaux en détail</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-3">
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <h3 class="font-semibold">💬 Messagerie Leboncoin</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-secondary">
+              Votre message arrive directement dans la messagerie du vendeur, celle qu'il consulte déjà pour
+              son annonce. Inclus dans l'abonnement, sans surcoût.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <h3 class="font-semibold">📱 WhatsApp</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-secondary">
+              Le canal le plus lu de France. Un message personnalisé envoyé automatiquement à chaque vendeur.
+              Inclus dans l'abonnement, sans surcoût.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-accent/30 bg-card p-6">
+            <h3 class="font-semibold">🎙️ Vocal sur répondeur</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-secondary">
+              Un message vocal déposé sur le répondeur, sans faire sonner le téléphone. Plus humain, plus
+              marquant. 0,19 € HT par vocal —
+              <a href="/fonctionnalites/contact-vocal-automatique" class="text-accent hover:underline">voir le détail</a>.
+            </p>
+          </div>
+        </div>
+        <p class="mt-8 leading-relaxed text-text-secondary">
+          Sur chaque canal, vous créez des templates réutilisables et gardez la main : l'envoi manuel reste
+          possible pour les annonces que vous voulez traiter au cas par cas. Le détail des coûts est sur la
+          <a href="/tarifs" class="text-accent hover:underline">page tarifs</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">La couverture la plus complète du marché</h2>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Les outils de pige classiques se limitent à un ou deux canaux : SMS et vocal pour les uns, WhatsApp
+          pour les autres. Auto-Prospect est, à ce jour, le seul à combiner
+          <strong class="text-text">messagerie Leboncoin, WhatsApp et vocal sur répondeur</strong> — en plus de
+          surveiller les trois plus grandes marketplaces auto de France (Leboncoin, AutoScout24, La Centrale).
+        </p>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Et quel que soit le canal, l'exclusivité est garantie : un vendeur contacté pour vous ne sera jamais
+          démarché pour un autre client. Chaque vendeur qui répond devient un prospect dans votre
+          <a href="/fonctionnalites/crm-pipeline-vente" class="text-accent hover:underline">pipeline de vente intégré</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-2xl font-bold sm:text-3xl">Questions fréquentes</h2>
+        <div class="mt-10">
+          {faq.map((f) => (
+            <details class="group border-b border-border py-2">
+              <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium sm:text-base [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span class="text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+              </summary>
+              <p class="pb-4 text-sm leading-relaxed text-text-secondary">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SubPageCTA />
+  </main>
+  <Footer />
+  <CalendlyWidget />
+</Layout>

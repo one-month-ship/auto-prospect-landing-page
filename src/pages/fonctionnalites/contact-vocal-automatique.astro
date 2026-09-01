@@ -8,7 +8,7 @@ import "../../styles/global.css";
 
 const title = "Contact vocal automatique des vendeurs auto — Auto-Prospect";
 const description =
-  "Contactez automatiquement les vendeurs de véhicules par message vocal ou WhatsApp personnalisé. WhatsApp inclus, 0,19 € HT par vocal, vendeurs exclusifs, templates réutilisables. L'outil de prise de contact des revendeurs auto.";
+  "Contactez automatiquement les vendeurs de véhicules par message vocal, WhatsApp ou messagerie Leboncoin. Messagerie Leboncoin et WhatsApp inclus, 0,19 € HT par vocal, vendeurs exclusifs, templates réutilisables. L'outil de prise de contact des revendeurs auto.";
 
 const faq = [
   {
@@ -29,7 +29,7 @@ const faq = [
   },
   {
     q: "Pourquoi un message vocal plutôt qu'un message écrit ?",
-    a: "Le vocal crée une relation plus humaine et se distingue des dizaines de messages écrits qu'un vendeur reçoit. Auto-Prospect propose les deux canaux : WhatsApp (inclus dans l'abonnement) et vocal sur répondeur (0,19 € HT par message), à utiliser selon votre stratégie.",
+    a: "Le vocal crée une relation plus humaine et se distingue des dizaines de messages écrits qu'un vendeur reçoit. Auto-Prospect propose les trois canaux : messagerie Leboncoin et WhatsApp (inclus dans l'abonnement) et vocal sur répondeur (0,19 € HT par message), à utiliser selon votre stratégie.",
   },
 ];
 
@@ -47,7 +47,7 @@ const jsonLd = [
     name: "Contact vocal automatique des vendeurs",
     provider: { "@type": "Organization", name: "Auto-Prospect" },
     description:
-      "Envoi automatique de messages vocaux et WhatsApp personnalisés aux vendeurs particuliers de véhicules, avec garantie d'exclusivité des prospects.",
+      "Envoi automatique de messages vocaux, WhatsApp et messagerie Leboncoin personnalisés aux vendeurs particuliers de véhicules, avec garantie d'exclusivité des prospects.",
     areaServed: "FR",
     offers: {
       "@type": "Offer",
@@ -77,8 +77,8 @@ const jsonLd = [
           Contact <span class="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent">vocal automatique</span> des vendeurs
         </h1>
         <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
-          Auto-Prospect contacte les vendeurs particuliers à votre place, par message vocal ou WhatsApp
-          personnalisé, dès qu'une annonce correspond à vos critères. Vous ne passez plus d'appels sortants :
+          Auto-Prospect contacte les vendeurs particuliers à votre place, par message vocal, WhatsApp ou
+          messagerie Leboncoin, dès qu'une annonce correspond à vos critères. Vous ne passez plus d'appels sortants :
           ce sont les vendeurs intéressés qui vous rappellent.
         </p>
       </div>
@@ -104,10 +104,17 @@ const jsonLd = [
 
     <section class="py-12">
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold sm:text-3xl">Deux canaux : WhatsApp et vocal</h2>
-        <div class="mt-8 grid gap-6 sm:grid-cols-2">
+        <h2 class="text-2xl font-bold sm:text-3xl">Trois canaux : messagerie Leboncoin, WhatsApp et vocal</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-3">
           <div class="rounded-2xl border border-border bg-card p-6">
-            <h3 class="font-semibold">💬 Message WhatsApp</h3>
+            <h3 class="font-semibold">💬 Messagerie Leboncoin</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-secondary">
+              Votre message envoyé directement dans la messagerie Leboncoin du vendeur, celle qu'il consulte
+              déjà pour son annonce. Inclus dans l'abonnement, sans surcoût.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <h3 class="font-semibold">📱 Message WhatsApp</h3>
             <p class="mt-2 text-sm leading-relaxed text-text-secondary">
               Un message WhatsApp personnalisé, envoyé automatiquement à chaque vendeur correspondant à vos
               critères. Inclus dans l'abonnement, sans surcoût.
@@ -121,6 +128,10 @@ const jsonLd = [
             </p>
           </div>
         </div>
+        <p class="mt-8 leading-relaxed text-text-secondary">
+          Le détail des trois canaux et de leur combinaison est sur la page
+          <a href="/fonctionnalites/contact-multicanal" class="text-accent hover:underline">contact multicanal</a>.
+        </p>
         <p class="mt-8 leading-relaxed text-text-secondary">
           Dans les deux cas, vous créez des templates réutilisables et gardez la main : l'envoi manuel reste
           possible pour les annonces que vous voulez traiter au cas par cas. Le détail des coûts est sur la

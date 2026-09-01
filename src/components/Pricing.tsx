@@ -225,7 +225,7 @@ const includes = [
   "Recherches automatiques illimitées",
   "Détection temps réel des annonces",
   "Analyse prix vs marché — repérez les bonnes affaires",
-  "Contact vocal automatique",
+  "Contact multicanal : messagerie Leboncoin, WhatsApp, vocal",
   "Pipeline de vente (CRM Kanban)",
   "Templates de messages",
   "Travail en équipe",

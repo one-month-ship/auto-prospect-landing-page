@@ -5,7 +5,11 @@ import { useState } from "react";
 const faqs = [
   {
     q: "Concrètement, Auto-Prospect c'est quoi ?",
-    a: "Auto-Prospect est un assistant de prospection automatisé. Il détecte les annonces de véhicules sur Leboncoin, AutoScout24 et La Centrale — les plus grandes marketplaces auto françaises — et contacte les vendeurs particuliers à votre place, par message vocal ou WhatsApp personnalisé.",
+    a: "Auto-Prospect est un assistant de prospection automatisé. Il détecte les annonces de véhicules sur Leboncoin, AutoScout24 et La Centrale — les plus grandes marketplaces auto françaises — et contacte les vendeurs particuliers à votre place : directement sur la messagerie Leboncoin, par WhatsApp ou par message vocal personnalisé.",
+  },
+  {
+    q: "Par quels canaux les vendeurs sont-ils contactés ?",
+    a: "Trois canaux, au choix : la messagerie intégrée de Leboncoin, WhatsApp, ou un message vocal déposé directement sur le répondeur du vendeur. Vous choisissez le ou les canaux qui correspondent à votre façon de prospecter — Auto-Prospect couvre les trois.",
   },
   {
     q: "Comment fonctionnent les messages envoyés aux vendeurs ?",
@@ -25,7 +29,7 @@ const faqs = [
   },
   {
     q: "Les messages sont-ils facturés à l'unité ?",
-    a: "Les messages WhatsApp, automatiques ou manuels, sont inclus dans votre abonnement sans surcoût. Seuls les messages vocaux déposés sur répondeur utilisent des crédits, à 0,19 € HT par vocal.",
+    a: "Les messages WhatsApp et les messages envoyés sur la messagerie Leboncoin, automatiques ou manuels, sont inclus dans votre abonnement sans surcoût. Seuls les messages vocaux déposés sur répondeur utilisent des crédits, à 0,19 € HT par vocal.",
   },
   {
     q: "Comment fonctionne l'essai gratuit ?",
