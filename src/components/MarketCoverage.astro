@@ -13,6 +13,24 @@ const platforms = [
     description: "La référence historique du véhicule d'occasion en France.",
   },
 ];
+
+const channels = [
+  {
+    icon: "💬",
+    name: "Messagerie Leboncoin",
+    description: "Vos messages arrivent directement dans la messagerie du vendeur, là où il consulte déjà ses réponses.",
+  },
+  {
+    icon: "📱",
+    name: "WhatsApp",
+    description: "Le canal le plus lu de France. Vos messages personnalisés partent automatiquement, sans surcoût.",
+  },
+  {
+    icon: "🎙️",
+    name: "Vocal sur répondeur",
+    description: "Un message vocal déposé directement sur le répondeur du vendeur, sans faire sonner son téléphone.",
+  },
+];
 ---
 
 <section class="py-20 sm:py-28">
@@ -25,7 +43,7 @@ const platforms = [
           Couverture totale
         </span>
         <h2 class="mt-5 text-3xl font-bold sm:text-4xl">
-          Tout le marché français, un seul outil
+          Tout le marché, tous les canaux, un seul outil
         </h2>
         <p class="mx-auto mt-5 max-w-2xl text-base text-text-secondary leading-relaxed">
           Auto-Prospect surveille en continu les trois plus grandes marketplaces auto de France.
@@ -41,9 +59,26 @@ const platforms = [
           ))}
         </div>
 
+        <p class="mx-auto mt-12 max-w-2xl text-base text-text-secondary leading-relaxed">
+          Et une fois l'annonce détectée, chaque vendeur est contacté
+          <span class="font-semibold text-text"> sur le canal où il répond vraiment</span> :
+        </p>
+
+        <div class="mt-8 grid gap-6 sm:grid-cols-3">
+          {channels.map((c) => (
+            <div class="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-accent/30">
+              <span class="text-3xl">{c.icon}</span>
+              <h3 class="mt-3 text-lg font-semibold">{c.name}</h3>
+              <p class="mt-2 text-sm text-text-secondary leading-relaxed">{c.description}</p>
+            </div>
+          ))}
+        </div>
+
         <p class="mx-auto mt-8 max-w-2xl text-sm text-text-secondary leading-relaxed">
-          Ceux qui ne surveillent qu'un seul site passent à côté d'une partie des affaires. Avec Auto-Prospect,
-          vous couvrez l'essentiel du marché de l'occasion entre particuliers — sans ouvrir un seul onglet.
+          Ceux qui ne surveillent qu'un site ou n'écrivent que par un canal passent à côté d'une partie des affaires.
+          Auto-Prospect combine les trois marketplaces et les trois canaux de contact —
+          <span class="font-semibold text-text">la couverture de prospection la plus complète du marché</span>, sans ouvrir un seul onglet.
+          À ce jour, aucun autre outil de pige ne propose ces trois canaux à la fois.
         </p>
       </div>
     </div>

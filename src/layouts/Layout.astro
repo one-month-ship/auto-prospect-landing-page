@@ -8,7 +8,7 @@ interface Props {
 
 const {
   title = "Auto-Prospect — Prospection automobile automatisée pour revendeurs",
-  description = "Automatisez votre prospection auto : détection d'annonces en temps réel, contact vocal automatique des vendeurs, CRM intégré. Déjà 273 professionnels gagnent 3x plus de deals sur Leboncoin, AutoScout24 et La Centrale.",
+  description = "Automatisez votre prospection auto : détection d'annonces en temps réel, contact automatique des vendeurs par messagerie Leboncoin, WhatsApp ou vocal, CRM intégré. Déjà 273 professionnels gagnent 3x plus de deals sur Leboncoin, AutoScout24 et La Centrale.",
   jsonLd,
 } = Astro.props;
 
@@ -36,7 +36,7 @@ const defaultPageSchemas = [
     "name": "Auto-Prospect",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
-    "description": "Outil de prospection automobile automatisée pour revendeurs. Détection d'annonces sur Leboncoin, AutoScout24 et La Centrale, contact vocal, CRM intégré. Utilisé par 273 professionnels de l'automobile.",
+    "description": "Outil de prospection automobile automatisée pour revendeurs. Détection d'annonces sur Leboncoin, AutoScout24 et La Centrale, contact des vendeurs par messagerie Leboncoin, WhatsApp ou message vocal, CRM intégré. Utilisé par 273 professionnels de l'automobile.",
     "offers": {
       "@type": "Offer",
       "priceCurrency": "EUR",
@@ -54,7 +54,15 @@ const defaultPageSchemas = [
         "name": "Concrètement, Auto-Prospect c'est quoi ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Auto-Prospect est un assistant de prospection automatisé. Il détecte les annonces de véhicules sur Leboncoin, AutoScout24 et La Centrale — les plus grandes marketplaces auto françaises — et contacte les vendeurs particuliers à votre place, par message vocal ou WhatsApp personnalisé."
+          "text": "Auto-Prospect est un assistant de prospection automatisé. Il détecte les annonces de véhicules sur Leboncoin, AutoScout24 et La Centrale — les plus grandes marketplaces auto françaises — et contacte les vendeurs particuliers à votre place : directement sur la messagerie Leboncoin, par WhatsApp ou par message vocal personnalisé."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Par quels canaux les vendeurs sont-ils contactés ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Trois canaux, au choix : la messagerie intégrée de Leboncoin, WhatsApp, ou un message vocal déposé directement sur le répondeur du vendeur. Vous choisissez le ou les canaux qui correspondent à votre façon de prospecter — Auto-Prospect couvre les trois."
         }
       },
       {
@@ -119,7 +127,7 @@ const defaultPageSchemas = [
         "@type": "HowToStep",
         "position": 3,
         "name": "Contactez et convertissez",
-        "text": "Auto-Prospect contacte automatiquement les vendeurs. Vous n'avez plus qu'à suivre vos prospects dans votre pipeline intégré."
+        "text": "Auto-Prospect contacte automatiquement les vendeurs par messagerie Leboncoin, WhatsApp ou message vocal. Vous n'avez plus qu'à suivre vos prospects dans votre pipeline intégré."
       }
     ]
   }
@@ -142,7 +150,7 @@ const structuredData = {
     <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="prospection automobile, revendeur auto, Leboncoin auto, AutoScout24, La Centrale, pige automobile, CRM auto, contact automatique vendeurs, mandataire auto, achat revente véhicules" />
+    <meta name="keywords" content="prospection automobile, revendeur auto, Leboncoin auto, AutoScout24, La Centrale, pige automobile, CRM auto, contact automatique vendeurs, messagerie Leboncoin, prospection WhatsApp, message vocal répondeur, mandataire auto, achat revente véhicules" />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />

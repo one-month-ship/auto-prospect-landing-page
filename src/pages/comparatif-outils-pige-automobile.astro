@@ -1,0 +1,200 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import CalendlyWidget from "../components/CalendlyWidget.astro";
+import SubPageCTA from "../components/SubPageCTA.astro";
+import "../styles/global.css";
+
+const title = "Comparatif outils de pige automobile : Auto-Prospect vs la concurrence";
+const description =
+  "Comment choisir son outil de pige auto ? Comparatif sur les critères qui comptent : marketplaces couvertes, canaux de contact (messagerie Leboncoin, WhatsApp, vocal), exclusivité des prospects, CRM, prix. Auto-Prospect est le seul à combiner les trois canaux.";
+
+const faq = [
+  {
+    q: "Quel est le meilleur outil de pige automobile ?",
+    a: "Cela dépend de vos critères, mais quatre points font la différence : la couverture des marketplaces, les canaux de contact automatique, l'exclusivité des prospects et le modèle de prix. Auto-Prospect surveille les trois plus grandes marketplaces de France (Leboncoin, AutoScout24, La Centrale), est le seul outil à combiner messagerie Leboncoin, WhatsApp et vocal sur répondeur, garantit l'exclusivité de chaque vendeur contacté, et inclut tout dans un abonnement unique sans facturation par zone.",
+  },
+  {
+    q: "Qu'est-ce qui différencie Auto-Prospect des autres outils de pige ?",
+    a: "Deux choses principalement. D'abord les canaux de contact : la concurrence mise en général sur un ou deux canaux (SMS, vocal ou WhatsApp selon les outils), tandis qu'Auto-Prospect combine messagerie Leboncoin, WhatsApp et vocal sur répondeur. Ensuite l'exclusivité : dans un outil de pige classique, tous les abonnés voient les mêmes annonces et se précipitent sur les mêmes vendeurs ; avec Auto-Prospect, un vendeur contacté pour vous ne sera démarché pour aucun autre client.",
+  },
+  {
+    q: "Auto-Prospect couvre-t-il plus de sites que la concurrence ?",
+    a: "Auto-Prospect surveille les trois plus grandes marketplaces auto de France : Leboncoin, AutoScout24 et La Centrale, soit l'essentiel du volume d'annonces de particuliers. Certains outils s'arrêtent à un ou deux sites ; d'autres ajoutent des sources secondaires. La vraie différence se joue moins sur le nombre de sites que sur ce qui se passe après la détection : les canaux de contact et l'exclusivité des prospects.",
+  },
+  {
+    q: "Les zones géographiques sont-elles limitées ou facturées en plus ?",
+    a: "Non. Avec Auto-Prospect, vous prospectez sur autant de départements et de codes postaux que vous le souhaitez, partout en France, sans surcoût. Certains outils du marché facturent leur abonnement par zone géographique, ce qui fait grimper la facture dès que vous élargissez votre périmètre.",
+  },
+  {
+    q: "Combien coûte Auto-Prospect par rapport à la concurrence ?",
+    a: "Auto-Prospect propose un plan unique tout inclus : 69 € HT par mois en facturation annuelle, ou 89 € HT par mois sans engagement — recherche illimitée, trois marketplaces, messagerie Leboncoin et WhatsApp inclus, CRM intégré, zones illimitées. Seuls les messages vocaux utilisent des crédits (0,19 € HT par vocal). Les tarifs de la concurrence sont dans des ordres de grandeur comparables, mais souvent avec des zones facturées en plus ou moins de canaux inclus.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://auto-prospect.fr/" },
+      { "@type": "ListItem", position: 2, name: "Comparatif des outils de pige automobile", item: "https://auto-prospect.fr/comparatif-outils-pige-automobile" },
+    ],
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="pt-32">
+    <section class="pb-12">
+      <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <span class="text-sm font-semibold uppercase tracking-widest text-accent">Comparatif</span>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+          Auto-Prospect face aux <span class="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent">autres outils de pige</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
+          Tous les outils de pige ne se valent pas. Voici les critères qui comptent vraiment pour un
+          professionnel de l'achat-revente — et où se situe Auto-Prospect face à la concurrence sur chacun.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Les 4 critères pour choisir son outil de pige</h2>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Le marché des outils de pige automobile s'est étoffé, et chaque solution met en avant ses propres
+          arguments. Pour comparer objectivement, quatre questions suffisent :
+          <strong class="text-text">quels sites sont surveillés</strong> (une annonce non détectée est une
+          affaire perdue), <strong class="text-text">comment les vendeurs sont contactés</strong> (un canal
+          que le vendeur ne lit pas ne sert à rien), <strong class="text-text">qui d'autre reçoit les mêmes
+          annonces</strong> (la sur-sollicitation détruit le taux de réponse), et
+          <strong class="text-text">ce que coûte réellement l'outil</strong> une fois les zones et options
+          ajoutées.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Le comparatif, critère par critère</h2>
+        <div class="mt-10 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-border text-text-secondary">
+                <th class="py-4 pr-4 font-medium">Critère</th>
+                <th class="py-4 pr-4 font-medium">La concurrence</th>
+                <th class="py-4 font-medium">Auto-Prospect</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              <tr>
+                <td class="py-4 pr-4 font-medium">Marketplaces surveillées</td>
+                <td class="py-4 pr-4 text-text-secondary">Variable — certains outils s'arrêtent à un ou deux sites</td>
+                <td class="py-4">Les 3 plus grandes de France : Leboncoin, AutoScout24, La Centrale</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">Messagerie Leboncoin</td>
+                <td class="py-4 pr-4 text-text-secondary">Rarement proposée</td>
+                <td class="py-4">Incluse — envois automatiques et manuels, sans surcoût</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">WhatsApp</td>
+                <td class="py-4 pr-4 text-text-secondary">Proposé par une partie des outils seulement</td>
+                <td class="py-4">Inclus, sans surcoût</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">Vocal sur répondeur</td>
+                <td class="py-4 pr-4 text-text-secondary">Rare — souvent remplacé par le SMS</td>
+                <td class="py-4">Oui — 0,19 € HT par vocal</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">Les 3 canaux réunis</td>
+                <td class="py-4 pr-4 text-text-secondary">Aucun outil, à ce jour</td>
+                <td class="py-4 font-semibold">Oui — le seul du marché</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">Exclusivité des prospects</td>
+                <td class="py-4 pr-4 text-text-secondary">Non — tous les abonnés voient les mêmes annonces</td>
+                <td class="py-4">Oui — un vendeur contacté pour vous ne l'est pour personne d'autre</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">Analyse prix vs marché</td>
+                <td class="py-4 pr-4 text-text-secondary">Parfois, sous forme de scoring</td>
+                <td class="py-4">Incluse sur chaque annonce</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">CRM / pipeline de vente</td>
+                <td class="py-4 pr-4 text-text-secondary">Variable selon les outils</td>
+                <td class="py-4">Kanban intégré, de la détection à l'achat</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">Zones géographiques</td>
+                <td class="py-4 pr-4 text-text-secondary">Parfois facturées à la zone</td>
+                <td class="py-4">Illimitées, toute la France, sans surcoût</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4 font-medium">Prix</td>
+                <td class="py-4 pr-4 text-text-secondary">Comparable, mais zones ou canaux souvent en sus</td>
+                <td class="py-4">69 € HT/mois tout inclus (annuel), ou 89 € HT sans engagement</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Un comparatif honnête</h2>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Soyons clairs : certains outils du marché font bien leur travail sur leur périmètre. Les uns couvrent
+          une source d'annonces supplémentaire, les autres ont poussé loin un canal en particulier. Si votre
+          besoin se limite à ce périmètre, ils peuvent vous convenir.
+        </p>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Là où Auto-Prospect se distingue, c'est sur la <strong class="text-text">combinaison</strong> :
+          les trois plus grandes marketplaces, les
+          <a href="/fonctionnalites/contact-multicanal" class="text-accent hover:underline">trois canaux de contact</a>
+          (messagerie Leboncoin, WhatsApp, vocal sur répondeur), l'exclusivité des prospects et un prix unique
+          sans facturation par zone. À ce jour, aucun concurrent ne réunit tout cela dans un seul outil —
+          c'est précisément ce qui fait la couverture de prospection la plus complète du marché.
+        </p>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Le mieux reste de juger sur pièce : l'<a href="/tarifs" class="text-accent hover:underline">essai
+          gratuit de 5 jours</a> donne accès à toutes les fonctionnalités, sans engagement.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-2xl font-bold sm:text-3xl">Questions fréquentes</h2>
+        <div class="mt-10">
+          {faq.map((f) => (
+            <details class="group border-b border-border py-2">
+              <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium sm:text-base [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span class="text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+              </summary>
+              <p class="pb-4 text-sm leading-relaxed text-text-secondary">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SubPageCTA />
+  </main>
+  <Footer />
+  <CalendlyWidget />
+</Layout>
