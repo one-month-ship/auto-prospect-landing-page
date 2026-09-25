@@ -42,6 +42,7 @@ export default function NavbarMobile({ links }: Props) {
               ))}
               <a
                 href={APP_LOGIN_URL}
+                data-cta="navbar-mobile"
                 onClick={() => setOpen(false)}
                 className="mt-2 rounded-lg bg-accent px-4 py-3 text-center text-sm font-semibold text-bg transition-colors hover:bg-accent-hover"
               >

@@ -371,6 +371,7 @@ export default function Pricing() {
                 </p>
                 <a
                   href={APP_LOGIN_URL}
+                  data-cta="pricing"
                   className="mt-8 inline-block rounded-xl bg-accent px-8 py-3.5 text-base font-semibold text-[#0A0A0B] shadow-lg shadow-accent/25 transition-all hover:bg-[#D97706] hover:shadow-accent/40"
                 >
                   Commencer l'essai gratuit

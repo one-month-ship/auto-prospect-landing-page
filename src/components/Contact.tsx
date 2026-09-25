@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { AlertCircle, CheckCircle, Send } from "lucide-react";
 import { useState } from "react";
+import { track } from "../lib/tracking";
 
 type FormState = "idle" | "sending" | "success" | "error";
 
@@ -25,6 +26,7 @@ export default function Contact() {
       });
 
       if (!res.ok) throw new Error("Erreur");
+      track("contact_form");
       setState("success");
       setForm({ name: "", email: "", phone: "", message: "" });
     } catch {

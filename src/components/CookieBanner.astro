@@ -1,0 +1,65 @@
+---
+// Bandeau de consentement cookies (CNIL) : affiché tant qu'aucun choix n'est mémorisé,
+// et seulement si au moins un pixel est configuré dans l'env. Les pixels ne se chargent
+// qu'après « Accepter ». « Refuser » est aussi simple qu'« Accepter » (exigence CNIL).
+// Réouvrable via un élément portant data-open-cookie-banner (lien du footer).
+---
+
+<div
+  id="cookie-banner"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Gestion des cookies"
+  hidden
+  class="fixed inset-x-4 bottom-4 z-[60] mx-auto max-w-xl rounded-2xl border border-border bg-card p-5 shadow-2xl shadow-black/50 sm:inset-x-6 sm:bottom-6"
+>
+  <p class="text-sm leading-relaxed text-text-secondary">
+    Nous utilisons des cookies de mesure publicitaire (Meta, Google) pour savoir quelles
+    campagnes vous ont amené ici. Aucun cookie n'est déposé sans votre accord.
+    <a href="/cookies" class="text-text underline underline-offset-2 hover:text-accent">En savoir plus</a>
+  </p>
+  <div class="mt-4 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+    <button
+      type="button"
+      data-consent="denied"
+      class="rounded-lg border border-border px-4 py-2 text-sm font-medium text-text transition-colors hover:bg-bg"
+    >
+      Refuser
+    </button>
+    <button
+      type="button"
+      data-consent="granted"
+      class="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-bg transition-colors hover:bg-accent-hover"
+    >
+      Accepter
+    </button>
+  </div>
+</div>
+
+<script>
+  import { getConsent, setConsent, clearConsent, hasAnyPixel } from "../lib/tracking";
+
+  const banner = document.getElementById("cookie-banner")!;
+  const show = () => (banner.hidden = false);
+  const hide = () => (banner.hidden = true);
+
+  if (hasAnyPixel && getConsent() === null) show();
+
+  banner.querySelectorAll<HTMLButtonElement>("button[data-consent]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      setConsent(btn.dataset.consent as "granted" | "denied");
+      hide();
+    });
+  });
+
+  // « Gérer mes cookies » dans le footer : on efface le choix et on réaffiche le bandeau.
+  // Un refus après acceptation ne décharge pas les scripts déjà présents sur la page
+  // courante, mais ils ne seront plus chargés aux pages suivantes.
+  document.querySelectorAll("[data-open-cookie-banner]").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      clearConsent();
+      show();
+    });
+  });
+</script>
