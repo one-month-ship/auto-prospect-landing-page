@@ -1,4 +1,6 @@
 ---
+import CookieBanner from "../components/CookieBanner.astro";
+
 interface Props {
   title?: string;
   description?: string;
@@ -183,6 +185,14 @@ const structuredData = {
   </head>
   <body class="antialiased">
     <slot />
+    <CookieBanner />
+
+    <!-- Pixels publicitaires (Meta / Google) : chargés uniquement après consentement,
+         voir src/lib/tracking.ts. Les IDs viennent de PUBLIC_META_PIXEL_ID / PUBLIC_GOOGLE_TAG_ID. -->
+    <script>
+      import { initTracking } from "../lib/tracking";
+      initTracking();
+    </script>
 
     <script>
       const observer = new IntersectionObserver(
