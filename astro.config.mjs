@@ -33,6 +33,10 @@ function sectionMeta(pagePath) {
     pagePath.startsWith("/solutions/")
   )
     return { priority: 0.8, changefreq: "monthly" };
+  // index du blog : nouvelle entrée à chaque article publié
+  if (pagePath === "/blog/") return { priority: 0.7, changefreq: "weekly" };
+  // articles de blog
+  if (pagePath.startsWith("/blog/")) return { priority: 0.7, changefreq: "monthly" };
   // pages légales (confidentialité, CGU, cookies)
   return { priority: 0.3, changefreq: "yearly" };
 }
