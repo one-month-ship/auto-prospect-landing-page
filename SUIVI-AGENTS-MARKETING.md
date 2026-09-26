@@ -29,6 +29,9 @@ Légende : ⬜ à faire · 🔄 en cours · ✅ fait · ⏸️ en attente de Nas
 - ✅ 3 routines créées dans le registre local de l'app (même mécanisme qu'AlertDeals) : `autoprospect-article-geo-dimanche` (dim. 10:30), `autoprospect-mesure-seo-lundi` (lun. 07:45), `autoprospect-autorite-lundi` (lun. 08:15). Prompts dans `~/.claude/scheduled-tasks/autoprospect-*/SKILL.md`
 - ⏸️ Nassim : vérifier dans l'app (sidebar → Routines) que les 3 tâches apparaissent en **Auto**, puis « Run now » une fois chacune
 
+## Data first-party
+- ✅ Rôle Postgres lecture seule + article `/blog/statistiques-annonces-voitures-occasion-particuliers-2026` (16 chiffres, 35 122 annonces). Mise à jour trimestrielle à prévoir (janvier 2027).
+
 ## Journal
 - 2026-09-26 : lecture du guide, création de ce fichier, lancement de l'étape 1a.
 - 2026-09-26 : 1a terminé (profil + volumes réels), 1b terminé (PR #24), `.protocole/` créé (treg.json, seo.json, autorite.json), lancement de 1c.
@@ -41,4 +44,4 @@ Légende : ⬜ à faire · 🔄 en cours · ✅ fait · ⏸️ en attente de Nas
 - Accès en lecture à la base de l'app (`ads`, `messages`) pour des articles de statistiques (taux de réponse par canal, prix par marque).
 - Hub multi-produits : faut-il lier Auto-Prospect et AlertDeals entre eux (liens contextuels) ?
 - PR #24 à relire et fusionner.
-- Accès lecture seule à la base de l'app (validé sur le principe) : fournir une URL de connexion Postgres en lecture seule, hors dépôt (voir message du 2026-09-26).
+- ✅ Accès lecture seule à la base (rôle `autoprospect_readonly`, `bypassrls`, URL dans `.env.local`) vérifié le 2026-09-26. Premier article de statistiques ajouté à la PR #24.
