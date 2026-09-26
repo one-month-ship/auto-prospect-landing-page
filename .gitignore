@@ -12,3 +12,8 @@ dist/
 # Divers
 .DS_Store
 *.log
+
+# Agents marketing (notes locales, données prospects, config protocole)
+*.local.md
+.protocole/
+prospects/
