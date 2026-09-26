@@ -1,0 +1,460 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import { APP_LOGIN_URL } from "../../lib/api";
+import "../../styles/global.css";
+
+const title =
+  "Prospection automobile : la méthode pour trouver et contacter des vendeurs particuliers — Auto-Prospect";
+const description =
+  "Où chercher, comment trier, quel canal utiliser et quoi dire : la méthode de prospection des vendeurs particuliers pour marchands VO et mandataires, avec les chiffres du marché 2025 et les erreurs qui font chuter le taux de réponse.";
+
+const datePublished = "2026-09-26";
+const dateModified = "2026-09-26";
+
+const siteOrigin = Astro.site?.origin ?? "https://auto-prospect.fr";
+const canonical = `${siteOrigin}/blog/prospection-automobile-methode`;
+
+// Étapes de la méthode : chaque étape est aussi un HowToStep dans le JSON-LD.
+const etapes = [
+  {
+    nom: "Définir un périmètre de recherche précis",
+    texte:
+      "Marques, modèles, années, kilométrage maximal, fourchette de prix et zones : un périmètre vague produit des centaines d'annonces par jour, dont l'immense majorité ne vous intéresse pas.",
+  },
+  {
+    nom: "Surveiller les trois marketplaces en continu",
+    texte:
+      "Leboncoin, AutoScout24 et La Centrale concentrent l'essentiel des annonces de particuliers. Une bonne affaire se joue dans les heures qui suivent la publication, pas le lendemain.",
+  },
+  {
+    nom: "Trier par écart au prix du marché",
+    texte:
+      "Comparez chaque annonce aux véhicules équivalents en ligne et récemment vendus. Contactez d'abord les annonces sous le marché, puis celles dont le prix vient de baisser.",
+  },
+  {
+    nom: "Contacter le vendeur sur le canal où il répond",
+    texte:
+      "Messagerie de la plateforme, WhatsApp ou message vocal sur répondeur : un particulier ne décroche pas un numéro inconnu, mais il lit un message et rappelle s'il a une raison de le faire.",
+  },
+  {
+    nom: "Suivre chaque prospect jusqu'à la décision",
+    texte:
+      "Un vendeur qui ne répond pas le jour même n'est pas perdu. Relance à 48 heures, puis une semaine plus tard si l'annonce est toujours en ligne. Sans suivi, la moitié des opportunités s'évapore.",
+  },
+];
+
+const canaux = [
+  {
+    canal: "Appel téléphonique",
+    reponse: "Faible sur numéro inconnu, le particulier filtre",
+    usage: "Après un premier échange écrit, pour conclure",
+  },
+  {
+    canal: "Messagerie Leboncoin / AutoScout24 / La Centrale",
+    reponse: "Bonne : c'est le canal attendu par le vendeur",
+    usage: "Premier contact, par défaut",
+  },
+  {
+    canal: "WhatsApp",
+    reponse: "Bonne, si le message est court et identifie clairement le professionnel",
+    usage: "Premier contact quand le numéro est affiché, relances",
+  },
+  {
+    canal: "Message vocal sur répondeur",
+    reponse: "Correcte : le vendeur écoute et rappelle à son rythme",
+    usage: "En complément d'un message écrit, pour se distinguer",
+  },
+  {
+    canal: "SMS",
+    reponse: "Variable, souvent perçu comme du démarchage",
+    usage: "À éviter en premier contact",
+  },
+];
+
+const erreurs = [
+  {
+    titre: "Copier-coller un message générique",
+    texte:
+      "« Bonjour, votre véhicule m'intéresse, quel est votre dernier prix ? » est le message que le vendeur reçoit dix fois. Il n'y répond plus. Nommez le modèle, l'année, le kilométrage lu dans l'annonce, et dites qui vous êtes.",
+  },
+  {
+    titre: "Négocier avant d'avoir un rendez-vous",
+    texte:
+      "Le premier message sert à obtenir un rappel ou un créneau, pas à faire une offre. Une proposition de prix à l'aveugle, sans avoir vu le véhicule, braque le vendeur et vous engage sur un chiffre.",
+  },
+  {
+    titre: "Se cacher derrière un profil particulier",
+    texte:
+      "Un professionnel qui se présente comme un particulier prend un risque juridique et perd la confiance dès le premier appel. Présentez-vous comme marchand ou mandataire : beaucoup de vendeurs préfèrent une transaction rapide et sécurisée avec un pro.",
+  },
+  {
+    titre: "Contacter tout le monde, sans tri",
+    texte:
+      "Contacter cent annonces par jour sans regarder le prix produit des rappels sur des véhicules que vous n'achèterez jamais. Le tri par écart au marché passe avant le volume.",
+  },
+  {
+    titre: "Ne pas relancer",
+    texte:
+      "Un vendeur reçoit plusieurs sollicitations, réfléchit, compare. Celui qui relance poliment à 48 heures, avec un élément nouveau (disponibilité, mode de paiement, reprise possible), reste dans la course.",
+  },
+];
+
+const faq = [
+  {
+    q: "Qu'est-ce que la prospection automobile pour un marchand de véhicules d'occasion ?",
+    a: "Pour un marchand VO ou un mandataire, la prospection automobile consiste à repérer les véhicules mis en vente par des particuliers sur les marketplaces (Leboncoin, AutoScout24, La Centrale), à sélectionner ceux dont le prix laisse une marge, puis à contacter les vendeurs pour acheter avant la concurrence. Elle se distingue de la prospection commerciale d'une concession, qui cherche des acheteurs, pas des vendeurs.",
+  },
+  {
+    q: "Où trouver des voitures d'occasion à acheter auprès de particuliers ?",
+    a: "Sur les trois grandes marketplaces françaises : Leboncoin, AutoScout24 et La Centrale. Leboncoin annonçait, en janvier 2026, plus de 700 000 véhicules disponibles dont plus de 400 000 provenant de professionnels, soit environ 300 000 annonces de particuliers à un instant donné. Les autres canaux (bouche-à-oreille, dépôt-vente, réseaux sociaux) existent mais ne permettent pas un flux régulier.",
+  },
+  {
+    q: "Quel est le meilleur canal pour contacter un vendeur particulier ?",
+    a: "Le canal que le vendeur a lui-même choisi en publiant : la messagerie de la plateforme. WhatsApp fonctionne bien quand le numéro est affiché, à condition que le message soit court et identifie clairement le professionnel. Le message vocal sur répondeur se distingue des messages écrits et laisse le vendeur rappeler à son rythme. L'appel direct sur numéro inconnu et le SMS sont les canaux les moins efficaces en premier contact.",
+  },
+  {
+    q: "Que dire dans un premier message à un vendeur particulier ?",
+    a: "Quatre éléments : qui vous êtes (marchand, mandataire, société), ce que vous avez lu dans l'annonce (modèle, année, kilométrage), ce que vous proposez concrètement (achat rapide, paiement sécurisé, déplacement à sa convenance), et une question simple qui appelle une réponse (disponibilité pour un appel ou une visite). Pas de prix dans le premier message.",
+  },
+  {
+    q: "Combien d'annonces faut-il contacter par jour pour acheter un véhicule ?",
+    a: "Le chiffre dépend du segment, de la zone et du prix ciblé, et aucun ratio universel ne tient. Ce qui se mesure en revanche dans votre propre suivi : le taux de réponse par canal, le taux de rendez-vous par réponse et le taux d'achat par rendez-vous. Ces trois taux, suivis dans un CRM, disent combien de contacts il vous faut pour un achat.",
+  },
+  {
+    q: "La prospection automobile peut-elle être automatisée ?",
+    a: "Oui, sur les étapes répétitives : la détection des annonces selon vos critères, la comparaison au prix du marché, l'envoi du premier message et des relances, et l'alimentation du CRM. Un outil comme Auto-Prospect prend en charge ces étapes sur Leboncoin, AutoScout24 et La Centrale. La visite, l'expertise du véhicule et la négociation restent à votre main.",
+  },
+];
+
+const sources = [
+  {
+    label: "AAA Data, « Marché automobile français 2025 : les grandes tendances » (juin 2026)",
+    url: "https://www.aaa-data.fr/actualites/marche-automobile-francais-2025-grandes-tendances/",
+  },
+  {
+    label: "leboncoin, espace presse Automobile, communiqué du 2 janvier 2026",
+    url: "https://presse.leboncoincorporate.com/automobile.html",
+  },
+  {
+    label: "L'argus, « Leboncoin lance une offre pour faciliter le sourcing VO des pros » (avril 2022)",
+    url: "https://www.largus.fr/pros/actualite-automobile/leboncoin-lance-une-offre-pour-faciliter-le-sourcing-vo-des-pros-10902409.html",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BlogPosting",
+    "headline": "Prospection automobile : la méthode pour trouver et contacter des vendeurs particuliers",
+    "description": description,
+    "url": canonical,
+    "mainEntityOfPage": canonical,
+    "datePublished": datePublished,
+    "dateModified": dateModified,
+    "inLanguage": "fr-FR",
+    "author": { "@type": "Organization", "name": "L'équipe Auto-Prospect", "url": siteOrigin },
+    "publisher": { "@type": "Organization", "name": "Auto-Prospect", "url": siteOrigin, "logo": `${siteOrigin}/logo.svg` },
+  },
+  {
+    "@type": "HowTo",
+    "name": "Comment prospecter des vendeurs particuliers de véhicules d'occasion",
+    "step": etapes.map((e, i) => ({
+      "@type": "HowToStep",
+      "position": i + 1,
+      "name": e.nom,
+      "text": e.texte,
+    })),
+  },
+  {
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  },
+  {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `${siteOrigin}/` },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteOrigin}/blog` },
+      { "@type": "ListItem", "position": 3, "name": "Prospection automobile", "item": canonical },
+    ],
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="mx-auto max-w-3xl px-4 pt-32 pb-20 sm:px-6 lg:px-8">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent">
+      <a href="/blog" class="text-text-secondary transition-colors hover:text-text">Blog</a>
+      <span class="text-text-secondary"> / </span>Méthode
+    </p>
+    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">
+      Prospection automobile : la méthode pour trouver et contacter des vendeurs particuliers
+    </h1>
+    <p class="mt-4 text-sm text-text-secondary">
+      Par <span class="font-semibold text-text">L'équipe Auto-Prospect</span>. Publié le 26 septembre 2026.
+    </p>
+
+    <div class="mt-8 rounded-2xl border border-border bg-card p-6">
+      <p class="text-sm font-semibold">En bref</p>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-text-secondary">
+        <li>
+          La prospection automobile d'un marchand VO ou d'un mandataire vise les <strong class="text-text">vendeurs
+          particuliers</strong>, pas les acheteurs : repérer une annonce, la comparer au marché, contacter le vendeur avant les autres.
+        </li>
+        <li>
+          Le marché est là : 5,4 millions de transactions VO en France en 2025 selon AAA Data, et les véhicules de plus de
+          cinq ans s'échangent à 55 % entre particuliers.
+        </li>
+        <li>
+          Cinq étapes : périmètre précis, surveillance continue des trois marketplaces, tri par écart au prix du marché,
+          contact sur le canal où le vendeur répond, suivi jusqu'à la décision.
+        </li>
+        <li>
+          Ce qui fait chuter le taux de réponse : le message générique, l'offre de prix à l'aveugle et l'absence de relance.
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-10 space-y-12 text-text-secondary">
+      <!-- 1. Définition et marché -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Pourquoi la prospection d'un marchand VO ne ressemble pas à celle d'une concession ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Quand une concession parle de prospection automobile, elle cherche des acheteurs : relances de fichier
+          clients, campagnes, leads constructeur. Un marchand de véhicules d'occasion ou un mandataire fait l'inverse.
+          Son problème n'est pas de vendre, c'est d'<strong class="text-text">acheter au bon prix</strong>, et donc de
+          trouver des vendeurs avant que la concurrence ne les ait appelés.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Le gisement est connu. Selon AAA Data (2026), le marché français de l'occasion a atteint
+          <strong class="text-text">5,4 millions de transactions en 2025</strong>, en hausse de 0,8 %, et les véhicules de plus
+          de cinq ans s'échangent principalement entre particuliers, à 55 %. Les modèles de moins de cinq ans, eux, sont
+          vendus à 78 % par des professionnels. Autrement dit : le stock que vous cherchez, celui qu'un particulier vend
+          lui-même, est concentré sur les véhicules de plus de cinq ans, et il passe par les marketplaces.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Leboncoin seul annonçait, dans son communiqué du 2 janvier 2026, plus de 700 000 véhicules disponibles dont plus de
+          400 000 provenant de professionnels : il reste donc de l'ordre de 300 000 annonces de particuliers en ligne à
+          tout moment sur cette seule plateforme. Une enquête Leboncoin relayée par L'argus en 2022 indiquait déjà que
+          66 % des professionnels clients de la plateforme déclaraient un besoin de sourcing VO et que 42 % cherchaient
+          auprès de particuliers. Vous n'êtes pas seul sur ce gisement, et c'est exactement pour cela que la méthode compte. Pour le détail du
+          marché des particuliers (prix, kilométrage, part des bonnes affaires), voir nos
+          <a href="/blog/statistiques-annonces-voitures-occasion-particuliers-2026" class="text-accent hover:underline">16 statistiques sur les annonces de particuliers en 2026</a>.
+        </p>
+      </section>
+
+      <!-- 2. Les cinq étapes -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Comment prospecter des vendeurs particuliers, étape par étape ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          La méthode tient en cinq étapes. Chacune peut se faire à la main ; chacune peut aussi s'automatiser, et la
+          différence entre les deux se mesure en heures par jour.
+        </p>
+        <ol class="mt-5 space-y-3">
+          {
+            etapes.map((e, i) => (
+              <li class="rounded-xl border border-border bg-card p-5">
+                <p class="font-semibold text-text">{i + 1}. {e.nom}</p>
+                <p class="mt-2 text-sm leading-relaxed">{e.texte}</p>
+              </li>
+            ))
+          }
+        </ol>
+
+        <h3 class="mt-8 font-semibold text-text">Étape 1 : un périmètre que vous pouvez tenir</h3>
+        <p class="mt-2 leading-relaxed">
+          Le périmètre découle de ce que vous savez revendre : les segments où vous connaissez le prix de sortie, les
+          frais de remise en état et le délai de vente. Fixez pour chaque recherche une marque ou un modèle, une
+          fourchette d'années, un kilométrage plafond, un prix maximal d'achat et les départements où vous acceptez de
+          vous déplacer. Un mandataire crée une recherche par mandat client ; un marchand crée une recherche par ligne de
+          parc. Dix recherches précises valent mieux qu'une recherche large.
+        </p>
+
+        <h3 class="mt-6 font-semibold text-text">Étape 2 : surveiller en continu, pas une fois par jour</h3>
+        <p class="mt-2 leading-relaxed">
+          Une annonce bien placée reçoit ses premiers contacts dans les heures qui suivent la publication. Consulter les
+          trois marketplaces le matin et le soir vous fait arriver après ceux qui ont mis une alerte, et après les
+          professionnels équipés d'un
+          <a href="/fonctionnalites/recherche-annonces-automatisee" class="text-accent hover:underline">outil de détection en temps réel</a>.
+          Si vous surveillez à la main, mettez au minimum des alertes par plateforme et par recherche, et acceptez qu'elles
+          ne couvrent ni les reposts ni les baisses de prix.
+        </p>
+
+        <h3 class="mt-6 font-semibold text-text">Étape 3 : trier par écart au marché avant de contacter</h3>
+        <p class="mt-2 leading-relaxed">
+          Le prix affiché ne dit rien tant qu'il n'est pas comparé. Pour chaque annonce retenue, regardez les véhicules
+          équivalents en ligne (même modèle, génération, motorisation, kilométrage proche, même région) et, quand vous y
+          avez accès, ceux qui se sont réellement vendus. Un écart de plusieurs centaines d'euros sous le marché justifie un
+          contact immédiat ; un prix au-dessus du marché justifie d'attendre une baisse, que vous pouvez surveiller. C'est
+          le principe de l'<a href="/fonctionnalites/analyse-prix-marche" class="text-accent hover:underline">analyse prix vs marché</a>
+          appliquée à chaque annonce détectée.
+        </p>
+
+        <h3 class="mt-6 font-semibold text-text">Étape 4 : contacter sur le canal où le vendeur répond</h3>
+        <p class="mt-2 leading-relaxed">
+          Un particulier qui vend sa voiture reçoit des appels de numéros inconnus, des SMS, des messages sur la
+          plateforme. Il répond à ce qui lui paraît légitime et facile. Le tableau ci-dessous résume ce que nous observons
+          chez les professionnels qui prospectent quotidiennement ; les ordres de grandeur varient selon le segment et la
+          région, et votre propre suivi vous donnera vos chiffres.
+        </p>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="py-3 pr-4 font-medium">Canal</th>
+                <th class="py-3 pr-4 font-medium">Réponse observée</th>
+                <th class="py-3 font-medium">Usage recommandé</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              {
+                canaux.map((c) => (
+                  <tr>
+                    <td class="py-3 pr-4 font-medium text-text">{c.canal}</td>
+                    <td class="py-3 pr-4">{c.reponse}</td>
+                    <td class="py-3">{c.usage}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 leading-relaxed">
+          Le premier message, quel que soit le canal, contient quatre choses : qui vous êtes, ce que vous avez lu dans
+          l'annonce, ce que vous proposez concrètement, et une question qui appelle une réponse. Exemple, à adapter :
+        </p>
+        <blockquote class="mt-3 rounded-xl border border-border bg-card p-5 text-sm leading-relaxed">
+          « Bonjour, je suis [prénom], marchand automobile à [ville]. Votre [modèle] de [année], [kilométrage] km,
+          correspond à ce que je recherche pour un client. Je peux me déplacer cette semaine et régler par virement
+          instantané le jour de la visite. Quel créneau vous conviendrait pour un appel de cinq minutes ? »
+        </blockquote>
+        <p class="mt-3 leading-relaxed">
+          Pas de prix, pas de « dernier prix ? », pas de faux profil particulier. Le détail des canaux et de leurs limites
+          est décrit sur la page
+          <a href="/fonctionnalites/contact-multicanal" class="text-accent hover:underline">contact multicanal des vendeurs</a>.
+        </p>
+
+        <h3 class="mt-6 font-semibold text-text">Étape 5 : suivre jusqu'à la décision</h3>
+        <p class="mt-2 leading-relaxed">
+          Un contact sans suite n'est pas un refus. Notez chaque vendeur contacté, le canal, la date, la réponse. Relancez
+          à 48 heures avec un élément nouveau, puis une semaine plus tard si l'annonce est toujours en ligne ou si le prix a
+          baissé. Un tableur suffit au début ; passé une trentaine de contacts par semaine, un
+          <a href="/fonctionnalites/crm-pipeline-vente" class="text-accent hover:underline">CRM avec pipeline</a>
+          (détecté, contacté, en discussion, rendez-vous, acheté, perdu) devient nécessaire pour ne rien laisser tomber
+          et pour mesurer vos taux à chaque étape.
+        </p>
+      </section>
+
+      <!-- CTA intermédiaire contextualisé -->
+      <aside class="rounded-2xl border border-accent/30 bg-gradient-to-b from-accent/10 to-transparent p-6 sm:p-8">
+        <p class="text-lg font-bold text-text">Les étapes 2, 3, 4 et 5, sans y passer vos journées</p>
+        <p class="mt-2 leading-relaxed">
+          Auto-Prospect détecte les annonces de particuliers en temps réel sur Leboncoin, AutoScout24 et La Centrale, compare
+          chaque annonce au marché, contacte les vendeurs par messagerie Leboncoin, WhatsApp ou message vocal, et alimente
+          votre CRM. Chaque vendeur contacté pour vous n'est démarché pour aucun autre client.
+        </p>
+        <div class="mt-5">
+          <a
+            href={APP_LOGIN_URL}
+            data-cta="blog-prospection-automobile"
+            class="inline-block rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-bg shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover hover:shadow-accent/40"
+          >
+            Essayer gratuitement pendant 5 jours
+          </a>
+        </div>
+      </aside>
+
+      <!-- 3. Erreurs -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Quelles erreurs font chuter le taux de réponse des vendeurs ?
+        </h2>
+        <div class="mt-5 space-y-3">
+          {
+            erreurs.map((e) => (
+              <div class="rounded-xl border border-border bg-card p-5">
+                <p class="font-semibold text-text">{e.titre}</p>
+                <p class="mt-2 text-sm leading-relaxed">{e.texte}</p>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- 4. Manuel vs automatisé -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Prospection manuelle ou automatisée : où passe le temps ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Faites le compte sur une semaine type. Trois marketplaces consultées deux fois par jour, une dizaine de
+          recherches, la comparaison de chaque annonce intéressante au marché, un message individuel par vendeur, les
+          relances, la mise à jour du tableur : la prospection manuelle occupe facilement une demi-journée quotidienne
+          pour un seul opérateur, avant le premier rendez-vous. Et elle reste aveugle entre deux consultations.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          L'automatisation ne remplace ni la visite, ni l'expertise du véhicule, ni la négociation. Elle prend les tâches
+          répétitives : la détection continue, le tri par prix, l'envoi du premier message et des relances, la saisie dans le
+          CRM. Elle change aussi une chose que la main ne peut pas faire : contacter le vendeur dans les minutes qui suivent
+          la publication, quel que soit le moment de la journée. Les professionnels qui utilisent
+          <a href="/solutions/pige-automobile" class="text-accent hover:underline">un outil de pige automatisée avec contact des vendeurs</a>
+          déplacent leur temps de la recherche vers les rendez-vous, ce qui est le seul endroit où l'achat se décide.
+        </p>
+      </section>
+
+      <!-- FAQ -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">Questions fréquentes sur la prospection automobile</h2>
+        <div class="mt-4">
+          {
+            faq.map((f) => (
+              <details class="group border-b border-border py-2">
+                <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium text-text sm:text-base [&::-webkit-details-marker]:hidden">
+                  {f.q}
+                  <span class="ml-4 text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+                </summary>
+                <p class="pb-4 text-sm leading-relaxed">{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Sources -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">Sources</h2>
+        <ul class="mt-3 list-disc space-y-1 pl-5 text-sm">
+          {
+            sources.map((s) => (
+              <li>
+                <a href={s.url} target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">{s.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-3 text-xs">
+          Les observations sur les canaux de contact et les relances proviennent de l'usage quotidien d'Auto-Prospect par des
+          marchands et mandataires ; elles ne constituent pas une statistique de marché.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <SubPageCTA
+    title="Mettez la méthode en pilote automatique"
+    subtitle="Détection en temps réel, contact des vendeurs et CRM intégré, dès 69 € HT/mois. Essai gratuit 5 jours."
+  />
+  <Footer />
+  <CalendlyWidget />
+</Layout>

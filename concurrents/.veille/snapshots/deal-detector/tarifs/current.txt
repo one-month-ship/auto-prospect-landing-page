@@ -1,0 +1,150 @@
+Deal Detector — Bonnes affaires Leboncoin (voiture, immobilier) | Extension Chrome
+DealDetector
+Fonctionnalités
+Tarifs
+FAQ
+Installer →
+🇫🇷 Extension Chrome pour Leboncoin · Auto + Immobilier
+Trouvez les bonnes affaires sur Leboncoin avant tout le monde.
+Deal Detector est l'extension Chrome qui détecte automatiquement les voitures et appartements sous-cotés sur Leboncoin. Elle compare chaque annonce aux vraies transactions notariales (base DVF officielle) et applique un scoring statistique. Vous voyez en un coup d'œil quelle annonce est réellement en dessous du marché — et de combien.
+⚡ Installer gratuitement (5 recherches/mois)
+Voir la démo ↓
+✓ Sans inscription pour tester
+✓ Données DVF officielles (data.gouv.fr)
+✓ Annulable à tout moment
+Disponible sur le Chrome Web Store
+🚗
+Renault Clio IV 1.5 dCi 2018
+📅 2018 · 🛣️ 89 000 km · 📍 Lille
+8 200 €
+11 400 €
+⚡ -28 %
+🏠
+T2 lumineux centre-ville
+📐 45 m² · 🛏️ 2 pièces · 📍 Angers
+128 000 €
+158 000 €
+🏛️ DVF -19 %
+Pourquoi Deal Detector trouve les vraies bonnes affaires
+Tous les "deal scanners" comparent aux autres annonces du site. Deal Detector compare aux vraies ventes immobilières et automobiles.
+🏛️
+Données DVF officielles (immobilier)
+Pour chaque bien sur Leboncoin, Deal Detector interroge les transactions notariales DVF publiées par data.gouv.fr — filtrées sur 2024-2025, ajustées par nombre de pièces (T1/T2/T3…) et par DPE (classe G pénalisée -12 %, classe A bonifiée +7 % conformément à la Loi Climat). Couvre toutes les villes de France, y compris Paris, Lyon et Marseille par arrondissement.
+📊
+Scoring statistique avancé
+Régression linéaire prix = f(année, km) pour les voitures d'occasion. Pour l'immobilier : médiane DVF par type de bien, nombre de pièces et DPE, ajustée par la surface. Détection automatique des outliers (annonces trop belles pour être vraies).
+🛡️
+Anti-blocage Leboncoin
+Mode passif intégré : aucune requête en arrière-plan, l'extension analyse uniquement les annonces que vous voyez à l'écran. Zéro risque de captcha ou de blocage de compte.
+🚗
+Fiche technique automobile
+Pour chaque voiture : courroie ou chaîne de distribution, problèmes connus du modèle, coût de la carte grise. Données agrégées depuis Caradisiac, Reddit et Wikipedia.
+⚖️
+Comparateur multi-annonces
+Sélectionnez 2 à 5 annonces, voyez-les côte à côte avec la meilleure valeur surlignée par ligne. Idéal pour décider rapidement entre plusieurs bonnes affaires.
+🚀
+Installation en 30 secondes
+Une extension Chrome légère et rapide. Naviguez normalement sur Leboncoin, les bonnes affaires apparaissent automatiquement dans une page dédiée. Mises à jour automatiques.
+L'extension Leboncoin en action
+Aperçu de la page Affaires avec la détection en cours sur une recherche immobilière à Angers, Lille et Tours.
+chrome-extension://...deals.html
+📋 Toutes 42
+🚗 Véhicules 18
+🏠 Immobilier 24
+🏠
+-31 %
+Studio T1 lumineux centre
+📐 17 m² · 🛏️ 1 pièce · 📍 Angers
+68 000 € 98 000 €
+🏛️ DVF
+🏠
+-22 %
+T3 avec balcon
+📐 65 m² · 🛏️ 3 pièces · 📍 Lille
+175 000 € 225 000 €
+🏛️ DVF
+🏠
+-18 %
+Maison 4 pièces avec jardin
+📐 90 m² · 🛏️ 4 pièces · 📍 Tours
+240 000 € 295 000 €
+🏛️ DVF
+Comment trouver une bonne affaire sur Leboncoin ?
+Deal Detector automatise ce que les chasseurs de bonnes affaires expérimentés font à la main — comparer chaque annonce au prix réel du marché.
+1️⃣
+Vous lancez une recherche Leboncoin
+Voiture d'occasion, appartement, maison : faites votre recherche habituelle sur leboncoin.fr avec vos filtres (ville, prix max, surface, kilométrage…).
+2️⃣
+L'extension analyse chaque annonce
+En tâche de fond, Deal Detector calcule le prix attendu de chaque annonce visible : régression auto pour les véhicules, médiane DVF pour l'immobilier.
+3️⃣
+Les bonnes affaires apparaissent
+Toutes les annonces sous-cotées de plus de 15 % sont regroupées dans une page dédiée, triées par pourcentage de décote. Vous gagnez des heures de comparaison manuelle.
+Tarifs simples et transparents
+Pas de carte bancaire pour tester. Annulable en 1 clic depuis le portail client Stripe.
+Free
+0€
+Pour découvrir l'extension
+✓ 5 recherches / mois
+✓ Détection des bonnes affaires
+✓ Comparaison à 5 annonces
+— DVF temps réel
+— Recherches illimitées
+Installer gratuitement
+Pro Mensuel
+9,99€/mois
+🎁 7 jours gratuits — sans engagement
+✓ Recherches illimitées
+✓ DVF temps réel (immobilier)
+✓ Anti-blocage Leboncoin
+✓ Fiche technique véhicule
+✓ Annulable à tout moment
+Essai 7 jours gratuit
+⭐ Le plus populaire · -34 %
+Pro Annuel
+79€/an
+≈ 6,58 € / mois · économise 41 € / an
+✓ Tout de Pro Mensuel
+✓ 🎁 7 jours d'essai gratuit
+✓ Économie de 41 € / an
+✓ Annulable à tout moment
+✓ Remboursement 14 jours
+Démarrer l'essai gratuit
+🏢 Pros & équipes
+Entreprise
+Sur devis
+Tarif adapté à votre usage
+✓ Tout de Pro Annuel
+✓ Volume et usage sur mesure
+✓ Facturation sur devis
+✓ Idéal pour pros (mandataires, agents, garages)
+✓ Support prioritaire
+Nous contacter →
+Installer l'extension Leboncoin en 10 secondes
+Disponible sur le Chrome Web Store · installation 1 clic · mises à jour automatiques · compatible Chrome, Brave, Edge, Opera.
+Ajouter à Chrome — gratuit
+Cliquez "Ajouter à Chrome" ci-dessus puis confirmez dans la fenêtre Chrome.
+Allez sur leboncoin.fr et lancez une recherche (voiture ou immobilier).
+Ouvrez la page Affaires de l'extension — les bonnes opportunités s'affichent automatiquement.
+5 recherches gratuites par mois sans carte bancaire pour tester. Aucune inscription requise au démarrage.
+Questions fréquentes sur Deal Detector
+Comment Deal Detector trouve-t-il les bonnes affaires sur Leboncoin ?
+Pour les voitures : régression statistique sur l'année et le kilométrage des annonces visibles. Pour l'immobilier : médiane €/m² des vraies transactions notariales (DVF, base officielle de data.gouv.fr, données 2024-2025), ajustée par le nombre de pièces et le DPE du bien. Une annonce nettement en dessous de l'attendu est marquée comme bonne affaire.
+L'extension Leboncoin Deal Detector est-elle gratuite ?
+Oui, l'extension est gratuite pour 5 recherches par mois, sans inscription ni carte bancaire. Les plans payants débloquent les recherches illimitées et l'analyse DVF temps réel à partir de 9,99 €/mois avec 7 jours d'essai gratuit. Les professionnels et les équipes disposent d'une offre Entreprise sur devis — écrivez-nous à contact@dealdetector.fr.
+Mes données restent-elles privées ?
+Oui. L'extension ne stocke que les annonces détectées localement dans votre navigateur. Aucun historique de recherche n'est envoyé. Le serveur ne stocke que votre email et votre statut d'abonnement, conformément au RGPD. Voir notre politique de confidentialité.
+Est-ce que j'enfreins les conditions de Leboncoin ?
+Non. L'extension lit uniquement les pages que vous consultez pendant votre navigation. Le mode passif (activé par défaut sur l'immobilier) garantit qu'aucune requête supplémentaire n'est envoyée à Leboncoin, évitant tout risque de captcha ou de blocage.
+Peut-on l'utiliser pour autre chose que les voitures et l'immobilier ?
+Pour le moment, ces deux catégories sont couvertes. D'autres (motos, mobilier de marque, électronique) sont à l'étude pour les prochaines versions.
+Comment annuler mon abonnement Deal Detector ?
+Depuis la modale "Mon compte" dans l'extension, cliquez "Gérer mon abonnement". Vous arrivez sur le portail Stripe officiel où vous pouvez annuler en 1 clic. Aucun frais après la fin de la période en cours.
+Que sont les données DVF utilisées par Deal Detector ?
+Les DVF (Demandes de Valeurs Foncières) sont la base officielle des transactions immobilières en France, publiée par la Direction Générale des Finances Publiques. Elles recensent les ventes réelles enregistrées par les notaires — la source la plus fiable pour estimer un bien immobilier.
+Et si je ne trouve aucune bonne affaire ?
+Garantie satisfait ou remboursé : si après 14 jours vous estimez que l'extension ne vous a pas servi, écrivez à contact@dealdetector.fr et nous remboursons intégralement.
+© 2026 Deal Detector — Pas affilié à Leboncoin SA
+Contact
+Confidentialité
+CGU

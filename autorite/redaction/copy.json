@@ -1,0 +1,19 @@
+{
+  "fr": {
+    "lancement": {
+      "court": "Automatisez votre prospection auto et gagnez 3x plus de deals",
+      "moyen": "Auto-Prospect vient de sortir.",
+      "long": "Auto-Prospect vient de sortir. Auto-Prospect détecte en temps réel les annonces de véhicules de particuliers sur Leboncoin, AutoScout24 et La Centrale, analyse leur prix par rapport au marché, contacte automatiquement les vendeurs (messagerie Leboncoin, WhatsApp ou vocal) et alimente un CRM Kanban intégré. 69 € HT/mois en facturation annuelle, ou 89 € HT/mois sans engagement, essai gratuit 5 jours"
+    },
+    "annuaires_ia": {
+      "court": "Automatisez votre prospection auto et gagnez 3x plus de deals",
+      "moyen": "Auto-Prospect : Automatisez votre prospection auto et gagnez 3x plus de deals.",
+      "long": "Auto-Prospect : Automatisez votre prospection auto et gagnez 3x plus de deals. Auto-Prospect détecte en temps réel les annonces de véhicules de particuliers sur Leboncoin, AutoScout24 et La Centrale, analyse leur prix par rapport au marché, contacte automatiquement les vendeurs (messagerie Leboncoin, WhatsApp ou vocal) et alimente un CRM Kanban intégré. Sans agent à installer, sans configuration."
+    },
+    "annuaires_saas": {
+      "court": "Automatisez votre prospection auto et gagnez 3x plus de deals",
+      "moyen": "Auto-Prospect : Automatisez votre prospection auto et gagnez 3x plus de deals.",
+      "long": "Auto-Prospect : Automatisez votre prospection auto et gagnez 3x plus de deals. Auto-Prospect est un outil SaaS français de prospection automobile automatisée pour les professionnels de l'achat-revente (marchands VO, revendeurs, mandataires auto)."
+    }
+  }
+}

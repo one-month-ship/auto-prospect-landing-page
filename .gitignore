@@ -8,7 +8,17 @@ dist/
 .astro/
 
 # Environnement
+.env.local
+.env.*.local
 
 # Divers
 .DS_Store
 *.log
+
+# Agents marketing (notes locales, données prospects, config protocole)
+*.local.md
+.protocole/
+prospects/
+
+.env.local
+.env*.local

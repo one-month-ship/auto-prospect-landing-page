@@ -1,0 +1,86 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import { sortedArticles, formatDateFr } from "../../data/articles";
+import "../../styles/global.css";
+
+const title = "Blog : prospection automobile, sourcing VO et contact des vendeurs — Auto-Prospect";
+const description =
+  "Méthodes et guides pour les marchands VO, revendeurs et mandataires auto : prospection des vendeurs particuliers, sourcing sur Leboncoin, AutoScout24 et La Centrale, contact automatique, CRM.";
+
+const siteOrigin = Astro.site?.origin ?? "https://auto-prospect.fr";
+
+// Schéma Blog + liste des articles, pour que les moteurs et les IA relient l'index aux articles.
+const blogSchema = {
+  "@type": "Blog",
+  "name": "Blog Auto-Prospect",
+  "url": `${siteOrigin}/blog`,
+  "description": description,
+  "inLanguage": "fr-FR",
+  "blogPost": sortedArticles.map((a) => ({
+    "@type": "BlogPosting",
+    "headline": a.title,
+    "url": `${siteOrigin}/blog/${a.slug}`,
+    "datePublished": a.datePublished,
+    ...(a.dateModified ? { "dateModified": a.dateModified } : {}),
+  })),
+};
+
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `${siteOrigin}/` },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteOrigin}/blog` },
+  ],
+};
+---
+
+<Layout title={title} description={description} jsonLd={[blogSchema, breadcrumbSchema]}>
+  <Navbar />
+  <main class="mx-auto max-w-3xl px-4 pt-32 pb-20 sm:px-6 lg:px-8">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent">Blog</p>
+    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">
+      Prospecter et sourcer des véhicules d'occasion, avec méthode
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-text-secondary">
+      Prospection des vendeurs particuliers, sourcing sur les marketplaces, contact automatique, suivi
+      des prospects : des guides écrits pour les marchands VO, revendeurs et mandataires auto.
+    </p>
+
+    <ul class="mt-12 space-y-6">
+      {
+        sortedArticles.map((a) => (
+          <li>
+            <a
+              href={`/blog/${a.slug}`}
+              class="group block rounded-2xl border border-border bg-card p-6 transition-colors hover:border-accent/40 sm:p-8"
+            >
+              <p class="text-xs font-semibold uppercase tracking-widest text-accent">{a.category}</p>
+              <h2 class="mt-3 text-xl font-semibold transition-colors group-hover:text-accent sm:text-2xl">
+                {a.title}
+              </h2>
+              <p class="mt-3 leading-relaxed text-text-secondary">{a.description}</p>
+              <p class="mt-4 text-sm text-text-secondary">
+                Publié le {formatDateFr(a.datePublished)}
+                {a.dateModified && a.dateModified !== a.datePublished && (
+                  <> · Mis à jour le {formatDateFr(a.dateModified)}</>
+                )}
+              </p>
+              <p class="mt-4 text-sm font-semibold text-accent">Lire l'article →</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+
+  <SubPageCTA
+    title="Passez de la méthode à l'outil"
+    subtitle="Auto-Prospect détecte les annonces, contacte les vendeurs et suit vos prospects à votre place. Essai gratuit 5 jours."
+  />
+  <Footer />
+  <CalendlyWidget />
+</Layout>
