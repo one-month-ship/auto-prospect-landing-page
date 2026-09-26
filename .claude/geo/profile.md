@@ -72,7 +72,7 @@
 ## 7. Concurrents
 
 Voir `competitors.md` dans ce dossier. Résumé (repris du projet frère AlertDeals, même niche, à compléter pour l'angle « contact automatique ») `[À CONFIRMER]` :
-- **Directs** : outils de pige auto avec contact vendeur (SMS/vocal/WhatsApp) — noms à identifier par `keyword-pipeline` ; Inspectoo, Pistoneo (veille et scoring, sans contact multicanal)
+- **Directs** : Prospelia (prospelia.io, logiciel de pige automobile avec contact vendeurs automatisé, 79 €/mois TTC annuel, découvert le 2026-09-26) ; Inspectoo, Pistoneo (veille et scoring, sans contact multicanal)
 - **Adjacents** : AlertDeals (produit frère, alertes bonnes affaires sans contact automatique), Deal Detector, Auto Intelligence (enchères B2B), pige manuelle + tableur, scrapers maison
 - **Ceux qu'on cite dans les comparatifs** : aucun par nom pour l'instant (la page comparatif existante compare « la concurrence » de façon anonyme, choix à conserver tant que les noms de marque n'ont pas de volume de recherche mesuré)
 

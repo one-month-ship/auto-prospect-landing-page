@@ -12,7 +12,8 @@
 
 | Concurrent | URL | Cible | Prix (date de vérification) | Forces | Faiblesses | Page « vs » | Page « alternatives » |
 |---|---|---|---|---|---|---|---|
-| Outils de pige auto avec contact vendeur (SMS / vocal / WhatsApp) — noms à identifier | — | Marchands VO, mandataires | — | Contact automatisé | D'après la page comparatif du site : un ou deux canaux seulement, prospects partagés entre abonnés, zones facturées en plus | non prévue tant que pas de volume de marque | à créer : « alternatives aux outils de pige classiques » |
+| Prospelia | https://prospelia.io | Négociants, mandataires, concessionnaires (pros) | 79 €/mois TTC avec engagement annuel (948 €/an), 99 €/mois sans engagement (collecté le 2026-09-26 par agent-concurrents) | Agrège Leboncoin, La Centrale, ParuVendu et AutoScout24 ; contact vendeurs automatisé, relances automatiques, pipeline ; « un mandat signé rembourse l'abonnement annuel » | Positionnement mandat/mandataire ; canaux de contact non détaillés sur la page ; pas d'exclusivité des prospects annoncée ; prix affiché TTC, plus cher qu'Auto-Prospect (69 € HT annuel) | non prévue tant que pas de volume de marque | à créer : « alternatives aux outils de pige classiques » |
+| Autres outils de pige avec contact vendeur (SMS / vocal) — noms à identifier | — | Marchands VO, mandataires | — | Contact automatisé | D'après la page comparatif du site : un ou deux canaux seulement, prospects partagés entre abonnés, zones facturées en plus | non | non |
 | Inspectoo | https://inspectoo.fr | Marchands, négociants, mandataires, courtiers VO (pros) | 19,90 €/mois mensuel, essai 7 jours (vérifié 2026-09-21 côté AlertDeals) | 12 plateformes, scanner 30 min, score de fiabilité, 100+ pros | Veille et scoring : pas de contact automatique des vendeurs ni de CRM pipeline | non | non |
 | Pistoneo | https://pistoneo.com | Marchands/revendeurs auto, Europe | 79 €/mois TTC plan Pro (vérifié 2026-09-20 côté AlertDeals) | Couverture européenne, transport + malus | Pas de contact vendeur automatisé, positionnement import | non | non |
 
@@ -34,4 +35,4 @@ Résolvent le même job avec une approche différente (à inclure dans les listi
 
 ## Concurrents découverts en cours de recherche
 
-- (vide, à alimenter jusqu'à saturation)
+- Prospelia (prospelia.io), découvert le 2026-09-26 dans les résultats Google de « prospection automobile » : concurrent direct le plus proche (même job : agréger les annonces et contacter les vendeurs particuliers). Fiche : `concurrents/prospelia.md`.

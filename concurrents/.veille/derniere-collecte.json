@@ -1,0 +1,89 @@
+{
+  "collected_at": "2026-09-26T08:10:43+00:00",
+  "pages": [
+    {
+      "competitor": "Prospelia",
+      "slug": "prospelia",
+      "source": "accueil",
+      "url": "https://prospelia.io/",
+      "status": 200,
+      "text_path": "/Users/nassim/Projets/auto-prospect/auto-prospect landing-page/concurrents/.veille/snapshots/prospelia/accueil/current.txt",
+      "first_snapshot": true,
+      "changed": false,
+      "change": null
+    },
+    {
+      "competitor": "Prospelia",
+      "slug": "prospelia",
+      "source": "tarifs",
+      "url": "https://prospelia.io/",
+      "status": 200,
+      "text_path": "/Users/nassim/Projets/auto-prospect/auto-prospect landing-page/concurrents/.veille/snapshots/prospelia/tarifs/current.txt",
+      "first_snapshot": true,
+      "changed": false,
+      "change": null
+    },
+    {
+      "competitor": "Pistoneo",
+      "slug": "pistoneo",
+      "source": "accueil",
+      "url": "https://pistoneo.com/",
+      "status": 200,
+      "text_path": "/Users/nassim/Projets/auto-prospect/auto-prospect landing-page/concurrents/.veille/snapshots/pistoneo/accueil/current.txt",
+      "first_snapshot": true,
+      "changed": false,
+      "change": null
+    },
+    {
+      "competitor": "Pistoneo",
+      "slug": "pistoneo",
+      "source": "tarifs",
+      "url": "https://pistoneo.com/#tarifs",
+      "status": 200,
+      "text_path": "/Users/nassim/Projets/auto-prospect/auto-prospect landing-page/concurrents/.veille/snapshots/pistoneo/tarifs/current.txt",
+      "first_snapshot": true,
+      "changed": false,
+      "change": null
+    },
+    {
+      "competitor": "Deal Detector",
+      "slug": "deal-detector",
+      "source": "accueil",
+      "url": "https://dealdetector.fr/",
+      "status": 200,
+      "text_path": "/Users/nassim/Projets/auto-prospect/auto-prospect landing-page/concurrents/.veille/snapshots/deal-detector/accueil/current.txt",
+      "first_snapshot": true,
+      "changed": false,
+      "change": null
+    },
+    {
+      "competitor": "Deal Detector",
+      "slug": "deal-detector",
+      "source": "tarifs",
+      "url": "https://dealdetector.fr/#tarifs",
+      "status": 200,
+      "text_path": "/Users/nassim/Projets/auto-prospect/auto-prospect landing-page/concurrents/.veille/snapshots/deal-detector/tarifs/current.txt",
+      "first_snapshot": true,
+      "changed": false,
+      "change": null
+    }
+  ],
+  "changes": [],
+  "new_reviews": [],
+  "new_negative_reviews": [],
+  "errors": [
+    {
+      "competitor": "Inspectoo",
+      "source": "accueil",
+      "url": "https://inspectoo.fr/",
+      "error": "Lecture impossible pour https://inspectoo.fr/: <urlopen error timed out>"
+    },
+    {
+      "competitor": "Inspectoo",
+      "source": "tarifs",
+      "url": "https://inspectoo.fr/tarifs",
+      "error": "Lecture impossible pour https://inspectoo.fr/tarifs: <urlopen error timed out>"
+    }
+  ],
+  "alerts": []
+}

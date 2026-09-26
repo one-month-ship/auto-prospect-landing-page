@@ -11,19 +11,19 @@ Légende : ⬜ à faire · 🔄 en cours · ✅ fait · ⏸️ en attente de Nas
 - ✅ Dépôt propre, sur `main`
 
 ## Étape 1 — SEO/GEO et Autorité
-- 🔄 1a. Onboarding `geo-engine:geo` → `.claude/geo/` (profil, concurrents, mots-clés)
-- ⬜ 1b. `agent-seo-geo` : vérifier treg (solde réel, budget annoncé avant appel payant), Search Console, premier article → branche + PR normale
-- ⬜ 1c. `agent-autorite` : `cycle.py --project . --dry` → brief
+- ✅ 1a. Onboarding `geo-engine:geo` → `.claude/geo/` (profil, concurrents, mots-clés). Reste des `[À CONFIRMER]` dans `profile.md` (voir décisions en attente)
+- ✅ 1b. `agent-seo-geo` : treg connecté (solde 10,59 $, org one-month-ship, top-up auto activé), Search Console `sc-domain:auto-prospect.fr` OK, volumes Serpstat (0,007 $), premier article « prospection automobile » → PR #24 https://github.com/one-month-ship/auto-prospect-landing-page/pull/24 (à relire et fusionner par Nassim)
+- ✅ 1c. `agent-autorite` : cycle à blanc lancé (coût 0,055 $, aucune alerte) → `autorite/brief-2026-09-26.md` : DR 5, 1 domaine référent, 10 annuaires à soumettre (copy anglais ajouté en relecture). Mots-clés de la config corrigés (« pige » lu comme outillage)
 
 ## Étape 2 — Prospects
-- ⬜ Choix mode (cible/volume), offre, cible, objectif, réseaux (LinkedIn / Instagram / TikTok) → `.protocole/prospects.json`
-- ⬜ Récapitulatif + budget montré avant lancement, puis exécution `--mode` explicite
+- ✅ `.protocole/prospects.json` repris d'AlertDeals (même cible) : LinkedIn + Instagram + TikTok actifs, mêmes comptes de niche, mode volume pré-rempli, `systeme.py` lancé
+- ⏸️ Lancement `weekly.py --mode volume` : objectif (ex. 1 000 prospects) et budget à valider par Nassim (règle du guide : récapitulatif + budget avant tout lancement)
 
 ## Étape 3 — Emails
-- ⬜ Vérifier s'il existe une vraie liste email. Sinon : ⏭️ ne pas lancer (règle du guide)
+- ⏭️ Aucune liste email marketing trouvée (l'app utilise Resend en transactionnel seulement) : agent Emails non lancé, conformément au guide
 
 ## Étape 4 — Concurrents
-- ⬜ `agent-concurrents` : `.protocole/concurrents.json`, `collect.py`, `initial_report.py` → fiches + `douleurs.md`
+- ✅ `agent-concurrents` : Prospelia (nouveau, concurrent direct), Inspectoo, Pistoneo, Deal Detector → `concurrents/*.md`. `douleurs.md` vide : aucun avis public (Trustpilot/Product Hunt) trouvé pour ces 4 outils
 
 ## Tâches planifiées (après validation des étapes)
 - ⬜ Créer les routines `autoprospect-<agent>-<fréquence>` (rythme à préciser par Nassim)
@@ -31,6 +31,14 @@ Légende : ⬜ à faire · 🔄 en cours · ✅ fait · ⏸️ en attente de Nas
 
 ## Journal
 - 2026-09-26 : lecture du guide, création de ce fichier, lancement de l'étape 1a.
+- 2026-09-26 : 1a terminé (profil + volumes réels), 1b terminé (PR #24), `.protocole/` créé (treg.json, seo.json, autorite.json), lancement de 1c.
+- 2026-09-26 : 1c terminé (brief Autorité), étape 4 terminée (fiches concurrents), étape 3 sautée (pas de liste), étape 2 préparée et en attente de validation. Dépense treg totale du jour : 0,062 $ (solde 10,53 $).
 
 ## Décisions en attente de Nassim
-- (aucune pour l'instant)
+- Auteur E-E-A-T des articles (Nassim ? un profil métier ?) : l'article est signé « l'équipe Auto-Prospect » en attendant.
+- Année de création et entité juridique (absentes du site) pour le profil et le schema Organization.
+- Accès en lecture à la base de l'app (`ads`, `messages`) pour des articles de statistiques (taux de réponse par canal, prix par marque).
+- Hub multi-produits : faut-il lier Auto-Prospect et AlertDeals entre eux (liens contextuels) ?
+- PR #24 à relire et fusionner.
+- Prospects : valider objectif + budget (proposition : 1 000 prospects en volume, plafond 3 $/semaine comme AlertDeals) pour lancer `weekly.py --mode volume`.
+- Tâches planifiées : rythme souhaité par agent (article hebdo ? mesure SEO lundi ? brief Autorité lundi ?) pour créer les routines `autoprospect-*`.

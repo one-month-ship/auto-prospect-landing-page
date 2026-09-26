@@ -1,0 +1,137 @@
+{
+  "date": "2026-09-26",
+  "mode": "treg",
+  "domaines": {
+    "auto-prospect.fr": {
+      "referring_domains": 1,
+      "domain_rank": 5,
+      "dofollow_backlinks": 0,
+      "backlinks": 1,
+      "source": "serpstat",
+      "mots_cles": {
+        "g_fr": [
+          {
+            "mot_cle": "prospection automobile",
+            "position": 10,
+            "volume": 320,
+            "trafic": 9.0,
+            "url": "https://auto-prospect.fr/"
+          },
+          {
+            "mot_cle": "auto prospect",
+            "position": 1,
+            "volume": 20,
+            "trafic": 2.0,
+            "url": "https://auto-prospect.fr/"
+          }
+        ]
+      },
+      "mots_cles_top20": 2,
+      "search_console": {
+        "clics": 17,
+        "clics_non_marque": 17,
+        "impressions": 1241,
+        "requetes": 109,
+        "debut": "2026-08-27",
+        "fin": "2026-09-23"
+      }
+    }
+  },
+  "concurrents": {
+    "inspectoo.fr": {
+      "referring_domains": 2,
+      "domain_rank": 5,
+      "dofollow_backlinks": 2,
+      "backlinks": 2,
+      "source": "serpstat",
+      "mots_cles": {
+        "g_fr": [
+          {
+            "mot_cle": "prix vo",
+            "position": 4,
+            "volume": 4400,
+            "trafic": 560.0,
+            "url": "https://inspectoo.fr/guides"
+          },
+          {
+            "mot_cle": "vente vo",
+            "position": 17,
+            "volume": 9900,
+            "trafic": 74.0,
+            "url": "https://inspectoo.fr/guides"
+          },
+          {
+            "mot_cle": "fiabilite moteur",
+            "position": 9,
+            "volume": 880,
+            "trafic": 39.0,
+            "url": "https://inspectoo.fr/fiabilite-moteur"
+          },
+          {
+            "mot_cle": "fiche auto fiabilité",
+            "position": 18,
+            "volume": 590,
+            "trafic": 4.0,
+            "url": "https://inspectoo.fr/fiabilite-moteur"
+          },
+          {
+            "mot_cle": "marchand automobile",
+            "position": 14,
+            "volume": 210,
+            "trafic": 1.0,
+            "url": "https://inspectoo.fr/guides"
+          },
+          {
+            "mot_cle": "prix marchand",
+            "position": 11,
+            "volume": 30,
+            "trafic": 0.0,
+            "url": "https://inspectoo.fr/guides"
+          },
+          {
+            "mot_cle": "avis moteur babin",
+            "position": 12,
+            "volume": 90,
+            "trafic": 0.0,
+            "url": "https://inspectoo.fr/fiabilite-moteur"
+          },
+          {
+            "mot_cle": "classement fiabilité moteur",
+            "position": 16,
+            "volume": 30,
+            "trafic": 0.0,
+            "url": "https://inspectoo.fr/fiabilite-moteur"
+          },
+          {
+            "mot_cle": "vente vo marchand",
+            "position": 18,
+            "volume": 30,
+            "trafic": 0.0,
+            "url": "https://inspectoo.fr/guides"
+          }
+        ]
+      },
+      "mots_cles_top20": 9
+    },
+    "pistoneo.com": {
+      "referring_domains": 1,
+      "domain_rank": 5,
+      "dofollow_backlinks": 4,
+      "backlinks": 4,
+      "source": "serpstat",
+      "mots_cles": {
+        "g_fr": []
+      },
+      "mots_cles_top20": 0
+    }
+  },
+  "erreurs": [],
+  "recu_treg": {
+    "appels": 7,
+    "cout_usd": 0.0085,
+    "erreurs": [],
+    "alertes": [],
+    "solde_usd": 10.58897,
+    "budget_usd": 0.5
+  }
+}
