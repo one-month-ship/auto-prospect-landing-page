@@ -8,6 +8,8 @@ dist/
 .astro/
 
 # Environnement
+.env.local
+.env.*.local
 
 # Divers
 .DS_Store
@@ -17,3 +19,6 @@ dist/
 *.local.md
 .protocole/
 prospects/
+
+.env.local
+.env*.local
