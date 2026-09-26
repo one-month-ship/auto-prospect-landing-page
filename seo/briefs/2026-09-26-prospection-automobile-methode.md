@@ -15,7 +15,7 @@ Article produit le 2026-09-26 (item-001, lot-2026-09-26), skill `foundational-ar
 
 ## Réserves [FACT-CHECK HUMAIN]
 - [FACT-CHECK HUMAIN] Tableau « canal / réponse observée » : formulé comme observation qualitative issue de l'usage d'Auto-Prospect, sans pourcentage. Si Nassim dispose de taux de réponse réels par canal (tables `messages` / `leads` de l'app), les ajouter ferait un vrai article de statistiques ; sinon laisser tel quel.
-- Auteur : Nassim Ezzakraoui validé le 2026-09-26, schema Person posé. Reste à créer une page auteur sur le site et à ajouter le profil LinkedIn en sameAs.
+- Auteur : « L'équipe Auto-Prospect » (persona simple, décision de Nassim le 2026-09-26), schema author Organization. Pas de page auteur à créer.
 - [FACT-CHECK HUMAIN] Phrase « la prospection manuelle occupe facilement une demi-journée quotidienne » : ordre de grandeur, pas une mesure. Le témoignage du site parle de « 3 heures par jour gagnées ». Reformuler si Nassim préfère un chiffre canonique.
 - [FACT-CHECK HUMAIN] « Un professionnel qui se présente comme un particulier prend un risque juridique » : affirmation prudente (pratique commerciale trompeuse), sans citation de texte de loi. À valider ou à adoucir.
 

@@ -32,11 +32,11 @@ Légende : ⬜ à faire · 🔄 en cours · ✅ fait · ⏸️ en attente de Nas
 ## Journal
 - 2026-09-26 : lecture du guide, création de ce fichier, lancement de l'étape 1a.
 - 2026-09-26 : 1a terminé (profil + volumes réels), 1b terminé (PR #24), `.protocole/` créé (treg.json, seo.json, autorite.json), lancement de 1c.
-- 2026-09-26 (suite) : réponses de Nassim intégrées : PR ok, prospects en pause, auteur = Nassim, routines créées comme AlertDeals, accès DB lecture seule accepté.
+- 2026-09-26 (suite) : réponses de Nassim intégrées : PR ok, prospects en pause, auteur = « L'équipe Auto-Prospect », routines créées comme AlertDeals, accès DB lecture seule accepté.
 - 2026-09-26 : 1c terminé (brief Autorité), étape 4 terminée (fiches concurrents), étape 3 sautée (pas de liste), étape 2 préparée et en attente de validation. Dépense treg totale du jour : 0,062 $ (solde 10,53 $).
 
 ## Décisions en attente de Nassim
-- ✅ Auteur E-E-A-T : Nassim Ezzakraoui (validé 2026-09-26). Reste : bio enrichie + LinkedIn + page auteur.
+- ✅ Auteur E-E-A-T : « L'équipe Auto-Prospect », persona simple (décision Nassim 2026-09-26).
 - Année de création et entité juridique (absentes du site) pour le profil et le schema Organization.
 - Accès en lecture à la base de l'app (`ads`, `messages`) pour des articles de statistiques (taux de réponse par canal, prix par marque).
 - Hub multi-produits : faut-il lier Auto-Prospect et AlertDeals entre eux (liens contextuels) ?

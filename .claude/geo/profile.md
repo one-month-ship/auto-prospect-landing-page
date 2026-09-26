@@ -122,10 +122,10 @@ Voir `competitors.md` dans ce dossier. Résumé (repris du projet frère AlertDe
 
 ## 12. Auteur (E-E-A-T)
 
-- **Nom** : Nassim Ezzakraoui (validé le 2026-09-26)
-- **Bio en deux lignes** : Fondateur et développeur d'Auto-Prospect, outil de prospection automobile automatisée utilisé par des marchands VO et mandataires auto en France. (À enrichir par Nassim : parcours, années d'expérience.)
-- **Page auteur** (URL) : à créer
-- **Profils publics à lier** (sameAs) : https://nassim-dev.netlify.app/fr ; profil LinkedIn à ajouter
+- **Nom** : L'équipe Auto-Prospect (persona simple, choix de Nassim le 2026-09-26 ; pas d'auteur individuel)
+- **Bio en deux lignes** : L'équipe d'Auto-Prospect, outil de prospection automobile automatisée utilisé par des marchands VO et mandataires auto en France.
+- **Page auteur** (URL) : aucune ; le schema `author` est une `Organization` (nom « L'équipe Auto-Prospect »)
+- **Profils publics à lier** (sameAs) : aucun
 
 ## 13. Multi-produits (optionnel)
 
