@@ -21,6 +21,14 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "statistiques-annonces-voitures-occasion-particuliers-2026",
+    title: "16 statistiques sur les annonces de voitures d'occasion de particuliers en 2026",
+    description:
+      "Prix médian, kilométrage, âge, part des bonnes affaires, baisses de prix, marques, carburants : 16 chiffres issus de 35 122 annonces de particuliers relevées sur Leboncoin, AutoScout24 et La Centrale entre juin et septembre 2026.",
+    category: "Statistiques",
+    datePublished: "2026-09-26",
+  },
+  {
     slug: "prospection-automobile-methode",
     title: "Prospection automobile : la méthode pour trouver et contacter des vendeurs particuliers",
     description:

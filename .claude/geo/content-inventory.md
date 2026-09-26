@@ -20,6 +20,7 @@
 | `/comparatif-outils-pige-automobile` | BOFU (comparatif anonyme) | logiciel de pige automobile | fr | 2026-09-01 | 2026-09 | footer, solutions/pige | tarifs | validé (aucun concurrent nommé) |
 | `/blog` | index blog | — | fr | 2026-09-26 (PR) | 2026-09-26 | footer | articles | validé |
 | `/blog/prospection-automobile-methode` | fond (MOFU) | prospection automobile (méthode) → hub `/fonctionnalites/recherche-annonces-automatisee` | fr | 2026-09-26 (PR, non fusionnée) | 2026-09-26 | `/blog`, footer | hub, analyse-prix, contact-multicanal, crm, solutions/pige | brief `seo/briefs/2026-09-26-prospection-automobile-methode.md` |
+| `/blog/statistiques-annonces-voitures-occasion-particuliers-2026` | stats (link magnet, data first-party) | statistiques marché VO particuliers → hub `/fonctionnalites/analyse-prix-marche` | fr | 2026-09-26 (PR #24) | 2026-09-26 | `/blog`, article méthode | analyse-prix, article méthode | brief `seo/briefs/2026-09-26-statistiques-annonces-particuliers.md` |
 | `/conditions-utilisation`, `/confidentialite`, `/cookies` | légal | — | fr | 2025 | 2026-09 | footer | — | — |
 
 ## Hubs

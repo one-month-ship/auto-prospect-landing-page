@@ -1,0 +1,443 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import "../../styles/global.css";
+
+const title =
+  "16 statistiques sur les annonces de voitures d'occasion de particuliers en 2026 (données Auto-Prospect)";
+const description =
+  "Prix médian, kilométrage, âge, part des bonnes affaires, baisses de prix, marques, carburants : 16 chiffres issus de 35 122 annonces de particuliers relevées sur Leboncoin, AutoScout24 et La Centrale entre juin et septembre 2026.";
+
+const datePublished = "2026-09-26";
+const dateModified = "2026-09-26";
+
+const siteOrigin = Astro.site?.origin ?? "https://auto-prospect.fr";
+const canonical = `${siteOrigin}/blog/statistiques-annonces-voitures-occasion-particuliers-2026`;
+
+// Toutes les valeurs ci-dessous proviennent de requêtes agrégées sur la base Auto-Prospect
+// (table des annonces), fenêtre du 1er juin au 25 septembre 2026, 35 122 annonces.
+const periode = "du 1er juin au 25 septembre 2026";
+const echantillon = "35 122 annonces";
+
+const pointsCles = [
+  "Le prix médian d'une voiture d'occasion vendue par un particulier est de 9 300 € (moyenne : 13 319 €).",
+  "Le kilométrage médian est de 136 000 km et l'âge médian de 11 ans ; 43,9 % des annonces dépassent 150 000 km.",
+  "30,3 % des annonces dont le prix a pu être estimé sont sous le prix du marché (bonne ou excellente affaire).",
+  "9,9 % des annonces ont connu une baisse de prix pendant leur diffusion ; 23,9 % pour les véhicules de 2022 et plus.",
+  "Sur Leboncoin, moins d'une annonce sur deux (47,9 %) affiche un numéro de téléphone.",
+  "Le diesel représente encore 53,1 % des annonces de particuliers, contre 6,5 % pour l'hybride et 0,2 % pour l'électrique.",
+];
+
+const parAge = [
+  { tranche: "Avant 2007", part: "15,0 %", prix: "2 500 €", km: "202 000 km", bonneAffaire: "46,1 %", baisse: "4,7 %" },
+  { tranche: "2007 à 2011", part: "19,6 %", prix: "3 800 €", km: "200 000 km", bonneAffaire: "41,4 %", baisse: "4,0 %" },
+  { tranche: "2012 à 2016", part: "22,5 %", prix: "7 800 €", km: "162 500 km", bonneAffaire: "34,0 %", baisse: "6,5 %" },
+  { tranche: "2017 à 2021", part: "25,4 %", prix: "14 950 €", km: "101 000 km", bonneAffaire: "27,2 %", baisse: "11,0 %" },
+  { tranche: "2022 et après", part: "17,5 %", prix: "22 990 €", km: "31 150 km", bonneAffaire: "23,3 %", baisse: "23,9 %" },
+];
+
+const positions = [
+  { position: "Trop cher (nettement au-dessus du marché)", part: "1,1 %" },
+  { position: "Assez cher (légèrement au-dessus)", part: "28,0 %" },
+  { position: "Dans le marché", part: "31,5 %" },
+  { position: "Bonne affaire", part: "17,7 %" },
+  { position: "Excellente affaire", part: "8,7 %" },
+  { position: "Estimation indisponible", part: "12,9 %" },
+];
+
+const marques = [
+  { marque: "Peugeot", part: "15,2 %", prix: "6 300 €", km: "144 000 km" },
+  { marque: "Renault", part: "14,0 %", prix: "6 000 €", km: "142 000 km" },
+  { marque: "Volkswagen", part: "9,8 %", prix: "11 000 €", km: "148 000 km" },
+  { marque: "Citroën", part: "8,8 %", prix: "4 900 €", km: "154 000 km" },
+  { marque: "BMW", part: "8,1 %", prix: "13 500 €", km: "164 800 km" },
+  { marque: "Mercedes-Benz", part: "6,6 %", prix: "17 990 €", km: "135 000 km" },
+  { marque: "Audi", part: "6,5 %", prix: "14 925 €", km: "150 000 km" },
+  { marque: "Ford", part: "3,3 %", prix: "7 300 €", km: "130 500 km" },
+  { marque: "Opel", part: "2,9 %", prix: "4 600 €", km: "154 000 km" },
+  { marque: "Toyota", part: "2,5 %", prix: "13 992 €", km: "92 000 km" },
+  { marque: "Mini", part: "2,2 %", prix: "11 000 €", km: "115 000 km" },
+  { marque: "Fiat", part: "1,9 %", prix: "7 700 €", km: "99 500 km" },
+];
+
+const carburants = [
+  { carburant: "Diesel", part: "53,1 %", prix: "6 800 €", km: "180 000 km", age: "13 ans" },
+  { carburant: "Essence", part: "39,4 %", prix: "10 000 €", km: "101 500 km", age: "10 ans" },
+  { carburant: "Hybride", part: "6,5 %", prix: "22 999 €", km: "44 000 km", age: "3 ans" },
+  { carburant: "GPL", part: "0,7 %", prix: "13 900 €", km: "n. c.", age: "n. c." },
+  { carburant: "Électrique", part: "0,2 %", prix: "22 948 €", km: "n. c.", age: "n. c." },
+];
+
+const faq = [
+  {
+    q: "Quel est le prix moyen d'une voiture d'occasion vendue par un particulier en 2026 ?",
+    a: "Selon Auto-Prospect (2026), sur 35 122 annonces de particuliers relevées entre juin et septembre 2026 sur Leboncoin, AutoScout24 et La Centrale, le prix moyen est de 13 319 € et le prix médian de 9 300 €. La médiane est plus représentative : la moitié des véhicules sont proposés sous 9 300 €, et 29,5 % sous 5 000 €.",
+  },
+  {
+    q: "Quelle part des annonces de particuliers sont des bonnes affaires ?",
+    a: "Parmi les annonces dont le prix a pu être comparé au marché, 30,3 % sont classées bonne affaire ou excellente affaire, c'est-à-dire sous le prix de véhicules comparables. Cette part monte à 46,1 % pour les véhicules d'avant 2007 et descend à 23,3 % pour ceux de 2022 et après.",
+  },
+  {
+    q: "Combien de kilomètres a une voiture d'occasion de particulier en moyenne ?",
+    a: "Le kilométrage médian est de 136 000 km. 43,9 % des annonces dépassent 150 000 km. Le kilométrage dépend fortement du carburant : 180 000 km en médiane pour un diesel, 101 500 km pour une essence, 44 000 km pour une hybride.",
+  },
+  {
+    q: "Les particuliers baissent-ils souvent le prix de leur annonce ?",
+    a: "Sur la période, 9,9 % des annonces ont enregistré au moins une baisse de prix. Le phénomène est concentré sur les véhicules récents : 23,9 % des annonces de véhicules de 2022 et plus ont baissé, contre 4,7 % pour les véhicules d'avant 2007.",
+  },
+  {
+    q: "Quelle part des vendeurs particuliers affichent leur numéro de téléphone ?",
+    a: "Sur Leboncoin, 47,9 % des annonces de particuliers affichent un numéro de téléphone, et 17,8 % un numéro joignable sur WhatsApp. Pour plus de la moitié des annonces, le premier contact passe donc obligatoirement par la messagerie de la plateforme.",
+  },
+  {
+    q: "Quelles marques les particuliers vendent-ils le plus ?",
+    a: "Peugeot (15,2 %) et Renault (14,0 %) représentent près de trois annonces sur dix, suivies de Volkswagen (9,8 %), Citroën (8,8 %), BMW (8,1 %), Mercedes-Benz (6,6 %) et Audi (6,5 %). Les trois marques allemandes premium pèsent ensemble 21,2 % des annonces.",
+  },
+];
+
+const sources = [
+  {
+    label: "Auto-Prospect, base des annonces détectées, 35 122 annonces de particuliers du 1er juin au 25 septembre 2026 (données first-party)",
+    url: canonical,
+  },
+  {
+    label: "AAA Data, « Marché automobile français 2025 : les grandes tendances » (juin 2026)",
+    url: "https://www.aaa-data.fr/actualites/marche-automobile-francais-2025-grandes-tendances/",
+  },
+  {
+    label: "leboncoin, espace presse Automobile, communiqué du 2 janvier 2026",
+    url: "https://presse.leboncoincorporate.com/automobile.html",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "Article",
+    "headline": "16 statistiques sur les annonces de voitures d'occasion de particuliers en 2026",
+    "description": description,
+    "url": canonical,
+    "mainEntityOfPage": canonical,
+    "datePublished": datePublished,
+    "dateModified": dateModified,
+    "inLanguage": "fr-FR",
+    "author": { "@type": "Organization", "name": "L'équipe Auto-Prospect", "url": siteOrigin },
+    "publisher": { "@type": "Organization", "name": "Auto-Prospect", "url": siteOrigin, "logo": `${siteOrigin}/logo.svg` },
+  },
+  {
+    "@type": "Dataset",
+    "name": "Annonces de voitures d'occasion de particuliers en France, juin à septembre 2026 (Auto-Prospect)",
+    "description": "Agrégats calculés sur 35 122 annonces de véhicules de particuliers détectées par Auto-Prospect sur Leboncoin, AutoScout24 et La Centrale entre le 1er juin et le 25 septembre 2026 : prix, kilométrage, âge, position par rapport au marché, baisses de prix, marques, carburants, boîte de vitesses.",
+    "url": canonical,
+    "creator": { "@type": "Organization", "name": "Auto-Prospect", "url": siteOrigin },
+    "temporalCoverage": "2026-06-01/2026-09-25",
+    "spatialCoverage": "France",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "isAccessibleForFree": true,
+    "variableMeasured": ["prix", "kilométrage", "année modèle", "position marché", "baisse de prix", "marque", "carburant", "boîte de vitesses"],
+  },
+  {
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  },
+  {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `${siteOrigin}/` },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteOrigin}/blog` },
+      { "@type": "ListItem", "position": 3, "name": "Statistiques annonces VO particuliers 2026", "item": canonical },
+    ],
+  },
+];
+
+const thClass = "py-3 pr-4 font-medium";
+const tdClass = "py-3 pr-4";
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="mx-auto max-w-3xl px-4 pt-32 pb-20 sm:px-6 lg:px-8">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent">
+      <a href="/blog" class="text-text-secondary transition-colors hover:text-text">Blog</a>
+      <span class="text-text-secondary"> / </span>Statistiques
+    </p>
+    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">
+      16 statistiques sur les annonces de voitures d'occasion de particuliers en 2026
+    </h1>
+    <p class="mt-4 text-sm text-text-secondary">
+      Par <span class="font-semibold text-text">L'équipe Auto-Prospect</span>. Publié le 26 septembre 2026. Données
+      : {echantillon} de particuliers, {periode}.
+    </p>
+
+    <div class="mt-8 rounded-2xl border border-border bg-card p-6">
+      <p class="text-sm font-semibold">Points clés à retenir</p>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-text-secondary">
+        {pointsCles.map((p) => <li>{p}</li>)}
+      </ul>
+      <p class="mt-3 text-xs text-text-secondary">
+        Source pour chaque chiffre : Auto-Prospect (2026), {echantillon} de particuliers relevées sur Leboncoin,
+        AutoScout24 et La Centrale {periode}. Méthodologie et limites en bas de page.
+      </p>
+    </div>
+
+    <nav class="mt-8 text-sm text-text-secondary">
+      <p class="font-semibold text-text">Sommaire</p>
+      <ol class="mt-2 list-decimal space-y-1 pl-5">
+        <li><a href="#prix" class="hover:text-accent">Prix, kilométrage et âge</a></li>
+        <li><a href="#age" class="hover:text-accent">Par tranche d'âge du véhicule</a></li>
+        <li><a href="#marche" class="hover:text-accent">Position par rapport au marché et bonnes affaires</a></li>
+        <li><a href="#dynamique" class="hover:text-accent">Baisses de prix, remises en ligne, urgence</a></li>
+        <li><a href="#contact" class="hover:text-accent">Joignabilité des vendeurs</a></li>
+        <li><a href="#marques" class="hover:text-accent">Marques, carburants, boîtes</a></li>
+        <li><a href="#methodologie" class="hover:text-accent">Méthodologie et sources</a></li>
+      </ol>
+    </nav>
+
+    <div class="mt-10 space-y-12 text-text-secondary">
+      <section id="prix">
+        <h2 class="text-xl font-semibold text-text">Combien coûte une voiture d'occasion vendue par un particulier ?</h2>
+        <div class="mt-4 grid gap-3 sm:grid-cols-3">
+          <div class="rounded-xl border border-border bg-card p-4">
+            <p class="text-sm">Prix médian</p>
+            <p class="mt-1 font-mono text-2xl font-bold text-text">9 300 €</p>
+            <p class="mt-1 text-xs">moyenne : 13 319 €</p>
+          </div>
+          <div class="rounded-xl border border-border bg-card p-4">
+            <p class="text-sm">Kilométrage médian</p>
+            <p class="mt-1 font-mono text-2xl font-bold text-text">136 000 km</p>
+            <p class="mt-1 text-xs">43,9 % au-delà de 150 000 km</p>
+          </div>
+          <div class="rounded-xl border border-border bg-card p-4">
+            <p class="text-sm">Âge médian</p>
+            <p class="mt-1 font-mono text-2xl font-bold text-text">11 ans</p>
+            <p class="mt-1 text-xs">année modèle médiane : 2015</p>
+          </div>
+        </div>
+        <p class="mt-4 leading-relaxed">
+          <strong class="text-text">1.</strong> Le prix médian d'une voiture d'occasion proposée par un particulier est de
+          <strong class="text-text">9 300 €</strong> (Auto-Prospect, 2026, {echantillon}). La moyenne, tirée vers le haut par
+          les véhicules récents, s'établit à 13 319 €.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">2.</strong> <strong class="text-text">29,5 %</strong> des annonces sont proposées sous
+          5 000 €, et <strong class="text-text">20,1 %</strong> à 20 000 € ou plus. Le marché des particuliers est donc
+          d'abord un marché de véhicules anciens à petit prix, avec un segment récent minoritaire mais bien présent.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">3.</strong> Le kilométrage médian est de <strong class="text-text">136 000 km</strong> et
+          <strong class="text-text">43,9 %</strong> des véhicules dépassent 150 000 km. L'âge médian est de
+          <strong class="text-text">11 ans</strong>. Ces trois chiffres sont cohérents avec le marché national : selon AAA Data
+          (2026), les véhicules de plus de cinq ans s'échangent principalement entre particuliers, à 55 %, tandis que les
+          moins de cinq ans sont vendus à 78 % par des professionnels.
+        </p>
+      </section>
+
+      <section id="age">
+        <h2 class="text-xl font-semibold text-text">Comment le prix et le kilométrage évoluent-ils avec l'âge du véhicule ?</h2>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-border">
+                <th class={thClass}>Année modèle</th><th class={thClass}>Part des annonces</th><th class={thClass}>Prix médian</th><th class={thClass}>Km médian</th><th class={thClass}>Bonnes affaires</th><th class={thClass}>Baisse de prix</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              {parAge.map((r) => (
+                <tr>
+                  <td class={`${tdClass} font-medium text-text`}>{r.tranche}</td><td class={tdClass}>{r.part}</td><td class={tdClass}>{r.prix}</td><td class={tdClass}>{r.km}</td><td class={tdClass}>{r.bonneAffaire}</td><td class={tdClass}>{r.baisse}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-xs">
+          « Bonnes affaires » : part des annonces classées bonne ou excellente affaire parmi celles dont le prix a pu être
+          estimé. « Baisse de prix » : part des annonces ayant enregistré au moins une baisse pendant la période.
+        </p>
+        <p class="mt-4 leading-relaxed">
+          <strong class="text-text">4.</strong> Les véhicules de 2017 à 2021 forment la tranche la plus fournie
+          (<strong class="text-text">25,4 %</strong> des annonces), à un prix médian de 14 950 € pour 101 000 km. Les
+          véhicules d'avant 2012 pèsent ensemble 34,6 % des annonces mais se négocient sous 4 000 € en médiane, à 200 000 km.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">5.</strong> Plus le véhicule est ancien, plus la part de bonnes affaires est élevée :
+          <strong class="text-text">46,1 %</strong> avant 2007 contre <strong class="text-text">23,3 %</strong> à partir de
+          2022. Les particuliers estiment moins bien la valeur d'un véhicule ancien, et sont plus enclins à le brader.
+        </p>
+      </section>
+
+      <section id="marche">
+        <h2 class="text-xl font-semibold text-text">Quelle part des annonces sont sous le prix du marché ?</h2>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead><tr class="border-b border-border"><th class={thClass}>Position par rapport au marché</th><th class={thClass}>Part des annonces</th></tr></thead>
+            <tbody class="divide-y divide-border">
+              {positions.map((r) => (<tr><td class={`${tdClass} font-medium text-text`}>{r.position}</td><td class={tdClass}>{r.part}</td></tr>))}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 leading-relaxed">
+          <strong class="text-text">6.</strong> Parmi les annonces dont le prix a pu être comparé à des véhicules équivalents
+          (87,1 % de l'échantillon), <strong class="text-text">30,3 %</strong> sont sous le marché : 20,3 % en bonne
+          affaire et 10,0 % en excellente affaire. Ramené à l'ensemble des annonces, cela représente 26,4 %.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">7.</strong> À l'inverse, seules <strong class="text-text">1,1 %</strong> des annonces sont
+          nettement au-dessus du marché, et 28,0 % légèrement au-dessus. Le particulier surestime rarement beaucoup ; il
+          surestime souvent un peu. C'est sur ces 28 % que la négociation se joue, et sur les 30 % sous le marché que la
+          rapidité de contact fait la différence.
+        </p>
+      </section>
+
+      <section id="dynamique">
+        <h2 class="text-xl font-semibold text-text">Baisses de prix, remises en ligne, urgence : que font les vendeurs pendant la diffusion ?</h2>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">8.</strong> <strong class="text-text">9,9 %</strong> des annonces ont enregistré au moins
+          une baisse de prix pendant la période. La baisse est un phénomène de véhicule récent :
+          <strong class="text-text">23,9 %</strong> des annonces de 2022 et plus ont baissé, contre 11,0 % pour 2017 à 2021 et
+          4,7 % avant 2007. Un vendeur de véhicule récent part d'un prix proche du neuf et ajuste ; un vendeur de véhicule
+          ancien affiche d'emblée un prix plancher.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">9.</strong> Sur Leboncoin, <strong class="text-text">16,8 %</strong> des annonces ont été
+          remises en ligne au moins une fois (annonce supprimée puis republiée pour remonter en tête des résultats).
+        </p>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">10.</strong> Seules <strong class="text-text">0,6 %</strong> des annonces sont marquées
+          « urgent » par le vendeur. L'option est marginale et ne constitue pas un signal exploitable de bonne affaire.
+        </p>
+      </section>
+
+      <section id="contact">
+        <h2 class="text-xl font-semibold text-text">Les vendeurs particuliers sont-ils joignables par téléphone ?</h2>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">11.</strong> Sur Leboncoin (32 436 annonces de l'échantillon),
+          <strong class="text-text">47,9 %</strong> des annonces de particuliers affichent un numéro de téléphone. Pour plus
+          d'une annonce sur deux, le premier contact passe obligatoirement par la messagerie de la plateforme.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">12.</strong> <strong class="text-text">17,8 %</strong> des annonces Leboncoin affichent un
+          numéro joignable sur WhatsApp. Sur La Centrale, le numéro est affiché sur 100 % des annonces de l'échantillon, et
+          sur AutoScout24 sur 65,9 %.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Pour un professionnel qui prospecte les vendeurs particuliers, la conséquence est directe : un dispositif de
+          contact limité au téléphone ignore la moitié du marché. La méthode complète est détaillée dans notre guide
+          <a href="/blog/prospection-automobile-methode" class="text-accent hover:underline">Prospection automobile : la méthode pour trouver et contacter des vendeurs particuliers</a>.
+        </p>
+      </section>
+
+      <section id="marques">
+        <h2 class="text-xl font-semibold text-text">Quelles marques, quels carburants, quelles boîtes ?</h2>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead><tr class="border-b border-border"><th class={thClass}>Marque</th><th class={thClass}>Part des annonces</th><th class={thClass}>Prix médian</th><th class={thClass}>Km médian</th></tr></thead>
+            <tbody class="divide-y divide-border">
+              {marques.map((r) => (<tr><td class={`${tdClass} font-medium text-text`}>{r.marque}</td><td class={tdClass}>{r.part}</td><td class={tdClass}>{r.prix}</td><td class={tdClass}>{r.km}</td></tr>))}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 leading-relaxed">
+          <strong class="text-text">13.</strong> Peugeot (<strong class="text-text">15,2 %</strong>) et Renault
+          (<strong class="text-text">14,0 %</strong>) représentent près de trois annonces de particuliers sur dix, à un prix
+          médian de 6 000 à 6 300 €. Les trois marques allemandes premium (BMW, Mercedes-Benz, Audi) pèsent ensemble
+          <strong class="text-text">21,2 %</strong> des annonces, à des prix médians de 13 500 à 17 990 €. 104 marques
+          différentes apparaissent dans l'échantillon.
+        </p>
+        <div class="mt-6 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead><tr class="border-b border-border"><th class={thClass}>Carburant</th><th class={thClass}>Part des annonces</th><th class={thClass}>Prix médian</th><th class={thClass}>Km médian</th><th class={thClass}>Âge médian</th></tr></thead>
+            <tbody class="divide-y divide-border">
+              {carburants.map((r) => (<tr><td class={`${tdClass} font-medium text-text`}>{r.carburant}</td><td class={tdClass}>{r.part}</td><td class={tdClass}>{r.prix}</td><td class={tdClass}>{r.km}</td><td class={tdClass}>{r.age}</td></tr>))}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 leading-relaxed">
+          <strong class="text-text">14.</strong> Le diesel représente <strong class="text-text">53,1 %</strong> des annonces
+          de particuliers, contre 39,4 % pour l'essence. À titre de comparaison, AAA Data (2026) relève une part de marché
+          du diesel de 45 % sur l'ensemble des transactions d'occasion en 2025 : le diesel est surreprésenté chez les
+          particuliers, parce qu'il domine le parc ancien (13 ans et 180 000 km en médiane dans nos annonces).
+        </p>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">15.</strong> L'hybride ne pèse que <strong class="text-text">6,5 %</strong> des annonces
+          et l'électrique <strong class="text-text">0,2 %</strong>. Les hybrides mises en vente par des particuliers sont
+          récentes (3 ans et 44 000 km en médiane) et chères (22 999 € en médiane) : c'est le segment où le particulier
+          revend un véhicule presque neuf.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">16.</strong> <strong class="text-text">60,5 %</strong> des annonces concernent une boîte
+          manuelle, 39,5 % une boîte automatique.
+        </p>
+      </section>
+
+      <aside class="rounded-2xl border border-accent/30 bg-gradient-to-b from-accent/10 to-transparent p-6 sm:p-8">
+        <p class="text-lg font-bold text-text">Ces chiffres viennent de la prospection quotidienne de nos clients</p>
+        <p class="mt-2 leading-relaxed">
+          Auto-Prospect détecte les annonces de particuliers en temps réel, classe chaque annonce par rapport au marché et
+          contacte les vendeurs sur le canal disponible : messagerie Leboncoin, WhatsApp ou message vocal. Voir la
+          <a href="/fonctionnalites/analyse-prix-marche" class="text-accent hover:underline">détection des véhicules sous-cotés</a>.
+        </p>
+      </aside>
+
+      <section>
+        <h2 class="text-xl font-semibold text-text">Questions fréquentes</h2>
+        <div class="mt-4">
+          {faq.map((f) => (
+            <details class="group border-b border-border py-2">
+              <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium text-text sm:text-base [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span class="ml-4 text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+              </summary>
+              <p class="pb-4 text-sm leading-relaxed">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section id="methodologie">
+        <h2 class="text-xl font-semibold text-text">Méthodologie et sources</h2>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">Jeu de données.</strong> {echantillon} de véhicules de particuliers détectées par
+          Auto-Prospect {periode} sur Leboncoin (32 436 annonces, 92,4 %), La Centrale (1 530) et AutoScout24 (1 156),
+          réparties sur 1 042 communes et 104 marques. Les agrégats ont été calculés le 26 septembre 2026 par requêtes sur
+          la base de données du service. Aucune donnée personnelle n'est publiée.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">Définitions.</strong> La position par rapport au marché compare le prix affiché à celui de
+          véhicules comparables (modèle, année, kilométrage, région) ; elle est indisponible pour 12,9 % des annonces. Une
+          « baisse de prix » est une diminution du prix affiché observée entre deux relevés de la même annonce. Une « remise
+          en ligne » est une annonce supprimée puis republiée par le même vendeur. Les médianes sont préférées aux moyennes,
+          moins sensibles aux valeurs extrêmes.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">Limites.</strong> Les annonces sont celles qui correspondent aux critères de recherche
+          des professionnels utilisateurs d'Auto-Prospect (marques, modèles, zones, budgets). L'échantillon n'est donc pas un
+          tirage aléatoire du marché français : les segments recherchés par les marchands et mandataires y sont
+          surreprésentés. Leboncoin représente 92,4 % de l'échantillon ; les chiffres par plateforme pour La Centrale et
+          AutoScout24 portent sur de petits effectifs. Les indicateurs de baisse de prix et de remise en ligne ne sont
+          fiables que sur Leboncoin et sont présentés sur cette seule plateforme quand c'est précisé.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          <strong class="text-text">Réutilisation.</strong> Ces chiffres peuvent être cités librement avec la mention
+          « Auto-Prospect (2026) » et un lien vers cette page. Mise à jour prévue chaque trimestre.
+        </p>
+        <ul class="mt-4 list-disc space-y-1 pl-5 text-sm">
+          {sources.map((s) => (<li><a href={s.url} class="text-accent hover:underline">{s.label}</a></li>))}
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <SubPageCTA
+    title="Repérez les 30 % d'annonces sous le marché avant les autres"
+    subtitle="Détection en temps réel, analyse prix vs marché et contact automatique des vendeurs, dès 69 € HT/mois. Essai gratuit 5 jours."
+  />
+  <Footer />
+  <CalendlyWidget />
+</Layout>

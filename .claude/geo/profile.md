@@ -78,13 +78,13 @@ Voir `competitors.md` dans ce dossier. Résumé (repris du projet frère AlertDe
 
 ## 8. Data first-party
 
-- **Datasets disponibles** (déduits du schéma Drizzle de `auto-prospect-app/packages/db`) `[À CONFIRMER]` :
+- **Datasets disponibles** (schéma Drizzle de `auto-prospect-app/packages/db` ; volumes constatés le 2026-09-26 : environ 36 700 annonces, 15 500 leads, 1 150 messages, 8 recherches) :
   - `ads` : annonces collectées sur les 3 marketplaces (source, marque, modèle, année, km, carburant, boîte, prix, fourchette prix marché min/max, position marché, département, dates de publication, reposts, baisses de prix)
   - `leads` / `messages` / `leboncoin_message_run` : contacts envoyés par canal et suites données (taux de réponse par canal potentiellement calculable)
   - `hunts` : critères de recherche des clients (quelles marques/zones les pros ciblent)
-- **Comment y accéder en lecture** : base Supabase Postgres de l'app, hors de ce dépôt ; accès en lecture à demander à Nassim (requête SQL ou export CSV agrégé, jamais de données personnelles)
+- **Comment y accéder en lecture** : rôle Postgres `autoprospect_readonly` (lecture seule, tables `ads`, `messages`, `leads`, `hunts`), URL dans `.env.local` du site sous `SUPABASE_READONLY_URL` (hors git). Utiliser `psql "$SUPABASE_READONLY_URL"` avec des requêtes agrégées uniquement, jamais d'export de données personnelles
 - **Chiffres canoniques déjà publiés** : « 273 professionnels », « 3x plus de deals », « 3 heures par jour gagnées » (témoignage), « 69 € HT/mois annuel / 89 € HT sans engagement », « 0,19 € HT par vocal »
-- **Études ou pages de données déjà en ligne** : aucune
+- **Études ou pages de données déjà en ligne** : `/blog/statistiques-annonces-voitures-occasion-particuliers-2026` (PR #24, 2026-09-26). Chiffres canoniques à réutiliser à l'identique : 35 122 annonces (1er juin → 25 sept. 2026), prix médian 9 300 €, km médian 136 000, âge médian 11 ans, 30,3 % de bonnes affaires parmi les annonces estimées, 9,9 % de baisses de prix, 47,9 % d'annonces Leboncoin avec téléphone
 
 > Ne jamais mettre d'identifiant de base, de clé ou de token ici. Ce fichier est versionné.
 
