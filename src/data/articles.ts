@@ -21,6 +21,14 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "crm-automobile-marchand-vo",
+    title: "CRM automobile pour marchand VO : suivre ses achats auprès des particuliers",
+    description:
+      "Étapes du pipeline d'achat, fiche prospect vendeur, relances, indicateurs et critères de choix : comment un marchand VO ou un mandataire suit ses achats auprès des particuliers, du tableur au CRM intégré à la prospection.",
+    category: "Guide",
+    datePublished: "2026-09-27",
+  },
+  {
     slug: "statistiques-annonces-voitures-occasion-particuliers-2026",
     title: "16 statistiques sur les annonces de voitures d'occasion de particuliers en 2026",
     description:

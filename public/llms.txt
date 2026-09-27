@@ -23,6 +23,7 @@
 ## Blog
 
 - [Blog](https://auto-prospect.fr/blog) : méthodes de prospection et de sourcing pour marchands VO et mandataires
+- [CRM automobile pour marchand VO : suivre ses achats auprès des particuliers](https://auto-prospect.fr/blog/crm-automobile-marchand-vo) : pipeline d'achat en cinq étapes, fiche prospect vendeur, relances, indicateurs et critères de choix d'un CRM automobile
 - [Prospection automobile : la méthode pour trouver et contacter des vendeurs particuliers](https://auto-prospect.fr/blog/prospection-automobile-methode)
 - [16 statistiques sur les annonces de voitures d'occasion de particuliers en 2026](https://auto-prospect.fr/blog/statistiques-annonces-voitures-occasion-particuliers-2026) : données first-party Auto-Prospect, 35 122 annonces juin-septembre 2026, citation libre avec la mention « Auto-Prospect (2026) »
 

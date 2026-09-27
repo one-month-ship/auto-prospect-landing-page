@@ -1,0 +1,508 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import { APP_LOGIN_URL } from "../../lib/api";
+import "../../styles/global.css";
+
+const title =
+  "CRM automobile pour marchand VO : suivre ses achats auprès des particuliers | Auto-Prospect";
+const description =
+  "Les CRM automobiles suivent les acheteurs. Un marchand VO ou un mandataire doit d'abord suivre ses vendeurs : étapes du pipeline d'achat, fiche prospect, relances, indicateurs et critères de choix, du tableur au CRM intégré à la prospection.";
+
+const datePublished = "2026-09-27";
+const dateModified = "2026-09-27";
+
+const siteOrigin = Astro.site?.origin ?? "https://auto-prospect.fr";
+const canonical = `${siteOrigin}/blog/crm-automobile-marchand-vo`;
+
+// Étapes du pipeline d'achat : chaque étape est aussi un HowToStep dans le JSON-LD.
+const etapes = [
+  {
+    nom: "Nouveau",
+    entree: "Une annonce correspond à une de vos recherches",
+    action: "Vérifier l'écart au prix du marché, décider de contacter ou d'écarter",
+    delai: "Le jour même, idéalement dans l'heure",
+  },
+  {
+    nom: "Contacté",
+    entree: "Le premier message est parti (messagerie, WhatsApp ou vocal)",
+    action: "Attendre la réponse, noter le canal et l'heure du contact",
+    delai: "48 heures avant relance",
+  },
+  {
+    nom: "Relance",
+    entree: "Un deuxième message a été envoyé, ou le vendeur a répondu sans conclure",
+    action: "Relancer avec un élément nouveau, fixer un appel ou une visite",
+    delai: "Une semaine, ou à la prochaine baisse de prix",
+  },
+  {
+    nom: "Gagné",
+    entree: "Le véhicule est acheté ou le mandat est livré",
+    action: "Noter le prix d'achat réel et la source de l'annonce",
+    delai: "Clôture immédiate",
+  },
+  {
+    nom: "Perdu",
+    entree: "Vendu ailleurs, prix hors cible, véhicule non conforme, pas de réponse",
+    action: "Noter le motif de perte, sans supprimer la fiche",
+    delai: "Clôture immédiate",
+  },
+];
+
+const fiche = [
+  { champ: "Lien et capture de l'annonce d'origine", pourquoi: "L'annonce peut disparaître ; vous devez retrouver ce que le vendeur a écrit" },
+  { champ: "Prix affiché et historique de prix", pourquoi: "Une baisse de prix est le meilleur moment pour relancer" },
+  { champ: "Position par rapport au marché", pourquoi: "Décide de la priorité de contact et sert de base à la négociation" },
+  { champ: "Canal, date et heure de chaque message", pourquoi: "Évite les doublons et mesure le taux de réponse par canal" },
+  { champ: "Collaborateur en charge", pourquoi: "Un vendeur contacté deux fois par la même structure décroche rarement" },
+  { champ: "Notes de l'appel et de l'expertise", pourquoi: "Carnet d'entretien, défauts, disponibilité du vendeur, prix évoqué" },
+  { champ: "Motif de perte", pourquoi: "C'est la donnée qui montre où votre méthode fuit" },
+];
+
+const options = [
+  {
+    option: "Tableur partagé",
+    pour: "Gratuit, souple, immédiat",
+    contre: "Saisie manuelle de chaque annonce, aucune alerte, doublons fréquents à plusieurs",
+    seuil: "Jusqu'à une trentaine de contacts par semaine, seul",
+  },
+  {
+    option: "CRM généraliste",
+    pour: "Pipeline visuel, rappels, équipe",
+    contre: "Pensé pour vendre des services ; aucune notion d'annonce, de prix de marché ni de canal marketplace",
+    seuil: "Structures qui ont déjà l'outil pour d'autres usages",
+  },
+  {
+    option: "Logiciel VO ou CRM de concession",
+    pour: "Stock, multidiffusion, devis, facturation, suivi des acheteurs",
+    contre: "Couvre la vente ; l'achat auprès des particuliers reste hors de l'outil",
+    seuil: "Utile en aval, une fois le véhicule acheté",
+  },
+  {
+    option: "CRM intégré à la prospection",
+    pour: "Chaque annonce détectée et chaque message envoyé entrent dans le pipeline sans saisie",
+    contre: "Ne gère ni stock ni facturation ; à compléter par votre logiciel de gestion",
+    seuil: "Dès que la prospection est quotidienne ou se fait à plusieurs",
+  },
+];
+
+const criteres = [
+  "Les annonces entrent-elles dans le pipeline sans copier-coller ?",
+  "L'étape change-t-elle automatiquement quand un message part ?",
+  "La fiche garde-t-elle l'annonce d'origine, son prix et son écart au marché ?",
+  "Deux collaborateurs peuvent-ils contacter le même vendeur par erreur ?",
+  "Le motif de perte est-il enregistré, et pouvez-vous le filtrer ?",
+  "Voyez-vous le taux de réponse par canal sans export ?",
+  "Le prix est-il par structure ou par utilisateur, et l'équipe est-elle incluse ?",
+];
+
+const faq = [
+  {
+    q: "Qu'est-ce qu'un CRM automobile pour un marchand VO ?",
+    a: "C'est l'outil qui suit chaque véhicule que vous essayez d'acheter, de l'annonce repérée jusqu'à l'achat ou l'abandon. Il se distingue du CRM d'une concession, qui suit des acheteurs et des ventes. Pour un marchand de véhicules d'occasion ou un mandataire, le pipeline principal est un pipeline d'achat : nouveau, contacté, relance, gagné, perdu.",
+  },
+  {
+    q: "Un tableur suffit-il pour suivre ses prospects vendeurs ?",
+    a: "Au début, oui. Tant que vous contactez moins d'une trentaine de vendeurs par semaine et que vous travaillez seul, un tableur avec une ligne par annonce, la date du contact, le canal et le statut tient. Au-delà, ou dès que vous êtes deux, les relances s'oublient et les doublons apparaissent : c'est le signal pour passer à un pipeline.",
+  },
+  {
+    q: "Quelles étapes mettre dans un pipeline d'achat de véhicules d'occasion ?",
+    a: "Cinq étapes suffisent : Nouveau (annonce repérée), Contacté (premier message envoyé), Relance (deuxième message ou échange en cours), Gagné (véhicule acheté) et Perdu (avec le motif). Les rendez-vous et l'expertise se notent sur la fiche plutôt que dans des colonnes supplémentaires, qui ralentissent la lecture du tableau.",
+  },
+  {
+    q: "Quand relancer un vendeur particulier qui n'a pas répondu ?",
+    a: "À 48 heures, avec un élément nouveau (disponibilité, mode de paiement, déplacement), puis une semaine plus tard si l'annonce est toujours en ligne. Le meilleur moment reste la baisse de prix ou la remise en ligne de l'annonce : le vendeur signale alors qu'il n'a pas trouvé preneur. Sur Leboncoin, 16,8 % des annonces de particuliers sont remises en ligne au moins une fois.",
+  },
+  {
+    q: "Un CRM de concession convient-il à un marchand VO ?",
+    a: "Pour la vente, oui : suivi des acheteurs, devis, stock, multidiffusion. Pour l'achat auprès des particuliers, rarement : ces outils ne savent pas qu'une annonce existe, ne suivent pas son prix et ne sont pas reliés aux messageries des marketplaces. Beaucoup de marchands combinent un logiciel de gestion VO pour la vente et un outil de prospection avec pipeline pour l'achat.",
+  },
+  {
+    q: "Le CRM d'Auto-Prospect est-il inclus dans l'abonnement ?",
+    a: "Oui. Le pipeline Kanban est inclus dans le plan unique (69 € HT/mois en facturation annuelle ou 89 € HT/mois sans engagement), travail en équipe compris. Les annonces détectées y entrent automatiquement, et la carte passe en Contacté puis en Relance quand les messages partent.",
+  },
+];
+
+const sources = [
+  {
+    label: "Auto-Prospect, « 16 statistiques sur les annonces de voitures d'occasion de particuliers en 2026 » (septembre 2026)",
+    url: "/blog/statistiques-annonces-voitures-occasion-particuliers-2026",
+  },
+  {
+    label: "AAA Data, « Marché automobile français 2025 : les grandes tendances » (juin 2026)",
+    url: "https://www.aaa-data.fr/actualites/marche-automobile-francais-2025-grandes-tendances/",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BlogPosting",
+    "headline": "CRM automobile pour marchand VO : suivre ses achats auprès des particuliers",
+    "description": description,
+    "url": canonical,
+    "mainEntityOfPage": canonical,
+    "datePublished": datePublished,
+    "dateModified": dateModified,
+    "inLanguage": "fr-FR",
+    "author": { "@type": "Organization", "name": "L'équipe Auto-Prospect", "url": siteOrigin },
+    "publisher": { "@type": "Organization", "name": "Auto-Prospect", "url": siteOrigin, "logo": `${siteOrigin}/logo.svg` },
+  },
+  {
+    "@type": "HowTo",
+    "name": "Comment organiser un pipeline d'achat de véhicules d'occasion auprès des particuliers",
+    "step": etapes.map((e, i) => ({
+      "@type": "HowToStep",
+      "position": i + 1,
+      "name": e.nom,
+      "text": `${e.entree}. ${e.action}. Délai : ${e.delai.toLowerCase()}.`,
+    })),
+  },
+  {
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  },
+  {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `${siteOrigin}/` },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteOrigin}/blog` },
+      { "@type": "ListItem", "position": 3, "name": "CRM automobile pour marchand VO", "item": canonical },
+    ],
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="mx-auto max-w-3xl px-4 pt-32 pb-20 sm:px-6 lg:px-8">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent">
+      <a href="/blog" class="text-text-secondary transition-colors hover:text-text">Blog</a>
+      <span class="text-text-secondary"> / </span>Guide
+    </p>
+    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">
+      CRM automobile pour marchand VO : suivre ses achats auprès des particuliers
+    </h1>
+    <p class="mt-4 text-sm text-text-secondary">
+      Par <span class="font-semibold text-text">L'équipe Auto-Prospect</span>. Publié le 27 septembre 2026.
+    </p>
+
+    <div class="mt-8 rounded-2xl border border-border bg-card p-6">
+      <p class="text-sm font-semibold">En bref</p>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-text-secondary">
+        <li>
+          La plupart des CRM automobiles suivent des <strong class="text-text">acheteurs</strong>. Un marchand VO ou un
+          mandataire a d'abord besoin de suivre des <strong class="text-text">vendeurs</strong> : c'est un pipeline d'achat.
+        </li>
+        <li>
+          Cinq étapes suffisent : Nouveau, Contacté, Relance, Gagné, Perdu. Les rendez-vous et l'expertise se notent sur la
+          fiche, pas dans des colonnes en plus.
+        </li>
+        <li>
+          La fiche utile garde l'annonce d'origine, son prix, son écart au marché, chaque message envoyé et le motif de perte.
+        </li>
+        <li>
+          Un tableur tient jusqu'à une trentaine de contacts par semaine, seul. Au-delà, ou à plusieurs, les relances et les
+          doublons coûtent des véhicules.
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-10 space-y-12 text-text-secondary">
+      <!-- 1. Achat vs vente -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Pourquoi un CRM automobile classique ne suit pas vos achats ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Cherchez « CRM automobile » et vous trouverez des outils de concession : gestion des leads acheteurs, essais,
+          devis, financement, fidélisation, lien avec le logiciel de gestion du stock. Ils répondent à une question : comment
+          vendre plus de véhicules à plus de clients. C'est une vraie question, mais ce n'est pas la première d'un marchand
+          de véhicules d'occasion qui source auprès des particuliers.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Sa première question est : comment <strong class="text-text">acheter</strong> au bon prix, avant les autres. Le
+          prospect n'est pas quelqu'un qui veut une voiture, c'est quelqu'un qui en vend une. Il n'a rempli aucun formulaire,
+          il a publié une annonce sur Leboncoin, AutoScout24 ou La Centrale. Il ne vous connaît pas et reçoit des messages
+          d'autres professionnels. Selon AAA Data (2026), les véhicules de plus de cinq ans s'échangent à 55 % entre
+          particuliers : c'est là que se trouve le stock d'un marchand indépendant, et aucun formulaire de site ne l'amène
+          jusqu'à vous.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Un CRM de vente peut stocker ces vendeurs, à condition de tout saisir à la main : l'annonce, le prix, le numéro,
+          chaque message. Il ne sait pas que l'annonce a baissé de prix hier ni qu'elle vient d'être remise en ligne. C'est
+          pourquoi le suivi des achats finit souvent dans un tableur ou dans les conversations du téléphone.
+        </p>
+      </section>
+
+      <!-- 2. Étapes du pipeline -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Quelles étapes pour un pipeline d'achat de véhicules d'occasion ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Plus un pipeline a de colonnes, moins on le tient à jour. Cinq étapes couvrent le parcours d'un vendeur
+          particulier, de l'annonce repérée à la décision. Ce sont celles du
+          <a href="/fonctionnalites/crm-pipeline-vente" class="text-accent hover:underline">pipeline Kanban d'Auto-Prospect</a>,
+          et elles fonctionnent tout aussi bien dans un tableur.
+        </p>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="py-3 pr-4 font-medium">Étape</th>
+                <th class="py-3 pr-4 font-medium">Ce qui fait entrer la fiche</th>
+                <th class="py-3 pr-4 font-medium">Action attendue</th>
+                <th class="py-3 font-medium">Délai</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              {
+                etapes.map((e, i) => (
+                  <tr>
+                    <td class="py-3 pr-4 font-medium text-text">{i + 1}. {e.nom}</td>
+                    <td class="py-3 pr-4">{e.entree}</td>
+                    <td class="py-3 pr-4">{e.action}</td>
+                    <td class="py-3">{e.delai}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 leading-relaxed">
+          Deux règles rendent ce tableau utile. D'abord, une fiche ne reste jamais en « Contacté » plus de 48 heures sans
+          décision : soit elle passe en « Relance », soit en « Perdu ». Ensuite, rien ne se supprime. Une fiche perdue avec
+          son motif vaut plus qu'une fiche effacée, parce que le même véhicule revient souvent : baisse de prix, remise en
+          ligne, vendeur qui n'a pas trouvé preneur.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Où mettre le rendez-vous et l'expertise ? Sur la fiche, dans les notes, avec la date. Ajouter des colonnes
+          « Rendez-vous », « Expertise », « Négociation » paraît plus précis, mais en pratique la plupart des vendeurs passent
+          de la réponse à l'achat en un ou deux appels, et le tableau devient illisible.
+        </p>
+      </section>
+
+      <!-- 3. Fiche prospect -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Que doit contenir une fiche prospect vendeur ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          La fiche d'un vendeur particulier ne ressemble pas à celle d'un client. Le nom compte peu ; le véhicule, son prix
+          et l'historique des échanges comptent beaucoup. Sept informations suffisent.
+        </p>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="py-3 pr-4 font-medium">Information</th>
+                <th class="py-3 font-medium">Pourquoi elle compte</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              {
+                fiche.map((f) => (
+                  <tr>
+                    <td class="py-3 pr-4 font-medium text-text">{f.champ}</td>
+                    <td class="py-3">{f.pourquoi}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 leading-relaxed">
+          Une remarque sur les données personnelles : un numéro de téléphone lu dans une annonce reste une donnée personnelle.
+          Ne gardez que ce qui sert à la transaction, et supprimez les coordonnées des vendeurs perdus au bout d'un délai que
+          vous vous fixez.
+        </p>
+      </section>
+
+      <!-- 4. Relances et données -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Pourquoi le suivi des relances décide des achats ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Un vendeur qui ne répond pas au premier message n'a pas dit non. Il compare, il attend une meilleure offre, il n'a
+          pas encore baissé son prix. Les annonces que nous suivons le montrent : sur 35 122 annonces de particuliers relevées
+          entre juin et septembre 2026, <strong class="text-text">9,9 %</strong> ont connu au moins une baisse de prix pendant
+          leur diffusion, et <strong class="text-text">23,9 %</strong> pour les véhicules de 2022 et plus. Sur Leboncoin,
+          <strong class="text-text">16,8 %</strong> des annonces ont été remises en ligne au moins une fois
+          (<a href="/blog/statistiques-annonces-voitures-occasion-particuliers-2026" class="text-accent hover:underline">détail des chiffres</a>).
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Chacun de ces événements est un signal de relance : le vendeur n'a pas trouvé preneur au prix de départ. Sans
+          fiche, vous ne savez pas que vous l'aviez déjà contacté, ni à quel prix il était. Avec une fiche, la relance
+          devient simple : « Je vous avais écrit la semaine dernière pour votre véhicule, je vois qu'il est toujours
+          disponible. Je peux passer cette semaine. »
+        </p>
+        <p class="mt-3 leading-relaxed">
+          À plusieurs, le suivi protège aussi d'une erreur coûteuse : deux collaborateurs qui écrivent au même vendeur. Le
+          particulier y voit une structure désorganisée et répond rarement au second. Un pipeline partagé, où chaque fiche a
+          un responsable, règle le problème. Dans Auto-Prospect, une annonce déjà contactée par un membre de l'équipe
+          ne peut pas être reprise par un autre.
+        </p>
+      </section>
+
+      <!-- CTA intermédiaire contextualisé -->
+      <aside class="rounded-2xl border border-accent/30 bg-gradient-to-b from-accent/10 to-transparent p-6 sm:p-8">
+        <p class="text-lg font-bold text-text">Un pipeline d'achat qui se remplit tout seul</p>
+        <p class="mt-2 leading-relaxed">
+          Auto-Prospect détecte les annonces de particuliers sur Leboncoin, AutoScout24 et La Centrale et les place dans
+          votre pipeline. Quand le premier message part, la carte passe en Contacté ; au deuxième, en Relance. L'annonce
+          d'origine, les messages envoyés et vos notes restent sur la fiche, et l'équipe est incluse.
+        </p>
+        <div class="mt-5">
+          <a
+            href={APP_LOGIN_URL}
+            data-cta="blog-crm-automobile"
+            class="inline-block rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-bg shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover hover:shadow-accent/40"
+          >
+            Essayer gratuitement pendant 5 jours
+          </a>
+        </div>
+      </aside>
+
+      <!-- 5. Options -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Tableur, CRM généraliste, logiciel VO ou CRM intégré : lequel choisir ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Il n'existe pas d'outil unique qui couvre bien l'achat et la vente. Le bon choix dépend de votre volume de
+          prospection et du nombre de personnes qui prospectent.
+        </p>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="py-3 pr-4 font-medium">Option</th>
+                <th class="py-3 pr-4 font-medium">Points forts</th>
+                <th class="py-3 pr-4 font-medium">Limites pour l'achat</th>
+                <th class="py-3 font-medium">Pour qui</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              {
+                options.map((o) => (
+                  <tr>
+                    <td class="py-3 pr-4 font-medium text-text">{o.option}</td>
+                    <td class="py-3 pr-4">{o.pour}</td>
+                    <td class="py-3 pr-4">{o.contre}</td>
+                    <td class="py-3">{o.seuil}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 leading-relaxed">
+          Beaucoup de marchands finissent avec deux outils : un logiciel de gestion VO pour le stock, la publication et la
+          facturation, et un outil de prospection avec pipeline pour l'achat. Ce n'est pas un doublon, ce sont deux métiers.
+          La question à se poser est celle de la frontière : le pipeline d'achat s'arrête à « Gagné », le logiciel de
+          gestion prend le relais à l'entrée en stock.
+        </p>
+      </section>
+
+      <!-- 6. Critères -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Quelles questions poser avant de choisir un CRM automobile ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Pendant un essai, ces sept questions départagent vite les outils, quel que soit leur nom.
+        </p>
+        <ol class="mt-4 list-decimal space-y-2 pl-5">
+          {criteres.map((c) => <li class="leading-relaxed">{c}</li>)}
+        </ol>
+      </section>
+
+      <!-- 7. Indicateurs -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Quels indicateurs suivre dans son pipeline d'achat ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Aucun ratio universel ne dit combien de vendeurs contacter pour acheter un véhicule : il dépend du segment, de la
+          zone et de votre prix cible. Votre pipeline, lui, vous donne vos propres chiffres, à condition de suivre quatre
+          indicateurs chaque mois.
+        </p>
+        <ul class="mt-4 list-disc space-y-2 pl-5">
+          <li class="leading-relaxed">
+            <strong class="text-text">Taux de réponse par canal</strong> : réponses sur messages envoyés, séparément pour la
+            messagerie de la plateforme, WhatsApp et le vocal. Il dit où concentrer vos envois.
+          </li>
+          <li class="leading-relaxed">
+            <strong class="text-text">Délai de premier contact</strong> : temps entre la publication de l'annonce et votre
+            premier message. Sur une bonne affaire, il se compte en heures.
+          </li>
+          <li class="leading-relaxed">
+            <strong class="text-text">Taux d'achat</strong> : fiches « Gagné » sur fiches contactées. C'est le chiffre qui
+            dit combien de contacts il vous faut par véhicule.
+          </li>
+          <li class="leading-relaxed">
+            <strong class="text-text">Répartition des motifs de perte</strong> : vendu ailleurs, prix trop haut, véhicule non
+            conforme, pas de réponse. « Vendu ailleurs » en tête signale un problème de vitesse ; « pas de réponse », un
+            problème de message ou de canal.
+          </li>
+        </ul>
+        <p class="mt-4 leading-relaxed">
+          Ces indicateurs prolongent l'étape 5 de notre
+          <a href="/blog/prospection-automobile-methode" class="text-accent hover:underline">méthode de prospection automobile</a> :
+          le suivi n'est pas de l'administratif, c'est ce qui vous dit quelle étape améliorer.
+        </p>
+      </section>
+
+      <!-- FAQ -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">Questions fréquentes sur le CRM automobile</h2>
+        <div class="mt-4">
+          {
+            faq.map((f) => (
+              <details class="group border-b border-border py-2">
+                <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium text-text sm:text-base [&::-webkit-details-marker]:hidden">
+                  {f.q}
+                  <span class="ml-4 text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+                </summary>
+                <p class="pb-4 text-sm leading-relaxed">{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Sources -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">Sources</h2>
+        <ul class="mt-3 list-disc space-y-1 pl-5 text-sm">
+          {
+            sources.map((s) => (
+              <li>
+                <a href={s.url} target={s.url.startsWith("http") ? "_blank" : undefined} rel={s.url.startsWith("http") ? "noopener noreferrer" : undefined} class="text-accent hover:underline">{s.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-3 text-xs">
+          Les recommandations sur les étapes, les relances et les seuils d'équipement proviennent de l'usage quotidien
+          d'Auto-Prospect par des marchands et mandataires ; elles ne constituent pas une statistique de marché.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <SubPageCTA
+    title="Suivez vos achats, pas seulement vos ventes"
+    subtitle="Détection des annonces, contact des vendeurs et pipeline d'achat intégré, dès 69 € HT/mois. Essai gratuit 5 jours."
+  />
+  <Footer />
+  <CalendlyWidget />
+</Layout>
