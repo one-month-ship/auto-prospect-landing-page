@@ -1,4 +1,4 @@
-# Pitchs de la semaine du 2026-09-26
+# Pitchs de la semaine du 2026-09-28
 
 Un pitch par opportunité retenue. À envoyer toi-même, depuis ta boîte, après relecture.
 

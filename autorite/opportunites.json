@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-26",
+  "date": "2026-09-28",
   "mode": "treg",
   "opportunites": [
     {
@@ -143,169 +143,29 @@
       "categorie": "saas"
     },
     {
-      "id": "4dacd19783ea",
-      "type": "annuaire",
-      "cible": "alternative.me",
-      "url": "https://alternative.me/",
-      "dr": 75,
-      "dofollow": true,
-      "effort": "formulaire",
-      "pertinence": 0.6,
-      "preuve": "annuaire free, DR d'après la liste embarquée",
-      "nom": "Alternative.me",
-      "langue": "en",
-      "categorie": "saas"
-    },
-    {
-      "id": "a41c95ac02f7",
-      "type": "annuaire",
-      "cible": "peerpush.net",
-      "url": "https://peerpush.net/",
-      "dr": 73,
-      "dofollow": true,
-      "effort": "formulaire",
-      "pertinence": 0.6,
-      "preuve": "annuaire freemium, DR d'après la liste embarquée",
-      "nom": "PeerPush",
-      "langue": "en",
-      "categorie": "saas"
-    },
-    {
-      "id": "d78f4a0bf11f",
-      "type": "annuaire",
-      "cible": "softwareworld.co",
-      "url": "https://www.softwareworld.co/",
-      "dr": 73,
-      "dofollow": true,
-      "effort": "formulaire",
-      "pertinence": 0.6,
-      "preuve": "annuaire freemium, DR d'après la liste embarquée",
-      "nom": "SoftwareWorld",
-      "langue": "en",
-      "categorie": "saas"
-    },
-    {
-      "id": "17f6439d5fa5",
-      "type": "annuaire",
-      "cible": "auraplusplus.com",
-      "url": "https://auraplusplus.com/",
-      "dr": 72,
-      "dofollow": true,
-      "effort": "formulaire",
-      "pertinence": 0.6,
-      "preuve": "annuaire freemium, DR d'après la liste embarquée",
-      "nom": "Aura++",
-      "langue": "en",
-      "categorie": "saas"
-    },
-    {
-      "id": "5c47df607aec",
-      "type": "annuaire",
-      "cible": "foundrlist.com",
-      "url": "https://foundrlist.com/",
-      "dr": 72,
-      "dofollow": true,
-      "effort": "formulaire",
-      "pertinence": 0.6,
-      "preuve": "annuaire free, DR d'après la liste embarquée",
-      "nom": "FoundrList",
-      "langue": "en",
-      "categorie": "saas"
-    },
-    {
-      "id": "97e4f083b5b3",
-      "type": "annuaire",
-      "cible": "neeed.directory",
-      "url": "https://neeed.directory/",
-      "dr": 72,
-      "dofollow": true,
-      "effort": "formulaire",
-      "pertinence": 0.6,
-      "preuve": "annuaire free, DR d'après la liste embarquée",
-      "nom": "neeed.directory",
-      "langue": "en",
-      "categorie": "saas"
-    },
-    {
-      "id": "3f764824650f",
-      "type": "annuaire",
-      "cible": "tinylaunch.com",
-      "url": "https://www.tinylaunch.com/",
-      "dr": 72,
-      "dofollow": true,
-      "effort": "formulaire",
-      "pertinence": 0.6,
-      "preuve": "annuaire freemium, DR d'après la liste embarquée",
-      "nom": "TinyLaunch",
-      "langue": "en",
-      "categorie": "saas"
-    },
-    {
-      "id": "27b1c8ca82d6",
-      "type": "annuaire",
-      "cible": "open-launch.com",
-      "url": "https://open-launch.com/",
-      "dr": 71,
-      "dofollow": true,
-      "effort": "formulaire",
-      "pertinence": 0.6,
-      "preuve": "annuaire free, DR d'après la liste embarquée",
-      "nom": "Open Launch",
-      "langue": "en",
-      "categorie": "saas"
-    },
-    {
-      "id": "79684fc2a145",
-      "type": "annuaire",
-      "cible": "sideprojectors.com",
-      "url": "https://www.sideprojectors.com/",
-      "dr": 71,
-      "dofollow": true,
-      "effort": "formulaire",
-      "pertinence": 0.6,
-      "preuve": "annuaire freemium, DR d'après la liste embarquée",
-      "nom": "SideProjectors",
-      "langue": "en",
-      "categorie": "saas"
-    },
-    {
       "id": "337f125a6968",
       "type": "annuaire",
       "cible": "magicbox.tools",
       "url": "https://magicbox.tools/",
-      "dr": 70,
+      "dr": 36,
       "dofollow": true,
       "effort": "formulaire",
       "pertinence": 0.3,
-      "preuve": "annuaire freemium, DR d'après la liste embarquée",
+      "preuve": "annuaire freemium, DR d'après Serpstat",
       "nom": "magicbox.tools",
       "langue": "en",
       "categorie": "ia,saas"
-    },
-    {
-      "id": "ec8a6abf1c8d",
-      "type": "annuaire",
-      "cible": "smollaunch.com",
-      "url": "https://smollaunch.com/",
-      "dr": 70,
-      "dofollow": true,
-      "effort": "formulaire",
-      "pertinence": 0.6,
-      "preuve": "annuaire freemium, DR d'après la liste embarquée",
-      "nom": "Smol Launch",
-      "langue": "en",
-      "categorie": "saas"
     },
     {
       "id": "14731598ad17",
       "type": "annuaire",
       "cible": "tinystartups.com",
       "url": "https://tinystartups.com/",
-      "dr": 70,
+      "dr": 42,
       "dofollow": true,
       "effort": "formulaire",
       "pertinence": 0.6,
-      "preuve": "annuaire free, DR d'après la liste embarquée",
+      "preuve": "annuaire free, DR d'après Serpstat",
       "nom": "Tiny Startups",
       "langue": "en",
       "categorie": "saas"
@@ -315,11 +175,11 @@
       "type": "annuaire",
       "cible": "versily.com",
       "url": "https://versily.com",
-      "dr": 70,
+      "dr": 31,
       "dofollow": true,
       "effort": "formulaire",
       "pertinence": 0.6,
-      "preuve": "annuaire free, DR d'après la liste embarquée",
+      "preuve": "annuaire free, DR d'après Serpstat",
       "nom": "Versily",
       "langue": "en",
       "categorie": "saas"
@@ -329,11 +189,11 @@
       "type": "annuaire",
       "cible": "futuretools.io",
       "url": "https://www.futuretools.io/",
-      "dr": 69,
+      "dr": 51,
       "dofollow": true,
       "effort": "formulaire",
       "pertinence": 0.3,
-      "preuve": "annuaire free, DR d'après la liste embarquée",
+      "preuve": "annuaire free, DR d'après Serpstat",
       "nom": "Future Tools",
       "langue": "en",
       "categorie": "ia,saas"
@@ -343,11 +203,11 @@
       "type": "annuaire",
       "cible": "trustmrr.com",
       "url": "https://trustmrr.com/",
-      "dr": 69,
+      "dr": 40,
       "dofollow": true,
       "effort": "formulaire",
       "pertinence": 0.6,
-      "preuve": "annuaire free, DR d'après la liste embarquée",
+      "preuve": "annuaire free, DR d'après Serpstat",
       "nom": "TrustMRR",
       "langue": "en",
       "categorie": "saas"
@@ -357,11 +217,11 @@
       "type": "annuaire",
       "cible": "nxgntools.com",
       "url": "https://www.nxgntools.com",
-      "dr": 68,
+      "dr": 38,
       "dofollow": true,
       "effort": "formulaire",
       "pertinence": 0.3,
-      "preuve": "annuaire freemium, DR d'après la liste embarquée",
+      "preuve": "annuaire freemium, DR d'après Serpstat",
       "nom": "NextGen Tools",
       "langue": "en",
       "categorie": "ia,saas"
@@ -371,11 +231,11 @@
       "type": "annuaire",
       "cible": "openhunts.com",
       "url": "https://openhunts.com/",
-      "dr": 67,
+      "dr": 40,
       "dofollow": true,
       "effort": "formulaire",
       "pertinence": 0.6,
-      "preuve": "annuaire freemium, DR d'après la liste embarquée",
+      "preuve": "annuaire freemium, DR d'après Serpstat",
       "nom": "Openhunts",
       "langue": "en",
       "categorie": "saas"
@@ -385,11 +245,11 @@
       "type": "annuaire",
       "cible": "startupbase.io",
       "url": "https://startupbase.io/",
-      "dr": 67,
+      "dr": 41,
       "dofollow": true,
       "effort": "formulaire",
       "pertinence": 0.6,
-      "preuve": "annuaire freemium, DR d'après la liste embarquée",
+      "preuve": "annuaire freemium, DR d'après Serpstat",
       "nom": "StartupBase",
       "langue": "en",
       "categorie": "saas"
@@ -399,11 +259,11 @@
       "type": "annuaire",
       "cible": "acidtools.com",
       "url": "https://acidtools.com/",
-      "dr": 66,
+      "dr": 40,
       "dofollow": true,
       "effort": "formulaire",
       "pertinence": 0.3,
-      "preuve": "annuaire free, DR d'après la liste embarquée",
+      "preuve": "annuaire free, DR d'après Serpstat",
       "nom": "acidtools.com",
       "langue": "en",
       "categorie": "ia,saas"
@@ -413,11 +273,11 @@
       "type": "annuaire",
       "cible": "toolsfine.com",
       "url": "https://toolsfine.com/",
-      "dr": 65,
+      "dr": 37,
       "dofollow": true,
       "effort": "formulaire",
       "pertinence": 0.3,
-      "preuve": "annuaire free, DR d'après la liste embarquée",
+      "preuve": "annuaire free, DR d'après Serpstat",
       "nom": "toolsfine",
       "langue": "en",
       "categorie": "ia,saas"
@@ -1053,17 +913,73 @@
       "categorie": "saas"
     },
     {
-      "id": "18de0cdc2753",
+      "id": "5320a233b2fa",
       "type": "listicle",
-      "cible": "https://pigeauto.fr/",
-      "url": "https://pigeauto.fr/",
+      "cible": "https://www.initiative-crm.com/guide/choisir-crm/comment-choisir-son-crm",
+      "url": "https://www.initiative-crm.com/guide/choisir-crm/comment-choisir-son-crm",
       "dr": null,
       "dofollow": null,
       "effort": "formulaire",
-      "pertinence": 0.9,
-      "preuve": "« meilleurs outils pige auto » #1; « meilleurs outils logiciel pige automobile » #2; « meilleurs outils prospection automobile » #2",
-      "titre": "Pige Auto - CRM de Prospection Automobile Automatisée | 59€/mois",
-      "domaine": "pigeauto.fr",
+      "pertinence": 0.5,
+      "preuve": "« meilleurs outils logiciel de pige automobile » #5",
+      "titre": "CRM pour PME : 7 critères pour choisir le bon outil en 2026",
+      "domaine": "initiative-crm.com",
+      "concurrents": []
+    },
+    {
+      "id": "7ebb0411f964",
+      "type": "listicle",
+      "cible": "https://av-transaction.immo/blog/posts/comparatif-logiciel-immobilier-transaction/",
+      "url": "https://av-transaction.immo/blog/posts/comparatif-logiciel-immobilier-transaction/",
+      "dr": null,
+      "dofollow": null,
+      "effort": "formulaire",
+      "pertinence": 0.4,
+      "preuve": "« meilleurs outils logiciel de pige automobile » #6",
+      "titre": "Comparatif des meilleurs logiciels de transaction immobilière 2026",
+      "domaine": "av-transaction.immo",
+      "concurrents": []
+    },
+    {
+      "id": "3d58883fa6d2",
+      "type": "listicle",
+      "cible": "https://www.mozartprestigepatrimoine.fr/ressources/logiciel-agent-immobilier/",
+      "url": "https://www.mozartprestigepatrimoine.fr/ressources/logiciel-agent-immobilier/",
+      "dr": null,
+      "dofollow": null,
+      "effort": "formulaire",
+      "pertinence": 0.5,
+      "preuve": "« meilleurs outils logiciel de pige automobile » #7",
+      "titre": "Quel est le meilleur logiciel pour agent immobilier en 2026",
+      "domaine": "mozartprestigepatrimoine.fr",
+      "concurrents": []
+    },
+    {
+      "id": "e5e7ed4f1c88",
+      "type": "listicle",
+      "cible": "https://www.immomatin.com/logiciels/20.html",
+      "url": "https://www.immomatin.com/logiciels/20.html",
+      "dr": null,
+      "dofollow": null,
+      "effort": "formulaire",
+      "pertinence": 0.4,
+      "preuve": "« meilleurs outils logiciel de pige automobile » #8",
+      "titre": "Toute l'information sur les logiciels immobilier - Page 20 - Immo Matin",
+      "domaine": "immomatin.com",
+      "concurrents": []
+    },
+    {
+      "id": "0a18f27282b4",
+      "type": "listicle",
+      "cible": "https://digitiz.fr/logiciels-gestion-connaissance/",
+      "url": "https://digitiz.fr/logiciels-gestion-connaissance/",
+      "dr": null,
+      "dofollow": null,
+      "effort": "formulaire",
+      "pertinence": 0.4,
+      "preuve": "« meilleurs outils logiciel de pige automobile » #17",
+      "titre": "Top 10 des logiciels de gestion des connaissances en 2026",
+      "domaine": "digitiz.fr",
       "concurrents": []
     },
     {
@@ -1074,10 +990,24 @@
       "dr": null,
       "dofollow": null,
       "effort": "formulaire",
-      "pertinence": 0.6,
-      "preuve": "« meilleurs outils pige auto » #2; « meilleurs outils logiciel pige automobile » #3",
+      "pertinence": 0.5,
+      "preuve": "« meilleurs outils outil de pige automobile » #2",
       "titre": "Le meilleur moyen de faire votre pige auto en 2026 | MyTracks",
       "domaine": "mytracks.fr",
+      "concurrents": []
+    },
+    {
+      "id": "18de0cdc2753",
+      "type": "listicle",
+      "cible": "https://pigeauto.fr/",
+      "url": "https://pigeauto.fr/",
+      "dr": null,
+      "dofollow": null,
+      "effort": "formulaire",
+      "pertinence": 0.8,
+      "preuve": "« meilleurs outils outil de pige automobile » #3",
+      "titre": "Pige Auto - CRM de Prospection Automobile Automatisée | 59€/mois",
+      "domaine": "pigeauto.fr",
       "concurrents": []
     },
     {
@@ -1089,7 +1019,7 @@
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.5,
-      "preuve": "« meilleurs outils pige auto » #9",
+      "preuve": "« meilleurs outils outil de pige automobile » #10",
       "titre": "IA LAB | Automatisation Immobilière avec l'IA",
       "domaine": "ia-lab-immo.com",
       "concurrents": []
@@ -1102,8 +1032,8 @@
       "dr": null,
       "dofollow": null,
       "effort": "formulaire",
-      "pertinence": 0.5,
-      "preuve": "« meilleurs outils pige auto » #10",
+      "pertinence": 0.4,
+      "preuve": "« meilleurs outils outil de pige automobile » #11",
       "titre": "Outils de diagnostic auto abordables : quel modèle choisir ?",
       "domaine": "blog.piecesetpneus.com",
       "concurrents": []
@@ -1117,37 +1047,9 @@
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.5,
-      "preuve": "« meilleurs outils pige auto » #17",
+      "preuve": "« meilleurs outils outil de pige automobile » #12",
       "titre": "Classement des 13 meilleurs outils diagnostic automobile (septembre 2026)",
       "domaine": "la-piece-auto.com",
-      "concurrents": []
-    },
-    {
-      "id": "11c7e5f29372",
-      "type": "listicle",
-      "cible": "https://www.appvizer.fr/biens/concession-auto",
-      "url": "https://www.appvizer.fr/biens/concession-auto",
-      "dr": null,
-      "dofollow": null,
-      "effort": "formulaire",
-      "pertinence": 0.5,
-      "preuve": "« meilleurs outils logiciel pige automobile » #9",
-      "titre": "Les 14 Meilleurs Logiciels de Concessionnaire automobile en 2026 | Appvizersparklesmicsquarearrow-linecloseaccountaccountsearchmenuclosesparklesmicsquarearrow-lineclosehomechevron-rightchevron-righttext-longmagnifyquestion-markapplicationssparklesclose-circleclose-circlecheck-circlechevron-rightchec…",
-      "domaine": "appvizer.fr",
-      "concurrents": []
-    },
-    {
-      "id": "58ebbecde5e6",
-      "type": "listicle",
-      "cible": "https://reliefteam.fr/top-5-des-outils-digitaux-qui-simplifient-la-gestion-dun-garage/",
-      "url": "https://reliefteam.fr/top-5-des-outils-digitaux-qui-simplifient-la-gestion-dun-garage/",
-      "dr": null,
-      "dofollow": null,
-      "effort": "formulaire",
-      "pertinence": 0.4,
-      "preuve": "« meilleurs outils logiciel pige automobile » #11",
-      "titre": "Top 5 des outils digitaux qui simplifient la gestion d’un garage - RELIEFTeam",
-      "domaine": "reliefteam.fr",
       "concurrents": []
     },
     {
@@ -1159,23 +1061,51 @@
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.6,
-      "preuve": "« meilleurs outils logiciel pige automobile » #15",
+      "preuve": "« meilleurs outils outil de pige automobile » #14",
       "titre": "La pige automobile en 2026 : méthode, outils et automatisation · Le Carnet CarHunt",
       "domaine": "blog.carhunt.fr",
       "concurrents": []
     },
     {
-      "id": "c745e8d261c1",
+      "id": "7114b77c2966",
       "type": "listicle",
-      "cible": "https://thedigitalprojectmanager.com/fr/tools/meilleurs-logiciels-gestion-projets-automobiles/",
-      "url": "https://thedigitalprojectmanager.com/fr/tools/meilleurs-logiciels-gestion-projets-automobiles/",
+      "cible": "https://www.espaceprovpn.com/news/les-meilleurs-outils-dia-pour-les-pros-de-lauto",
+      "url": "https://www.espaceprovpn.com/news/les-meilleurs-outils-dia-pour-les-pros-de-lauto",
       "dr": null,
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.4,
-      "preuve": "« meilleurs outils logiciel pige automobile » #18",
-      "titre": "10 meilleurs logiciels de gestion de projets automobiles pour 2026",
-      "domaine": "thedigitalprojectmanager.com",
+      "preuve": "« meilleurs outils outil de pige automobile » #15; « meilleurs outils prospection automobile » #8",
+      "titre": "Les meilleurs outils d’IA pour les pros de l’auto",
+      "domaine": "espaceprovpn.com",
+      "concurrents": []
+    },
+    {
+      "id": "ebd9ee6b9f6e",
+      "type": "listicle",
+      "cible": "https://www.joybuy.fr/blog/guide-achat-outillage-mecanique-auto/axg0ciqo",
+      "url": "https://www.joybuy.fr/blog/guide-achat-outillage-mecanique-auto/aXG0Ciqo",
+      "dr": null,
+      "dofollow": null,
+      "effort": "formulaire",
+      "pertinence": 0.4,
+      "preuve": "« meilleurs outils outil de pige automobile » #18",
+      "titre": "Outillage mécanique auto : 3 pièges à éviter",
+      "domaine": "joybuy.fr",
+      "concurrents": []
+    },
+    {
+      "id": "917bd2097ddb",
+      "type": "listicle",
+      "cible": "https://ads-pro.it/fr/meilleurs-outils-de-diagnostic-atelier-2026-guide-dachat/",
+      "url": "https://ads-pro.it/fr/meilleurs-outils-de-diagnostic-atelier-2026-guide-dachat/",
+      "dr": null,
+      "dofollow": null,
+      "effort": "formulaire",
+      "pertinence": 0.5,
+      "preuve": "« meilleurs outils outil de pige automobile » #19",
+      "titre": "Meilleurs Outils de Diagnostic Atelier 2026 : Guide d'Achat",
+      "domaine": "ads-pro.it",
       "concurrents": []
     },
     {
@@ -1186,10 +1116,24 @@
       "dr": null,
       "dofollow": null,
       "effort": "formulaire",
-      "pertinence": 0.6,
+      "pertinence": 0.5,
       "preuve": "« meilleurs outils prospection automobile » #1",
       "titre": "11 outils prospection LinkedIn auto | Leadin",
       "domaine": "leadin.fr",
+      "concurrents": []
+    },
+    {
+      "id": "6d1f98a54158",
+      "type": "listicle",
+      "cible": "https://www.pharow.com/blog/outils-de-prospection",
+      "url": "https://www.pharow.com/blog/outils-de-prospection",
+      "dr": null,
+      "dofollow": null,
+      "effort": "formulaire",
+      "pertinence": 0.5,
+      "preuve": "« meilleurs outils prospection automobile » #2",
+      "titre": "Meilleurs outils de prospection B2B (2026) : guide complet, comparatif et conseils",
+      "domaine": "pharow.com",
       "concurrents": []
     },
     {
@@ -1201,7 +1145,7 @@
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.5,
-      "preuve": "« meilleurs outils prospection automobile » #4",
+      "preuve": "« meilleurs outils prospection automobile » #3",
       "titre": "Les 8 meilleurs outils de prospection pour entrepreneurs en 2026",
       "domaine": "shine.fr",
       "concurrents": []
@@ -1221,34 +1165,6 @@
       "concurrents": []
     },
     {
-      "id": "7114b77c2966",
-      "type": "listicle",
-      "cible": "https://www.espaceprovpn.com/news/les-meilleurs-outils-dia-pour-les-pros-de-lauto",
-      "url": "https://www.espaceprovpn.com/news/les-meilleurs-outils-dia-pour-les-pros-de-lauto",
-      "dr": null,
-      "dofollow": null,
-      "effort": "formulaire",
-      "pertinence": 0.5,
-      "preuve": "« meilleurs outils prospection automobile » #8",
-      "titre": "Les meilleurs outils d’IA pour les pros de l’auto",
-      "domaine": "espaceprovpn.com",
-      "concurrents": []
-    },
-    {
-      "id": "e224fd66fa23",
-      "type": "listicle",
-      "cible": "https://www.inseec.com/culture-entreprise/quels-sont-les-outils-de-prospection/",
-      "url": "https://www.inseec.com/culture-entreprise/quels-sont-les-outils-de-prospection/",
-      "dr": null,
-      "dofollow": null,
-      "effort": "formulaire",
-      "pertinence": 0.5,
-      "preuve": "« meilleurs outils prospection automobile » #9",
-      "titre": "Quels sont les outils de prospection ? - INSEEC",
-      "domaine": "inseec.com",
-      "concurrents": []
-    },
-    {
       "id": "249a27af9545",
       "type": "listicle",
       "cible": "https://www.leexi.ai/fr/sales-enablement/prospection/outils-incontournables-prospection/",
@@ -1263,6 +1179,20 @@
       "concurrents": []
     },
     {
+      "id": "11c7e5f29372",
+      "type": "listicle",
+      "cible": "https://www.appvizer.fr/biens/concession-auto",
+      "url": "https://www.appvizer.fr/biens/concession-auto",
+      "dr": null,
+      "dofollow": null,
+      "effort": "formulaire",
+      "pertinence": 0.5,
+      "preuve": "« meilleurs outils prospection automobile » #11",
+      "titre": "Les 14 Meilleurs Logiciels de Concessionnaire automobile en 2026 | Appvizersparklesmicsquarearrow-linecloseaccountaccountsearchmenuclosesparklesmicsquarearrow-lineclosehomechevron-rightchevron-righttext-longmagnifyquestion-markapplicationssparklesclose-circleclose-circlecheck-circlechevron-rightcheckcheckcheckstarstarstarstarstar-half-outlinedinfo-circle-outlineclose-circleclose-circleclose-circlechevron-rightcheckcheckcheckstarstarstarstarstar-half-outlinedinfo-circle-outlineclose-circleclose-circlecheck-circlechevron-rightcheckcheckcheckclose-circleclose-circleclose-circlechevron-rightcheckstarstarstarstarstarinfo-circle-outlineclose-circleclose-circleclose-circlechevron-rightclose-circleclose-circleclose-circlechevron-rightclose-circleclose-circleclose-circlechevron-rightclose-circleclose-circleclose-circlechevron-rightcheckcheckcheckstarstarstarstarstarinfo-circle-outlineclose-circleclose-circleclose-circlechevron-rightclose-circleclose-circleclose-circlechevron-rightclose-circleclose-circleclose-circlechevron-rightstarstarstarstar-half-outlinedstar-outlineinfo-circle-outlineclose-circleclose-circleclose-circlechevron-rightstarstarstarstarstar-outlineinfo-circle-outlineclose-circleclose-circleclose-circlechevron-rightstarstarstarstarstarinfo-circle-outlineclose-circleclose-circleclose-circlechevron-rightchevron-rightchevron-rightchevron-rightchevron-rightchevron-rightfooter-jumpLinkedInYoutubeinstagramfacebookarrow",
+      "domaine": "appvizer.fr",
+      "concurrents": []
+    },
+    {
       "id": "b4d902b0b4e1",
       "type": "listicle",
       "cible": "https://www.growthroom.co/blog-posts/top-15-des-meilleurs-outils-de-prospection-b2b-france-europe-2026",
@@ -1271,7 +1201,7 @@
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.5,
-      "preuve": "« meilleurs outils prospection automobile » #13",
+      "preuve": "« meilleurs outils prospection automobile » #14",
       "titre": "Top 15 des meilleurs outils de prospection B2B en 2026",
       "domaine": "growthroom.co",
       "concurrents": []
@@ -1285,7 +1215,7 @@
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.4,
-      "preuve": "« meilleurs outils prospection automobile » #14",
+      "preuve": "« meilleurs outils prospection automobile » #15",
       "titre": "Top Ciblage® - AAA-DataAAA Data - Trusted data, useful innovationAAA Data - Trusted data, useful innovationAAA Data - Trusted data, useful innovation",
       "domaine": "aaa-data.fr",
       "concurrents": []
@@ -1299,7 +1229,7 @@
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.5,
-      "preuve": "« meilleurs outils prospection automobile » #15",
+      "preuve": "« meilleurs outils prospection automobile » #16",
       "titre": "Quelles sont les meilleures logiciels de prospection B2B en 2026 ?",
       "domaine": "oliverlist.com",
       "concurrents": []
@@ -1313,7 +1243,7 @@
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.5,
-      "preuve": "« meilleurs outils prospection automobile » #16",
+      "preuve": "« meilleurs outils prospection automobile » #17",
       "titre": "Office managers et assistants administratifs en freelance - Plateya",
       "domaine": "plateya.fr",
       "concurrents": []
@@ -1341,7 +1271,7 @@
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.4,
-      "preuve": "« inspectoo alternatives » #4",
+      "preuve": "« inspectoo alternatives » #6",
       "titre": "Alternative à GlobalVision : ce qu'il faut prendre en compte (et pourquoi de nombreuses équipes reviennent)",
       "domaine": "globalvision.co",
       "concurrents": []
@@ -1355,51 +1285,9 @@
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.4,
-      "preuve": "« inspectoo alternatives » #6",
+      "preuve": "« inspectoo alternatives » #7",
       "titre": "Property Inspection Software Alternatives - myInspections",
       "domaine": "myinspections.com",
-      "concurrents": []
-    },
-    {
-      "id": "68fc0000ecbc",
-      "type": "listicle",
-      "cible": "https://www.gmp-compliance.org/gmp-news/alternative-inspection-methods-of-the-fda",
-      "url": "https://www.gmp-compliance.org/gmp-news/alternative-inspection-methods-of-the-fda",
-      "dr": null,
-      "dofollow": null,
-      "effort": "formulaire",
-      "pertinence": 0.4,
-      "preuve": "« inspectoo alternatives » #8",
-      "titre": "Alternative Inspection Methods of the FDA - ECA Academy",
-      "domaine": "gmp-compliance.org",
-      "concurrents": []
-    },
-    {
-      "id": "5bd3a5a8d195",
-      "type": "listicle",
-      "cible": "https://octav.it/en/alternative-excel-vgp/",
-      "url": "https://octav.it/en/alternative-excel-vgp/",
-      "dr": null,
-      "dofollow": null,
-      "effort": "formulaire",
-      "pertinence": 0.4,
-      "preuve": "« inspectoo alternatives » #9",
-      "titre": "Alternative to Spreadsheet-Based Inspections | Octav",
-      "domaine": "octav.it",
-      "concurrents": []
-    },
-    {
-      "id": "df313507071a",
-      "type": "listicle",
-      "cible": "https://checklistguro.com/blog/top-10-inspectify-alternatives-for-2025",
-      "url": "https://checklistguro.com/blog/top-10-inspectify-alternatives-for-2025",
-      "dr": null,
-      "dofollow": null,
-      "effort": "formulaire",
-      "pertinence": 0.4,
-      "preuve": "« inspectoo alternatives » #13",
-      "titre": "Top 10 Inspectify Alternatives for 2025 | ChecklistGuro",
-      "domaine": "checklistguro.com",
       "concurrents": []
     },
     {
@@ -1417,17 +1305,31 @@
       "concurrents": []
     },
     {
-      "id": "a5cf1ba8e739",
+      "id": "df313507071a",
       "type": "listicle",
-      "cible": "https://goaudits.com/blog/apps-and-software-similar-to-iauditor/",
-      "url": "https://goaudits.com/blog/apps-and-software-similar-to-iauditor/",
+      "cible": "https://checklistguro.com/blog/top-10-inspectify-alternatives-for-2025",
+      "url": "https://checklistguro.com/blog/top-10-inspectify-alternatives-for-2025",
       "dr": null,
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.4,
       "preuve": "« inspectoo alternatives » #16",
-      "titre": "The Best iAuditor Alternative - Mobile Inspection App",
-      "domaine": "goaudits.com",
+      "titre": "Top 10 Inspectify Alternatives for 2025 | ChecklistGuro",
+      "domaine": "checklistguro.com",
+      "concurrents": []
+    },
+    {
+      "id": "701840c0f526",
+      "type": "listicle",
+      "cible": "https://www.appvizer.fr/services/inspection",
+      "url": "https://www.appvizer.fr/services/inspection",
+      "dr": null,
+      "dofollow": null,
+      "effort": "formulaire",
+      "pertinence": 0.4,
+      "preuve": "« inspectoo alternatives » #18",
+      "titre": "Les 6 Meilleurs Logiciels de Inspection en 2026 | Appvizersparklesmicsquarearrow-linecloseaccountaccountsearchmenuclosesparklesmicsquarearrow-lineclosehomechevron-rightchevron-righttext-longquestion-markapplicationssparklesstarstarstarstarstar-half-outlinedinfo-circle-outlineclose-circleclose-circleclose-circlechevron-rightstarstarstarstarstar-half-outlinedinfo-circle-outlineclose-circleclose-circleclose-circlechevron-rightstarstarstarstarstarinfo-circle-outlineclose-circleclose-circleclose-circlechevron-rightstarstarstarstarstar-half-outlinedinfo-circle-outlineclose-circleclose-circleclose-circlechevron-rightclose-circleclose-circleclose-circlechevron-rightstarstarstarstarstarinfo-circle-outlineclose-circleclose-circleclose-circlechevron-rightchevron-rightchevron-rightchevron-rightchevron-rightchevron-rightfooter-jumpLinkedInYoutubeinstagramfacebookarrow",
+      "domaine": "appvizer.fr",
       "concurrents": []
     },
     {
@@ -1445,20 +1347,6 @@
       "concurrents": []
     },
     {
-      "id": "74ac1aacbe1a",
-      "type": "listicle",
-      "cible": "https://www.instagram.com/p/ddlcsscluvq/",
-      "url": "https://www.instagram.com/p/DdLcSSCluvQ/",
-      "dr": null,
-      "dofollow": null,
-      "effort": "formulaire",
-      "pertinence": 0.4,
-      "preuve": "« pistoneo alternatives » #3",
-      "titre": "InstagramInstagramCloseMore optionsLoad more commentsLikeCommentShareSaveCarouselCarouselCarouselCarouselCarouselCarouselCarouselCarouselCarouselDown chevron icon",
-      "domaine": "instagram.com",
-      "concurrents": []
-    },
-    {
       "id": "31269a8c57e3",
       "type": "listicle",
       "cible": "https://labonneocaz.fr/alternatives",
@@ -1467,7 +1355,7 @@
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.5,
-      "preuve": "« pistoneo alternatives » #7",
+      "preuve": "« pistoneo alternatives » #4",
       "titre": "Alternatives à Leboncoin pour vendre | La Bonne Ocaz",
       "domaine": "labonneocaz.fr",
       "concurrents": []
@@ -1481,9 +1369,23 @@
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.4,
-      "preuve": "« pistoneo alternatives » #8",
+      "preuve": "« pistoneo alternatives » #6",
       "titre": "Alternatives aux ERP existants, Piston",
       "domaine": "pistonhq.app",
+      "concurrents": []
+    },
+    {
+      "id": "2a3ad5c5e9b4",
+      "type": "listicle",
+      "cible": "https://www.pieces-auto-casse-potigny.com/news/pieces-auto-occasion-alternative-fiable-economique.php",
+      "url": "https://www.pieces-auto-casse-potigny.com/news/pieces-auto-occasion-alternative-fiable-economique.php",
+      "dr": null,
+      "dofollow": null,
+      "effort": "formulaire",
+      "pertinence": 0.4,
+      "preuve": "« pistoneo alternatives » #7",
+      "titre": "Pièces auto d'occasion : une alternative fiable et économique ? - ML PIECES AUTO",
+      "domaine": "pieces-auto-casse-potigny.com",
       "concurrents": []
     },
     {
@@ -1495,7 +1397,7 @@
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.6,
-      "preuve": "« pistoneo alternatives » #9",
+      "preuve": "« pistoneo alternatives » #8",
       "titre": "Loc Eco | Automobile, quelles alternatives à l’achat ?",
       "domaine": "loceco.com",
       "concurrents": []
@@ -1538,7 +1440,7 @@
       "effort": "formulaire",
       "pertinence": 0.5,
       "preuve": "« pistoneo alternatives » #12",
-      "titre": "Alternatives à FIDUCIAL Automobile : Comparez les logiciels similaires | Appvizersparklesmicsquarearrow-linecloseaccountaccountsearchmenuclosesparklesmicsquarearrow-lineclosehomechevron-rightchevron-rightchevron-rightchevron-rightstarstarstarstarstar-outlineinfo-circle-outlineclose-circleclose-circl…",
+      "titre": "Alternatives à FIDUCIAL Automobile : Comparez les logiciels similaires | Appvizersparklesmicsquarearrow-linecloseaccountaccountsearchmenuclosesparklesmicsquarearrow-lineclosehomechevron-rightchevron-rightchevron-rightchevron-rightstarstarstarstarstar-outlineinfo-circle-outlineclose-circleclose-circlecheck-circlechevron-rightcheckcheckcheckstarstarstarstarstarinfo-circle-outlineclose-circleclose-circleclose-circlechevron-rightcheckcheckcheckclose-circleclose-circleclose-circlechevron-rightclose-circleclose-circleclose-circlechevron-rightcheckcheckcheckclose-circleclose-circleclose-circlechevron-rightclose-circleclose-circleclose-circlechevron-rightclose-circleclose-circleclose-circlechevron-rightcheckcheckcheckclose-circleclose-circleclose-circlechevron-rightstarstarstarstarstarinfo-circle-outlineclose-circleclose-circleclose-circlechevron-rightclose-circleclose-circlecheck-circlechevron-rightcheckfooter-jumpLinkedInYoutubeinstagramfacebookarrow",
       "domaine": "appvizer.fr",
       "concurrents": []
     },
@@ -1557,97 +1459,81 @@
       "concurrents": []
     },
     {
-      "id": "8fef1e312416",
+      "id": "67a35b342564",
       "type": "listicle",
-      "cible": "https://alternative-autoparts.fr/",
-      "url": "https://alternative-autoparts.fr/",
-      "dr": null,
-      "dofollow": null,
-      "effort": "formulaire",
-      "pertinence": 0.4,
-      "preuve": "« pistoneo alternatives » #15",
-      "titre": "L’enseigne partenaire des distributeurs de pièces automobiles - AA",
-      "domaine": "alternative-autoparts.fr",
-      "concurrents": []
-    },
-    {
-      "id": "d594b7f61ca2",
-      "type": "listicle",
-      "cible": "https://www.bonero.fr/alternatives/",
-      "url": "https://www.bonero.fr/alternatives/",
+      "cible": "https://www.instagram.com/p/dddtrg6nimp/",
+      "url": "https://www.instagram.com/p/DdDtrg6nImP/",
       "dr": null,
       "dofollow": null,
       "effort": "formulaire",
       "pertinence": 0.4,
       "preuve": "« pistoneo alternatives » #17",
-      "titre": "Bonero vs Organilog, Praxedo, Axonaut, Synchroteam — Comparatif logiciels bons 2026",
-      "domaine": "bonero.fr",
+      "titre": "InstagramInstagramCloseMore optionsLoad more commentsLikeCommentShareSaveCarouselCarouselCarouselCarouselCarouselCarouselCarouselCarouselCarouselDown chevron icon",
+      "domaine": "instagram.com",
+      "concurrents": []
+    },
+    {
+      "id": "26f904341e92",
+      "type": "listicle",
+      "cible": "https://www.tarmac-auto.fr/blog/alternative-argus-pro-comparatif-outils-cotation",
+      "url": "https://www.tarmac-auto.fr/blog/alternative-argus-pro-comparatif-outils-cotation",
+      "dr": null,
+      "dofollow": null,
+      "effort": "formulaire",
+      "pertinence": 0.4,
+      "preuve": "« pistoneo alternatives » #18",
+      "titre": "Alternative à L'Argus Pro : 5 outils de cotation auto pour les pros en 2026 — Tarmac",
+      "domaine": "tarmac-auto.fr",
       "concurrents": []
     }
   ],
   "par_decouvreur": {
     "gap": 0,
-    "annuaires": 75,
-    "listicles": 38,
+    "annuaires": 65,
+    "listicles": 41,
     "awesome": 0,
     "presse": 0
   },
   "erreurs": [
     {
-      "source": "listicle partauto.fr",
-      "erreur": "Lecture impossible pour https://www.partauto.fr/c2649-outil-de-calage-moteur?srsltid=AU7gw4UumXXDyOriUM1U1Q34v-C9W7CdYn5T0yQ_bv60xTOCchueltMz: <urlopen error timed out>"
-    },
-    {
-      "source": "listicle leroymerlin.fr",
-      "erreur": "HTTP 403 pour https://www.leroymerlin.fr/produits/outillage/rangement-outils/servante-atelier/pige-distribution-p.html"
-    },
-    {
-      "source": "listicle ebay.fr",
-      "erreur": "HTTP 403 pour https://www.ebay.fr/b/Pige-de-calage-dans-outils-de-mesure-et-precision-manuels-pour-vehicule/43991/bn_7006280709"
-    },
-    {
       "source": "listicle capcar.fr",
       "erreur": "HTTP 403 pour https://www.capcar.fr/rejoindre/les-outils-digitaux-pour-booster-la-vente-de-voitures-doccasion"
-    },
-    {
-      "source": "listicle capterra.fr",
-      "erreur": "HTTP 403 pour https://www.capterra.fr/directory/20006/auto-repair/software"
     },
     {
       "source": "listicle panorapresse.ouest-france.fr",
       "erreur": "HTTP 403 pour https://panorapresse.ouest-france.fr/blog/le-top-5-des-outils-pour-la-prospection-dun-commercial-31"
     },
     {
-      "source": "listicle independant.io",
-      "erreur": "HTTP 403 pour https://independant.io/logiciel-prospection-commerciale/"
+      "source": "listicle jamiiforums.com",
+      "erreur": "HTTP 403 pour https://www.jamiiforums.com/threads/mgomo-madaktari-319-wafutiwa-leseni.290533/page-9"
     },
     {
-      "source": "listicle capterra.fr",
-      "erreur": "HTTP 403 pour https://www.capterra.fr/alternatives/120369/inspector"
+      "source": "listicle collegesidekick.com",
+      "erreur": "HTTP 403 pour https://www.collegesidekick.com/study-docs/4069979"
+    },
+    {
+      "source": "listicle getapp.fr",
+      "erreur": "HTTP 403 pour https://www.getapp.fr/alternatives/2038939/inspection-management-software"
     },
     {
       "source": "listicle softwareadvice.fr",
       "erreur": "HTTP 403 pour https://www.softwareadvice.fr/alternatives/230332/safety-inspection-software"
     },
     {
-      "source": "listicle fr.getapp.ca",
-      "erreur": "HTTP 403 pour https://fr.getapp.ca/alternatives/2049494/safety-inspection-software"
+      "source": "listicle capterra.fr",
+      "erreur": "HTTP 403 pour https://www.capterra.fr/alternatives/141418/inspection-apps"
     },
     {
-      "source": "listicle axiome3.com",
-      "erreur": "HTTP 403 pour https://www.axiome3.com/alternatives/udata"
+      "source": "listicle capterra.fr",
+      "erreur": "HTTP 403 pour https://www.capterra.fr/alternatives/215204/inspection-management-software"
     },
     {
       "source": "listicle inspecto.co.uk",
       "erreur": "Lecture impossible pour https://inspecto.co.uk/blog/inspecto-vs-inventorybase: <urlopen error timed out>"
     },
     {
-      "source": "listicle g2.com",
-      "erreur": "HTTP 403 pour https://www.g2.com/products/inspecto/competitors/alternatives"
-    },
-    {
-      "source": "listicle getapp.ie",
-      "erreur": "HTTP 403 pour https://www.getapp.ie/alternatives/2052913/inspectorio"
+      "source": "listicle fr.trustpilot.com",
+      "erreur": "HTTP 403 pour https://fr.trustpilot.com/categories/vehicle_inspection"
     },
     {
       "source": "listicle getapp.fr",
@@ -1671,11 +1557,11 @@
     }
   ],
   "recu_treg": {
-    "appels": 18,
-    "cout_usd": 0.0465,
+    "appels": 16,
+    "cout_usd": 0.047,
     "erreurs": [],
     "alertes": [],
-    "solde_usd": 10.58047,
+    "solde_usd": 10.375187,
     "budget_usd": 0.5
   }
 }
