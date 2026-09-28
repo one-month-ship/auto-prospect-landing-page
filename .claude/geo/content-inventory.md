@@ -21,6 +21,7 @@
 | `/blog` | index blog | — | fr | 2026-09-26 (PR) | 2026-09-26 | footer | articles | validé |
 | `/blog/prospection-automobile-methode` | fond (MOFU) | prospection automobile (méthode) → hub `/fonctionnalites/recherche-annonces-automatisee` | fr | 2026-09-26 (PR, non fusionnée) | 2026-09-26 | `/blog`, footer | hub, analyse-prix, contact-multicanal, crm, solutions/pige | brief `seo/briefs/2026-09-26-prospection-automobile-methode.md` |
 | `/blog/statistiques-annonces-voitures-occasion-particuliers-2026` | stats (link magnet, data first-party) | statistiques marché VO particuliers → hub `/fonctionnalites/analyse-prix-marche` | fr | 2026-09-26 (PR #24) | 2026-09-26 | `/blog`, article méthode | analyse-prix, article méthode | brief `seo/briefs/2026-09-26-statistiques-annonces-particuliers.md` |
+| `/blog/crm-automobile-marchand-vo` | fond (MOFU) | CRM automobile (pipeline d'achat) → hub `/fonctionnalites/crm-pipeline-vente` | fr | 2026-09-27 (PR, non fusionnée) | 2026-09-27 | `/blog`, article méthode | hub CRM, article méthode, article stats | brief `seo/briefs/2026-09-27-crm-automobile-marchand-vo.md` |
 | `/conditions-utilisation`, `/confidentialite`, `/cookies` | légal | — | fr | 2025 | 2026-09 | footer | — | — |
 
 ## Hubs
@@ -30,7 +31,7 @@
 | `/solutions/pige-automobile` | logiciel de pige automobile | `/comparatif-outils-pige-automobile` | listicle « meilleurs outils de pige », article « pige classique vs prospection automatisée » (approfondi) |
 | `/fonctionnalites/contact-multicanal` | contact automatique vendeurs | `/fonctionnalites/contact-vocal-automatique` | guide « contacter les vendeurs Leboncoin automatiquement », scripts de messages |
 | `/fonctionnalites/recherche-annonces-automatisee` | prospection / sourcing | `/blog/prospection-automobile-methode` (PR) | lien retour du hub vers l'article, guide sourcing VO particuliers |
-| `/fonctionnalites/crm-pipeline-vente` | CRM automobile | — | comparatif CRM automobile |
+| `/fonctionnalites/crm-pipeline-vente` | CRM automobile | `/blog/crm-automobile-marchand-vo` (PR) | lien retour du hub vers l'article ; aligner les étapes de la page hub sur celles de l'app (voir brief du 2026-09-27) |
 | `/solutions/mandataire-auto` | mandataire auto | — | guide outils mandataire |
 
 ## Pages orphelines (0 lien entrant)
