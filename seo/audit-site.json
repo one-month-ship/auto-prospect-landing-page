@@ -1,0 +1,52 @@
+{
+  "date": "2026-09-28",
+  "domaines": [
+    {
+      "domaine": "https://auto-prospect.fr",
+      "erreurs": [],
+      "robots_status": 200,
+      "bots_ia_bloques": [],
+      "sitemap_declare": "https://auto-prospect.fr/sitemap-index.xml",
+      "llms_txt": true,
+      "llms_full_txt": false,
+      "sitemap": "https://auto-prospect.fr/sitemap-index.xml",
+      "entrees": 18,
+      "uniques": 18,
+      "audites": 18,
+      "statuts": {
+        "200": 18
+      },
+      "html": 18,
+      "problemes": {
+        "non_200": [],
+        "rediriges": [],
+        "noindex_dans_sitemap": [],
+        "sans_titre": [],
+        "sans_h1": [],
+        "sans_canonical": [],
+        "canonical_different": [],
+        "minces_moins_de_300_mots": [],
+        "titres_dupliques": [],
+        "hreflang_dupliques": [],
+        "doublons_sitemap": [],
+        "contenus_futurs_exposes": []
+      },
+      "compte_problemes": {
+        "non_200": 0,
+        "rediriges": 0,
+        "noindex_dans_sitemap": 0,
+        "sans_titre": 0,
+        "sans_h1": 0,
+        "sans_canonical": 0,
+        "canonical_different": 0,
+        "minces_moins_de_300_mots": 0,
+        "titres_dupliques": 0,
+        "hreflang_dupliques": 0,
+        "doublons_sitemap": 0,
+        "contenus_futurs_exposes": 0
+      },
+      "contenus_futurs": 0
+    }
+  ],
+  "verdicts": []
+}

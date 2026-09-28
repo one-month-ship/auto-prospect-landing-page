@@ -1,0 +1,95 @@
+{
+  "date": "2026-09-28",
+  "cadence": {
+    "cible": 1,
+    "produits_7j": 3,
+    "publies_7j": 0,
+    "tenue": true
+  },
+  "file": {
+    "lots": 1,
+    "ouverts": 7,
+    "faits": 3,
+    "echecs": 0,
+    "par_lot": [
+      {
+        "lot": "premier-lot",
+        "skill": "foundational-article (sauf mention contraire sur l'item)",
+        "langue": "fr",
+        "ouverts": 7
+      }
+    ]
+  },
+  "manque": 0,
+  "reserve": {
+    "niveau": "vide",
+    "jours": 0,
+    "derniere_date": null
+  },
+  "audit": [],
+  "opportunites": [
+    "2026-09-28-couvrir-pige-auto",
+    "2026-09-28-couvrir-crm-automobile",
+    "2026-09-28-couvrir-auto-prospect",
+    "2026-09-28-couvrir-autoprospect",
+    "2026-09-28-couvrir-recherche-auto-activee"
+  ],
+  "briefs": [],
+  "pareto": {
+    "familles": [
+      {
+        "famille": "autre",
+        "articles": 11,
+        "impressions": 0,
+        "impressions_prec": 0,
+        "clics": 0
+      },
+      {
+        "famille": "comparison-page",
+        "articles": 2,
+        "impressions": 0,
+        "impressions_prec": 0,
+        "clics": 0
+      },
+      {
+        "famille": "foundational-article",
+        "articles": 4,
+        "impressions": 0,
+        "impressions_prec": 0,
+        "clics": 0
+      },
+      {
+        "famille": "statistics-article",
+        "articles": 2,
+        "impressions": 0,
+        "impressions_prec": 0,
+        "clics": 0
+      }
+    ],
+    "doubler": [],
+    "retravailler": [],
+    "non_indexes": [],
+    "tops": [],
+    "mesure": false
+  },
+  "pr_en_attente": [],
+  "prompts_a_zero": [
+    {
+      "prompt": "Quel est le meilleur logiciel de pige automobile pour un marchand VO ?",
+      "cites_par": []
+    },
+    {
+      "prompt": "Comment trouver des véhicules d'occasion sous-cotés à revendre ?",
+      "cites_par": []
+    },
+    {
+      "prompt": "Existe-t-il un outil qui envoie des messages WhatsApp ou vocaux aux vendeurs particuliers de voitures ?",
+      "cites_par": []
+    },
+    {
+      "prompt": "Quel CRM utiliser pour suivre ses achats de véhicules d'occasion ?",
+      "cites_par": []
+    }
+  ],
+  "ajoutes": []
+}

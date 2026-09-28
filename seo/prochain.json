@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-27",
+  "item": {
+    "lot": "premier-lot",
+    "fichier": "lot-2026-09-26.md",
+    "skill": "foundational-article (sauf mention contraire sur l'item)",
+    "produit": "Auto-Prospect",
+    "langue": "fr",
+    "id": "item-002",
+    "etat": "ouvert",
+    "titre": "crm-automobile-marchand-vo",
+    "requete": "« crm automobile » (720/mois, difficulté 2, 443 impressions GSC, position 51) + « crm auto » (720/mois)",
+    "cluster": "CRM automobile",
+    "livrable": ""
+  },
+  "file": {
+    "lots": 1,
+    "ouverts": 5,
+    "faits": 2,
+    "echecs": 0,
+    "par_lot": [
+      {
+        "lot": "premier-lot",
+        "skill": "foundational-article (sauf mention contraire sur l'item)",
+        "langue": "fr",
+        "ouverts": 5
+      }
+    ]
+  }
+}
