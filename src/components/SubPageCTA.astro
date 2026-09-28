@@ -1,5 +1,6 @@
 ---
 import { APP_LOGIN_URL } from "../lib/api";
+import { pageSlug } from "../lib/tracking";
 interface Props {
   title?: string;
   subtitle?: string;
@@ -9,6 +10,10 @@ const {
   title = "Essayez Auto-Prospect gratuitement pendant 5 jours",
   subtitle = "Toutes les fonctionnalités, sans engagement. Inscrivez-vous et voyez par vous-même.",
 } = Astro.props;
+
+// Ce composant est repris par une douzaine de pages : la page hôte est ajoutée au
+// data-cta pour distinguer un clic depuis un article d'un clic depuis /tarifs.
+const slug = pageSlug(Astro.url.pathname);
 ---
 
 <section class="py-20">
@@ -20,6 +25,7 @@ const {
       <a
         href={APP_LOGIN_URL}
         data-cta="subpage-cta"
+        data-cta-page={slug}
         class="relative mt-8 inline-block rounded-xl bg-accent px-8 py-3.5 text-base font-semibold text-bg shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover hover:shadow-accent/40"
       >
         Commencer l'essai gratuit

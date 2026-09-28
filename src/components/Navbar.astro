@@ -1,6 +1,7 @@
 ---
 import { APP_LOGIN_URL } from "../lib/api";
 import NavbarMobile from "./NavbarMobile.tsx";
+import { pageSlug } from "../lib/tracking";
 
 const links = [
   { href: "/#how-it-works", label: "Comment ça marche" },
@@ -33,6 +34,7 @@ const links = [
       <a
         href={APP_LOGIN_URL}
         data-cta="navbar"
+        data-cta-page={pageSlug(Astro.url.pathname)}
         class="inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-bg transition-colors hover:bg-accent-hover"
       >
         Essai gratuit
