@@ -1,0 +1,59 @@
+{
+  "date": "2026-09-28",
+  "resultats": [
+    {
+      "moteur": "perplexity",
+      "prompt": "Quel est le meilleur logiciel de pige automobile pour un marchand VO ?",
+      "cite": false,
+      "concurrents_cites": [
+        "Prospelia",
+        "Inspectoo"
+      ],
+      "extrait": "sonar 2026-09-28 06:49:21 +00:00 message text Il n’existe pas de **meilleur logiciel universel** pour un marchand VO : le bon choix dépend surtout de votre volume, de vos portails de diffusion, et de votre besoin de conformité. Pour un **marchand VO**, les solutions les plus souvent mises en avant sont **Spider VO**, **Iziscar** et **SelliCar**, avec un avantage clair à celles qui combinent **stoc",
+      "cout_usd": 0.00616
+    },
+    {
+      "moteur": "perplexity",
+      "prompt": "Comment contacter automatiquement les vendeurs de voitures sur Leboncoin ?",
+      "cite": true,
+      "concurrents_cites": [
+        "Prospelia"
+      ],
+      "extrait": "sonar 2026-09-28 06:49:25 +00:00 message text Pour **contacter automatiquement des vendeurs de voitures sur Leboncoin**, la voie la plus simple passe par des **outils de prospection automobile** qui détectent les annonces puis envoient un contact via **messagerie Leboncoin, WhatsApp, SMS ou vocal** selon la solution choisie.[1][3][6] Les options les plus visibles dans les résultats sont : - **Auto",
+      "cout_usd": 0.00618
+    },
+    {
+      "moteur": "perplexity",
+      "prompt": "Comment trouver des véhicules d'occasion sous-cotés à revendre ?",
+      "cite": false,
+      "concurrents_cites": [],
+      "extrait": "sonar 2026-09-28 06:49:31 +00:00 message text Pour trouver des **véhicules d’occasion sous-cotés à revendre**, l’approche la plus fiable consiste à repérer un prix **en dessous de la valeur de marché**, puis à vérifier si l’écart vient d’une vraie opportunité ou d’un défaut caché. Les outils de cote et les comparateurs d’annonces comme La Centrale, Leboncoin, ParuVendu, Turbo ou Autosphere sont ju",
+      "cout_usd": 0.00622
+    },
+    {
+      "moteur": "perplexity",
+      "prompt": "Existe-t-il un outil qui envoie des messages WhatsApp ou vocaux aux vendeurs particuliers de voitures ?",
+      "cite": false,
+      "concurrents_cites": [],
+      "extrait": "sonar 2026-09-28 06:49:36 +00:00 message text Oui — il existe des outils qui **envoient des messages WhatsApp** aux vendeurs particuliers de voitures, soit en mode **relance automatisée**, soit en **envoi groupé** à une liste de contacts, soit via un **CRM de prospection automobile**.[1][2][3][4][5][13][15] Pour un usage orienté **prospection auto**, les options les plus pertinentes dans vos résul",
+      "cout_usd": 0.00606
+    },
+    {
+      "moteur": "perplexity",
+      "prompt": "Quel CRM utiliser pour suivre ses achats de véhicules d'occasion ?",
+      "cite": false,
+      "concurrents_cites": [],
+      "extrait": "sonar 2026-09-28 06:49:40 +00:00 message text Pour **suivre vos achats de véhicules d’occasion**, il faut en pratique un **CRM automobile orienté négoce VO**, voire un **outil dédié VO** plus qu’un CRM généraliste. Les solutions citées comme adaptées à ce cas sont **SelliCar**, **Spider VO** et **Planet VO²**, car elles couvrent le **suivi des achats**, la **gestion du stock**, les **marges** et s",
+      "cout_usd": 0.00606
+    }
+  ],
+  "erreurs": [],
+  "recu_treg": {
+    "appels": 5,
+    "cout_usd": 0.030687,
+    "erreurs": [],
+    "alertes": [],
+    "solde_usd": 10.417374,
+    "budget_usd": 0.5
+  }
+}

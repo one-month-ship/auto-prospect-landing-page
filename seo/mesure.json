@@ -1,0 +1,324 @@
+{
+  "date": "2026-09-28",
+  "periode": {
+    "debut": "2026-08-29",
+    "fin": "2026-09-25"
+  },
+  "google": false,
+  "articles": {
+    "`/`": {
+      "famille": "autre",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2025-05"
+    },
+    "`/tarifs`": {
+      "famille": "autre",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2025"
+    },
+    "`/fonctionnalites/recherche-annonces-automatisee`": {
+      "famille": "autre",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": ""
+    },
+    "`/fonctionnalites/contact-multicanal`": {
+      "famille": "autre",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": ""
+    },
+    "`/fonctionnalites/contact-vocal-automatique`": {
+      "famille": "autre",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2026"
+    },
+    "`/fonctionnalites/crm-pipeline-vente`": {
+      "famille": "autre",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": ""
+    },
+    "`/fonctionnalites/analyse-prix-marche`": {
+      "famille": "autre",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2026"
+    },
+    "`/solutions/pige-automobile`": {
+      "famille": "autre",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": ""
+    },
+    "`/solutions/mandataire-auto`": {
+      "famille": "autre",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": ""
+    },
+    "`/solutions/marchand-vehicules-occasion`": {
+      "famille": "comparison-page",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2026"
+    },
+    "`/comparatif-outils-pige-automobile`": {
+      "famille": "comparison-page",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2026-09-01"
+    },
+    "`/blog`": {
+      "famille": "autre",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2026-09-26 (PR)"
+    },
+    "`/blog/prospection-automobile-methode`": {
+      "famille": "foundational-article",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2026-09-26 (PR, non fusionnée)"
+    },
+    "`/blog/statistiques-annonces-voitures-occasion-particuliers-2026`": {
+      "famille": "statistics-article",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2026-09-26 (PR #24)"
+    },
+    "`/blog/crm-automobile-marchand-vo`": {
+      "famille": "foundational-article",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2026-09-27 (PR, non fusionnée)"
+    },
+    "`/conditions-utilisation`, `/confidentialite`, `/cookies`": {
+      "famille": "autre",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2025"
+    },
+    "/blog/prospection-automobile-methode": {
+      "famille": "foundational-article",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2026-09-26"
+    },
+    "/blog/statistiques-annonces-voitures-occasion-particuliers-2026": {
+      "famille": "statistics-article",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2026-09-26"
+    },
+    "/blog/crm-automobile-marchand-vo": {
+      "famille": "foundational-article",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2026-09-27"
+    }
+  },
+  "emergentes": [
+    {
+      "requete": "pige auto",
+      "impressions": 268,
+      "clics": 3,
+      "famille": "foundational-article",
+      "pages": [
+        "/",
+        "/solutions/pige-automobile"
+      ]
+    },
+    {
+      "requete": "crm automobile",
+      "impressions": 173,
+      "clics": 0,
+      "famille": "foundational-article",
+      "pages": [
+        "/fonctionnalites/crm-pipeline-vente"
+      ]
+    },
+    {
+      "requete": "auto prospect",
+      "impressions": 139,
+      "clics": 2,
+      "famille": "foundational-article",
+      "pages": [
+        "/",
+        "/fonctionnalites/analyse-prix-marche",
+        "/fonctionnalites/contact-vocal-automatique"
+      ]
+    },
+    {
+      "requete": "autoprospect",
+      "impressions": 138,
+      "clics": 11,
+      "famille": "foundational-article",
+      "pages": [
+        "/",
+        "/conditions-utilisation",
+        "/confidentialite"
+      ]
+    },
+    {
+      "requete": "recherche auto activée",
+      "impressions": 112,
+      "clics": 0,
+      "famille": "foundational-article",
+      "pages": [
+        "/fonctionnalites/recherche-annonces-automatisee"
+      ]
+    },
+    {
+      "requete": "recherche auto activé",
+      "impressions": 83,
+      "clics": 0,
+      "famille": "foundational-article",
+      "pages": [
+        "/fonctionnalites/recherche-annonces-automatisee"
+      ]
+    },
+    {
+      "requete": "prospection automatique",
+      "impressions": 75,
+      "clics": 0,
+      "famille": "foundational-article",
+      "pages": [
+        "/"
+      ]
+    },
+    {
+      "requete": "prospection automobile",
+      "impressions": 66,
+      "clics": 2,
+      "famille": "foundational-article",
+      "pages": [
+        "/",
+        "/conditions-utilisation",
+        "/fonctionnalites/recherche-annonces-automatisee"
+      ]
+    },
+    {
+      "requete": "prospect autos",
+      "impressions": 42,
+      "clics": 0,
+      "famille": "foundational-article",
+      "pages": [
+        "/",
+        "/cookies",
+        "/fonctionnalites/analyse-prix-marche"
+      ]
+    },
+    {
+      "requete": "remarketing automobile",
+      "impressions": 40,
+      "clics": 0,
+      "famille": "foundational-article",
+      "pages": [
+        "/",
+        "/solutions/marchand-vehicules-occasion"
+      ]
+    }
+  ],
+  "inspectes": 0,
+  "erreurs": [],
+  "cout_usd": 0.0
+}
