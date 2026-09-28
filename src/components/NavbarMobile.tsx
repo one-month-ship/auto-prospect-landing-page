@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { APP_LOGIN_URL } from "../lib/api";
+import { pageSlug } from "../lib/tracking";
 
 type Props = {
   links: { href: string; label: string }[];
@@ -43,6 +44,7 @@ export default function NavbarMobile({ links }: Props) {
               <a
                 href={APP_LOGIN_URL}
                 data-cta="navbar-mobile"
+                data-cta-page={pageSlug()}
                 onClick={() => setOpen(false)}
                 className="mt-2 rounded-lg bg-accent px-4 py-3 text-center text-sm font-semibold text-bg transition-colors hover:bg-accent-hover"
               >
