@@ -99,3 +99,88 @@
 
 - Erreur : aucune clé IndexNow : ajoute indexnow_key dans la configuration et sers-la à la racine du site.
 - Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · serpstat summary prospelia.io
+
+- Erreur : réponse vide ou 5xx
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · listicle capcar.fr
+
+- Erreur : HTTP 403 pour https://www.capcar.fr/rejoindre/les-outils-digitaux-pour-booster-la-vente-de-voitures-doccasion
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · listicle panorapresse.ouest-france.fr
+
+- Erreur : HTTP 403 pour https://panorapresse.ouest-france.fr/blog/le-top-5-des-outils-pour-la-prospection-dun-commercial-31
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · listicle jamiiforums.com
+
+- Erreur : HTTP 403 pour https://www.jamiiforums.com/threads/mgomo-madaktari-319-wafutiwa-leseni.290533/page-9
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · listicle collegesidekick.com
+
+- Erreur : HTTP 403 pour https://www.collegesidekick.com/study-docs/4069979
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · listicle getapp.fr
+
+- Erreur : HTTP 403 pour https://www.getapp.fr/alternatives/2038939/inspection-management-software
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · listicle softwareadvice.fr
+
+- Erreur : HTTP 403 pour https://www.softwareadvice.fr/alternatives/230332/safety-inspection-software
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · listicle capterra.fr
+
+- Erreur : HTTP 403 pour https://www.capterra.fr/alternatives/141418/inspection-apps
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · listicle capterra.fr
+
+- Erreur : HTTP 403 pour https://www.capterra.fr/alternatives/215204/inspection-management-software
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · listicle inspecto.co.uk
+
+- Erreur : Lecture impossible pour https://inspecto.co.uk/blog/inspecto-vs-inventorybase: <urlopen error timed out>
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · listicle fr.trustpilot.com
+
+- Erreur : HTTP 403 pour https://fr.trustpilot.com/categories/vehicle_inspection
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · listicle getapp.fr
+
+- Erreur : HTTP 403 pour https://www.getapp.fr/alternatives/2061384/autrorox
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · listicle capterra.fr
+
+- Erreur : HTTP 403 pour https://www.capterra.fr/alternatives/136352/flexone
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · listicle independant.io
+
+- Erreur : HTTP 403 pour https://independant.io/alternatives-pennylane/
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · presse qwoted.com
+
+- Erreur : HTTP 404 pour https://www.qwoted.com/opportunities : page non lisible sans compte, et l'agent ne se connecte à aucun compte.
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · presse featured.com
+
+- Erreur : HTTP 429 pour https://featured.com/questions : page non lisible sans compte, et l'agent ne se connecte à aucun compte.
+- Suite : les autres sources ont été traitées.
+
+### 2026-09-28 · indexnow auto-prospect.fr
+
+- Erreur : aucune clé IndexNow : ajoute indexnow_key dans la configuration et sers-la à la racine du site.
+- Suite : les autres sources ont été traitées.
