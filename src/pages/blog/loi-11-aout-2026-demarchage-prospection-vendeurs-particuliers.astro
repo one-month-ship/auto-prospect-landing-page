@@ -1,0 +1,564 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import { APP_LOGIN_URL } from "../../lib/api";
+import "../../styles/global.css";
+
+const title =
+  "Démarchage téléphonique et loi du 11 août 2026 : peut-on encore contacter un vendeur particulier ? | Auto-Prospect";
+const description =
+  "Consentement préalable, fin de Bloctel, sanctions : ce que la loi en vigueur depuis le 11 août 2026 change pour contacter un vendeur particulier de véhicule.";
+
+const datePublished = "2026-10-04";
+const dateModified = "2026-10-04";
+
+const siteOrigin = Astro.site?.origin ?? "https://auto-prospect.fr";
+const canonical = `${siteOrigin}/blog/loi-11-aout-2026-demarchage-prospection-vendeurs-particuliers`;
+
+// Avant / après le 11 août 2026, pour la prospection téléphonique des consommateurs.
+const avantApres = [
+  {
+    point: "Principe",
+    avant: "Appel autorisé, sauf si le consommateur est inscrit sur Bloctel (opposition)",
+    apres: "Appel interdit, sauf si le consommateur a donné son consentement préalable",
+  },
+  {
+    point: "Silence du consommateur",
+    avant: "Vaut absence d'opposition",
+    apres: "Vaut refus",
+  },
+  {
+    point: "Charge de la preuve",
+    avant: "Vérifier ses fichiers contre la liste Bloctel",
+    apres: "Prouver le consentement, conservé au moins trois ans",
+  },
+  {
+    point: "Durée du consentement",
+    avant: "Sans objet",
+    apres: "Un an au plus, sans reconduction tacite",
+  },
+  {
+    point: "Jours et horaires",
+    avant: "Du lundi au vendredi, 10 h à 13 h et 14 h à 20 h",
+    apres: "Inchangés, pour les appels consentis",
+  },
+  {
+    point: "Bloctel",
+    avant: "Liste d'opposition à consulter",
+    apres: "Service arrêté, signalements sur SignalConso",
+  },
+];
+
+const canaux = [
+  {
+    canal: "Appel téléphonique passé par une personne",
+    texte: "Article L223-1 du Code de la consommation",
+    retenir:
+      "Consentement préalable du consommateur dès que l'appel est une prospection commerciale. Canal le plus exposé depuis le 11 août 2026.",
+  },
+  {
+    canal: "Message vocal déposé automatiquement sur répondeur",
+    texte: "Article L34-5 du Code des postes et des communications électroniques (automates d'appel)",
+    retenir:
+      "Consentement préalable si le message est une prospection directe. Règle antérieure à 2026 : identité de l'émetteur et moyen simple de refuser.",
+  },
+  {
+    canal: "SMS, WhatsApp et messages écrits envoyés par un outil",
+    texte: "Article L34-5 du Code des postes et des communications électroniques (courrier électronique au sens large)",
+    retenir:
+      "Même logique que le SMS. La fiche de la CNIL cite le courriel, le SMS-MMS et l'automate d'appel, pas les messageries instantanées : par prudence, appliquez-leur le même régime.",
+  },
+  {
+    canal: "Messagerie de la plateforme d'annonces",
+    texte: "Canal ouvert par le vendeur pour son annonce, conditions de la plateforme, RGPD",
+    retenir:
+      "Aucun numéro n'est utilisé et le vendeur attend des messages sur son annonce. Le premier contact le plus sûr, à condition de rester sur l'achat du véhicule.",
+  },
+];
+
+// Pratiques recommandées : chaque pratique est aussi un HowToStep dans le JSON-LD.
+const pratiques = [
+  {
+    nom: "Ne contacter qu'en réponse à une annonce en ligne",
+    texte:
+      "Chaque contact doit pouvoir être rattaché à une annonce précise, encore publiée au moment de l'envoi. Un numéro relevé il y a trois mois sur une annonce retirée n'est plus une réponse à une offre : c'est un fichier de prospection.",
+  },
+  {
+    nom: "Limiter le premier message à l'achat du véhicule de l'annonce",
+    texte:
+      "Nommez le véhicule, dites que vous souhaitez l'acheter et proposez un échange. Ne glissez ni service, ni financement, ni autre véhicule à vendre : c'est là que le message devient une prospection commerciale.",
+  },
+  {
+    nom: "Vous identifier comme professionnel",
+    texte:
+      "Nom, société, activité de marchand ou de mandataire, dès le premier message. Se présenter comme un particulier est une pratique commerciale trompeuse, et cela prive le vendeur de l'information dont il a besoin pour accepter ou refuser l'échange.",
+  },
+  {
+    nom: "Commencer par l'écrit, sur le canal ouvert par le vendeur",
+    texte:
+      "La messagerie de la plateforme d'abord. L'appel vient ensuite, quand le vendeur a répondu ou vous a demandé de le rappeler. Conservez cet échange : c'est lui qui montre que l'appel est attendu.",
+  },
+  {
+    nom: "Respecter tout refus, immédiatement",
+    texte:
+      "Une mention de refus du démarchage commercial sur l'annonce, un « non merci », une demande de ne plus être contacté : le vendeur sort de vos relances, pour vous et pour toute personne qui travaille pour vous.",
+  },
+  {
+    nom: "Garder les plages et la fréquence des appels consentis comme garde-fou",
+    texte:
+      "Du lundi au vendredi, de 10 h à 13 h et de 14 h à 20 h, hors jours fériés, et quatre sollicitations au plus sur trente jours : ces limites visent les appels de prospection, mais les appliquer à tous vos contacts vous garde hors de la zone grise.",
+  },
+  {
+    nom: "Ne pas réutiliser le numéro pour autre chose",
+    texte:
+      "Le vendeur a publié son numéro pour vendre un véhicule. L'utiliser plus tard pour une offre de service, une campagne ou un autre client est un nouveau traitement, qui demande son accord. Supprimez les coordonnées des vendeurs qui n'ont pas donné suite.",
+  },
+];
+
+const faq = [
+  {
+    q: "Peut-on encore appeler un particulier qui vend sa voiture sur Leboncoin depuis le 11 août 2026 ?",
+    a: "La loi interdit la prospection commerciale par téléphone d'un consommateur sans consentement préalable. Répondre à une annonce pour acheter le véhicule proposé n'est pas, par définition, la promotion d'un bien ou d'un service. Aucune décision de justice n'a toutefois tranché ce cas à notre connaissance : la pratique la plus sûre reste un premier contact écrit, puis un appel une fois que le vendeur a répondu.",
+  },
+  {
+    q: "Un vendeur particulier est-il un consommateur au sens de la loi ?",
+    a: "Oui. Une personne qui vend son véhicule personnel agit en dehors de toute activité professionnelle : c'est un consommateur, protégé par l'article L223-1 du Code de la consommation. La prospection entre professionnels suit un autre régime, fondé sur l'intérêt légitime et le droit d'opposition.",
+  },
+  {
+    q: "Les messages WhatsApp et les messages vocaux sur répondeur sont-ils visés par la loi du 11 août 2026 ?",
+    a: "Non, l'article L223-1 vise les appels téléphoniques. Les messages envoyés par un système automatisé relèvent de l'article L34-5 du Code des postes et des communications électroniques, qui exige déjà un consentement préalable pour toute prospection directe par automate d'appel, SMS ou courrier électronique. Ce régime est antérieur à 2026 et n'a pas été allégé.",
+  },
+  {
+    q: "Bloctel existe-t-il encore ?",
+    a: "Non. La liste d'opposition Bloctel a cessé son activité le 11 août 2026 : le régime est passé de l'opposition au consentement préalable, et le silence du consommateur vaut désormais refus. Les appels non consentis se signalent sur SignalConso, la plateforme de la DGCCRF.",
+  },
+  {
+    q: "Que risque un professionnel qui démarche par téléphone sans consentement ?",
+    a: "Une amende administrative pouvant atteindre 75 000 euros pour une personne physique et 375 000 euros pour une personne morale, prononcée par la DGCCRF. Le contrat conclu à la suite d'un démarchage illégal est nul. C'est au professionnel de prouver le consentement, y compris quand l'appel a été passé par un prestataire.",
+  },
+  {
+    q: "Une agence de dépôt-vente peut-elle proposer ses services par téléphone à un vendeur particulier ?",
+    a: "Proposer un dépôt-vente ou un mandat, c'est promouvoir un service : l'appel est une prospection commerciale et demande le consentement préalable du vendeur. La voie praticable passe par l'écrit, sur le canal ouvert par le vendeur, et par un appel seulement si celui-ci le demande ou l'accepte expressément.",
+  },
+  {
+    q: "La prospection téléphonique entre professionnels est-elle concernée ?",
+    a: "Non. Le consentement préalable de l'article L223-1 ne protège que les consommateurs. Entre professionnels, la CNIL admet la prospection téléphonique sur la base de l'intérêt légitime, à condition d'informer la personne et de lui permettre de s'opposer simplement et gratuitement.",
+  },
+];
+
+const sources = [
+  {
+    label:
+      "CNIL, « Prospection commerciale par téléphone (hors automate d'appel) : quelles sont les règles ? » (mise à jour du 10 juin 2026)",
+    url: "https://www.cnil.fr/fr/prospection-commerciale-par-telephone-hors-automate-dappel-quelles-sont-les-regles",
+  },
+  {
+    label:
+      "CNIL, « La prospection commerciale par courrier électronique, SMS-MMS et automate d'appel » (mise à jour du 10 juin 2026)",
+    url: "https://www.cnil.fr/fr/la-prospection-commerciale-par-automates-dappel",
+  },
+  {
+    label:
+      "DGCCRF, « Démarchage téléphonique : professionnels, mettez-vous en conformité avec la réglementation » (27 juillet 2026)",
+    url: "https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/demarchage-telephonique-professionnels-mettez-vous-en-conformite-avec-la-reglementation",
+  },
+  {
+    label:
+      "Code de la consommation, articles L223-1 et L242-16, version en vigueur au 11 août 2026 (Légifrance)",
+    url: "https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006069565/",
+  },
+  {
+    label: "AAA Data, « Marché automobile français 2025 : les grandes tendances » (juin 2026)",
+    url: "https://www.aaa-data.fr/actualites/marche-automobile-francais-2025-grandes-tendances/",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BlogPosting",
+    "headline": "Démarchage téléphonique et loi du 11 août 2026 : peut-on encore contacter un vendeur particulier ?",
+    "description": description,
+    "url": canonical,
+    "mainEntityOfPage": canonical,
+    "datePublished": datePublished,
+    "dateModified": dateModified,
+    "inLanguage": "fr-FR",
+    "author": { "@type": "Organization", "name": "L'équipe Auto-Prospect", "url": siteOrigin },
+    "publisher": { "@type": "Organization", "name": "Auto-Prospect", "url": siteOrigin, "logo": `${siteOrigin}/logo.svg` },
+  },
+  {
+    "@type": "HowTo",
+    "name": "Comment contacter un vendeur particulier de véhicule d'occasion depuis le 11 août 2026",
+    "step": pratiques.map((p, i) => ({
+      "@type": "HowToStep",
+      "position": i + 1,
+      "name": p.nom,
+      "text": p.texte,
+    })),
+  },
+  {
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  },
+  {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `${siteOrigin}/` },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteOrigin}/blog` },
+      { "@type": "ListItem", "position": 3, "name": "Démarchage téléphonique et loi du 11 août 2026", "item": canonical },
+    ],
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="mx-auto max-w-3xl px-4 pt-32 pb-20 sm:px-6 lg:px-8">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent">
+      <a href="/blog" class="text-text-secondary transition-colors hover:text-text">Blog</a>
+      <span class="text-text-secondary"> / </span>Réglementation
+    </p>
+    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">
+      Démarchage téléphonique et loi du 11 août 2026 : peut-on encore contacter un vendeur particulier ?
+    </h1>
+    <p class="mt-4 text-sm text-text-secondary">
+      Par <span class="font-semibold text-text">L'équipe Auto-Prospect</span>. Publié le 4 octobre 2026.
+    </p>
+
+    <div class="mt-8 rounded-2xl border border-border bg-card p-6">
+      <p class="text-sm font-semibold">En bref</p>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-text-secondary">
+        <li>
+          Depuis le 11 août 2026, un professionnel ne peut plus démarcher un consommateur par téléphone sans son
+          <strong class="text-text">consentement préalable</strong> (article L223-1 du Code de la consommation). Bloctel a
+          disparu : le silence vaut refus.
+        </li>
+        <li>
+          Un particulier qui vend sa voiture est un consommateur. La règle concerne donc directement les marchands VO,
+          mandataires et agences de dépôt-vente qui sourcent auprès des particuliers.
+        </li>
+        <li>
+          La loi vise la <strong class="text-text">prospection commerciale</strong>, c'est-à-dire la promotion d'un bien
+          ou d'un service. Répondre à une annonce pour acheter le véhicule proposé n'entre pas dans cette définition ;
+          proposer un service au vendeur, si.
+        </li>
+        <li>
+          En pratique : premier contact écrit sur le canal ouvert par le vendeur, message limité à l'achat du véhicule,
+          identité professionnelle affichée, arrêt immédiat au premier refus.
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-10 space-y-12 text-text-secondary">
+      <!-- 1. Ce que dit la loi -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Que change la loi sur le démarchage téléphonique depuis le 11 août 2026 ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          La règle vient de la loi n° 2025-594 du 30 juin 2025, qui a réécrit l'article L223-1 du Code de la consommation
+          avec une entrée en vigueur au 11 août 2026. Son décret d'application, le décret n° 2026-662 du 23 juillet 2026,
+          en fixe les modalités. Le principe tient en une phrase : il est interdit de démarcher par téléphone,
+          directement ou par un prestataire, un consommateur qui n'a pas donné son consentement au préalable.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Le consentement doit être une manifestation de volonté « libre, spécifique, éclairée, univoque et révocable »,
+          exprimée par un acte positif clair. Une case pré-cochée ou une simple navigation sur un site ne suffisent pas.
+          Selon le décret, le consentement vaut un an au plus, sans reconduction tacite, et le professionnel doit en
+          conserver la preuve. La CNIL (fiche mise à jour le 10 juin 2026) retient une conservation d'au moins trois ans à
+          compter du recueil.
+        </p>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="py-3 pr-4 font-medium">Point</th>
+                <th class="py-3 pr-4 font-medium">Avant le 11 août 2026</th>
+                <th class="py-3 font-medium">Depuis le 11 août 2026</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              {
+                avantApres.map((l) => (
+                  <tr>
+                    <td class="py-3 pr-4 font-medium text-text">{l.point}</td>
+                    <td class="py-3 pr-4">{l.avant}</td>
+                    <td class="py-3">{l.apres}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 leading-relaxed">
+          Deux exceptions seulement : la sollicitation liée à l'exécution d'un contrat en cours, et la vente de journaux et
+          de périodiques. La première ne peut pas servir à un premier contact : par construction, vous n'avez aucun
+          contrat en cours avec un vendeur que vous n'avez jamais eu au téléphone.
+        </p>
+      </section>
+
+      <!-- 2. Qui est concerné -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Pourquoi cette loi concerne-t-elle les marchands VO et les mandataires ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Parce que le texte protège le consommateur, et qu'un particulier qui vend son véhicule personnel en est un. La
+          prospection entre professionnels reste possible sur la base de l'intérêt légitime, avec un droit d'opposition
+          simple et gratuit (CNIL, 2026). Un marchand qui appelle un garage ou un loueur pour racheter un lot n'est pas
+          visé. Un marchand qui appelle un particulier, si.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Or le sourcing auprès des particuliers est le cœur du métier. Selon AAA Data (2026), les véhicules de plus de
+          cinq ans s'échangent à 55 % entre particuliers, et c'est sur ce stock que se construit la marge d'un revendeur
+          indépendant. La question n'est donc pas théorique : chaque professionnel qui prospecte sur Leboncoin, AutoScout24
+          ou La Centrale doit savoir de quel côté de la ligne se trouve chacun de ses contacts. La méthode de sourcing
+          elle-même est décrite dans notre guide de la
+          <a href="/blog/prospection-automobile-methode" class="text-accent hover:underline">prospection automobile auprès des vendeurs particuliers</a>.
+        </p>
+      </section>
+
+      <!-- 3. Le point de bascule -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Répondre à une annonce de vente, est-ce du démarchage ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          C'est le point qui décide de tout, et il se lit dans la définition. Le droit français définit la prospection
+          directe, à l'article L34-5 du Code des postes et des communications électroniques, comme l'envoi d'un message
+          destiné à promouvoir, directement ou indirectement, des biens, des services ou l'image de celui qui les vend ou
+          les fournit. L'article L223-1 du Code de la consommation vise, lui, la prospection commerciale par téléphone.
+          Dans les deux cas, le professionnel est celui qui pousse une offre vers une personne qui n'a rien demandé.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Un vendeur particulier qui publie une annonce fait l'inverse. C'est lui qui émet une offre publique, lui qui
+          affiche un numéro ou ouvre une messagerie pour recevoir des propositions d'achat. Le professionnel qui lui écrit
+          « je souhaite acheter votre véhicule » ne promeut ni bien ni service : il répond à l'offre. La nature du contact
+          n'est pas la même, et c'est cette nature, pas l'habileté de la formulation, qui le place hors de la prospection
+          commerciale.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Cette lecture a trois limites, et il faut les connaître.
+        </p>
+        <ul class="mt-3 list-disc space-y-2 pl-5 leading-relaxed">
+          <li>
+            <strong class="text-text">Elle découle des définitions, pas d'une décision.</strong> À la date de publication,
+            nous n'avons connaissance d'aucune décision de justice ni d'aucune position publiée de la DGCCRF ou de la CNIL
+            qui tranche expressément le cas de la réponse d'un professionnel à l'annonce d'un particulier. Elle ne vaut pas
+            garantie.
+          </li>
+          <li>
+            <strong class="text-text">Elle s'arrête dès que vous proposez quelque chose.</strong> Dépôt-vente, mandat de
+            vente, financement, garantie, autre véhicule à vendre : dès que le message promeut un service ou un bien, c'est
+            une prospection commerciale. Par téléphone, elle exige le consentement préalable du vendeur.
+          </li>
+          <li>
+            <strong class="text-text">Elle ne vaut que pour l'annonce.</strong> Rappeler le vendeur trois mois après le
+            retrait de l'annonce, ou réutiliser son numéro pour une autre campagne, n'est plus une réponse à une offre.
+          </li>
+        </ul>
+        <p class="mt-3 leading-relaxed">
+          Le RGPD reste applicable dans tous les cas. Le numéro publié dans une annonce est une donnée personnelle, mise en
+          ligne pour une finalité précise : vendre ce véhicule. L'utiliser pour cette finalité est cohérent ; constituer un
+          fichier pour d'autres usages ne l'est pas.
+        </p>
+      </section>
+
+      <!-- 4. Canal par canal -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Appel, messagerie, WhatsApp, message vocal : quel texte s'applique à chaque canal ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          La loi du 11 août 2026 ne couvre pas tous les canaux. Elle vise l'appel téléphonique. Les messages envoyés par un
+          système automatisé relèvent d'un texte plus ancien, l'article L34-5 du Code des postes et des communications
+          électroniques, qui exige déjà le consentement préalable pour toute prospection directe par automate d'appel, SMS
+          ou courrier électronique. Les deux régimes ont le même déclencheur : le caractère de prospection du message.
+        </p>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="py-3 pr-4 font-medium">Canal</th>
+                <th class="py-3 pr-4 font-medium">Texte applicable</th>
+                <th class="py-3 font-medium">Ce qu'il faut retenir</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              {
+                canaux.map((c) => (
+                  <tr>
+                    <td class="py-3 pr-4 font-medium text-text">{c.canal}</td>
+                    <td class="py-3 pr-4">{c.texte}</td>
+                    <td class="py-3">{c.retenir}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 leading-relaxed">
+          Un chiffre aide à hiérarchiser. Dans notre relevé de 35 122 annonces de particuliers (juin à septembre 2026),
+          <strong class="text-text">47,9 %</strong> des annonces Leboncoin affichent un numéro de téléphone. Pour plus d'une
+          annonce sur deux, le seul canal possible est donc la messagerie de la plateforme, celui que le vendeur a
+          lui-même ouvert. Le détail est dans nos
+          <a href="/blog/statistiques-annonces-voitures-occasion-particuliers-2026" class="text-accent hover:underline">16 statistiques sur les annonces de particuliers en 2026</a>.
+        </p>
+      </section>
+
+      <!-- 5. Pratiques -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Comment contacter un vendeur particulier en restant dans les règles ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Sept pratiques, dans l'ordre où elles se présentent. Aucune ne ralentit la prospection ; toutes réduisent le
+          risque et, accessoirement, améliorent le taux de réponse.
+        </p>
+        <ol class="mt-5 space-y-3">
+          {
+            pratiques.map((p, i) => (
+              <li class="rounded-xl border border-border bg-card p-5">
+                <p class="font-semibold text-text">{i + 1}. {p.nom}</p>
+                <p class="mt-2 text-sm leading-relaxed">{p.texte}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="mt-5 leading-relaxed">
+          Exemple de premier message qui reste du bon côté de la ligne, à adapter :
+        </p>
+        <blockquote class="mt-3 rounded-xl border border-border bg-card p-5 text-sm leading-relaxed">
+          « Bonjour, je suis [prénom], marchand automobile à [ville] (société [nom]). Je vous écris au sujet de votre
+          annonce pour la [modèle] de [année], [kilométrage] km : je souhaite l'acheter. Seriez-vous d'accord pour que je
+          vous appelle afin d'en parler ? Si vous préférez ne pas être recontacté, dites-le-moi et je n'insisterai pas. »
+        </blockquote>
+        <p class="mt-3 leading-relaxed">
+          Le message parle d'un seul véhicule, celui de l'annonce. Il identifie le professionnel, demande l'accord avant
+          l'appel et offre une sortie. Gardez la trace de chaque échange et de chaque refus : un
+          <a href="/blog/crm-automobile-marchand-vo" class="text-accent hover:underline">CRM d'achat tenu à jour</a>
+          sert aussi à cela.
+        </p>
+      </section>
+
+      <!-- CTA intermédiaire contextualisé -->
+      <aside class="rounded-2xl border border-accent/30 bg-gradient-to-b from-accent/10 to-transparent p-6 sm:p-8">
+        <p class="text-lg font-bold text-text">Un premier contact écrit, rattaché à une annonce en ligne</p>
+        <p class="mt-2 leading-relaxed">
+          Auto-Prospect détecte les annonces de particuliers en temps réel sur Leboncoin, AutoScout24 et La Centrale et
+          contacte les vendeurs par messagerie Leboncoin, WhatsApp ou message vocal, avec vos propres messages. Chaque
+          contact part d'une annonce publiée, chaque échange est consigné dans le CRM, et un vendeur contacté pour vous
+          n'est démarché pour aucun autre client. Le contenu des messages et le respect des règles restent de votre
+          responsabilité.
+        </p>
+        <div class="mt-5">
+          <a
+            href={APP_LOGIN_URL}
+            data-cta="blog-loi-demarchage-2026"
+            class="inline-block rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-bg shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover hover:shadow-accent/40"
+          >
+            Essayer gratuitement pendant 5 jours
+          </a>
+        </div>
+      </aside>
+
+      <!-- 6. Sanctions -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Que risque un professionnel en cas de démarchage illégal ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Le manquement à l'article L223-1 est puni d'une amende administrative pouvant atteindre
+          <strong class="text-text">75 000 euros pour une personne physique et 375 000 euros pour une personne morale</strong>
+          (article L242-16 du Code de la consommation). La sanction est prononcée par la DGCCRF, que les consommateurs
+          saisissent désormais par SignalConso.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Deux autres conséquences pèsent davantage au quotidien. Le contrat conclu à la suite d'un démarchage illégal est
+          nul : un achat signé après un appel non consenti peut être remis en cause. Et la responsabilité suit le donneur
+          d'ordre : faire appeler par un prestataire, un salarié ou un outil ne déplace pas l'obligation. C'est au
+          professionnel qui tire profit de l'appel de prouver que le consentement existait.
+        </p>
+      </section>
+
+      <!-- 7. Dépôt-vente -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Agences de dépôt-vente et mandataires : pourquoi êtes-vous plus exposés ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Un marchand qui achète pour revendre propose un prix : il répond à l'offre du vendeur. Une agence de dépôt-vente
+          ou un mandataire qui cherche des mandats propose un service, rémunéré par une commission. Présenter ce service à
+          un vendeur qui ne l'a pas demandé, c'est de la prospection commerciale au sens strict. Par téléphone, sans
+          consentement préalable, c'est exactement ce que la loi interdit depuis le 11 août 2026.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          La voie praticable passe par l'écrit et par l'initiative du vendeur. Un premier message sur le canal de l'annonce
+          qui s'en tient au véhicule ; puis, si le vendeur répond et se montre ouvert, une question explicite : souhaite-t-il
+          être appelé pour qu'on lui présente une solution d'accompagnement à la vente ? Sa réponse écrite, datée, qui
+          identifie votre société et l'objet de l'appel, est ce que vous conserverez. Sans cette réponse, pas d'appel
+          commercial. Pour les mandataires qui sourcent des véhicules pour le compte d'un client acheteur, la logique du
+          marchand s'applique : voir la page
+          <a href="/solutions/mandataire-auto" class="text-accent hover:underline">Auto-Prospect pour les mandataires auto</a>.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Dans tous les cas, un outil de
+          <a href="/solutions/pige-automobile" class="text-accent hover:underline">pige automobile avec contact des vendeurs</a>
+          ne change pas la qualification juridique de vos messages. Il change le canal du premier contact, sa rapidité et
+          sa traçabilité. Ce que vous écrivez au vendeur reste ce qui compte.
+        </p>
+      </section>
+
+      <!-- FAQ -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">Questions fréquentes sur le démarchage et les vendeurs particuliers</h2>
+        <div class="mt-4">
+          {
+            faq.map((f) => (
+              <details class="group border-b border-border py-2">
+                <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium text-text sm:text-base [&::-webkit-details-marker]:hidden">
+                  {f.q}
+                  <span class="ml-4 text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+                </summary>
+                <p class="pb-4 text-sm leading-relaxed">{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Sources -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">Sources</h2>
+        <ul class="mt-3 list-disc space-y-1 pl-5 text-sm">
+          {
+            sources.map((s) => (
+              <li>
+                <a href={s.url} target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">{s.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-3 text-xs">
+          Cet article est une information générale, à jour au 4 octobre 2026. Il ne constitue pas un conseil juridique : pour
+          une situation particulière, rapprochez-vous d'un avocat ou de votre organisation professionnelle. Le chiffre de
+          47,9 % provient des annonces relevées par Auto-Prospect entre le 1er juin et le 25 septembre 2026.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <SubPageCTA
+    title="Prospectez vite, et proprement"
+    subtitle="Détection en temps réel, premier contact écrit et CRM intégré, dès 69 € HT/mois. Essai gratuit 5 jours."
+  />
+  <Footer />
+  <CalendlyWidget />
+</Layout>

@@ -1,0 +1,2 @@
+- 2026-10-04 | cycle du jour | economie.gouv.fr (fiche DGCCRF démarchage) et legifrance.gouv.fr : HTTP 403 puis page de vérification anti-robot, non contournée. Faits repris des fiches CNIL et de sources secondaires concordantes ; réserve consignée dans `seo/briefs/2026-10-04-loi-11-aout-2026-demarchage.md`.
+- 2026-10-04 | cycle du jour | lecture agrégée de la base (part d'annonces Leboncoin avec refus du démarchage) refusée par le mode automatique (lecture de production). Chiffre non mesuré, non utilisé dans l'article.
