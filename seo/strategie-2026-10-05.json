@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-05",
+  "cadence": {
+    "cible": 1,
+    "produits_7j": 1,
+    "publies_7j": 0,
+    "tenue": true
+  },
+  "file": {
+    "lots": 2,
+    "ouverts": 7,
+    "faits": 4,
+    "echecs": 0,
+    "par_lot": [
+      {
+        "lot": "agent-2026-40",
+        "skill": "foundational-article",
+        "langue": "fr",
+        "ouverts": 1
+      },
+      {
+        "lot": "premier-lot",
+        "skill": "foundational-article (sauf mention contraire sur l'item)",
+        "langue": "fr",
+        "ouverts": 6
+      }
+    ]
+  },
+  "manque": 0,
+  "reserve": {
+    "niveau": "vide",
+    "jours": 0,
+    "derniere_date": null
+  },
+  "audit": [],
+  "opportunites": [
+    "2026-10-05-couvrir-recherche-auto-active"
+  ],
+  "briefs": [],
+  "pareto": {
+    "familles": [
+      {
+        "famille": "autre",
+        "articles": 11,
+        "impressions": 0,
+        "impressions_prec": 0,
+        "clics": 0
+      },
+      {
+        "famille": "comparison-page",
+        "articles": 2,
+        "impressions": 0,
+        "impressions_prec": 0,
+        "clics": 0
+      },
+      {
+        "famille": "foundational-article",
+        "articles": 6,
+        "impressions": 0,
+        "impressions_prec": 0,
+        "clics": 0
+      },
+      {
+        "famille": "statistics-article",
+        "articles": 2,
+        "impressions": 0,
+        "impressions_prec": 0,
+        "clics": 0
+      }
+    ],
+    "doubler": [],
+    "retravailler": [],
+    "non_indexes": [],
+    "tops": [],
+    "mesure": false
+  },
+  "pr_en_attente": [],
+  "prompts_a_zero": [
+    {
+      "prompt": "Quel est le meilleur logiciel de pige automobile pour un marchand VO ?",
+      "cites_par": []
+    },
+    {
+      "prompt": "Comment trouver des véhicules d'occasion sous-cotés à revendre ?",
+      "cites_par": []
+    },
+    {
+      "prompt": "Quel CRM utiliser pour suivre ses achats de véhicules d'occasion ?",
+      "cites_par": []
+    }
+  ],
+  "ajoutes": []
+}

@@ -1,22 +1,28 @@
 {
-  "date": "2026-09-28",
+  "date": "2026-10-05",
   "cadence": {
     "cible": 1,
-    "produits_7j": 3,
+    "produits_7j": 1,
     "publies_7j": 0,
     "tenue": true
   },
   "file": {
-    "lots": 1,
+    "lots": 2,
     "ouverts": 7,
-    "faits": 3,
+    "faits": 4,
     "echecs": 0,
     "par_lot": [
+      {
+        "lot": "agent-2026-40",
+        "skill": "foundational-article",
+        "langue": "fr",
+        "ouverts": 1
+      },
       {
         "lot": "premier-lot",
         "skill": "foundational-article (sauf mention contraire sur l'item)",
         "langue": "fr",
-        "ouverts": 7
+        "ouverts": 6
       }
     ]
   },
@@ -28,11 +34,7 @@
   },
   "audit": [],
   "opportunites": [
-    "2026-09-28-couvrir-pige-auto",
-    "2026-09-28-couvrir-crm-automobile",
-    "2026-09-28-couvrir-auto-prospect",
-    "2026-09-28-couvrir-autoprospect",
-    "2026-09-28-couvrir-recherche-auto-activee"
+    "2026-10-05-couvrir-recherche-auto-active"
   ],
   "briefs": [],
   "pareto": {
@@ -53,7 +55,7 @@
       },
       {
         "famille": "foundational-article",
-        "articles": 4,
+        "articles": 6,
         "impressions": 0,
         "impressions_prec": 0,
         "clics": 0
@@ -80,10 +82,6 @@
     },
     {
       "prompt": "Comment trouver des véhicules d'occasion sous-cotés à revendre ?",
-      "cites_par": []
-    },
-    {
-      "prompt": "Existe-t-il un outil qui envoie des messages WhatsApp ou vocaux aux vendeurs particuliers de voitures ?",
       "cites_par": []
     },
     {
