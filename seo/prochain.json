@@ -1,29 +1,35 @@
 {
-  "date": "2026-09-27",
+  "date": "2026-10-04",
   "item": {
-    "lot": "premier-lot",
-    "fichier": "lot-2026-09-26.md",
-    "skill": "foundational-article (sauf mention contraire sur l'item)",
+    "lot": "agent-2026-40",
+    "fichier": "agent-2026-40.md",
+    "skill": "foundational-article",
     "produit": "Auto-Prospect",
     "langue": "fr",
-    "id": "item-002",
+    "id": "agent-2026-40-001",
     "etat": "ouvert",
-    "titre": "crm-automobile-marchand-vo",
-    "requete": "« crm automobile » (720/mois, difficulté 2, 443 impressions GSC, position 51) + « crm auto » (720/mois)",
-    "cluster": "CRM automobile",
+    "titre": "whatsapp-message-vocal-vendeurs-particuliers-voiture",
+    "requete": "prompt IA à zéro citation : « Existe-t-il un outil qui envoie des messages WhatsApp ou vocaux aux vendeurs particuliers de voitures ? » + « prospection whatsapp automobile »",
+    "cluster": "contact automatique vendeurs (hub /fonctionnalites/contact-vocal-automatique ; canaux à vérifier dans l'app ; lier à item-008)",
     "livrable": ""
   },
   "file": {
-    "lots": 1,
-    "ouverts": 5,
-    "faits": 2,
+    "lots": 2,
+    "ouverts": 7,
+    "faits": 4,
     "echecs": 0,
     "par_lot": [
+      {
+        "lot": "agent-2026-40",
+        "skill": "foundational-article",
+        "langue": "fr",
+        "ouverts": 1
+      },
       {
         "lot": "premier-lot",
         "skill": "foundational-article (sauf mention contraire sur l'item)",
         "langue": "fr",
-        "ouverts": 5
+        "ouverts": 6
       }
     ]
   }

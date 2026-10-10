@@ -21,6 +21,14 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "loi-11-aout-2026-demarchage-prospection-vendeurs-particuliers",
+    title: "Démarchage téléphonique et loi du 11 août 2026 : peut-on encore contacter un vendeur particulier ?",
+    description:
+      "Consentement préalable, fin de Bloctel, sanctions : ce que les règles en vigueur depuis le 11 août 2026 changent pour un marchand VO, un mandataire ou une agence de dépôt-vente qui contacte des vendeurs particuliers, canal par canal.",
+    category: "Réglementation",
+    datePublished: "2026-10-04",
+  },
+  {
     slug: "crm-automobile-marchand-vo",
     title: "CRM automobile pour marchand VO : suivre ses achats auprès des particuliers",
     description:
@@ -43,6 +51,7 @@ export const articles: Article[] = [
       "Où chercher, comment trier, quel canal utiliser et quoi dire : la méthode complète de prospection des vendeurs particuliers pour un marchand VO ou un mandataire, avec les chiffres du marché 2025 et les erreurs qui font baisser le taux de réponse.",
     category: "Méthode",
     datePublished: "2026-09-26",
+    dateModified: "2026-10-04",
   },
 ];
 
