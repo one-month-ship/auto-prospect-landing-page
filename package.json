@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "check:leaks": "node scripts/check-stack-leaks.mjs"
   },
   "dependencies": {
     "astro": "^5.7.10",
