@@ -184,3 +184,38 @@
 
 - Erreur : aucune clé IndexNow : ajoute indexnow_key dans la configuration et sers-la à la racine du site.
 - Suite : les autres sources ont été traitées.
+
+### 2026-10-05 · serpstat summary prospelia.io
+
+- Erreur : réponse vide ou 5xx
+- Suite : les autres sources ont été traitées.
+
+### 2026-10-05 · listicle fr.trustpilot.com
+
+- Erreur : HTTP 403 pour https://fr.trustpilot.com/review/www.faxbox.com?page=2
+- Suite : les autres sources ont été traitées.
+
+### 2026-10-05 · listicle bestbuy.ca
+
+- Erreur : HTTP 403 pour https://www.bestbuy.ca/fr-ca/categorie/repulsifs-pour-chien/36961
+- Suite : les autres sources ont été traitées.
+
+### 2026-10-05 · listicles
+
+- Erreur : ValueError: '' does not appear to be an IPv4 or IPv6 address
+- Suite : les autres sources ont été traitées.
+
+### 2026-10-05 · presse qwoted.com
+
+- Erreur : HTTP 404 pour https://www.qwoted.com/opportunities : page non lisible sans compte, et l'agent ne se connecte à aucun compte.
+- Suite : les autres sources ont été traitées.
+
+### 2026-10-05 · presse featured.com
+
+- Erreur : HTTP 429 pour https://featured.com/questions : page non lisible sans compte, et l'agent ne se connecte à aucun compte.
+- Suite : les autres sources ont été traitées.
+
+### 2026-10-05 · indexnow auto-prospect.fr
+
+- Erreur : aucune clé IndexNow : ajoute indexnow_key dans la configuration et sers-la à la racine du site.
+- Suite : les autres sources ont été traitées.

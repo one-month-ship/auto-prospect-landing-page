@@ -1,2 +1,5 @@
 - 2026-10-04 | cycle du jour | economie.gouv.fr (fiche DGCCRF démarchage) et legifrance.gouv.fr : HTTP 403 puis page de vérification anti-robot, non contournée. Faits repris des fiches CNIL et de sources secondaires concordantes ; réserve consignée dans `seo/briefs/2026-10-04-loi-11-aout-2026-demarchage.md`.
 - 2026-10-04 | cycle du jour | lecture agrégée de la base (part d'annonces Leboncoin avec refus du démarchage) refusée par le mode automatique (lecture de production). Chiffre non mesuré, non utilisé dans l'article.
+- 2026-10-05 | cycle du lundi | mesure.py inspecte les URL sans slash final : faux « inconnue de Google » pour l'article de statistiques, alors que la forme canonique (avec slash) est indexée. Inspection refaite à la main, 10 inspections sur 10 consommées.
+- 2026-10-05 | cycle du lundi | brief.py écrit « Search Console absente » quand aucun article n'a d'impression, alors que la source répond. Partie 4 du brief réécrite à partir des données lues directement (appels gratuits).
+- 2026-10-05 | cycle du lundi | socle du Protocole introuvable : cycle exécuté sans mémoire partagée ni rappel de sources.

@@ -1,8 +1,8 @@
 {
-  "date": "2026-09-28",
+  "date": "2026-10-05",
   "periode": {
-    "debut": "2026-08-29",
-    "fin": "2026-09-25"
+    "debut": "2026-09-05",
+    "fin": "2026-10-02"
   },
   "google": false,
   "articles": {
@@ -171,6 +171,17 @@
       "indexe": null,
       "publie_le": "2026-09-27 (PR, non fusionnée)"
     },
+    "`/blog/loi-11-aout-2026-demarchage-prospection-vendeurs-particuliers`": {
+      "famille": "foundational-article",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
+      "indexe": null,
+      "publie_le": "2026-10-04 (PR #30, non fusionnée)"
+    },
     "`/conditions-utilisation`, `/confidentialite`, `/cookies`": {
       "famille": "autre",
       "impressions": 0,
@@ -190,7 +201,7 @@
       "impressions_prec": 0,
       "clics_prec": 0,
       "url": "",
-      "indexe": null,
+      "indexe": true,
       "publie_le": "2026-09-26"
     },
     "/blog/statistiques-annonces-voitures-occasion-particuliers-2026": {
@@ -201,7 +212,7 @@
       "impressions_prec": 0,
       "clics_prec": 0,
       "url": "",
-      "indexe": null,
+      "indexe": true,
       "publie_le": "2026-09-26"
     },
     "/blog/crm-automobile-marchand-vo": {
@@ -212,14 +223,25 @@
       "impressions_prec": 0,
       "clics_prec": 0,
       "url": "",
+      "indexe": false,
+      "publie_le": "2026-09-28"
+    },
+    "/blog/loi-11-aout-2026-demarchage-prospection-vendeurs-particuliers": {
+      "famille": "foundational-article",
+      "impressions": 0,
+      "clics": 0,
+      "position": 0.0,
+      "impressions_prec": 0,
+      "clics_prec": 0,
+      "url": "",
       "indexe": null,
-      "publie_le": "2026-09-27"
+      "publie_le": "2026-10-04"
     }
   },
   "emergentes": [
     {
       "requete": "pige auto",
-      "impressions": 268,
+      "impressions": 232,
       "clics": 3,
       "famille": "foundational-article",
       "pages": [
@@ -228,18 +250,19 @@
       ]
     },
     {
-      "requete": "crm automobile",
-      "impressions": 173,
+      "requete": "recherche auto activée",
+      "impressions": 164,
       "clics": 0,
       "famille": "foundational-article",
       "pages": [
-        "/fonctionnalites/crm-pipeline-vente"
+        "/",
+        "/fonctionnalites/recherche-annonces-automatisee"
       ]
     },
     {
       "requete": "auto prospect",
-      "impressions": 139,
-      "clics": 2,
+      "impressions": 159,
+      "clics": 5,
       "famille": "foundational-article",
       "pages": [
         "/",
@@ -248,37 +271,48 @@
       ]
     },
     {
+      "requete": "recherche auto activé",
+      "impressions": 127,
+      "clics": 0,
+      "famille": "foundational-article",
+      "pages": [
+        "/fonctionnalites/recherche-annonces-automatisee"
+      ]
+    },
+    {
+      "requete": "crm automobile",
+      "impressions": 122,
+      "clics": 0,
+      "famille": "foundational-article",
+      "pages": [
+        "/fonctionnalites/crm-pipeline-vente"
+      ]
+    },
+    {
       "requete": "autoprospect",
-      "impressions": 138,
-      "clics": 11,
+      "impressions": 108,
+      "clics": 10,
+      "famille": "foundational-article",
+      "pages": [
+        "/",
+        "/confidentialite",
+        "/fonctionnalites/analyse-prix-marche"
+      ]
+    },
+    {
+      "requete": "prospection automobile",
+      "impressions": 74,
+      "clics": 3,
       "famille": "foundational-article",
       "pages": [
         "/",
         "/conditions-utilisation",
-        "/confidentialite"
-      ]
-    },
-    {
-      "requete": "recherche auto activée",
-      "impressions": 112,
-      "clics": 0,
-      "famille": "foundational-article",
-      "pages": [
-        "/fonctionnalites/recherche-annonces-automatisee"
-      ]
-    },
-    {
-      "requete": "recherche auto activé",
-      "impressions": 83,
-      "clics": 0,
-      "famille": "foundational-article",
-      "pages": [
-        "/fonctionnalites/recherche-annonces-automatisee"
+        "/solutions/mandataire-auto"
       ]
     },
     {
       "requete": "prospection automatique",
-      "impressions": 75,
+      "impressions": 69,
       "clics": 0,
       "famille": "foundational-article",
       "pages": [
@@ -286,19 +320,8 @@
       ]
     },
     {
-      "requete": "prospection automobile",
-      "impressions": 66,
-      "clics": 2,
-      "famille": "foundational-article",
-      "pages": [
-        "/",
-        "/conditions-utilisation",
-        "/fonctionnalites/recherche-annonces-automatisee"
-      ]
-    },
-    {
       "requete": "prospect autos",
-      "impressions": 42,
+      "impressions": 51,
       "clics": 0,
       "famille": "foundational-article",
       "pages": [
@@ -306,19 +329,9 @@
         "/cookies",
         "/fonctionnalites/analyse-prix-marche"
       ]
-    },
-    {
-      "requete": "remarketing automobile",
-      "impressions": 40,
-      "clics": 0,
-      "famille": "foundational-article",
-      "pages": [
-        "/",
-        "/solutions/marchand-vehicules-occasion"
-      ]
     }
   ],
-  "inspectes": 0,
+  "inspectes": 3,
   "erreurs": [],
   "cout_usd": 0.0
 }
