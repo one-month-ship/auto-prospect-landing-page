@@ -43,6 +43,13 @@ function sectionMeta(pagePath) {
 
 export default defineConfig({
   site: SITE,
+  // Une seule forme d'URL fait foi : celle avec barre finale, identique aux
+  // canonicals et au sitemap. Sans ça, Astro sert la même page sur deux URL
+  // (avec et sans barre) qui répondent toutes les deux 200 : Google suit le
+  // lien interne sans barre, lit un canonical qui désigne l'autre, et laisse
+  // la page en « détectée, jamais explorée ».
+  trailingSlash: "always",
+  build: { format: "directory" },
   integrations: [
     react(),
     sitemap({

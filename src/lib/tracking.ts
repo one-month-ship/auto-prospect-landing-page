@@ -169,7 +169,7 @@ export function pageType(pathname?: string): string {
   if (pathname.startsWith("/blog/")) return "article";
   if (pathname.startsWith("/fonctionnalites")) return "fonctionnalites";
   if (pathname.startsWith("/solutions")) return "solutions";
-  if (pathname === "/tarifs") return "tarifs";
+  if (pathname === "/tarifs" || pathname === "/tarifs/") return "tarifs";
   if (pathname === "/") return "home";
   return "autre";
 }

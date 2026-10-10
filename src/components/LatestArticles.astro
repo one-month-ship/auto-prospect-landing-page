@@ -1,0 +1,57 @@
+---
+// Bloc « Derniers articles » de l'accueil.
+//
+// Raison d'être SEO : l'accueil est la seule page que Google explore
+// régulièrement. Tant qu'elle ne pointait que vers /blog/ — page elle-même
+// jamais explorée — les articles restaient à deux sauts derrière un maillon
+// que Google n'avait jamais ouvert. Ces liens directs les placent dans le
+// budget d'exploration déjà dépensé sur l'accueil.
+//
+// La liste vient de `sortedArticles` : un nouvel article publié y apparaît
+// automatiquement, sans geste manuel dans Search Console.
+import { sortedArticles, formatDateFr } from "../data/articles";
+
+// Les plus récents. Trois tient sur une ligne en desktop et garde le bloc court.
+const latest = sortedArticles.slice(0, 3);
+---
+
+<section id="articles" class="border-t border-border py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="fade-up text-center">
+      <span class="text-sm font-semibold uppercase tracking-widest text-accent">Ressources</span>
+      <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Nos derniers articles</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-text-secondary">
+        Méthode, réglementation et chiffres du marché pour prospecter les vendeurs particuliers.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {latest.map((a) => (
+        <a
+          href={`/blog/${a.slug}/`}
+          class="fade-up group flex flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+        >
+          <span class="text-xs font-semibold uppercase tracking-widest text-accent">{a.category}</span>
+          <h3 class="mt-3 text-lg font-semibold leading-snug">{a.title}</h3>
+          <p class="mt-2 flex-1 text-sm leading-relaxed text-text-secondary">{a.description}</p>
+          <span class="mt-5 flex items-center justify-between gap-3">
+            <time datetime={a.datePublished} class="text-xs text-text-secondary">
+              {formatDateFr(a.datePublished)}
+            </time>
+            <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+              Lire
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </span>
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <div class="fade-up mt-10 text-center">
+      <a href="/blog/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline">
+        Tous les articles
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>

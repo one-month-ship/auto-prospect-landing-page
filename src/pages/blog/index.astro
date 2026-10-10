@@ -17,13 +17,13 @@ const siteOrigin = Astro.site?.origin ?? "https://auto-prospect.fr";
 const blogSchema = {
   "@type": "Blog",
   "name": "Blog Auto-Prospect",
-  "url": `${siteOrigin}/blog`,
+  "url": `${siteOrigin}/blog/`,
   "description": description,
   "inLanguage": "fr-FR",
   "blogPost": sortedArticles.map((a) => ({
     "@type": "BlogPosting",
     "headline": a.title,
-    "url": `${siteOrigin}/blog/${a.slug}`,
+    "url": `${siteOrigin}/blog/${a.slug}/`,
     "datePublished": a.datePublished,
     ...(a.dateModified ? { "dateModified": a.dateModified } : {}),
   })),
@@ -33,7 +33,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `${siteOrigin}/` },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteOrigin}/blog` },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteOrigin}/blog/` },
   ],
 };
 ---
@@ -55,7 +55,7 @@ const breadcrumbSchema = {
         sortedArticles.map((a) => (
           <li>
             <a
-              href={`/blog/${a.slug}`}
+              href={`/blog/${a.slug}/`}
               class="group block rounded-2xl border border-border bg-card p-6 transition-colors hover:border-accent/40 sm:p-8"
             >
               <p class="text-xs font-semibold uppercase tracking-widest text-accent">{a.category}</p>
