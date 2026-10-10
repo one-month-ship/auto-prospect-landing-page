@@ -88,12 +88,18 @@ Voir `competitors.md` dans ce dossier. Résumé (repris du projet frère AlertDe
 
 > Ne jamais mettre d'identifiant de base, de clé ou de token ici. Ce fichier est versionné.
 
+> **Lecture du dépôt de l'app** : explorer `auto-prospect-app` sert à vérifier un
+> chiffre ou un comportement produit, jamais à alimenter un article en détails
+> techniques. Les noms de fournisseurs, de tables, de colonnes, de fichiers et de
+> variables d'environnement croisés là-bas restent internes (§ 15). Dans un
+> contenu publié, ne sort que le fait métier, formulé côté utilisateur.
+
 ## 9. Voix
 
 - **Langue(s) de production** : fr
 - **Tutoiement ou vouvoiement** : vouvoiement (« Automatisez votre prospection », « vous n'avez plus qu'à répondre »), à la différence d'AlertDeals qui tutoie
 - **Ton** : direct, professionnel, orienté gain de temps et volume de deals ; chiffres concrets ; comparatif « honnête » sans dénigrer les concurrents par nom
-- **Interdits** : pas d'emoji dans le corps de texte ; pas de promesse de gain garanti ; ne jamais nommer un concurrent sans fact-check humain ; pas de marqueur `[À CONFIRMER]`/TODO dans un contenu publié
+- **Interdits** : pas d'emoji dans le corps de texte ; pas de promesse de gain garanti ; ne jamais nommer un concurrent sans fact-check humain ; pas de marqueur `[À CONFIRMER]`/TODO dans un contenu publié ; **ne jamais nommer un fournisseur, une API ou un service technique qu'Auto-Prospect utilise** (voir § 15)
 - **Exemple de page qui incarne la voix** : `src/pages/comparatif-outils-pige-automobile.astro` (section « Un comparatif honnête ») et `src/pages/solutions/pige-automobile.astro`
 
 ## 10. Site et stack
@@ -132,6 +138,56 @@ Voir `competitors.md` dans ce dossier. Résumé (repris du projet frère AlertDe
 - **Produits de la suite** : Auto-Prospect (https://auto-prospect.fr, prospection + contact automatique + CRM) et AlertDeals (https://alertdeals.fr, alertes bonnes affaires et estimation de marge). Même niche (achat-revente VO en France), mêmes trois marketplaces, même équipe `[À CONFIRMER]`
 - **Produit hub** : aucun désigné pour l'instant ; les deux sites vivent séparément `[À CONFIRMER]`
 - **Règles d'interlink** : liens contextuels uniquement (ex. un article Auto-Prospect sur la marge peut pointer vers l'analyse tarifaire AlertDeals et inversement), jamais de footer croisé massif. Ne pas dupliquer les mêmes articles sur les deux sites : se répartir les clusters (AlertDeals = rentabilité/marge/rotation ; Auto-Prospect = prospection/contact vendeur/CRM)
+
+## 15. Confidentialité de la stack (RÈGLE ABSOLUE)
+
+Trouver les bons fournisseurs a coûté beaucoup de temps de recherche : c'est un
+avantage concurrentiel. Un concurrent qui lit le nom d'un service dans un article
+reconstitue le montage en une après-midi. Rien de tout cela ne sort dans un
+contenu public.
+
+**Jamais dans un contenu publié** (article, page, lead magnet, `llms.txt`,
+JSON-LD, post, réponse d'annuaire, commentaire HTML, nom de fichier ou d'image) :
+
+- **le nom d'un fournisseur de données ou de collecte d'annonces** (celui qui
+  alimente `ads`), ni d'un service de scraping, de proxy ou d'enrichissement
+- **le nom d'un fournisseur de communication** : envoi de SMS, appels et
+  messages vocaux, WhatsApp, messagerie des marketplaces, email transactionnel
+- **l'infrastructure** : base de données et son hébergeur, file de jobs, ORM,
+  cache, hébergeur de l'app, service de logs ou de monitoring
+- **les modèles et fournisseurs d'IA** utilisés dans le produit ou pour écrire
+- **tout détail d'implémentation** : nom de table ou de colonne, chemin de
+  fichier du dépôt, nom de variable d'environnement, endpoint interne,
+  nom de squid, de webhook ou de worker, copie d'écran d'un tableau de bord
+  tiers
+
+**Formulations de remplacement** : décrire la capacité, jamais l'outil.
+« notre infrastructure de collecte », « notre partenaire d'acheminement des
+messages », « nos canaux de contact », « notre moteur d'analyse de prix »,
+« nos propres données » — ou simplement ne pas en parler, ce qui est presque
+toujours la bonne option dans un article destiné à des marchands VO.
+
+**Seules exceptions autorisées** (déjà publiques sur le site, à garder
+identiques) :
+
+- **les trois marketplaces sources** : Leboncoin, AutoScout24, La Centrale.
+  Ce sont des arguments produit affichés dans le H1 et la meta description.
+  Ne jamais préciser *comment* leurs annonces sont récupérées.
+- **Stripe**, uniquement comme argument de confiance sur le paiement, tel que
+  formulé dans la FAQ du site.
+- **les canaux en tant que canaux** : « WhatsApp », « messagerie Leboncoin »,
+  « message vocal sur répondeur » sont le produit vendu. Interdit en revanche
+  de nommer le fournisseur qui achemine ces messages.
+
+**Quand un chiffre vient de nos données** : citer la source comme
+« données internes Auto-Prospect, N annonces, période », sans dire quelle base,
+quel schéma, quel rôle de lecture ni quel fichier de seed. Les briefs internes
+de `seo/briefs/` peuvent détailler la méthode : ils ne sont pas publiés. Garder
+cette frontière, brief interne précis / article muet sur la plomberie.
+
+**En cas de doute** : ne pas nommer, et le signaler dans le brief. Un article
+reste bon sans le nom d'un fournisseur ; une fuite ne se reprend pas, les IA et
+les archives l'ont déjà copiée.
 
 ## 14. État
 

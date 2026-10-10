@@ -20,3 +20,33 @@
   - Légifrance et economie.gouv.fr bloquent la lecture automatique (vérification anti-robot) : passer par les fiches CNIL, lisibles, et consigner dans le brief ce qui n'a pas été relu à la source.
   - Cadre retenu dans l'article, à reprendre pour `agent-2026-40-001` et l'item-009 : l'appel vocal relève de L223-1 c. conso. ; les envois automatisés (vocal sur répondeur, SMS, WhatsApp) relèvent de L34-5 CPCE, antérieur à 2026 ; les deux se déclenchent sur le caractère de prospection (promotion d'un bien ou d'un service). Une offre d'achat en réponse à une annonce n'en est pas une ; une proposition de service (dépôt-vente, mandat) en est une. Cette seconde partie contredit la note du 2026-09-28 sur l'item-009 : à faire trancher par Nassim avant de produire l'item-009.
   - Produit : l'app stocke la mention Leboncoin de refus du démarchage (`ads.accept_salesmen`) sans filtrer les envois. Ne pas écrire qu'Auto-Prospect respecte cette mention tant que ce n'est pas le cas.
+- 2026-10-10 (règle permanente, demande de Nassim) : **ne jamais nommer un
+  fournisseur, une API ou un service technique qu'Auto-Prospect utilise** dans un
+  contenu publié. Trouver ces outils a coûté du temps de recherche, c'est un
+  avantage concurrentiel qu'un partenaire ou un concurrent ne doit pas pouvoir
+  lire dans un article. Règle complète en § 15 de `profile.md` et dans le
+  `CLAUDE.md` du dépôt.
+  - Interdits : fournisseur de collecte d'annonces, scraping, proxy,
+    enrichissement ; fournisseur de SMS, d'appels, de vocal, de WhatsApp, de
+    messagerie marketplace, d'email ; base de données et son hébergeur, ORM, file
+    de jobs, cache, hébergeur de l'app, logs, monitoring ; modèles et
+    fournisseurs d'IA ; et tout détail d'implémentation (nom de table ou de
+    colonne, chemin de fichier du dépôt applicatif, variable d'environnement,
+    endpoint, nom de worker ou de webhook).
+  - Autorisé car déjà public : les trois marketplaces (Leboncoin, AutoScout24,
+    La Centrale) sans jamais dire comment leurs annonces sont récupérées ;
+    Stripe sur le paiement uniquement ; les canaux en tant que canaux (WhatsApp,
+    messagerie Leboncoin, vocal sur répondeur) sans nommer qui les achemine.
+  - Ces notes et les briefs de `seo/briefs/` ne sont pas publiés : ils peuvent
+    continuer à citer les chemins de fichiers de l'app, c'est utile pour
+    vérifier une affirmation produit. Ce qui change, c'est ce qui sort dans
+    `src/`. Ne jamais recopier un passage technique d'un brief vers un article.
+  - Attention particulière sur les comparatifs (`comparison-page`, dont
+    `agent-2026-41-001`) : comparer Auto-Prospect à un concurrent pousse à
+    expliquer comment il fonctionne. Décrire le résultat pour l'utilisateur
+    (temps réel, exclusivité des prospects, zones illimitées), jamais la
+    plomberie qui le produit.
+  - Un chiffre issu de nos données se cite « données internes Auto-Prospect,
+    N annonces, période », sans nommer la base, le schéma ni le rôle de lecture.
+  - Vérification avant publication : `pnpm check:leaks` (scan de `src/` et
+    `public/`, également en CI via `.github/workflows/no-stack-leaks.yml`).
