@@ -11,7 +11,7 @@
 ## 1. Identité
 
 - **Nom** : Auto-Prospect
-- **URL publique** : https://auto-prospect.fr (apex canonique, www redirige en 307)
+- **URL publique** : https://auto-prospect.fr (apex canonique, www redirige en **308 Permanent Redirect** — vérifié sur les en-têtes le 2026-10-10 ; la mention « 307 » était une erreur de mesure)
 - **Catégorie principale** : logiciel de prospection automobile automatisée (pige auto + contact automatique des vendeurs) pour professionnels de l'achat-revente
 - **Catégories secondaires** : CRM automobile, outil de sourcing VO, analyse prix vs marché
 - **Plateformes** : web (app.auto-prospect.fr), canaux de contact WhatsApp / messagerie Leboncoin / message vocal sur répondeur
@@ -121,7 +121,7 @@ Voir `competitors.md` dans ce dossier. Résumé (repris du projet frère AlertDe
 
 - **Suivi de la visibilité IA** : aucun
 - **Analytics produit** : aucun analytics dans ce dépôt. Pixel Meta et Google Tag chargés après consentement (`src/lib/tracking.ts`), IDs via `PUBLIC_META_PIXEL_ID` / `PUBLIC_GOOGLE_TAG_ID`
-- **Google Search Console** : **connectée** via treg (org one-month-ship), propriété `sc-domain:auto-prospect.fr` accessible en siteOwner (vérifié le 2026-09-26). Note : les impressions se répartissent entre `www.` et l'apex ; www redirige en 307 vers l'apex, Google consolidera sur le canonical
+- **Google Search Console** : **connectée** via treg (org one-month-ship), propriété `sc-domain:auto-prospect.fr` accessible en siteOwner (vérifié le 2026-09-26). Note : les impressions se répartissent entre `www.` et l'apex ; www redirige en **308 Permanent Redirect** vers l'apex (vérifié le 2026-10-10 ; la mention « 307 » venait d'une lecture du dernier saut de la chaîne avec `curl -w "%{http_code}"` au lieu de la première ligne de `curl -I`). La redirection étant permanente, il n'y a rien à corriger ; Google consolidera sur le canonical
 - **Emailing** (pour les lead magnets) : Lumail configuré au niveau du plugin email-engine ; l'app utilise Resend pour le transactionnel. Aucune liste marketing connue
 - **Automatisation navigateur** (pour les annuaires) : aucune
 - **Recherche de mots-clés** : treg → Serpstat g_fr (0,0005 $ par mot-clé trouvé), premier appel le 2026-09-26 ; solde réel à lire (`treg balance`) avant tout appel payant, plafond dans `.protocole/treg.json`
