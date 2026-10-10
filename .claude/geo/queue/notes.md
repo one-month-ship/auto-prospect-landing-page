@@ -50,3 +50,30 @@
     N annonces, période », sans nommer la base, le schéma ni le rôle de lecture.
   - Vérification avant publication : `pnpm check:leaks` (scan de `src/` et
     `public/`, également en CI via `.github/workflows/no-stack-leaks.yml`).
+
+## 2026-10-10 : méthode de mesure des redirections, et cause de non-indexation
+
+- **Ne jamais lire un code de redirection avec `curl -w "%{http_code}"`.** Cette
+  option renvoie le statut du **dernier** saut de la chaîne, pas celui de la
+  redirection. C'est ce qui a produit la mention « www redirige en 307 » de
+  `profile.md`. La bonne commande : `curl -s -I <url>` et lire la première ligne
+  `HTTP/...` (ou `-I -L` pour toute la chaîne).
+- **État réel vérifié le 2026-10-10** : `www` vers l'apex en **308 Permanent
+  Redirect**, HTTP vers HTTPS en **308**. Permanent dans les deux cas, rien à
+  corriger côté Vercel. 301 est « Moved Permanently », 308 « Permanent
+  Redirect », 307 « Temporary Redirect » : seul 307 est temporaire.
+- **Cause d'une non-indexation, corrigée dans la PR 34** : chaque URL répondait
+  200 avec et sans barre finale, les liens internes pointaient vers la version
+  sans barre et les canonicals déclaraient celle avec. Google suivait un lien,
+  lisait un canonical désignant une autre URL, et laissait la page en
+  « détectée, jamais explorée ». `trailingSlash` n'était pas défini dans
+  `astro.config.mjs` ; il vaut désormais `"always"`.
+- Piège associé : `pageType()` de `src/lib/tracking.ts` comparait `pathname` au
+  littéral `"/tarifs"`. Avec `trailingSlash: "always"` la condition n'aurait plus
+  jamais été vraie et la segmentation d'audience Meta aurait cessé de classer la
+  page tarifs. Toute comparaison de `pathname` à un littéral doit accepter les
+  deux formes.
+- À retenir pour les mesures : ce site part d'une bien meilleure situation que
+  le dépôt AlertDeals (142 requêtes réelles en Search Console, « pige auto » à
+  1 077 impressions sur 90 jours, position 7,5). Ne pas transposer le diagnostic
+  « rien n'est indexé » d'AlertDeals.
