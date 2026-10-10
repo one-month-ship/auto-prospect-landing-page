@@ -38,8 +38,8 @@ const jsonLd = [
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Accueil", item: "https://auto-prospect.fr/" },
-      { "@type": "ListItem", position: 2, name: "Solutions", item: "https://auto-prospect.fr/solutions/pige-automobile" },
-      { "@type": "ListItem", position: 3, name: "Pige automobile", item: "https://auto-prospect.fr/solutions/pige-automobile" },
+      { "@type": "ListItem", position: 2, name: "Solutions", item: "https://auto-prospect.fr/solutions/pige-automobile/" },
+      { "@type": "ListItem", position: 3, name: "Pige automobile", item: "https://auto-prospect.fr/solutions/pige-automobile/" },
     ],
   },
   {
@@ -139,14 +139,52 @@ const jsonLd = [
         </div>
         <p class="mt-8 leading-relaxed text-text-secondary">
           En pratique, Auto-Prospect combine en un seul abonnement la
-          <a href="/fonctionnalites/recherche-annonces-automatisee" class="text-accent hover:underline">détection temps réel</a>,
-          l'<a href="/fonctionnalites/analyse-prix-marche" class="text-accent hover:underline">analyse prix vs marché</a>,
-          le <a href="/fonctionnalites/contact-vocal-automatique" class="text-accent hover:underline">contact automatique</a>
-          et le <a href="/fonctionnalites/crm-pipeline-vente" class="text-accent hover:underline">CRM intégré</a> —
-          à partir de 69 € HT/mois (<a href="/tarifs" class="text-accent hover:underline">détail des tarifs</a>).
+          <a href="/fonctionnalites/recherche-annonces-automatisee/" class="text-accent hover:underline">détection temps réel</a>,
+          l'<a href="/fonctionnalites/analyse-prix-marche/" class="text-accent hover:underline">analyse prix vs marché</a>,
+          le <a href="/fonctionnalites/contact-vocal-automatique/" class="text-accent hover:underline">contact automatique</a>
+          et le <a href="/fonctionnalites/crm-pipeline-vente/" class="text-accent hover:underline">CRM intégré</a> —
+          à partir de 69 € HT/mois (<a href="/tarifs/" class="text-accent hover:underline">détail des tarifs</a>).
           Pour une comparaison critère par critère avec les autres outils du marché, consultez le
-          <a href="/comparatif-outils-pige-automobile" class="text-accent hover:underline">comparatif des outils de pige</a>.
+          <a href="/comparatif-outils-pige-automobile/" class="text-accent hover:underline">comparatif des outils de pige</a>.
         </p>
+      </div>
+    </section>
+
+    <!-- Liens vers le blog : cette page est la mieux classée du site (« pige auto »,
+         position 7,1). Elle sert de relais d'exploration vers les articles, qui n'en
+         avaient aucun depuis une page explorée par Google. -->
+    <section class="py-12">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Pour aller plus loin</h2>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <a
+            href="/blog/loi-11-aout-2026-demarchage-prospection-vendeurs-particuliers/"
+            class="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+          >
+            <span class="text-xs font-semibold uppercase tracking-widest text-accent">Réglementation</span>
+            <h3 class="mt-3 font-semibold leading-snug">
+              Démarchage téléphonique et loi du 11 août 2026 : peut-on encore contacter un vendeur
+              particulier ?
+            </h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-text-secondary">
+              Consentement préalable, fin de Bloctel, sanctions : ce qui change pour un marchand VO
+              ou un mandataire, canal par canal.
+            </p>
+          </a>
+          <a
+            href="/blog/statistiques-annonces-voitures-occasion-particuliers-2026/"
+            class="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+          >
+            <span class="text-xs font-semibold uppercase tracking-widest text-accent">Données</span>
+            <h3 class="mt-3 font-semibold leading-snug">
+              16 statistiques sur les annonces de voitures d'occasion de particuliers en 2026
+            </h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-text-secondary">
+              Volume d'annonces, part des particuliers, durée de mise en vente : les chiffres du
+              marché à prospecter.
+            </p>
+          </a>
+        </div>
       </div>
     </section>
 
