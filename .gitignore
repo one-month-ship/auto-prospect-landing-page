@@ -8,7 +8,6 @@ dist/
 .astro/
 
 # Environnement
-.env.local
 .env.*.local
 
 # Divers
@@ -20,5 +19,5 @@ dist/
 .protocole/
 prospects/
 
-.env.local
 .env*.local
+config.bat

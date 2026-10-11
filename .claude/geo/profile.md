@@ -64,6 +64,7 @@
 1. Recherche automatique d'annonces en temps réel (3 marketplaces, filtres marque/modèle/prix/km/zone, zones illimitées) : `/fonctionnalites/recherche-annonces-automatisee`
 2. Contact multicanal des vendeurs (messagerie Leboncoin, WhatsApp, vocal sur répondeur) : `/fonctionnalites/contact-multicanal`
 3. Contact vocal automatique, templates réutilisables, exclusivité des prospects : `/fonctionnalites/contact-vocal-automatique`
+3 bis. **Appels entrants identifiés** (feature le plus différenciant, ajouté le 2026-10-12) : un numéro Auto-Prospect dédié par compte, que les vendeurs rappellent ; l'appel est transféré sur la ligne du client qui entend l'annonce avant de décrocher (« Appel Auto-Prospect. Peugeot 208 2019, 9 900 euros, Lyon. »), l'appel s'affiche dans le CRM avec l'annonce (même manqué) et son issue est notée sur le prospect : `/fonctionnalites/appels-entrants-identifies`. Vocabulaire publié : « appels entrants identifiés », « annonce vocale avant de décrocher », « quand un vendeur vous rappelle » ; jamais « whisper » ni le nom de l'opérateur (§ 15). **Ne jamais parler d'un « numéro Auto-Prospect », d'un numéro dédié ou attribué** (demande de Nassim, 2026-10-12) : du point de vue du client c'est simplement « votre numéro », il n'a pas à savoir qu'un numéro lui est assigné. Mis en avant sur la home (section « Nouveau » après « Comment ça marche », carte dans la grille Fonctionnalités, étape 3, FAQ). Fonctionnalité **incluse dans l'abonnement** (tranché par Nassim le 2026-10-12, ligne « Appels entrants identifiés » sur `/tarifs`). En interne, un numéro est attribué à chaque compte et écrit dans le texte des messages : ne jamais parler de « numéro d'appelant » ni de cette mécanique dans un contenu marketing, dire seulement « vos messages donnent aux vendeurs votre numéro à rappeler »
 4. CRM pipeline de vente Kanban, alimenté automatiquement, travail en équipe : `/fonctionnalites/crm-pipeline-vente`
 5. Analyse prix vs marché sur chaque annonce (véhicules sous-cotés) : `/fonctionnalites/analyse-prix-marche`
 6. Tarifs, plan unique : `/tarifs`
@@ -196,3 +197,4 @@ les archives l'ont déjà copiée.
 - **Files d'exécution** : `queue/` dans ce dossier
 - **Dernier rituel de mesure** : jamais
 - **Phase actuelle** : volume (aucun article publié, aucune mesure)
+- **2026-10-12** : feature « appels entrants identifiés » mis en avant (page hub, home, article, `llms.txt`), branche `feat/incoming-calls` ; à fusionner avec, ou après, la mise en production du feature côté app (brief `seo/briefs/2026-10-12-appels-entrants-identifies.md`)

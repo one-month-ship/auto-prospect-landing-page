@@ -21,6 +21,14 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "rappel-vendeur-particulier-identifier-annonce",
+    title: "Un vendeur particulier vous rappelle : comment savoir de quelle annonce il s'agit avant de décrocher",
+    description:
+      "Le rappel est le moment décisif de la prospection automatique, et le plus mal préparé : numéro inconnu, annonce à retrouver, appel manqué jamais rappelé. Trois façons d'identifier l'annonce, quoi dire dans les trente premières secondes et comment traiter un appel manqué.",
+    category: "Méthode",
+    datePublished: "2026-10-12",
+  },
+  {
     slug: "whatsapp-message-vocal-vendeurs-particuliers-voiture",
     title:
       "WhatsApp et message vocal : comment contacter les vendeurs particuliers de voitures",
@@ -60,7 +68,7 @@ export const articles: Article[] = [
       "Où chercher, comment trier, quel canal utiliser et quoi dire : la méthode complète de prospection des vendeurs particuliers pour un marchand VO ou un mandataire, avec les chiffres du marché 2025 et les erreurs qui font baisser le taux de réponse.",
     category: "Méthode",
     datePublished: "2026-09-26",
-    dateModified: "2026-10-04",
+    dateModified: "2026-10-12",
   },
 ];
 
