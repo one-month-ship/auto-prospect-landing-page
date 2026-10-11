@@ -1,0 +1,261 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import "../../styles/global.css";
+
+const title = "Appels entrants identifiés : l'annonce avant de décrocher | Auto-Prospect";
+const description =
+  "Quand un vendeur vous rappelle, Auto-Prospect vous annonce le véhicule avant de décrocher : marque, modèle, année, prix, ville. L'appel et l'annonce s'affichent dans le CRM, même si vous l'avez manqué. Le seul outil de pige à identifier les rappels des vendeurs.";
+
+const siteOrigin = Astro.site?.origin ?? "https://auto-prospect.fr";
+const canonical = `${siteOrigin}/fonctionnalites/appels-entrants-identifies/`;
+
+// Les trois étapes, reprises dans le HowTo du JSON-LD.
+const etapes = [
+  {
+    nom: "Le vendeur vous rappelle",
+    texte:
+      "Vos messages, vocaux comme écrits, donnent au vendeur votre numéro à rappeler. Vous indiquez une fois la ligne sur laquelle ces appels doivent sonner : votre mobile ou le fixe de l'agence.",
+  },
+  {
+    nom: "Vous entendez le véhicule avant de décrocher",
+    texte:
+      "L'appel est transféré sur votre ligne. Avant la mise en relation, une voix vous annonce l'annonce concernée : « Appel Auto-Prospect. Peugeot 208 2019, 9 900 euros, Lyon. » Le vendeur entend une sonnerie pendant ce temps, jamais l'annonce.",
+  },
+  {
+    nom: "L'appel et l'annonce s'affichent dans votre CRM",
+    texte:
+      "Pendant l'appel, un bandeau montre le véhicule, le prix et le numéro du vendeur, avec un lien vers la fiche prospect. Appel répondu ou manqué, la durée et l'issue sont notées sur le prospect. Un appel manqué reste affiché avec l'annonce : vous rappelez en sachant de quelle voiture il s'agit.",
+  },
+];
+
+const faq = [
+  {
+    q: "Comment Auto-Prospect sait-il de quelle annonce parle le vendeur qui m'appelle ?",
+    a: "Le numéro de chaque vendeur contacté est rattaché à l'annonce que vous avez ciblée. Quand il rappelle, Auto-Prospect reconnaît ce numéro et retrouve l'annonce pour laquelle vous l'avez contacté en dernier : c'est elle qui vous est annoncée avant de décrocher et qui s'affiche dans le CRM.",
+  },
+  {
+    q: "Qu'est-ce que j'entends exactement avant de décrocher ?",
+    a: "Une courte annonce vocale, en français : « Appel Auto-Prospect. » puis la marque, le modèle, l'année, le prix et la ville de l'annonce, par exemple « Peugeot 208 2019, 9 900 euros, Lyon. » Elle dure quelques secondes. Si le numéro n'est rattaché à aucune annonce, vous entendez « Appel Auto-Prospect, annonce non identifiée. »",
+  },
+  {
+    q: "Le vendeur entend-il l'annonce vocale ?",
+    a: "Non. Pendant que votre ligne sonne et que l'annonce vous est lue, le vendeur entend une sonnerie normale. La mise en relation se fait juste après, comme sur n'importe quel appel.",
+  },
+  {
+    q: "Que se passe-t-il si je ne décroche pas ?",
+    a: "L'appel est enregistré comme manqué dans votre CRM, avec l'annonce et le numéro du vendeur, et une note est ajoutée sur le prospect. Le bandeau reste affiché jusqu'à ce que vous l'ayez vu : vous rappelez le vendeur en sachant de quel véhicule il s'agit, au lieu de rappeler un numéro inconnu.",
+  },
+  {
+    q: "Sur quel téléphone sonnent les appels ?",
+    a: "Sur la ligne de votre choix, mobile ou fixe, que vous renseignez une fois dans vos réglages. Le numéro du vendeur s'affiche sur votre téléphone comme pour un appel direct, vous pouvez donc le rappeler depuis votre mobile.",
+  },
+  {
+    q: "Dois-je changer quelque chose dans mes messages ?",
+    a: "Non. Vos messages, vocaux comme écrits, donnent déjà aux vendeurs votre numéro à rappeler. Le vendeur rappelle naturellement le numéro qu'on lui a laissé.",
+  },
+  {
+    q: "Y a-t-il quelque chose à configurer ?",
+    a: "Une seule chose : la ligne sur laquelle les appels doivent sonner, votre mobile ou le fixe de l'agence, à renseigner une fois dans vos réglages. La fonctionnalité est incluse dans l'abonnement.",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: `${siteOrigin}/` },
+      { "@type": "ListItem", position: 2, name: "Fonctionnalités", item: `${siteOrigin}/#features` },
+      { "@type": "ListItem", position: 3, name: "Appels entrants identifiés", item: canonical },
+    ],
+  },
+  {
+    "@type": "Service",
+    name: "Identification des appels entrants des vendeurs",
+    provider: { "@type": "Organization", name: "Auto-Prospect" },
+    description:
+      "Quand un vendeur particulier rappelle, le professionnel entend le véhicule concerné (marque, modèle, année, prix, ville) avant de décrocher, et l'appel s'affiche dans le CRM avec l'annonce, qu'il soit répondu ou manqué.",
+    areaServed: "FR",
+  },
+  {
+    "@type": "HowTo",
+    name: "Comment savoir pour quelle annonce un vendeur vous rappelle",
+    step: etapes.map((e, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: e.nom,
+      text: e.texte,
+    })),
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="pt-32">
+    <section class="pb-12">
+      <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <span class="text-sm font-semibold uppercase tracking-widest text-accent">Fonctionnalité</span>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+          Le vendeur rappelle. Vous savez pour quelle voiture
+          <span class="bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent">avant de décrocher</span>.
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
+          Vous contactez des dizaines de vendeurs par semaine. Quand l'un d'eux vous rappelle, Auto-Prospect
+          vous annonce le véhicule concerné avant la mise en relation, et affiche l'appel avec l'annonce dans
+          votre CRM, même si vous l'avez manqué.
+        </p>
+      </div>
+    </section>
+
+    <!-- Démonstration : ce que l'utilisateur entend, puis ce qu'il voit dans le CRM -->
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="rounded-2xl border border-accent/30 bg-card p-6">
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent">Ce que vous entendez</p>
+            <p class="mt-4 text-xl font-semibold leading-snug text-text sm:text-2xl">
+              « Appel Auto-Prospect. Peugeot 208 2019, 9 900 euros, Lyon. »
+            </p>
+            <p class="mt-4 text-sm leading-relaxed text-text-secondary">
+              Lu à voix haute sur votre ligne, avant que le vendeur ne vous entende. Quelques secondes, et vous
+              décrochez en sachant de quoi il s'agit.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <p class="text-xs font-semibold uppercase tracking-widest text-accent">Ce que vous voyez dans le CRM</p>
+            <div class="mt-4 rounded-xl border border-green-500/30 bg-green-500/10 p-4">
+              <p class="text-sm font-medium text-green-400">
+                Appel entrant <span class="font-normal text-green-300/70">· il y a moins d'une minute</span>
+              </p>
+              <p class="mt-1 text-xs text-green-300/90">Peugeot 208 2019 · 9 900 € · +33 6 12 34 56 78</p>
+              <span class="mt-3 inline-block rounded-lg bg-green-500 px-3 py-1.5 text-xs font-medium text-bg">
+                Voir l'annonce
+              </span>
+            </div>
+            <p class="mt-4 text-sm leading-relaxed text-text-secondary">
+              Le bandeau reste affiché après l'appel, répondu ou manqué, jusqu'à ce que vous l'ayez vu.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Le problème du rappel à l'aveugle</h2>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          La prospection automatique inverse le sens des appels : vous ne composez plus de numéros, ce sont les
+          vendeurs intéressés qui vous rappellent. C'est le but, et c'est aussi là que le fil se perd. Un numéro
+          inconnu s'affiche, vous décrochez, et le vendeur commence par « c'est pour la voiture ». Laquelle ?
+          Vous en avez contacté trente cette semaine.
+        </p>
+        <p class="mt-4 leading-relaxed text-text-secondary">
+          Pendant que vous cherchez le numéro dans votre CRM ou que vous posez des questions dont vous devriez
+          connaître la réponse, le vendeur sent que vous ne savez pas qui il est. La conversation démarre mal,
+          et les premières secondes décident souvent du rendez-vous. Pire : un appel manqué d'un numéro inconnu
+          n'est jamais rappelé, et l'affaire part chez le prochain acheteur.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Comment ça marche</h2>
+        <ol class="mt-8 space-y-4">
+          {
+            etapes.map((e, i) => (
+              <li class="rounded-2xl border border-border bg-card p-6">
+                <div class="flex items-start gap-4">
+                  <span class="text-3xl font-extrabold text-accent/30">0{i + 1}</span>
+                  <div>
+                    <h3 class="text-lg font-semibold">{e.nom}</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-text-secondary">{e.texte}</p>
+                  </div>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="mt-8 leading-relaxed text-text-secondary">
+          Rien à changer dans votre façon de prospecter. Vos
+          <a href="/fonctionnalites/contact-vocal-automatique/" class="text-accent hover:underline">messages vocaux</a>
+          et écrits donnent aux vendeurs votre numéro à rappeler, et chaque rappel atterrit dans votre
+          <a href="/fonctionnalites/crm-pipeline-vente/" class="text-accent hover:underline">pipeline de vente</a>
+          sur la bonne fiche.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold sm:text-3xl">Ce que ça change dans une journée de prospection</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-3">
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <h3 class="font-semibold">Décrocher préparé</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-secondary">
+              Vous connaissez le véhicule, le prix demandé et la ville avant le premier mot. Vous pouvez
+              ouvrir l'annonce d'un clic et parler du bon véhicule dès la première seconde.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <h3 class="font-semibold">Ne plus perdre un appel manqué</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-secondary">
+              Un rappel reçu en rendez-vous ou au volant n'est plus un numéro inconnu dans votre journal
+              d'appels : c'est une annonce identifiée dans votre CRM, que vous rappelez en connaissance de cause.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-border bg-card p-6">
+            <h3 class="font-semibold">Un historique complet</h3>
+            <p class="mt-2 text-sm leading-relaxed text-text-secondary">
+              Chaque appel entrant est noté sur le prospect, avec son issue et sa durée. Votre équipe voit
+              qu'un vendeur a rappelé, même si c'est un collègue qui a décroché.
+            </p>
+          </div>
+        </div>
+        <p class="mt-8 leading-relaxed text-text-secondary">
+          À ce jour, aucun autre outil de pige automobile n'identifie les rappels des vendeurs. Les autres
+          critères qui comptent sont dans le
+          <a href="/comparatif-outils-pige-automobile/" class="text-accent hover:underline">comparatif des outils de pige</a>.
+          Pour la méthode complète, scripts compris, lisez notre article sur
+          <a href="/blog/rappel-vendeur-particulier-identifier-annonce/" class="text-accent hover:underline">le rappel d'un vendeur particulier et l'identification de l'annonce</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-center text-2xl font-bold sm:text-3xl">Questions fréquentes</h2>
+        <div class="mt-10">
+          {faq.map((f) => (
+            <details class="group border-b border-border py-2">
+              <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium sm:text-base [&::-webkit-details-marker]:hidden">
+                {f.q}
+                <span class="text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+              </summary>
+              <p class="pb-4 text-sm leading-relaxed text-text-secondary">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SubPageCTA
+      title="Décrochez en sachant de quelle voiture il s'agit"
+      subtitle="Détection en temps réel, contact automatique des vendeurs, rappels identifiés et CRM intégré, dès 69 € HT/mois. Essai gratuit 5 jours."
+    />
+  </main>
+  <Footer />
+  <CalendlyWidget />
+</Layout>

@@ -38,7 +38,7 @@ const defaultPageSchemas = [
     "name": "Auto-Prospect",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
-    "description": "Outil de prospection automobile automatisée pour revendeurs. Détection d'annonces sur Leboncoin, AutoScout24 et La Centrale, contact des vendeurs par messagerie Leboncoin, WhatsApp ou message vocal, CRM intégré. Utilisé par 273 professionnels de l'automobile.",
+    "description": "Outil de prospection automobile automatisée pour revendeurs. Détection d'annonces sur Leboncoin, AutoScout24 et La Centrale, contact des vendeurs par messagerie Leboncoin, WhatsApp ou message vocal, identification des appels entrants (le véhicule est annoncé avant de décrocher), CRM intégré. Utilisé par 273 professionnels de l'automobile.",
     "offers": {
       "@type": "Offer",
       "priceCurrency": "EUR",
@@ -93,6 +93,14 @@ const defaultPageSchemas = [
       },
       {
         "@type": "Question",
+        "name": "Quand un vendeur me rappelle, comment je sais de quelle annonce il s'agit ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Quand un vendeur vous rappelle, vous entendez le véhicule concerné avant de décrocher, par exemple « Appel Auto-Prospect. Peugeot 208 2019, 9 900 euros, Lyon. » L'appel s'affiche aussi dans votre CRM avec l'annonce et un lien vers la fiche prospect, même si vous l'avez manqué."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Puis-je annuler mon abonnement à tout moment ?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -129,7 +137,7 @@ const defaultPageSchemas = [
         "@type": "HowToStep",
         "position": 3,
         "name": "Contactez et convertissez",
-        "text": "Auto-Prospect contacte automatiquement les vendeurs par messagerie Leboncoin, WhatsApp ou message vocal. Vous n'avez plus qu'à suivre vos prospects dans votre pipeline intégré."
+        "text": "Auto-Prospect contacte automatiquement les vendeurs par messagerie Leboncoin, WhatsApp ou message vocal. Quand un vendeur vous rappelle, vous entendez le véhicule concerné avant de décrocher. Vous n'avez plus qu'à suivre vos prospects dans votre pipeline intégré."
       }
     ]
   }
@@ -152,7 +160,7 @@ const structuredData = {
     <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="prospection automobile, revendeur auto, Leboncoin auto, AutoScout24, La Centrale, pige automobile, CRM auto, contact automatique vendeurs, messagerie Leboncoin, prospection WhatsApp, message vocal répondeur, mandataire auto, achat revente véhicules" />
+    <meta name="keywords" content="prospection automobile, revendeur auto, Leboncoin auto, AutoScout24, La Centrale, pige automobile, CRM auto, contact automatique vendeurs, messagerie Leboncoin, prospection WhatsApp, message vocal répondeur, appels entrants identifiés, rappel vendeur, mandataire auto, achat revente véhicules" />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />

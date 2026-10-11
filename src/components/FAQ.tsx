@@ -24,6 +24,10 @@ const faqs = [
     a: "Plus rien. Auto-Prospect contacte les vendeurs à votre place en continu. Vous n'avez plus qu'à répondre aux appels des particuliers intéressés.",
   },
   {
+    q: "Quand un vendeur me rappelle, comment je sais de quelle annonce il s'agit ?",
+    a: "Quand un vendeur vous rappelle, vous entendez le véhicule concerné avant de décrocher, par exemple « Appel Auto-Prospect. Peugeot 208 2019, 9 900 euros, Lyon. » L'appel s'affiche aussi dans votre CRM avec l'annonce et un lien vers la fiche prospect, même si vous l'avez manqué.",
+  },
+  {
     q: "Ma zone de prospection est-elle limitée ?",
     a: "Non, aucune limite. Prospectez sur autant de départements et de codes postaux que vous le souhaitez, partout en France.",
   },
