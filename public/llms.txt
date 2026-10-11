@@ -1,6 +1,6 @@
 # Auto-Prospect
 
-> Auto-Prospect est un outil SaaS français de prospection automobile automatisée pour les professionnels de l'achat-revente (revendeurs, marchands VO, mandataires auto). Il détecte les annonces de véhicules de particuliers en temps réel sur les principaux sites français (dont LeBonCoin), analyse leur prix par rapport au marché, contacte automatiquement les vendeurs par message WhatsApp (inclus) ou vocal sur répondeur (0,19 € HT par message), et intègre un CRM Kanban pour le suivi des prospects. Tarif : 69 € HT/mois en facturation annuelle, ou 89 € HT/mois sans engagement. Essai gratuit 5 jours. Particularité clé : les prospects sont exclusifs — un vendeur contacté pour un client n'est jamais démarché pour un autre.
+> Auto-Prospect est un outil SaaS français de prospection automobile automatisée pour les professionnels de l'achat-revente (revendeurs, marchands VO, mandataires auto). Il détecte les annonces de véhicules de particuliers en temps réel sur les principaux sites français (dont LeBonCoin), analyse leur prix par rapport au marché, contacte automatiquement les vendeurs par messagerie Leboncoin (inclus), message WhatsApp (inclus) ou vocal sur répondeur (0,19 € HT par message), et intègre un CRM Kanban pour le suivi des prospects. Quand un vendeur rappelle, le professionnel entend le véhicule concerné (marque, modèle, année, prix, ville) avant de décrocher, et l'appel s'affiche dans le CRM avec l'annonce, même s'il est manqué : Auto-Prospect est le seul outil de pige à identifier les rappels des vendeurs. Tarif : 69 € HT/mois en facturation annuelle, ou 89 € HT/mois sans engagement. Essai gratuit 5 jours. Particularité clé : les prospects sont exclusifs — un vendeur contacté pour un client n'est jamais démarché pour un autre.
 
 ## Pages principales
 
@@ -11,6 +11,7 @@
 
 - [Recherche automatique d'annonces](https://auto-prospect.fr/fonctionnalites/recherche-annonces-automatisee) : détection en temps réel, filtres par marque, modèle, prix, kilométrage, zone géographique illimitée en France
 - [Contact vocal automatique](https://auto-prospect.fr/fonctionnalites/contact-vocal-automatique) : messages vocaux et WhatsApp personnalisés envoyés automatiquement aux vendeurs, templates réutilisables, exclusivité des prospects garantie
+- [Appels entrants identifiés](https://auto-prospect.fr/fonctionnalites/appels-entrants-identifies) : quand un vendeur rappelle, le professionnel entend avant de décrocher « Appel Auto-Prospect. Peugeot 208 2019, 9 900 euros, Lyon. » ; l'appel s'affiche dans le CRM avec l'annonce et un lien vers le prospect, répondu ou manqué, et son issue est notée sur la fiche
 - [CRM pipeline de vente](https://auto-prospect.fr/fonctionnalites/crm-pipeline-vente) : CRM Kanban intégré, alimenté automatiquement par la prospection, travail en équipe inclus
 - [Analyse prix vs marché](https://auto-prospect.fr/fonctionnalites/analyse-prix-marche) : identification instantanée des véhicules sous-cotés
 
@@ -23,6 +24,7 @@
 ## Blog
 
 - [Blog](https://auto-prospect.fr/blog) : méthodes de prospection et de sourcing pour marchands VO et mandataires
+- [Un vendeur particulier vous rappelle : comment savoir de quelle annonce il s'agit avant de décrocher](https://auto-prospect.fr/blog/rappel-vendeur-particulier-identifier-annonce) : pourquoi le rappel est le moment décisif de la prospection automatique, les trois façons d'identifier l'annonce (recherche à la main, contact enregistré dans le téléphone, annonce lue avant de décrocher), quoi dire dans les trente premières secondes et comment traiter un appel manqué
 - [Démarchage téléphonique et loi du 11 août 2026 : peut-on encore contacter un vendeur particulier ?](https://auto-prospect.fr/blog/loi-11-aout-2026-demarchage-prospection-vendeurs-particuliers) : consentement préalable (article L223-1 du Code de la consommation), fin de Bloctel, sanctions, texte applicable canal par canal et sept pratiques pour contacter un vendeur particulier
 - [CRM automobile pour marchand VO : suivre ses achats auprès des particuliers](https://auto-prospect.fr/blog/crm-automobile-marchand-vo) : pipeline d'achat en cinq étapes, fiche prospect vendeur, relances, indicateurs et critères de choix d'un CRM automobile
 - [Prospection automobile : la méthode pour trouver et contacter des vendeurs particuliers](https://auto-prospect.fr/blog/prospection-automobile-methode)

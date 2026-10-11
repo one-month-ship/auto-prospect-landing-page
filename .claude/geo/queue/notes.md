@@ -77,3 +77,12 @@
   le dépôt AlertDeals (142 requêtes réelles en Search Console, « pige auto » à
   1 077 impressions sur 90 jours, position 7,5). Ne pas transposer le diagnostic
   « rien n'est indexé » d'AlertDeals.
+
+## 2026-10-12 : feature « appels entrants identifiés » (demande de Nassim)
+
+- Feature livré dans l'app (branche `feat/show-ad-information-at-call`, non fusionnée au 2026-10-12) : quand un vendeur rappelle le numéro dédié du compte, l'utilisateur entend l'annonce avant de décrocher (« Appel Auto-Prospect. Peugeot 208 2019, 9900 euros, Lyon. »), l'appel s'affiche dans le CRM avec l'annonce (même manqué) et son issue est notée sur le lead. Nassim le considère comme le feature le plus différenciant : à mettre en avant dans tout contenu qui parle du contact des vendeurs.
+- Vocabulaire publié : « appels entrants identifiés », « annonce vocale avant de décrocher », « numéro Auto-Prospect dédié ». **Jamais « whisper »** (mot interdit par `check:leaks`, fournisseur de transcription), ni « transfert d'appel via … », ni le nom de l'opérateur, ni « webhook ».
+- Hub créé : `/fonctionnalites/appels-entrants-identifies/`. Article : `/blog/rappel-vendeur-particulier-identifier-annonce/`. Brief : `seo/briefs/2026-10-12-appels-entrants-identifies.md` (réserves : branche app non fusionnée, attribution manuelle du numéro, prix du numéro non tranché, caller id vocal à confirmer).
+- L'item `agent-2026-40-001` (WhatsApp / vocal) doit mentionner le feature dans sa section vocal et lier le hub.
+- Canonical des articles : le `const canonical` du JSON-LD doit porter la barre finale (`/blog/<slug>/`), comme le `<link rel="canonical">` du Layout et le sitemap. Les quatre articles antérieurs ont été alignés le 2026-10-12.
+- 2026-10-12, relecture de Nassim : **ne jamais écrire « numéro Auto-Prospect », « numéro dédié » ou « numéro attribué »** dans un contenu publié. Le client n'a pas à savoir qu'un numéro lui est assigné : dire « quand un vendeur vous rappelle » et « vos messages donnent aux vendeurs votre numéro à rappeler ». Aucune mécanique (numéro d'appelant, variable de modèle) dans le marketing.
