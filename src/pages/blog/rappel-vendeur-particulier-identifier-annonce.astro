@@ -1,0 +1,462 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import { APP_LOGIN_URL } from "../../lib/api";
+import "../../styles/global.css";
+
+const title =
+  "Un vendeur particulier vous rappelle : comment savoir de quelle annonce il s'agit avant de décrocher | Auto-Prospect";
+const description =
+  "Numéro inconnu, annonce à retrouver, appel manqué jamais rappelé : comment identifier l'annonce quand un vendeur particulier rappelle, et quoi dire en trente secondes.";
+
+const datePublished = "2026-10-12";
+const dateModified = "2026-10-12";
+
+const siteOrigin = Astro.site?.origin ?? "https://auto-prospect.fr";
+const canonical = `${siteOrigin}/blog/rappel-vendeur-particulier-identifier-annonce/`;
+
+// Les trois façons d'identifier l'annonce, de la moins à la plus fiable.
+const methodes = [
+  {
+    methode: "Journal d'appels et recherche à la main",
+    comment: "Le numéro s'affiche, vous le cherchez dans votre CRM ou vos messages envoyés pendant que le vendeur parle",
+    limite: "Quinze à trente secondes de flottement à chaque appel, impossible au volant ou en rendez-vous, et rien pour un appel manqué",
+  },
+  {
+    methode: "Enregistrer chaque numéro contacté dans le téléphone",
+    comment: "Un contact par vendeur, nommé avec le véhicule, créé au moment de l'envoi du message",
+    limite: "Une saisie par contact, un répertoire qui gonfle de plusieurs centaines de fiches par mois, et un numéro souvent absent des annonces",
+  },
+  {
+    methode: "Annonce lue avant de décrocher",
+    comment: "L'outil reconnaît l'appelant, retrouve l'annonce pour laquelle vous l'avez contacté et vous la lit avant la mise en relation",
+    limite: "Demande un outil qui relie vos envois, vos prospects et vos appels ; l'annonce reste à confirmer si le vendeur a plusieurs véhicules en vente",
+  },
+];
+
+// Pratiques recommandées : chaque pratique est aussi un HowToStep dans le JSON-LD.
+const pratiques = [
+  {
+    nom: "Donner un seul numéro à rappeler, dans tous vos messages",
+    texte:
+      "Messagerie de la plateforme, WhatsApp ou message vocal : le vendeur doit lire ou entendre le même numéro partout. Un numéro différent selon le canal, ou un message sans numéro, et le vendeur rappelle ce qu'il trouve, souvent rien.",
+  },
+  {
+    nom: "Faire sonner ce numéro sur une ligne que vous décrochez vraiment",
+    texte:
+      "Un numéro de standard qui sonne dans un bureau vide ne sert à rien à 19 h, quand les particuliers rappellent. La ligne de rappel est celle que vous avez sur vous : votre mobile, ou celui du collègue de permanence.",
+  },
+  {
+    nom: "Identifier l'annonce avant le premier mot",
+    texte:
+      "Marque, modèle, année, prix demandé, ville. Cinq informations suffisent pour ouvrir la conversation sur le bon véhicule. Si votre outil vous les donne avant de décrocher, utilisez-les ; sinon, ayez le CRM ouvert avant de répondre.",
+  },
+  {
+    nom: "Ouvrir sur le véhicule, pas sur vous",
+    texte:
+      "« Bonjour, vous m'appelez pour la 208 de 2019 ? » vaut mieux que « Auto-Prospect bonjour, c'est à quel sujet ? ». Le vendeur comprend qu'il a affaire à quelqu'un qui connaît son annonce, et la négociation commence sur de bonnes bases.",
+  },
+  {
+    nom: "Noter l'issue sur la fiche prospect, immédiatement",
+    texte:
+      "Rappelé, intéressé, rendez-vous pris, prix refusé, à rappeler mardi : la note se prend dans la minute qui suit l'appel, sinon elle n'est jamais prise. C'est elle qui permet à un collègue de reprendre le dossier, et à vous de relancer au bon moment.",
+  },
+  {
+    nom: "Rappeler tout appel manqué dans l'heure, en nommant le véhicule",
+    texte:
+      "Un vendeur qui a rappelé est un vendeur intéressé. S'il tombe sur votre messagerie, il appelle le prochain acheteur de sa liste. Rappelez vite, et commencez par le véhicule : « J'ai manqué votre appel au sujet de la 208 ». Si vous ne pouvez pas appeler, envoyez un message écrit qui le nomme.",
+  },
+];
+
+const faq = [
+  {
+    q: "Pourquoi les vendeurs particuliers rappellent-ils depuis un numéro que je ne connais pas ?",
+    a: "Parce que vous les avez contactés par écrit ou par message vocal, sans jamais les avoir eus au téléphone. Leur numéro figure parfois dans l'annonce, mais il n'est pas dans votre répertoire, et il ne l'est jamais quand l'annonce ne l'affiche pas. Le rappel arrive donc comme un appel inconnu, à un moment que le vendeur choisit.",
+  },
+  {
+    q: "Comment savoir pour quelle voiture un vendeur me rappelle ?",
+    a: "Trois méthodes, de la moins à la plus fiable : chercher le numéro à la main dans votre CRM pendant l'appel, enregistrer chaque vendeur contacté dans votre téléphone, ou utiliser un outil qui reconnaît le numéro du vendeur et vous lit l'annonce avant de décrocher. Auto-Prospect fait cette dernière chose.",
+  },
+  {
+    q: "Que dire dans les premières secondes quand un vendeur rappelle ?",
+    a: "Nommez le véhicule avant toute autre chose : « Bonjour, vous m'appelez pour la Peugeot 208 de 2019 ? ». Puis confirmez que vous êtes bien le professionnel qui a écrit, et posez une question ouverte sur le véhicule ou sur la disponibilité du vendeur. L'offre de prix vient après la visite, pas pendant ce premier appel.",
+  },
+  {
+    q: "Que faire quand j'ai manqué le rappel d'un vendeur ?",
+    a: "Le rappeler dans l'heure, en nommant le véhicule dès les premiers mots. Si vous ne pouvez pas appeler, envoyez un message écrit sur le canal du premier contact qui dit que vous avez manqué son appel au sujet de son véhicule et propose un créneau. Un vendeur qui a rappelé une fois et n'obtient personne ne rappelle en général pas une seconde fois.",
+  },
+  {
+    q: "Rappeler un vendeur particulier qui m'a appelé, est-ce du démarchage téléphonique ?",
+    a: "Le vendeur a pris l'initiative de l'appel, en réponse à votre message sur son annonce : vous ne le sollicitez pas, vous lui répondez. Conservez la trace de son appel et restez sur l'achat du véhicule de l'annonce. Dès que vous proposez un service, un financement ou un autre véhicule, vous entrez dans la prospection commerciale, qui obéit à d'autres règles depuis le 11 août 2026.",
+  },
+  {
+    q: "Comment Auto-Prospect identifie-t-il l'annonce quand un vendeur rappelle ?",
+    a: "Quand un vendeur vous rappelle, vous entendez avant de décrocher « Appel Auto-Prospect. Peugeot 208 2019, 9 900 euros, Lyon. ». L'appel s'affiche dans le CRM avec l'annonce, répondu ou manqué, et son issue est notée sur la fiche prospect.",
+  },
+  {
+    q: "Et si le vendeur a plusieurs véhicules en vente ?",
+    a: "Un même numéro peut être rattaché à plusieurs annonces. L'annonce retenue est celle pour laquelle vous avez contacté le vendeur en dernier, ce qui est la bonne dans la grande majorité des cas. Confirmez-la en ouvrant la conversation sur le véhicule : si le vendeur appelle pour l'autre, il vous le dit, et vous avez tout de même son nom et ses annonces sous les yeux.",
+  },
+];
+
+const sources = [
+  {
+    label:
+      "Auto-Prospect, « 16 statistiques sur les annonces de voitures d'occasion de particuliers en 2026 » (35 122 annonces, juin à septembre 2026)",
+    url: "/blog/statistiques-annonces-voitures-occasion-particuliers-2026/",
+  },
+  {
+    label:
+      "Auto-Prospect, « Démarchage téléphonique et loi du 11 août 2026 : peut-on encore contacter un vendeur particulier ? »",
+    url: "/blog/loi-11-aout-2026-demarchage-prospection-vendeurs-particuliers/",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BlogPosting",
+    "headline": "Un vendeur particulier vous rappelle : comment savoir de quelle annonce il s'agit avant de décrocher",
+    "description": description,
+    "url": canonical,
+    "mainEntityOfPage": canonical,
+    "datePublished": datePublished,
+    "dateModified": dateModified,
+    "inLanguage": "fr-FR",
+    "author": { "@type": "Organization", "name": "L'équipe Auto-Prospect", "url": siteOrigin },
+    "publisher": { "@type": "Organization", "name": "Auto-Prospect", "url": siteOrigin, "logo": `${siteOrigin}/logo.svg` },
+  },
+  {
+    "@type": "HowTo",
+    "name": "Comment préparer le rappel d'un vendeur particulier",
+    "step": pratiques.map((p, i) => ({
+      "@type": "HowToStep",
+      "position": i + 1,
+      "name": p.nom,
+      "text": p.texte,
+    })),
+  },
+  {
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  },
+  {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `${siteOrigin}/` },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteOrigin}/blog/` },
+      { "@type": "ListItem", "position": 3, "name": "Rappel d'un vendeur particulier", "item": canonical },
+    ],
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="mx-auto max-w-3xl px-4 pt-32 pb-20 sm:px-6 lg:px-8">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent">
+      <a href="/blog/" class="text-text-secondary transition-colors hover:text-text">Blog</a>
+      <span class="text-text-secondary"> / </span>Méthode
+    </p>
+    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">
+      Un vendeur particulier vous rappelle : comment savoir de quelle annonce il s'agit avant de décrocher
+    </h1>
+    <p class="mt-4 text-sm text-text-secondary">
+      Par <span class="font-semibold text-text">L'équipe Auto-Prospect</span>. Publié le 12 octobre 2026.
+    </p>
+
+    <div class="mt-8 rounded-2xl border border-border bg-card p-6">
+      <p class="text-sm font-semibold">En bref</p>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-text-secondary">
+        <li>
+          La prospection automatique inverse le sens des appels : vous n'appelez plus, ce sont les vendeurs qui vous
+          rappellent, à leur heure, depuis un numéro que vous ne connaissez pas. Le rappel est le moment décisif, et le
+          moins préparé.
+        </li>
+        <li>
+          Trois façons d'identifier l'annonce, de la moins à la plus fiable : la recherche à la main pendant l'appel,
+          le contact enregistré dans le téléphone, et
+          <strong class="text-text">l'annonce lue avant de décrocher</strong>.
+        </li>
+        <li>
+          Les trente premières secondes se jouent sur un réflexe : nommer le véhicule avant toute autre chose. Un appel
+          manqué se rappelle dans l'heure, en nommant le véhicule aussi.
+        </li>
+        <li>
+          Auto-Prospect vous lit l'annonce avant la mise en relation :
+          « Appel Auto-Prospect. Peugeot 208 2019, 9 900 euros, Lyon. »
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-10 space-y-12 text-text-secondary">
+      <!-- 1. Pourquoi le rappel est décisif -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Pourquoi le rappel du vendeur est-il le moment décisif de la prospection ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Toute la
+          <a href="/blog/prospection-automobile-methode/" class="text-accent hover:underline">méthode de prospection auprès des vendeurs particuliers</a>
+          vise un seul résultat : que le vendeur réponde. Par écrit sur la messagerie de la plateforme ou sur WhatsApp,
+          la réponse arrive dans un fil que vous pouvez relire. Par téléphone, elle arrive sous la forme d'un appel
+          entrant, d'un numéro inconnu, à l'heure du vendeur : entre midi et deux, le soir après le travail, le samedi
+          matin. Vous n'avez pas choisi le moment, et vous n'avez pas le dossier sous les yeux.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Ce n'est pas un cas marginal. Dans notre relevé de 35 122 annonces de particuliers (juin à septembre 2026),
+          <strong class="text-text">47,9 %</strong> des annonces Leboncoin affichent un numéro de téléphone, et le message
+          vocal déposé sur répondeur ne demande qu'une chose au vendeur : rappeler. Un professionnel qui contacte trente
+          vendeurs par semaine reçoit donc des rappels toute la semaine, sur des véhicules qu'il a parfois ciblés dix
+          jours plus tôt, parmi des dizaines d'autres.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Or le vendeur, lui, n'a qu'une voiture en tête. Il rappelle le numéro qu'on lui a laissé et attend de parler à
+          quelqu'un qui sait pourquoi il appelle. Les premières secondes lui disent s'il a affaire à un acheteur sérieux
+          ou à un centre d'appels. C'est là que se gagne le rendez-vous, et c'est là que la plupart des professionnels
+          improvisent.
+        </p>
+      </section>
+
+      <!-- 2. Ce qui se passe quand on ne sait pas -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Que se passe-t-il quand vous ne savez pas pour quelle annonce on vous appelle ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Trois scénarios, que tous ceux qui prospectent par message ont vécus.
+        </p>
+        <ul class="mt-3 list-disc space-y-2 pl-5 leading-relaxed">
+          <li>
+            <strong class="text-text">Vous décrochez à l'aveugle.</strong> « C'est pour la voiture. » Laquelle ? Vous
+            posez des questions dont vous devriez connaître la réponse, le vendeur répète ce qui est écrit dans son
+            annonce, et il comprend que vous avez envoyé le même message à cent personnes. Ce n'est pas faux, mais il
+            n'avait pas besoin de le sentir.
+          </li>
+          <li>
+            <strong class="text-text">Vous cherchez pendant qu'il parle.</strong> Le CRM s'ouvre, le numéro se tape,
+            la fiche apparaît au bout de vingt secondes. Pendant ce temps, vous n'écoutez pas, et vous ratez la seule
+            information qui compte dans un premier échange : pourquoi il vend, et quand.
+          </li>
+          <li>
+            <strong class="text-text">Vous manquez l'appel.</strong> Un numéro inconnu dans le journal d'appels, à
+            18 h 42, pendant un rendez-vous. Vous ne savez pas si c'est un vendeur, un démarcheur ou un client. Vous ne
+            rappelez pas, ou vous rappelez le lendemain sans savoir quoi dire. Le vendeur, lui, a déjà parlé à un autre
+            acheteur.
+          </li>
+        </ul>
+        <p class="mt-3 leading-relaxed">
+          Le troisième scénario coûte le plus cher. Un vendeur qui rappelle est un vendeur intéressé, et c'est
+          précisément lui que l'on perd faute de savoir qui a appelé. Le problème n'est pas le volume de contacts, il
+          est dans le lien entre un numéro qui s'affiche et une annonce que vous avez ciblée.
+        </p>
+      </section>
+
+      <!-- 3. Trois méthodes -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Comment identifier l'annonce quand un vendeur vous rappelle ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Trois méthodes existent, de la plus artisanale à la plus automatisée. Elles ne s'excluent pas : la plupart
+          des professionnels combinent les deux premières, et les outils de prospection récents ajoutent la troisième.
+        </p>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="py-3 pr-4 font-medium">Méthode</th>
+                <th class="py-3 pr-4 font-medium">Comment</th>
+                <th class="py-3 font-medium">Limite</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              {
+                methodes.map((m) => (
+                  <tr>
+                    <td class="py-3 pr-4 font-medium text-text">{m.methode}</td>
+                    <td class="py-3 pr-4">{m.comment}</td>
+                    <td class="py-3">{m.limite}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 leading-relaxed">
+          Les deux premières méthodes tiennent tant que le volume reste faible. Passé quelques dizaines de contacts par
+          semaine, c'est la troisième qui fait la différence : l'outil reconnaît l'appelant, retrouve l'annonce pour
+          laquelle vous l'avez contacté, et vous la lit avant la mise en relation. Vous décrochez en connaissant la
+          voiture, le prix demandé et la ville. C'est ce que fait Auto-Prospect, et nous y revenons plus bas.
+        </p>
+      </section>
+
+      <!-- 4. Pratiques -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Comment préparer le rappel d'un vendeur particulier ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Six pratiques, dans l'ordre où elles interviennent. Les trois premières se règlent une fois pour toutes ; les
+          trois suivantes sont des réflexes à prendre à chaque appel.
+        </p>
+        <ol class="mt-5 space-y-3">
+          {
+            pratiques.map((p, i) => (
+              <li class="rounded-xl border border-border bg-card p-5">
+                <p class="font-semibold text-text">{i + 1}. {p.nom}</p>
+                <p class="mt-2 text-sm leading-relaxed">{p.texte}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="mt-5 leading-relaxed">
+          Les trente premières secondes, quand vous connaissez le véhicule :
+        </p>
+        <blockquote class="mt-3 rounded-xl border border-border bg-card p-5 text-sm leading-relaxed">
+          « Bonjour, vous m'appelez pour la Peugeot 208 de 2019 ? Merci de rappeler. Je suis [prénom], marchand
+          automobile à [ville], c'est moi qui vous ai écrit. Elle est toujours disponible ? Qu'est-ce qui vous amène à
+          la vendre ? »
+        </blockquote>
+        <p class="mt-3 leading-relaxed">
+          Et la version de secours, quand vous ne le connaissez pas :
+        </p>
+        <blockquote class="mt-3 rounded-xl border border-border bg-card p-5 text-sm leading-relaxed">
+          « Bonjour, [prénom], marchand automobile à [ville]. Vous me rappelez au sujet de votre annonce, c'est bien ça ?
+          Rappelez-moi de quel véhicule il s'agit, j'ouvre votre dossier. »
+        </blockquote>
+        <p class="mt-3 leading-relaxed">
+          Dans les deux cas, pas d'offre de prix au téléphone : l'objectif du premier appel est la visite, et le prix
+          se discute devant le véhicule. Tout ce que vous apprenez se note dans votre
+          <a href="/blog/crm-automobile-marchand-vo/" class="text-accent hover:underline">CRM d'achat</a>
+          avant l'appel suivant.
+        </p>
+      </section>
+
+      <!-- 5. Appel manqué -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Que faire d'un appel manqué ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          La règle tient en une ligne : rappeler dans l'heure, en nommant le véhicule. Un vendeur qui a composé votre
+          numéro a fait l'effort que vous attendiez de lui ; s'il tombe sur une messagerie et n'est pas rappelé, il
+          passe au suivant, et il ne rappelle presque jamais une seconde fois. Si vous ne pouvez pas appeler, un message
+          écrit sur le canal du premier contact fait le relais :
+        </p>
+        <blockquote class="mt-3 rounded-xl border border-border bg-card p-5 text-sm leading-relaxed">
+          « Bonjour, j'ai manqué votre appel au sujet de votre [modèle] de [année]. Je suis disponible jusqu'à 19 h
+          aujourd'hui et demain matin : quel créneau vous conviendrait pour en parler ? »
+        </blockquote>
+        <p class="mt-3 leading-relaxed">
+          Un mot sur le cadre légal, puisqu'il s'agit d'appeler un particulier. Le vendeur a pris l'initiative de
+          l'appel, en réponse à votre message sur son annonce : vous lui répondez, vous ne le sollicitez pas. Conservez la
+          trace de son appel, restez sur l'achat du véhicule de l'annonce, et ne glissez ni service ni autre offre dans
+          la conversation. Ce que la loi du 11 août 2026 change pour le premier contact est détaillé dans notre article
+          sur
+          <a href="/blog/loi-11-aout-2026-demarchage-prospection-vendeurs-particuliers/" class="text-accent hover:underline">le démarchage téléphonique et les vendeurs particuliers</a>.
+        </p>
+      </section>
+
+      <!-- 6. Auto-Prospect -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Comment Auto-Prospect identifie-t-il les rappels des vendeurs ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Auto-Prospect fait ce travail pour vous, sans saisie. Vos
+          <a href="/fonctionnalites/contact-vocal-automatique/" class="text-accent hover:underline">messages vocaux</a>
+          et écrits donnent aux vendeurs votre numéro à rappeler, et vous indiquez une fois la ligne sur laquelle ces
+          appels doivent sonner, votre mobile ou le fixe de l'agence.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Quand un vendeur rappelle, Auto-Prospect reconnaît son numéro, retrouve l'annonce pour laquelle vous l'avez
+          contacté en dernier, et transfère l'appel sur votre ligne. Avant la mise en relation, vous entendez :
+          <strong class="text-text">« Appel Auto-Prospect. Peugeot 208 2019, 9 900 euros, Lyon. »</strong> Le vendeur,
+          lui, entend une sonnerie. Si le numéro n'est rattaché à aucune annonce, l'annonce vocale le dit, et vous
+          passez sur la version de secours ci-dessus.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          En parallèle, un bandeau s'affiche dans le
+          <a href="/fonctionnalites/crm-pipeline-vente/" class="text-accent hover:underline">CRM</a>
+          avec le véhicule, le prix, le numéro du vendeur et un lien vers sa fiche. À la fin de l'appel, son issue est
+          notée sur le prospect : répondu, avec la durée, ou manqué. Un appel manqué reste affiché avec l'annonce
+          jusqu'à ce que vous l'ayez vu, et le numéro du vendeur s'affiche sur votre téléphone comme pour un appel
+          direct : vous rappelez depuis votre mobile, en nommant le véhicule. Le fonctionnement complet est décrit sur
+          la page
+          <a href="/fonctionnalites/appels-entrants-identifies/" class="text-accent hover:underline">appels entrants identifiés</a>.
+        </p>
+      </section>
+
+      <!-- CTA intermédiaire contextualisé -->
+      <aside class="rounded-2xl border border-accent/30 bg-gradient-to-b from-accent/10 to-transparent p-6 sm:p-8">
+        <p class="text-lg font-bold text-text">Décrochez en sachant de quelle voiture il s'agit</p>
+        <p class="mt-2 leading-relaxed">
+          Auto-Prospect détecte les annonces de particuliers en temps réel sur Leboncoin, AutoScout24 et La Centrale,
+          contacte les vendeurs par messagerie Leboncoin, WhatsApp ou message vocal avec vos propres messages, et vous
+          annonce le véhicule quand ils rappellent. Chaque appel, répondu ou manqué, est consigné dans le CRM sur la
+          bonne fiche, et un vendeur contacté pour vous n'est démarché pour aucun autre client.
+        </p>
+        <div class="mt-5">
+          <a
+            href={APP_LOGIN_URL}
+            data-cta="blog-rappel-vendeur-identifier-annonce"
+            class="inline-block rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-bg shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover hover:shadow-accent/40"
+          >
+            Essayer gratuitement pendant 5 jours
+          </a>
+        </div>
+      </aside>
+
+      <!-- FAQ -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">Questions fréquentes sur le rappel des vendeurs particuliers</h2>
+        <div class="mt-4">
+          {
+            faq.map((f) => (
+              <details class="group border-b border-border py-2">
+                <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium text-text sm:text-base [&::-webkit-details-marker]:hidden">
+                  {f.q}
+                  <span class="ml-4 text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+                </summary>
+                <p class="pb-4 text-sm leading-relaxed">{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Sources -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">Sources</h2>
+        <ul class="mt-3 list-disc space-y-1 pl-5 text-sm">
+          {
+            sources.map((s) => (
+              <li>
+                <a href={s.url} class="text-accent hover:underline">{s.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-3 text-xs">
+          Le chiffre de 47,9 % provient des annonces relevées par Auto-Prospect entre le 1er juin et le 25 septembre
+          2026. Les scénarios et les scripts de cet article viennent de l'usage quotidien d'Auto-Prospect par des
+          marchands et des mandataires ; vos propres chiffres de rappel dépendent de votre segment et de votre région.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <SubPageCTA
+    title="Ne perdez plus un vendeur qui vous rappelle"
+    subtitle="Détection en temps réel, contact automatique, rappels identifiés et CRM intégré, dès 69 € HT/mois. Essai gratuit 5 jours."
+  />
+  <Footer />
+  <CalendlyWidget />
+</Layout>
