@@ -23,6 +23,7 @@
 | `/blog/statistiques-annonces-voitures-occasion-particuliers-2026` | stats (link magnet, data first-party) | statistiques marché VO particuliers → hub `/fonctionnalites/analyse-prix-marche` | fr | 2026-09-26 (PR #24) | 2026-09-26 | `/blog`, article méthode | analyse-prix, article méthode | brief `seo/briefs/2026-09-26-statistiques-annonces-particuliers.md` |
 | `/blog/crm-automobile-marchand-vo` | fond (MOFU) | CRM automobile (pipeline d'achat) → hub `/fonctionnalites/crm-pipeline-vente` | fr | 2026-09-27 (PR, non fusionnée) | 2026-09-27 | `/blog`, article méthode | hub CRM, article méthode, article stats | brief `seo/briefs/2026-09-27-crm-automobile-marchand-vo.md` |
 | `/blog/loi-11-aout-2026-demarchage-prospection-vendeurs-particuliers` | fond (MOFU) | conformité prospection (loi du 11 août 2026) → hub `/solutions/pige-automobile` | fr | 2026-10-04 (PR #30, non fusionnée) | 2026-10-04 | `/blog`, article méthode | hub pige, mandataire-auto, article méthode, article stats, article CRM | brief `seo/briefs/2026-10-04-loi-11-aout-2026-demarchage.md` (relecture juridique recommandée) |
+| `/blog/whatsapp-message-vocal-vendeurs-particuliers-voiture` | fond (MOFU) | contact automatique vendeurs (canaux de premier contact) → hub `/fonctionnalites/contact-vocal-automatique` | fr | 2026-10-11 (PR, non fusionnée) | 2026-10-11 | `/blog` | contact-multicanal, contact-vocal-automatique, article loi 11 août, article méthode, article CRM, hub pige, tarifs | brief `seo/briefs/2026-10-11-whatsapp-message-vocal-vendeurs-particuliers-voiture.md` |
 | `/conditions-utilisation`, `/confidentialite`, `/cookies` | légal | — | fr | 2025 | 2026-09 | footer | — | — |
 
 ## Hubs
@@ -30,7 +31,7 @@
 | Hub | Cluster | Spokes rattachés | Spokes manquants |
 |---|---|---|---|
 | `/solutions/pige-automobile` | logiciel de pige automobile + conformité prospection | `/comparatif-outils-pige-automobile`, `/blog/loi-11-aout-2026-demarchage-prospection-vendeurs-particuliers` (PR, lien retour du hub à poser) | listicle « meilleurs outils de pige », article « pige classique vs prospection automatisée » (approfondi) |
-| `/fonctionnalites/contact-multicanal` | contact automatique vendeurs | `/fonctionnalites/contact-vocal-automatique` | guide « contacter les vendeurs Leboncoin automatiquement », scripts de messages |
+| `/fonctionnalites/contact-multicanal` | contact automatique vendeurs | `/fonctionnalites/contact-vocal-automatique`, `/blog/whatsapp-message-vocal-vendeurs-particuliers-voiture` (PR, lien retour du hub à poser) | guide « contacter les vendeurs Leboncoin automatiquement » (item-005), scripts de messages |
 | `/fonctionnalites/recherche-annonces-automatisee` | prospection / sourcing | `/blog/prospection-automobile-methode` (PR) | lien retour du hub vers l'article, guide sourcing VO particuliers |
 | `/fonctionnalites/crm-pipeline-vente` | CRM automobile | `/blog/crm-automobile-marchand-vo` (PR) | lien retour du hub vers l'article ; aligner les étapes de la page hub sur celles de l'app (voir brief du 2026-09-27) |
 | `/solutions/mandataire-auto` | mandataire auto | — | guide outils mandataire |

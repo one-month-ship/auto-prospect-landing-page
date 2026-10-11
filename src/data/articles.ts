@@ -21,6 +21,15 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "whatsapp-message-vocal-vendeurs-particuliers-voiture",
+    title:
+      "WhatsApp et message vocal : comment contacter les vendeurs particuliers de voitures",
+    description:
+      "Quel canal choisir entre la messagerie de la marketplace, WhatsApp et le message vocal sur répondeur, ce que la loi autorise depuis le 11 août 2026, quoi écrire dans le premier message et comment mesurer le canal qui marche chez vous.",
+    category: "Canaux de contact",
+    datePublished: "2026-10-11",
+  },
+  {
     slug: "loi-11-aout-2026-demarchage-prospection-vendeurs-particuliers",
     title: "Démarchage téléphonique et loi du 11 août 2026 : peut-on encore contacter un vendeur particulier ?",
     description:
