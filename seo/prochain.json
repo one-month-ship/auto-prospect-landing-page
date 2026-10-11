@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-04",
+  "date": "2026-10-11",
   "item": {
     "lot": "agent-2026-40",
     "fichier": "agent-2026-40.md",
@@ -14,14 +14,20 @@
     "livrable": ""
   },
   "file": {
-    "lots": 2,
-    "ouverts": 7,
+    "lots": 3,
+    "ouverts": 8,
     "faits": 4,
     "echecs": 0,
     "par_lot": [
       {
         "lot": "agent-2026-40",
         "skill": "foundational-article",
+        "langue": "fr",
+        "ouverts": 1
+      },
+      {
+        "lot": "agent-2026-41",
+        "skill": "comparison-page",
         "langue": "fr",
         "ouverts": 1
       },

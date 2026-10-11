@@ -1,0 +1,557 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import CalendlyWidget from "../../components/CalendlyWidget.astro";
+import SubPageCTA from "../../components/SubPageCTA.astro";
+import { APP_LOGIN_URL } from "../../lib/api";
+import "../../styles/global.css";
+
+const title =
+  "WhatsApp et message vocal : contacter les vendeurs particuliers de voitures | Auto-Prospect";
+const description =
+  "Oui, des outils envoient des messages WhatsApp et des messages vocaux aux vendeurs particuliers de voitures. Quel canal choisir, ce que dit la loi depuis le 11 août 2026, quoi écrire et quelles erreurs coupent le taux de réponse.";
+
+const datePublished = "2026-10-11";
+
+const siteOrigin = Astro.site?.origin ?? "https://auto-prospect.fr";
+const canonical = `${siteOrigin}/blog/whatsapp-message-vocal-vendeurs-particuliers-voiture`;
+
+// Comparaison des trois canaux écrits ou vocaux utilisables en premier contact.
+// Ordre : du plus attendu par le vendeur au plus intrusif.
+const canaux = [
+  {
+    canal: "Messagerie de la plateforme",
+    quand: "Premier contact par défaut, y compris quand aucun numéro n'est affiché",
+    force: "Le canal que le vendeur a choisi en publiant son annonce : il y attend des messages",
+    limite: "Pas de notification sur le téléphone de tous les vendeurs, lecture parfois différée",
+  },
+  {
+    canal: "WhatsApp",
+    quand: "Le numéro est affiché dans l'annonce et le vendeur l'utilise",
+    force: "Lu vite, permet d'envoyer une photo ou un document, la conversation reste accessible",
+    limite: "Perçu comme intrusif si le message est long, impersonnel ou n'identifie pas le professionnel",
+  },
+  {
+    canal: "Message vocal sur répondeur",
+    quand: "En complément d'un message écrit, ou sur un vendeur qui ne répond pas à l'écrit",
+    force: "Une voix se distingue de dix messages écrits, et le vendeur rappelle à son rythme",
+    limite: "Un seul essai : un vocal répété sur le même vendeur se retourne contre vous",
+  },
+];
+
+// Ce que chaque canal exige avant d'être utilisable, côté droit et côté pratique.
+const prerequis = [
+  {
+    titre: "Le vendeur a publié une annonce et attend des contacts",
+    texte:
+      "C'est la condition qui change tout. Une personne qui met sa voiture en vente sollicite elle-même des acheteurs : votre message en réponse à son annonce n'est pas une sollicitation commerciale non désirée, c'est une réponse à une offre publiée.",
+  },
+  {
+    titre: "Vous répondez à l'annonce, vous ne vendez pas un service",
+    texte:
+      "Proposer d'acheter le véhicule mis en vente reste dans le cadre de l'annonce. Proposer autre chose, un mandat, un dépôt-vente, un abonnement, est une offre commerciale : elle relève alors de la prospection et de ses règles de consentement.",
+  },
+  {
+    titre: "Vous vous identifiez comme professionnel",
+    texte:
+      "Nom, société, ville. Un professionnel qui se présente comme un particulier perd la confiance du vendeur au premier appel et s'expose en matière de pratiques commerciales.",
+  },
+  {
+    titre: "Le numéro vient de l'annonce, pas d'un fichier",
+    texte:
+      "Contacter un numéro affiché par le vendeur dans son annonce n'a rien à voir avec l'exploitation d'une liste achetée ou reconstituée. La provenance de la donnée est le premier élément qu'on vous demandera de justifier.",
+  },
+];
+
+// Structure du premier message, identique sur les trois canaux.
+const messageElements = [
+  {
+    element: "Qui vous êtes",
+    exemple: "« Bonjour, je suis Karim, marchand automobile à Lyon. »",
+  },
+  {
+    element: "Ce que vous avez lu dans l'annonce",
+    exemple: "« Votre Clio IV de 2017, 118 000 km, boîte manuelle. »",
+  },
+  {
+    element: "Ce que vous proposez concrètement",
+    exemple: "« Je peux passer la voir cette semaine et régler par virement instantané sur place. »",
+  },
+  {
+    element: "Une question qui appelle une réponse",
+    exemple: "« Est-elle toujours disponible, et quel créneau vous arrange pour un appel ? »",
+  },
+];
+
+const erreurs = [
+  {
+    titre: "Envoyer le même message sur les trois canaux en même temps",
+    texte:
+      "Le vendeur reçoit un message sur la plateforme, un WhatsApp et un vocal dans la même minute. Au mieux il trouve ça insistant, au pire il signale le compte. Un canal, puis un second 48 heures plus tard si rien ne revient.",
+  },
+  {
+    titre: "Demander le dernier prix dès le premier message",
+    texte:
+      "« Quel est votre dernier prix ? » est la phrase que le vendeur lit dix fois par jour, et celle à laquelle il ne répond plus. Le premier message sert à obtenir un rappel ou un rendez-vous, pas à négocier.",
+  },
+  {
+    titre: "Laisser un vocal de quarante secondes",
+    texte:
+      "Un message vocal sur répondeur se joue en entier ou pas du tout. Au-delà de vingt secondes, le vendeur coupe. Une phrase d'identification, une phrase sur le véhicule, une demande de rappel : c'est tout.",
+  },
+  {
+    titre: "Écrire sur WhatsApp sans que le numéro soit dans l'annonce",
+    texte:
+      "Un numéro deviné, reconstitué ou retrouvé ailleurs transforme votre message en sollicitation non désirée. Si le vendeur n'a pas affiché son numéro, c'est qu'il veut passer par la messagerie de la plateforme.",
+  },
+  {
+    titre: "Ne rien noter de ce qui a été envoyé",
+    texte:
+      "Sans historique par vendeur et par canal, vous relancez deux fois la même personne et vous oubliez celle qui avait répondu « rappelez-moi la semaine prochaine ». C'est le rôle du suivi, pas de la mémoire.",
+  },
+];
+
+const faq = [
+  {
+    q: "Existe-t-il un outil qui envoie des messages WhatsApp ou vocaux aux vendeurs particuliers de voitures ?",
+    a:
+      "Oui. Des logiciels de pige automobile détectent les annonces de particuliers sur les marketplaces selon vos critères, puis envoient le premier message à votre place sur le canal choisi : messagerie de la plateforme, WhatsApp quand le numéro est affiché, ou message vocal déposé sur le répondeur. Auto-Prospect couvre ces trois canaux sur Leboncoin, AutoScout24 et La Centrale, avec vos propres modèles de messages et un " +
+      "CRM qui enregistre chaque envoi et chaque réponse.",
+  },
+  {
+    q: "Peut-on envoyer un WhatsApp automatique à un vendeur particulier sans son consentement ?",
+    a:
+      "La question n'est pas l'automatisation, c'est la nature du message. Répondre à une annonce publiée par un vendeur qui cherche un acheteur n'est pas de la prospection commerciale : le vendeur a sollicité des contacts. En revanche, proposer un service à une personne qui ne l'a pas demandé est une sollicitation commerciale, et l'article L34-5 du Code des postes et des communications électroniques exige alors son " +
+      "consentement préalable. Le détail canal par canal est dans notre article sur la loi du 11 août 2026.",
+  },
+  {
+    q: "Le message vocal sur répondeur est-il considéré comme du démarchage téléphonique ?",
+    a:
+      "Un vocal déposé automatiquement sur un répondeur n'est pas un appel au sens de l'article L223-1 du Code de la consommation, qui encadre le démarchage téléphonique depuis le 11 août 2026. Il relève de l'article L34-5 du Code des postes et des communications électroniques, qui vise les automates d'appel et exigeait déjà un consentement préalable pour la prospection directe. Comme pour l'écrit, c'est le caractère " +
+      "commercial du message qui déclenche l'obligation, pas le canal.",
+  },
+  {
+    q: "Quel canal obtient le meilleur taux de réponse auprès d'un vendeur particulier ?",
+    a:
+      "Celui que le vendeur a choisi en publiant : la messagerie de la plateforme, qui reste le premier contact par défaut. WhatsApp fonctionne bien quand le numéro figure dans l'annonce et que le message est court. Le message vocal se distingue des messages écrits et obtient des rappels sur des vendeurs qui ne lisent pas leurs messages. Les ordres de grandeur varient selon le segment, la région et l'heure d'envoi : seul " +
+      "votre propre suivi, canal par canal, donne vos chiffres.",
+  },
+  {
+    q: "Combien coûte l'envoi automatique de messages aux vendeurs ?",
+    a: "Chez Auto-Prospect, la détection des annonces, la messagerie Leboncoin et WhatsApp sont inclus dans le plan unique à 69 € HT par mois en facturation annuelle, ou 89 € HT sans engagement. Les messages vocaux sont facturés 0,19 € HT l'unité, avec des packs de 100 à 20 € HT et de 500 à 80 € HT. L'essai est gratuit pendant 5 jours.",
+  },
+  {
+    q: "Faut-il un numéro WhatsApp Business pour contacter les vendeurs ?",
+    a: "Pour un envoi à la main, votre numéro professionnel suffit. Pour des envois réguliers, un numéro dédié à l'activité évite de mélanger les conversations personnelles et les échanges vendeurs, et permet de confier le suivi à un collaborateur. Quand l'envoi passe par un outil de prospection, c'est l'outil qui gère l'acheminement : vous fournissez le modèle de message et le numéro de rappel.",
+  },
+];
+
+const sources = [
+  {
+    label:
+      "Code de la consommation, article L223-1 (démarchage téléphonique, version en vigueur au 11 août 2026), Légifrance",
+    url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051790254",
+  },
+  {
+    label:
+      "Code des postes et des communications électroniques, article L34-5 (prospection directe par automate d'appel, télécopieur ou courrier électronique), Légifrance",
+    url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037671194",
+  },
+  {
+    label: "CNIL, « La prospection commerciale par téléphone »",
+    url: "https://www.cnil.fr/fr/la-prospection-commerciale-par-telephone",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "BlogPosting",
+    "headline":
+      "WhatsApp et message vocal : comment contacter les vendeurs particuliers de voitures",
+    "description": description,
+    "url": canonical,
+    "mainEntityOfPage": canonical,
+    "datePublished": datePublished,
+    "dateModified": datePublished,
+    "inLanguage": "fr-FR",
+    "author": { "@type": "Organization", "name": "L'équipe Auto-Prospect", "url": siteOrigin },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Auto-Prospect",
+      "url": siteOrigin,
+      "logo": `${siteOrigin}/logo.svg`,
+    },
+  },
+  {
+    "@type": "FAQPage",
+    "mainEntity": faq.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  },
+  {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `${siteOrigin}/` },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteOrigin}/blog/` },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "WhatsApp et message vocal pour contacter les vendeurs",
+        "item": canonical,
+      },
+    ],
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <Navbar />
+  <main class="mx-auto max-w-3xl px-4 pt-32 pb-20 sm:px-6 lg:px-8">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent">
+      <a href="/blog/" class="text-text-secondary transition-colors hover:text-text">Blog</a>
+      <span class="text-text-secondary"> / </span>Canaux de contact
+    </p>
+    <h1 class="mt-3 text-3xl font-bold sm:text-4xl">
+      WhatsApp et message vocal : comment contacter les vendeurs particuliers de voitures
+    </h1>
+    <p class="mt-4 text-sm text-text-secondary">
+      Par <span class="font-semibold text-text">L'équipe Auto-Prospect</span>. Publié le 11 octobre 2026.
+    </p>
+
+    <div class="mt-8 rounded-2xl border border-border bg-card p-6">
+      <p class="text-sm font-semibold">En bref</p>
+      <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-text-secondary">
+        <li>
+          Oui, des outils de pige automobile envoient le premier message aux vendeurs particuliers à votre place, sur
+          <strong class="text-text">trois canaux</strong> : messagerie de la marketplace, WhatsApp quand le numéro est
+          affiché, et message vocal déposé sur le répondeur.
+        </li>
+        <li>
+          Le canal par défaut reste la <strong class="text-text">messagerie de la plateforme</strong> : c'est celui que le
+          vendeur a choisi en publiant. WhatsApp et le vocal servent à se distinguer, pas à tout remplacer.
+        </li>
+        <li>
+          Ce qui rend le contact licite n'est pas le canal mais la nature du message : répondre à une annonce publiée
+          n'est pas de la prospection commerciale, proposer un service en est une.
+        </li>
+        <li>
+          Un vocal utile dure moins de vingt secondes. Un message écrit utile contient quatre éléments et aucun prix.
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-10 space-y-12 text-text-secondary">
+      <!-- 1. Réponse directe au prompt -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Existe-t-il vraiment un outil qui envoie ces messages à votre place ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Oui. C'est la fonction centrale des logiciels de pige automobile destinés aux professionnels de l'achat-revente.
+          Le principe est toujours le même : vous décrivez ce que vous cherchez (marque, modèle, années, kilométrage,
+          budget, départements), l'outil surveille les annonces de particuliers en continu, et dès qu'une annonce
+          correspond, il envoie votre message au vendeur sans que vous ayez à ouvrir l'annonce.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Là où les outils se distinguent, c'est sur les canaux qu'ils savent réellement utiliser. Beaucoup se limitent à
+          une alerte par email ou par notification : c'est à vous d'écrire ensuite, un vendeur après l'autre. Les outils qui
+          vont jusqu'au contact couvrent la messagerie de la marketplace, WhatsApp, et le dépôt d'un message vocal sur le
+          répondeur du vendeur. Auto-Prospect couvre ces trois canaux sur Leboncoin, AutoScout24 et La Centrale, avec vos
+          propres modèles de messages. Le détail de chaque canal est sur la page
+          <a href="/fonctionnalites/contact-multicanal/" class="text-accent hover:underline">contact multicanal des vendeurs</a>.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Ce que ces outils ne font pas, et c'est important de le savoir avant de les comparer : ils n'inventent pas votre
+          message, ne négocient pas à votre place et ne décrochent pas quand le vendeur rappelle. Ils suppriment le travail
+          répétitif, pas la relation.
+        </p>
+      </section>
+
+      <!-- 2. Quel canal, quand -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Quel canal choisir pour un premier contact : messagerie, WhatsApp ou vocal ?
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          La question se tranche moins sur le canal le plus performant que sur celui que le vendeur a lui-même ouvert. Un
+          particulier qui affiche son numéro accepte qu'on l'appelle ou qu'on lui écrive. Un particulier qui ne l'affiche
+          pas a explicitement choisi la messagerie de la plateforme.
+        </p>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="py-3 pr-4 font-medium">Canal</th>
+                <th class="py-3 pr-4 font-medium">Quand l'utiliser</th>
+                <th class="py-3 pr-4 font-medium">Sa force</th>
+                <th class="py-3 font-medium">Sa limite</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              {
+                canaux.map((c) => (
+                  <tr>
+                    <td class="py-3 pr-4 font-medium text-text">{c.canal}</td>
+                    <td class="py-3 pr-4">{c.quand}</td>
+                    <td class="py-3 pr-4">{c.force}</td>
+                    <td class="py-3">{c.limite}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 leading-relaxed">
+          Le SMS fait exception dans ce tableau : techniquement possible, il est le canal que les particuliers associent le
+          plus spontanément au démarchage, et un SMS commercial reçu d'un numéro inconnu est souvent supprimé sans être lu.
+          En premier contact, il arrive derrière les trois autres.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          La combinaison qui fonctionne est séquentielle, jamais simultanée : un message écrit sur le canal que le vendeur a
+          ouvert, puis, si rien ne revient au bout de 48 heures et que l'annonce est toujours en ligne, un message vocal sur
+          le répondeur. C'est exactement la logique du
+          <a href="/fonctionnalites/contact-vocal-automatique/" class="text-accent hover:underline">contact vocal automatique</a>,
+          qui sert de second temps et non de premier geste.
+        </p>
+      </section>
+
+      <!-- 3. Cadre juridique -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Ce que la loi autorise depuis le 11 août 2026
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          C'est la première question posée dès qu'on parle d'envoi automatique, et la réponse ne dépend pas du canal. Deux
+          textes se partagent le sujet. L'appel téléphonique de prospection vers un consommateur relève de l'article L223-1
+          du Code de la consommation, qui exige depuis le 11 août 2026 son consentement préalable. Les envois automatisés,
+          qu'il s'agisse d'un message vocal déposé sur un répondeur, d'un SMS ou d'un message écrit, relèvent de l'article
+          L34-5 du Code des postes et des communications électroniques, plus ancien, qui exigeait déjà ce consentement pour
+          la prospection directe.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Les deux textes se déclenchent sur le même élément : le caractère de <strong class="text-text">prospection
+          commerciale</strong> du message, c'est-à-dire la promotion d'un bien ou d'un service auprès de quelqu'un qui ne
+          l'a pas demandé. C'est là que la situation d'un marchand VO est particulière, et c'est le point à comprendre avant
+          de paramétrer quoi que ce soit.
+        </p>
+        <div class="mt-5 space-y-3">
+          {
+            prerequis.map((p) => (
+              <div class="rounded-xl border border-border bg-card p-5">
+                <p class="font-semibold text-text">{p.titre}</p>
+                <p class="mt-2 text-sm leading-relaxed">{p.texte}</p>
+              </div>
+            ))
+          }
+        </div>
+        <p class="mt-4 leading-relaxed">
+          Conséquence pratique : le même outil, le même canal et le même vendeur peuvent relever de deux régimes différents
+          selon ce que contient le message. Une proposition d'achat du véhicule mis en vente répond à l'annonce. Une
+          proposition de mandat, de dépôt-vente ou d'un service quelconque est une offre commerciale, et demande alors le
+          consentement préalable du vendeur. Le détail des textes, des sanctions et des pratiques canal par canal est dans
+          notre article sur la
+          <a href="/blog/loi-11-aout-2026-demarchage-prospection-vendeurs-particuliers/" class="text-accent hover:underline">loi du 11 août 2026 et les vendeurs particuliers</a>.
+        </p>
+      </section>
+
+      <!-- CTA intermédiaire contextualisé -->
+      <aside class="rounded-2xl border border-accent/30 bg-gradient-to-b from-accent/10 to-transparent p-6 sm:p-8">
+        <p class="text-lg font-bold text-text">Le bon message, sur le bon canal, dans les minutes qui suivent</p>
+        <p class="mt-2 leading-relaxed">
+          Auto-Prospect détecte les annonces de particuliers en temps réel sur Leboncoin, AutoScout24 et La Centrale,
+          compare chaque prix au marché et envoie votre message sur le canal que vous choisissez : messagerie Leboncoin,
+          WhatsApp ou message vocal sur répondeur. Chaque vendeur contacté pour vous n'est démarché pour aucun autre client.
+        </p>
+        <div class="mt-5">
+          <a
+            href={APP_LOGIN_URL}
+            data-cta="blog-whatsapp-vocal-vendeurs"
+            class="inline-block rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-bg shadow-lg shadow-accent/25 transition-all hover:bg-accent-hover hover:shadow-accent/40"
+          >
+            Essayer gratuitement pendant 5 jours
+          </a>
+        </div>
+      </aside>
+
+      <!-- 4. Quoi écrire -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Quoi écrire dans le premier message, et quoi dire dans un vocal
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          La structure est la même sur les trois canaux, parce que le vendeur se pose toujours les mêmes questions dans le
+          même ordre : qui m'écrit, parle-t-il bien de ma voiture, qu'est-ce qu'il veut, et qu'est-ce que je dois faire
+          maintenant.
+        </p>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="py-3 pr-4 font-medium">L'élément</th>
+                <th class="py-3 font-medium">Formulé</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              {
+                messageElements.map((m) => (
+                  <tr>
+                    <td class="py-3 pr-4 font-medium text-text">{m.element}</td>
+                    <td class="py-3">{m.exemple}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 leading-relaxed">
+          Sur WhatsApp, cela donne un message de quatre lignes, sans lien, sans pièce jointe et sans prix :
+        </p>
+        <blockquote class="mt-3 rounded-xl border border-border bg-card p-5 text-sm leading-relaxed">
+          « Bonjour, je suis Karim, marchand automobile à Lyon. J'ai vu votre annonce pour la Clio IV de 2017, 118 000 km.
+          Je peux passer la voir cette semaine et régler par virement instantané le jour de la visite. Est-elle toujours
+          disponible ? »
+        </blockquote>
+        <p class="mt-4 leading-relaxed">
+          Pour le vocal, la contrainte est le temps d'écoute. Un répondeur se joue en entier ou pas du tout, et le vendeur
+          coupe vite. Visez quinze à vingt secondes, soit trois phrases, et terminez par votre numéro énoncé lentement :
+        </p>
+        <blockquote class="mt-3 rounded-xl border border-border bg-card p-5 text-sm leading-relaxed">
+          « Bonjour, Karim, marchand automobile à Lyon. Je vous appelle pour votre Clio de 2017 mise en vente, je suis
+          acheteur et je peux me déplacer cette semaine. Rappelez-moi au zéro six, douze, trente-quatre, cinquante-six,
+          soixante-dix-huit. Merci, bonne journée. »
+        </blockquote>
+        <p class="mt-4 leading-relaxed">
+          Dans les deux cas, un modèle réutilisable vaut mieux qu'une improvisation quotidienne, à condition que les
+          éléments variables (modèle, année, kilométrage) soient réellement repris de l'annonce. Un message qui dit « votre
+          véhicule » sans le nommer se lit comme un envoi de masse, et c'est précisément ce qui fait chuter le taux de
+          réponse. La méthode complète, du périmètre de recherche au rendez-vous, est dans notre
+          <a href="/blog/prospection-automobile-methode/" class="text-accent hover:underline">guide de la prospection automobile</a>.
+        </p>
+      </section>
+
+      <!-- 5. Erreurs -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Cinq erreurs qui coupent le taux de réponse
+        </h2>
+        <div class="mt-5 space-y-3">
+          {
+            erreurs.map((e) => (
+              <div class="rounded-xl border border-border bg-card p-5">
+                <p class="font-semibold text-text">{e.titre}</p>
+                <p class="mt-2 text-sm leading-relaxed">{e.texte}</p>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- 6. Mesurer -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Comment savoir quel canal marche chez vous
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Aucun classement général ne vaut votre propre mesure. Le taux de réponse dépend du segment (une citadine de
+          10 000 € et un utilitaire de 25 000 € n'attirent pas les mêmes vendeurs), de la région, de l'heure d'envoi et de
+          la qualité du message. Trois indicateurs suffisent, suivis par canal :
+        </p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 leading-relaxed">
+          <li>
+            <strong class="text-text">Taux de réponse</strong> : réponses reçues divisées par messages envoyés. C'est
+            l'indicateur du message et du canal.
+          </li>
+          <li>
+            <strong class="text-text">Taux de rendez-vous</strong> : visites obtenues divisées par réponses reçues. C'est
+            l'indicateur de votre proposition.
+          </li>
+          <li>
+            <strong class="text-text">Taux d'achat</strong> : véhicules achetés divisés par rendez-vous. C'est l'indicateur
+            de votre tri en amont et de votre négociation.
+          </li>
+        </ul>
+        <p class="mt-4 leading-relaxed">
+          Ces trois taux se lisent dans un pipeline qui enregistre chaque envoi et chaque suite donnée, étape par étape :
+          nouveau, contacté, relance, gagné, perdu. Un tableur suffit sur les premières semaines ; passé une trentaine de
+          contacts hebdomadaires, le suivi à la main décroche et vous perdez justement l'information qui vous aurait permis
+          d'arbitrer entre les canaux. Le détail des étapes et des indicateurs est dans notre
+          <a href="/blog/crm-automobile-marchand-vo/" class="text-accent hover:underline">guide du CRM automobile pour marchand VO</a>.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Un dernier point de méthode : ne changez qu'une variable à la fois. Si vous modifiez le message et le canal la
+          même semaine, vous ne saurez pas lequel des deux a produit l'écart. Gardez le même message deux semaines, faites
+          varier le canal, puis l'inverse.
+        </p>
+      </section>
+
+      <!-- 7. Coût et mise en place -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">
+          Ce que coûte la mise en place, et par quoi commencer
+        </h2>
+        <p class="mt-3 leading-relaxed">
+          Chez Auto-Prospect, la détection d'annonces, la messagerie Leboncoin et WhatsApp sont incluses dans le plan unique
+          à 69 € HT par mois en facturation annuelle, ou 89 € HT sans engagement, avec des zones de recherche illimitées.
+          Les messages vocaux se facturent à l'usage, 0,19 € HT l'unité, en packs de 100 à 20 € HT ou de 500 à 80 € HT.
+          L'essai dure 5 jours et ne demande pas de carte. Le détail est sur la page
+          <a href="/tarifs/" class="text-accent hover:underline">tarifs</a>.
+        </p>
+        <p class="mt-3 leading-relaxed">
+          Si vous démarrez, ne branchez pas les trois canaux en même temps. Commencez par une seule recherche bien cadrée
+          sur un segment que vous savez revendre, un seul canal écrit, et un modèle de message que vous relisez après les
+          vingt premiers envois. Ajoutez le vocal en relance quand le message écrit est stabilisé. Cette progression vous
+          donne, au bout de trois semaines, des taux comparables d'un canal à l'autre au lieu d'une moyenne illisible. Le
+          fonctionnement d'ensemble de la pige automatisée est décrit sur notre page
+          <a href="/solutions/pige-automobile/" class="text-accent hover:underline">pige automobile</a>.
+        </p>
+      </section>
+
+      <!-- FAQ -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">Questions fréquentes</h2>
+        <div class="mt-4">
+          {
+            faq.map((f) => (
+              <details class="group border-b border-border py-2">
+                <summary class="flex cursor-pointer items-center justify-between py-3 text-sm font-medium text-text sm:text-base [&::-webkit-details-marker]:hidden">
+                  {f.q}
+                  <span class="ml-4 text-text-secondary transition-transform group-open:rotate-180">⌄</span>
+                </summary>
+                <p class="pb-4 text-sm leading-relaxed">{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Sources -->
+      <section>
+        <h2 class="text-xl font-semibold text-text">Sources</h2>
+        <ul class="mt-3 list-disc space-y-1 pl-5 text-sm">
+          {
+            sources.map((s) => (
+              <li>
+                <a href={s.url} target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">{s.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-3 text-xs">
+          Cet article décrit un cadre général et ne constitue pas un conseil juridique. Les observations sur les canaux de
+          contact et les relances proviennent de l'usage quotidien d'Auto-Prospect par des marchands et des mandataires ;
+          elles ne constituent pas une statistique de marché.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <SubPageCTA
+    title="Contactez les vendeurs sur le canal où ils répondent"
+    subtitle="Messagerie Leboncoin, WhatsApp et message vocal, depuis une seule plateforme, dès 69 € HT/mois. Essai gratuit 5 jours."
+  />
+  <Footer />
+  <CalendlyWidget />
+</Layout>

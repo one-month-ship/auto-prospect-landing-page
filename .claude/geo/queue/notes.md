@@ -78,6 +78,31 @@
   1 077 impressions sur 90 jours, position 7,5). Ne pas transposer le diagnostic
   « rien n'est indexé » d'AlertDeals.
 
+## 2026-10-11 (item `agent-2026-40-001`, WhatsApp et vocal)
+
+- **Écart entre le produit et la copy publique** : l'app implémente **quatre**
+  canaux de contact (WhatsApp, SMS, vocal sans sonnerie, messagerie Leboncoin),
+  la copy publique du site n'en annonce que **trois** (messagerie Leboncoin,
+  WhatsApp, vocal). L'article s'en tient aux trois canaux publics et traite le
+  SMS comme un canal du marché à déconseiller en premier contact, sans dire
+  qu'Auto-Prospect l'envoie. Aligner la copy publique sur quatre canaux est une
+  décision de Nassim, pas de l'agent SEO : à trancher avant le prochain article
+  du cluster « contact automatique vendeurs » (item-005).
+- **Pas de taux de réponse chiffré par canal** : calculable depuis les données
+  de l'app, mais le volume constaté (environ 1 150 messages, dominés par un seul
+  canal) rendrait un chiffre publié fragile. Reporté à un article de
+  statistiques dédié quand le volume suivra. Réserve consignée dans le brief.
+- **Lignes de plus de 500 caractères** : les réponses longues de la FAQ
+  dépassaient la limite de la CI `no-long-lines`. Solution retenue, à réutiliser :
+  couper la chaîne en littéraux concaténés par `+`, en gardant l'espace de fin
+  sur chaque morceau pour ne pas souder deux mots. Le texte du JSON-LD reste
+  identique. La CI ne scanne pas `public/llms.txt` (extensions `.txt` hors
+  périmètre), mais garder les lignes courtes là aussi.
+- **Maillage retour à poser** : les hubs `/fonctionnalites/contact-multicanal`
+  et `/fonctionnalites/contact-vocal-automatique` ne pointent pas encore vers
+  cet article. À faire dans une passe `internal-linking`, pas dans la PR de
+  l'article.
+
 ## 2026-10-12 : feature « appels entrants identifiés » (demande de Nassim)
 
 - Feature livré dans l'app (branche `feat/show-ad-information-at-call`, non fusionnée au 2026-10-12) : quand un vendeur rappelle le numéro dédié du compte, l'utilisateur entend l'annonce avant de décrocher (« Appel Auto-Prospect. Peugeot 208 2019, 9900 euros, Lyon. »), l'appel s'affiche dans le CRM avec l'annonce (même manqué) et son issue est notée sur le lead. Nassim le considère comme le feature le plus différenciant : à mettre en avant dans tout contenu qui parle du contact des vendeurs.
