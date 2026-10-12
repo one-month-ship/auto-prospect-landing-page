@@ -20,5 +20,9 @@ dist/
 .protocole/
 prospects/
 
+# Sorties de l'agent Autorité : régénérées à chaque cycle, historique déjà
+# porté par le contenu (lignes datées). Conservées hors de git.
+autorite/
+
 .env.local
 .env*.local
