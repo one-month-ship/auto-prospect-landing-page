@@ -3,8 +3,8 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "node init && astro dev",
+    "build": "node init && astro build",
     "preview": "astro preview",
     "check:leaks": "node scripts/check-stack-leaks.mjs"
   },
