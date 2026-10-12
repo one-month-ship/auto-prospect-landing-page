@@ -24,5 +24,12 @@ prospects/
 # porté par le contenu (lignes datées). Conservées hors de git.
 autorite/
 
+# Sorties de l'agent SEO : mesures, briefs du lundi, snapshots, backlog.
+# seo/briefs/ fait exception : ce sont les briefs éditoriaux qui servent à
+# écrire les articles, de la matière de travail, pas un rapport jetable.
+seo/*
+!seo/briefs/
+!seo/briefs/**
+
 .env.local
 .env*.local
