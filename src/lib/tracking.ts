@@ -39,12 +39,16 @@ export type TrackingEvent =
   | "cta_click" // clic sur un bouton « Essai gratuit » (départ vers l'app)
   | "contact_form" // formulaire de contact envoyé
   | "demo_scheduled" // RDV Calendly confirmé
+  | "whatsapp_click" // clic sur le lien WhatsApp du fondateur
   | "article_view"; // lecture d'un article de blog (base des audiences de retargeting)
 
 const META_EVENTS: Record<TrackingEvent, { name: string; custom: boolean }> = {
   cta_click: { name: "CTAClick", custom: true },
   contact_form: { name: "Lead", custom: false },
   demo_scheduled: { name: "Schedule", custom: false },
+  // Contact est un événement standard Meta : un clic WhatsApp est une prise de
+  // contact au même titre qu'un formulaire envoyé.
+  whatsapp_click: { name: "Contact", custom: false },
   // ViewContent est un événement standard : il alimente les audiences personnalisées
   // « a consulté tel contenu » dans Meta, ce qu'un événement custom ne permet pas
   // de faire aussi simplement.
@@ -55,6 +59,7 @@ const GOOGLE_EVENTS: Record<TrackingEvent, string> = {
   cta_click: "cta_click",
   contact_form: "generate_lead",
   demo_scheduled: "schedule_demo",
+  whatsapp_click: "whatsapp_click",
   article_view: "view_item",
 };
 
@@ -324,6 +329,17 @@ export function initTracking() {
     track("cta_click", {
       location: link.dataset.cta,
       content_ids: [page],
+    });
+  });
+
+  // Les liens WhatsApp portent data-whatsapp="<emplacement>" : on trace le clic,
+  // la navigation vers wa.me se fait normalement (nouvel onglet).
+  document.addEventListener("click", (e) => {
+    const link = (e.target as Element | null)?.closest?.("a[data-whatsapp]");
+    if (!(link instanceof HTMLAnchorElement)) return;
+    track("whatsapp_click", {
+      location: link.dataset.whatsapp,
+      content_ids: [pageSlug(currentPath())],
     });
   });
 

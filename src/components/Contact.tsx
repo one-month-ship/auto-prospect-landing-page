@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { AlertCircle, CheckCircle, Send } from "lucide-react";
+import { AlertCircle, CheckCircle, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
+import { WHATSAPP_NUMBER_DISPLAY, WHATSAPP_URL } from "../lib/contact";
 import { track } from "../lib/tracking";
 
 type FormState = "idle" | "sending" | "success" | "error";
@@ -80,6 +81,18 @@ export default function Contact() {
               contact@auto-prospect.fr
             </a>
           </p>
+          {/* WhatsApp du fondateur : le canal le plus rassurant pour un pro de l'auto,
+              et le plus rapide. Message uniquement, pas d'appel direct. */}
+          <a
+            href={WHATSAPP_URL}
+            data-whatsapp="contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl border border-[#25D366]/40 bg-[#25D366]/10 px-5 py-2.5 text-sm font-semibold text-[#F9FAFB] transition-colors hover:bg-[#25D366]/20"
+          >
+            <MessageCircle size={18} className="text-[#25D366]" />
+            Écrire au fondateur sur WhatsApp · {WHATSAPP_NUMBER_DISPLAY}
+          </a>
         </div>
 
         <motion.form
