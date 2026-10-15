@@ -111,3 +111,19 @@
 - L'item `agent-2026-40-001` (WhatsApp / vocal) doit mentionner le feature dans sa section vocal et lier le hub.
 - Canonical des articles : le `const canonical` du JSON-LD doit porter la barre finale (`/blog/<slug>/`), comme le `<link rel="canonical">` du Layout et le sitemap. Les quatre articles antérieurs ont été alignés le 2026-10-12.
 - 2026-10-12, relecture de Nassim : **ne jamais écrire « numéro Auto-Prospect », « numéro dédié » ou « numéro attribué »** dans un contenu publié. Le client n'a pas à savoir qu'un numéro lui est assigné : dire « quand un vendeur vous rappelle » et « vos messages donnent aux vendeurs votre numéro à rappeler ». Aucune mécanique (numéro d'appelant, variable de modèle) dans le marketing.
+
+## 2026-10-12 : régression de citation sur le prompt Leboncoin (item agent-2026-42-001)
+
+Le prompt « Comment contacter automatiquement les vendeurs de voitures sur Leboncoin ? »
+citait Auto-Prospect le 2026-09-28 et le 2026-10-05. Le 2026-10-12, il ne le cite plus,
+et ne cite aucun concurrent non plus : la réponse du moteur a changé de forme, ce n'est
+pas un concurrent qui a pris la place.
+
+Angle retenu pour la production : une seule réponse extractible en tête d'article, qui
+nomme le produit, le canal et le déclencheur. Fusionner avec l'item-005 du premier lot
+(`contacter-vendeurs-leboncoin-automatiquement`) plutôt que créer une seconde page :
+item-005 reste le livrable, agent-2026-42-001 en fixe l'angle et la priorité.
+
+Réserve de méthode : une seule mesure peut être une variation du moteur. Confirmer la
+régression au cycle du 2026-10-19 avant d'engager la production. Si le prompt redevient
+cité sans rien changer, l'item se ferme sans article.

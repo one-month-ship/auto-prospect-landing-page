@@ -41,6 +41,46 @@ import { APP_LOGIN_URL } from "../lib/api";
       Déjà <span class="font-semibold text-text">273 professionnels</span> de l'auto prospectent avec Auto-Prospect.
     </p>
 
+    <!-- Démo vidéo : le fondateur montre la prise en main de bout en bout. Visage
+         visible = confiance (moins de doute sur le sérieux), et le visiteur voit
+         tout de suite quoi faire une fois inscrit. La vidéo n'est pas préchargée
+         (preload="none") : seul le poster est téléchargé tant qu'on ne clique pas. -->
+    <div class="fade-up mx-auto mt-14 max-w-4xl text-left">
+      <div
+        id="demo-player"
+        class="relative overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-accent/10"
+      >
+        <video
+          id="demo-video"
+          class="block aspect-[1280/832] w-full"
+          preload="none"
+          poster="/demo-poster.jpg"
+          playsinline
+        >
+          <source src="/demo-auto-prospect.mp4" type="video/mp4" />
+          Votre navigateur ne lit pas cette vidéo.
+        </video>
+        <button
+          id="demo-play"
+          type="button"
+          aria-label="Lancer la démo d'Auto-Prospect"
+          class="group absolute inset-0 flex cursor-pointer flex-col items-center justify-center gap-4 bg-bg/40 transition-colors hover:bg-bg/30"
+        >
+          <span class="flex h-20 w-20 items-center justify-center rounded-full bg-accent text-bg shadow-lg shadow-accent/40 transition-transform group-hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="ml-1 h-9 w-9" aria-hidden="true">
+              <path d="M8 5.14v13.72a1 1 0 0 0 1.52.86l11.1-6.86a1 1 0 0 0 0-1.72L9.52 4.28A1 1 0 0 0 8 5.14z" />
+            </svg>
+          </span>
+          <span class="rounded-full bg-bg/80 px-4 py-1.5 text-sm font-semibold text-text">
+            Voir la démo complète · 10 min
+          </span>
+        </button>
+      </div>
+      <p class="mt-4 text-center text-sm text-text-secondary">
+        Le fondateur vous montre la prise en main : connexion de vos canaux, première recherche, message type, premiers vendeurs dans le CRM.
+      </p>
+    </div>
+
     <!-- Plateformes couvertes -->
     <p class="fade-up mt-8 text-sm text-text-secondary">
       Les 3 plus grandes marketplaces auto de France, couvertes en continu :
@@ -62,3 +102,18 @@ import { APP_LOGIN_URL } from "../lib/api";
     </div>
   </div>
 </section>
+
+<script>
+  // Le bouton de lecture masque l'overlay, affiche les contrôles natifs et lance
+  // la vidéo. Les contrôles n'apparaissent qu'à ce moment-là pour ne pas se
+  // superposer au poster et au bouton.
+  const video = document.getElementById("demo-video") as HTMLVideoElement | null;
+  const play = document.getElementById("demo-play");
+  if (video && play) {
+    play.addEventListener("click", () => {
+      play.hidden = true;
+      video.controls = true;
+      void video.play();
+    });
+  }
+</script>
